@@ -1,4 +1,4 @@
-﻿<img src="https://raw.githubusercontent.com/CJstate/CJstate/main/docs/hello.svg" alt="Hello">
+<img src="https://raw.githubusercontent.com/CJstate/CJstate/main/docs/hello.svg" alt="Hello">
 
 ### :rocket: Hi there, I'm CJstate
 
