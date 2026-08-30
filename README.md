@@ -1,101 +1,120 @@
 <div align="center">
 
-<img src="./docs/banner.svg" alt="CJstate" width="100%"/>
+  <a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=700&size=28&pause=1000&color=00E5FF&center=true&vCenter=true&width=600&lines=console.log(%22Hello%2C+World!%22);const+me+%3D+%7B+builder+%3A+true+%7D;%24+./ship+--now;build+%C2%B7+ship+%C2%B7+learn" alt="Typing SVG" /></a>
 
-<br/>
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/CJstate/CJstate/main/docs/banner.svg" />
+    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/CJstate/CJstate/main/docs/banner.svg" />
+    <img src="https://raw.githubusercontent.com/CJstate/CJstate/main/docs/banner.svg" alt="banner" width="100%" />
+  </picture>
 
-<a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=700&size=26&pause=1200&color=00E5FF&center=true&vCenter=true&width=560&lines=console.log(%22Hello%2C%20World!%22);const+whoami+%3D+%22builder%22;%24+./ship.sh+--now;keep+building+%C2%B7+keep+shipping" alt="Typing SVG"/></a>
+  <div>&nbsp;</div>
 
-<br/>
+  <div>
+    <a href="https://github.com/CJstate"><img src="https://img.shields.io/badge/GitHub-CJstate-181717?style=for-the-badge&logo=github&logoColor=white" /></a>&emsp;
+    <a href="https://github.com/CJstate"><img src="https://img.shields.io/badge/Portfolio-项目-0e75b6" /></a>&emsp;
+    <img src="https://komarev.com/ghpvc/?username=CJstate&label=Views&color=ff69b4&style=flat" alt="visitor" />&emsp;
+    <img src="https://img.shields.io/github/followers/CJstate?label=Followers&style=social" alt="followers" />&emsp;
+    <img src="https://img.shields.io/github/stars/CJstate?label=Stars&style=social" alt="stars" />
+  </div>
 
-<a href="https://github.com/CJstate"><img src="https://img.shields.io/badge/GitHub-CJstate-181717?style=for-the-badge&logo=github&logoColor=white&labelColor=0d1117&color=00e5ff"/></a>
-<a href="mailto:cjstate.dev@gmail.com"><img src="https://img.shields.io/badge/Email-cjstate.dev%40gmail.com-181717?style=for-the-badge&logo=gmail&labelColor=0d1117&color=a855f7"/></a>
-<img src="https://komarev.com/ghpvc/?username=CJstate&style=for-the-badge&color=ff2e97&label=VISITORS" alt="visitors"/>
-<img src="https://img.shields.io/github/followers/CJstate?style=for-the-badge&logo=github&label=FOLLOWERS&labelColor=0d1117&color=00e5ff" alt="followers"/>
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/CJstate/CJstate/output/github-contribution-grid-snake-dark.svg" />
+    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/CJstate/CJstate/output/github-contribution-grid-snake.svg" />
+    <img alt="github-snake" src="https://raw.githubusercontent.com/CJstate/CJstate/output/github-contribution-grid-snake-dark.svg" />
+  </picture>
 
 </div>
 
----
+<img width="100%" src="https://raw.githubusercontent.com/CJstate/CJstate/main/docs/divider.svg" />
 
-<img align="right" src="https://github-readme-stats.vercel.app/api/top-langs/?username=CJstate&layout=compact&langs_count=8&hide_border=true&bg_color=0d1117&title_color=00e5ff&text_color=c9d1d9&icon_color=a855f7" alt="top-langs"/>
+# 🙋 Hello
 
-### ⚡ About Me
+<table>
+<tr><td>
 
-Independent developer — **building tools, breaking things, shipping often.**
+### 🤺 About Me
 
-```txt
-$ whoami
+<p>&emsp;&emsp;Hey, I'm <b>CJstate</b> — an independent developer who loves building, breaking, and shipping.</p>
+<p>&emsp;&emsp;I span the full stack: backend architecture, CI/CD, AI agents, and blockchain tooling.</p>
+<p>&emsp;&emsp;I care about clean code, clear thinking, and software a stranger can understand in five minutes.</p>
+<p>&emsp;&emsp;<strong>We're making the world a better place — ship small · ship often · leave it better.</strong></p>
 
-  focus     tools that feel like products
-  learning  systems, AI, and the space between
-  belief    ship small · ship often · leave it better
-```
+</td></tr>
+<tr><td>
 
-I build across the whole stack — backend architecture, CI/CD pipelines, AI agents, and blockchain tooling. I care about **clean code, clear thinking, and software a stranger can pick up in five minutes.**
-
----
-
-### 🛠 Toolbox
+### 📊 GitHub Stats
 
 <p align="center">
-  <img src="https://skillicons.dev/icons?i=cpp,c,python,js,ts,nodejs,docker,kubernetes,git,linux,gitlab,aws,gcp,go,rust,react&perline=8&theme=dark" alt="toolbox"/>
+  <img src="https://github-readme-stats.vercel.app/api?username=CJstate&show_icons=true&count_private=true&hide_border=true&bg_color=0d1117&title_color=00e5ff&text_color=c9d1d9&icon_color=ff2e97&rank_icon=github&hide=issues" alt="stats" />
 </p>
 
----
+</td></tr>
+<tr><td>
 
-### 📊 Stats
+### 🔥 Streak Stats
+
+<p align="center">
+  <img src="https://streak-stats.demolab.com/?user=CJstate&hide_border=true&background=0d1117&ring=00e5ff&fire=ff2e97&currStreakLabel=00e5ff&currStreakNum=ffffff&sideNums=a855f7&sideLabels=c9d1d9&dates=61708a" alt="streak" />
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=CJstate&layout=compact&langs_count=8&hide_border=true&bg_color=0d1117&title_color=a855f7&text_color=c9d1d9&icon_color=00e5ff" alt="top-langs" />
+</p>
+
+</td></tr>
+</table>
+
+<img width="100%" src="https://raw.githubusercontent.com/CJstate/CJstate/main/docs/divider.svg" />
 
 <div align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=CJstate&show_icons=true&count_private=true&hide_border=true&bg_color=0d1117&title_color=00e5ff&text_color=c9d1d9&icon_color=ff2e97&rank_icon=github&custom_title=CJstate%20%7C%20GitHub%20Stats&hide=issues" alt="stats" height="180"/>
-  <img src="https://streak-stats.demolab.com/?user=CJstate&hide_border=true&background=0d1117&ring=00e5ff&fire=ff2e97&currStreakLabel=00e5ff&sideNums=a855f7&currStreakNum=ffffff&sideLabels=c9d1d9&dates=61708a" alt="streak" height="180"/>
-</div>
 
-<br/>
+### 🏆 GitHub Trophies
 
-<div align="center">
-  <img src="https://github-readme-activity-graph.vercel.app/graph?username=CJstate&theme=github-dark&bg_color=0d1117&color=00e5ff&line=a855f7&point=ff2e97&area=true&hide_border=true" alt="activity-graph" width="95%"/>
-</div>
+<img src="https://github-profile-trophy.vercel.app/?username=CJstate&theme=radical&row=1&column=7&no-frame=true&no-bg=true" alt="trophies" />
 
----
-
-### 🐍 Contribution Snake
+### ✍️ Random Dev Joke
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/CJstate/CJstate/output/github-contribution-grid-snake-dark.svg"/>
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/CJstate/CJstate/output/github-contribution-grid-snake.svg"/>
-  <img alt="github-snake" src="https://raw.githubusercontent.com/CJstate/CJstate/output/github-contribution-grid-snake-dark.svg"/>
+  <source media="(prefers-color-scheme: dark)" srcset="https://readme-jokes.vercel.app/api?hideBorder&bgColor=%230d1117" />
+  <source media="(prefers-color-scheme: light)" srcset="https://readme-jokes.vercel.app/api?hideBorder&bgColor=%23ffffff" />
+  <img alt="Jokes Card" src="https://readme-jokes.vercel.app/api?hideBorder&bgColor=%230d1117" />
 </picture>
 
----
-
-### 🏆 Trophies
-
-<div align="center">
-  <img src="https://github-profile-trophy.vercel.app/?username=CJstate&theme=radical&row=1&column=7&no-frame=true&no-bg=true" alt="trophies"/>
 </div>
 
----
+<img width="100%" src="https://raw.githubusercontent.com/CJstate/CJstate/main/docs/divider.svg" />
+
+<div align="center">
+
+### 🧰 Tech Stack
+
+<img src="https://skillicons.dev/icons?i=cpp,c,python,js,ts,nodejs,docker,kubernetes,git,linux,gitlab,aws,gcp,go,rust,react&perline=8&theme=dark" alt="toolbox" />
+
+</div>
+
+<img width="100%" src="https://raw.githubusercontent.com/CJstate/CJstate/main/docs/divider.svg" />
+
+<div align="center">
 
 ### 💼 Selected Work
 
 <table>
   <tr>
-    <td><a href="https://github.com/CJstate/Backend-Architecture"><b>Backend Architecture</b></a><br/><sub>patterns &amp; reference layouts for scalable services</sub></td>
-    <td><a href="https://github.com/CJstate/CI-CD-Pipelines"><b>CI/CD Pipelines</b></a><br/><sub>reusable pipeline blueprints across cloud providers</sub></td>
+    <td align="center"><a href="https://github.com/CJstate/Backend-Architecture"><img src="https://github-readme-stats.vercel.app/api/pin/?username=CJstate&repo=Backend-Architecture&hide_border=true&bg_color=0d1117&title_color=00e5ff&text_color=c9d1d9&icon_color=ff2e97" alt="Backend-Architecture"/></a></td>
+    <td align="center"><a href="https://github.com/CJstate/CI-CD-Pipelines"><img src="https://github-readme-stats.vercel.app/api/pin/?username=CJstate&repo=CI-CD-Pipelines&hide_border=true&bg_color=0d1117&title_color=00e5ff&text_color=c9d1d9&icon_color=ff2e97" alt="CI-CD-Pipelines"/></a></td>
   </tr>
   <tr>
-    <td><a href="https://github.com/CJstate/AI-Agent-Projects"><b>AI Agent Projects</b></a><br/><sub>agentic systems, from AutoGPT to custom toolchains</sub></td>
-    <td><a href="https://github.com/CJstate/awesome-coding-patterns"><b>Awesome Coding Patterns</b></a><br/><sub>a curated collection of algorithms and idioms</sub></td>
+    <td align="center"><a href="https://github.com/CJstate/AI-Agent-Projects"><img src="https://github-readme-stats.vercel.app/api/pin/?username=CJstate&repo=AI-Agent-Projects&hide_border=true&bg_color=0d1117&title_color=a855f7&text_color=c9d1d9&icon_color=00e5ff" alt="AI-Agent-Projects"/></a></td>
+    <td align="center"><a href="https://github.com/CJstate/awesome-coding-patterns"><img src="https://github-readme-stats.vercel.app/api/pin/?username=CJstate&repo=awesome-coding-patterns&hide_border=true&bg_color=0d1117&title_color=a855f7&text_color=c9d1d9&icon_color=00e5ff" alt="awesome-coding-patterns"/></a></td>
   </tr>
   <tr>
-    <td><a href="https://github.com/CJstate/Admin-Dashboard"><b>Admin Dashboard</b></a><br/><sub>production-grade dashboard starter</sub></td>
-    <td><a href="https://github.com/CJstate/API-Gateway"><b>API Gateway</b></a><br/><sub>routing, auth, and rate-limiting patterns</sub></td>
+    <td align="center"><a href="https://github.com/CJstate/Admin-Dashboard"><img src="https://github-readme-stats.vercel.app/api/pin/?username=CJstate&repo=Admin-Dashboard&hide_border=true&bg_color=0d1117&title_color=ff2e97&text_color=c9d1d9&icon_color=a855f7" alt="Admin-Dashboard"/></a></td>
+    <td align="center"><a href="https://github.com/CJstate/API-Gateway"><img src="https://github-readme-stats.vercel.app/api/pin/?username=CJstate&repo=API-Gateway&hide_border=true&bg_color=0d1117&title_color=ff2e97&text_color=c9d1d9&icon_color=a855f7" alt="API-Gateway"/></a></td>
   </tr>
 </table>
 
----
+</div>
+
+<img width="100%" src="https://raw.githubusercontent.com/CJstate/CJstate/main/docs/divider.svg" />
 
 <div align="center">
-  <i>built with restraint · styled in neon</i><br/>
-  <sub>⚡ powered by coffee &amp; curiosity</sub>
+  <sub>built with restraint · styled in neon ⚡</sub>
 </div>
