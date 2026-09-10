@@ -1,0 +1,46 @@
+name: Update README Metrics
+
+on:
+  schedule:
+    - cron: '0 3 * * *'  # Daily at 3 AM UTC
+  workflow_dispatch:
+
+jobs:
+  update-readme:
+    name: Update README with metrics
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Update README with GitHub metrics
+        uses: lowlighter/metrics@latest
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          committer_token: ${{ secrets.GITHUB_TOKEN }}
+          committer_message: "chore: update metrics [skip ci]"
+          config_timezone: Asia/Shanghai
+          base: header, activity, community, repositories, metadata
+          plugin_followup: yes
+          plugin_followup_sections: repositories, stars
+          plugin_lines: yes
+          plugin_lines_history_limit: 1
+          plugin_lines_repositories_limit: 8
+          plugin_lines_sections: base
+          plugin_habits: yes
+          plugin_habits_charts: yes
+          plugin_habits_charts_type: classic
+          plugin_habits_facts: yes
+          plugin_habits_from: 200
+          plugin_habits_languages_limit: 8
+          plugin_habits_languages_threshold: 0.5%
+          plugin_habits_days: 14
+          plugin_traffic: yes
+          plugin_stargazers: yes
+          plugin_isocalendar: yes
+          plugin_isocalendar_duration: full-year
+          template: classic
+          output_action: commit
