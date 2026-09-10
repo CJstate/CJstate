@@ -179,9 +179,9 @@ No AI Coding Activity Tracked This Week
 <tr>
 <td align="center" width="50%">
 
-**🚀 持续部署**
+**🧠 深度思考**
 
-<img src="https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif" alt="Deploy Animation" width="280" />
+<img src="https://media.giphy.com/media/3o7abKhOpu0NwenH3O/giphy.gif" alt="Deep Thinking" width="280" />
 
 </td>
 <td align="center" width="50%">
