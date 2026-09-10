@@ -169,7 +169,7 @@ No AI Coding Activity Tracked This Week
 
 <div align="center">
 
-<img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZDQ0MmQ4YzYxYzQ5YzQ5YzQ5YzQ5YzQ5YzQ5YzQ5YzQ5YzQ5YzQ5YzQ5YzQ5YzQ5YzQ5Yw/giphy.gif" alt="Coding Animation" width="500" />
+<img src="https://media.giphy.com/media/26ufcwAIx8dtdrLpy/giphy.gif" alt="Coding Animation" width="500" />
 
 </div>
 
@@ -193,6 +193,12 @@ No AI Coding Activity Tracked This Week
 </td>
 </tr>
 </table>
+
+</div>
+
+<div align="center">
+
+<img src="https://media.giphy.com/media/LmNwrBhejkK9EFP504/giphy.gif" alt="Building Software" width="500" />
 
 </div>
 
