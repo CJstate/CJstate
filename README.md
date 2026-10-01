@@ -33,7 +33,7 @@
 | Lightning-AI/pytorch-lightning | [#21975](https://github.com/Lightning-AI/pytorch-lightning/pull/21975) | 新增 `enable_device_summary` 开关 |
 | huggingface/datasets | [#8693](https://github.com/huggingface/datasets/pull/8693) | `PathLike` 类型注解 `List` → `Sequence` |
 | EleutherAI/lm-evaluation-harness | [#4216](https://github.com/EleutherAI/lm-evaluation-harness/pull/4216) | `make_table` 重复共享子任务修复 |
-| traceloop/openllmetry | [#4484](https://github.com/traceloop/openllmetry/pull/4484) | Groq 流式响应指标记录 |
+| traceloop/openllmetry | [#4484](https://github.com/traceloop/openllmetry/pull/4484) | Groq 流式：`usage` 被空 `choices` 早退丢弃 |
 | mlflow/mlflow | [#26206](https://github.com/mlflow/mlflow/pull/26206) | artifact 图片缩放修复 |
 | Lightning-AI/pytorch-lightning | [#21939](https://github.com/Lightning-AI/pytorch-lightning/pull/21939) | Windows 无符号链接权限时跳过测试 |
 | browser-use/jev-ultrafast | [#114](https://github.com/browser-use/jev-ultrafast/pull/114) | no-progress guard 需考虑未观测结果 |
@@ -53,6 +53,7 @@
 
 | 项目 | 说明 | 技术 |
 |------|------|------|
+| [**llm-eval-gate**](https://github.com/CJstate/llm-eval-gate) | 比较两次 `lm-evaluation-harness` 结果，用相对阈值 + stderr 显著性噪声带判定评测回归，让 CI 在真正变差时失败、在噪声范围内放行 | Python 标准库 · GitHub Action · 102 测试 · MIT |
 | [**fold-blur-demo**](https://github.com/CJstate/fold-blur-demo) | 折叠屏雾化 / 磨砂玻璃效果演示 | 纯 CSS `backdrop-filter` |
 
 ---
