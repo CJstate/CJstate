@@ -32,7 +32,10 @@
 |------|----|------|
 | Lightning-AI/pytorch-lightning | [#21975](https://github.com/Lightning-AI/pytorch-lightning/pull/21975) | 新增 `enable_device_summary` 开关 |
 | huggingface/datasets | [#8693](https://github.com/huggingface/datasets/pull/8693) | `PathLike` 类型注解 `List` → `Sequence` |
+| anthropics/skills | [#1720](https://github.com/anthropics/skills/pull/1720) | 评估报告按 UTF-8 写出（Windows cp1252 下崩溃） |
+| pranshuparmar/witr | [#239](https://github.com/pranshuparmar/witr/pull/239) | 无亮色 ANSI 支持的终端保留颜色 |
 | EleutherAI/lm-evaluation-harness | [#4216](https://github.com/EleutherAI/lm-evaluation-harness/pull/4216) | `make_table` 重复共享子任务修复 |
+| EleutherAI/lm-evaluation-harness | [#4114](https://github.com/EleutherAI/lm-evaluation-harness/pull/4114) | `simple_evaluate()` 输入校验回归测试 |
 | traceloop/openllmetry | [#4484](https://github.com/traceloop/openllmetry/pull/4484) | Groq 流式：`usage` 被空 `choices` 早退丢弃 |
 | mlflow/mlflow | [#26206](https://github.com/mlflow/mlflow/pull/26206) | artifact 图片缩放修复 |
 | Lightning-AI/pytorch-lightning | [#21939](https://github.com/Lightning-AI/pytorch-lightning/pull/21939) | Windows 无符号链接权限时跳过测试 |
