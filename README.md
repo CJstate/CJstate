@@ -31,6 +31,7 @@
 | 项目 | PR | 内容 |
 |------|----|------|
 | huggingface/accelerate | [#4360](https://github.com/huggingface/accelerate/pull/4360) | `debug_launcher` Windows 支持（fork / 临时文件 / gloo 网卡名） |
+| huggingface/accelerate | [#4361](https://github.com/huggingface/accelerate/pull/4361) | 检查点 RNG 状态恢复失败不再静默（#4283） |
 | Lightning-AI/pytorch-lightning | [#21975](https://github.com/Lightning-AI/pytorch-lightning/pull/21975) | 新增 `enable_device_summary` 开关 |
 | huggingface/datasets | [#8693](https://github.com/huggingface/datasets/pull/8693) | `PathLike` 类型注解 `List` → `Sequence` |
 | anthropics/skills | [#1720](https://github.com/anthropics/skills/pull/1720) | 评估报告按 UTF-8 写出（Windows cp1252 下崩溃） |
