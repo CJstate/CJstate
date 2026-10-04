@@ -30,12 +30,13 @@
 
 | 项目 | PR | 内容 |
 |------|----|------|
+| k8sgpt-ai/k8sgpt-operator | [#855](https://github.com/k8sgpt-ai/k8sgpt-operator/pull/855) | K8sGPT CRD 与 operator chart 的 tolerations 支持（已获维护者批准，CI 全绿） |
+| public-apis/public-apis | [#7217](https://github.com/public-apis/public-apis/pull/7217) | 修复失效的 Pirate Weather 链接 |
 | huggingface/accelerate | [#4360](https://github.com/huggingface/accelerate/pull/4360) | `debug_launcher` Windows 支持（fork / 临时文件 / gloo 网卡名） |
 | huggingface/accelerate | [#4361](https://github.com/huggingface/accelerate/pull/4361) | 检查点 RNG 状态恢复失败不再静默（#4283） |
 | Lightning-AI/pytorch-lightning | [#21975](https://github.com/Lightning-AI/pytorch-lightning/pull/21975) | 新增 `enable_device_summary` 开关 |
 | huggingface/datasets | [#8693](https://github.com/huggingface/datasets/pull/8693) | `PathLike` 类型注解 `List` → `Sequence` |
 | anthropics/skills | [#1720](https://github.com/anthropics/skills/pull/1720) | 评估报告按 UTF-8 写出（Windows cp1252 下崩溃） |
-| pranshuparmar/witr | [#239](https://github.com/pranshuparmar/witr/pull/239) | 无亮色 ANSI 支持的终端保留颜色 |
 | EleutherAI/lm-evaluation-harness | [#4216](https://github.com/EleutherAI/lm-evaluation-harness/pull/4216) | `make_table` 重复共享子任务修复 |
 | EleutherAI/lm-evaluation-harness | [#4114](https://github.com/EleutherAI/lm-evaluation-harness/pull/4114) | `simple_evaluate()` 输入校验回归测试 |
 | traceloop/openllmetry | [#4484](https://github.com/traceloop/openllmetry/pull/4484) | Groq 流式：`usage` 被空 `choices` 早退丢弃 |
@@ -45,10 +46,11 @@
 
 #### 已合并 · Merged
 
-| 项目 | PR | 内容 |
-|------|----|------|
-| nvm-sh/nvm | [#3915](https://github.com/nvm-sh/nvm/pull/3915) | `nvm --help` 颜色图例渲染 |
-| DependencyTrack/dependency-track | [#7096](https://github.com/DependencyTrack/dependency-track/pull/7096) | README CI 徽章指向 main 分支 |
+| 项目 | PR | 内容 | 合并时间 |
+|------|----|------|----------|
+| pranshuparmar/witr | [#239](https://github.com/pranshuparmar/witr/pull/239) | 无亮色 ANSI 支持的终端保留颜色 | 2026-10-03 |
+| nvm-sh/nvm | [#3915](https://github.com/nvm-sh/nvm/pull/3915) | `nvm --help` 颜色图例渲染 | 2026-09-03 |
+| DependencyTrack/dependency-track | [#7096](https://github.com/DependencyTrack/dependency-track/pull/7096) | README CI 徽章指向 main 分支 | 2026-08-24 |
 
 完整列表见 [Pull Requests](https://github.com/CJstate?tab=pull-requests)。
 
