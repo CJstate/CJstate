@@ -248,6 +248,10 @@ STACK_ROWS = [
     ("平台", "Windows 与 Linux 双栈 · 终端能力探测 · 编码 / locale 兼容 · 交叉编译"),
 ]
 
+# 自有项目的可核对事实（本地实测后手填，均给出复现命令）
+EVAL_GATE_TESTS = 102          # cd projects/llm-eval-gate && pytest --collect-only -q
+EVAL_GATE_OS = 3               # ubuntu / windows-latest / macos-latest matrix
+
 STARS_FALLBACK = {
     "pranshuparmar/witr": 22578,
     "nvm-sh/nvm": 95265,
@@ -383,6 +387,12 @@ def build_data(raw: dict, login: str) -> dict:
 
     user = raw["user"]
     pinned = node.get("pinnedItems", {}).get("totalCount", 0)
+    repos_blob = raw.get("repos")
+    forks = 0
+    if isinstance(repos_blob, list):
+        forks = sum(1 for r in repos_blob if isinstance(r, dict) and r.get("fork"))
+    merged = _pr_rows(raw["pr-merged"]["items"], MERGED_NOTES, False)
+    reached = {row["repo"]: stars.get(row["repo"], 0) for row in merged}
     return {
         "login": login,
         "followers": user.get("followers", 0),
@@ -392,9 +402,12 @@ def build_data(raw: dict, login: str) -> dict:
         "commits": node.get("totalCommitContributions", 0),
         "pull_requests": node.get("totalPullRequestContributions", 0),
         "weeks": weeks,
-        "merged": _pr_rows(raw["pr-merged"]["items"], MERGED_NOTES, False),
+        "merged": merged,
         "open": _pr_rows(raw["pr-open"]["items"], OPEN_NOTES, True),
         "stars": stars,
+        "upstream_reach": sum(reached.values()),
+        "upstream_reach_repos": len(reached),
+        "forks": forks,
         "today": dt.date.today().isoformat(),
     }
 
@@ -633,6 +646,12 @@ def _stars(data: dict, repo: str) -> str:
     return str(value)
 
 
+def _compact(value: int) -> str:
+    if value >= 1000:
+        return f"{value / 1000:.0f}k"
+    return str(value)
+
+
 def build_readme(data: dict) -> str:
     merged, openp = data["merged"], data["open"]
     areas: dict[str, list[dict]] = {}
@@ -689,10 +708,13 @@ def build_readme(data: dict) -> str:
 
 **AI / LLM 工程 · 训练与推理基础设施 · 模型评测 · 跨平台 / Windows DX**
 
-![merged](https://img.shields.io/badge/merged_upstream_PRs-{len(merged)}-2ea043?style=for-the-badge&logo=git&logoColor=white)
-![in review](https://img.shields.io/badge/in_review-{len(openp)}-0969da?style=for-the-badge&logo=github&logoColor=white)
-![contributions](https://img.shields.io/badge/contributions_12mo-{data['total_contributions']}-8250df?style=for-the-badge)
-![llm-eval-gate](https://img.shields.io/badge/llm--eval--gate-102_tests_CI_green-2ea043?style=for-the-badge&logo=pytest&logoColor=white)
+<sub>AI / LLM engineering · training &amp; inference infra · evaluation tooling · cross-platform (Windows) DX</sub>
+
+![merged](https://img.shields.io/badge/upstream_PRs_merged-{len(merged)}-2ea043?style=for-the-badge&logo=github&logoColor=white)
+![review](https://img.shields.io/badge/upstream_PRs_in_review-{len(openp)}-0969da?style=for-the-badge&logo=git&logoColor=white)
+![reach](https://img.shields.io/badge/upstream_stars_reached-{_compact(data['upstream_reach'])}-f0883e?style=for-the-badge)
+![contrib](https://img.shields.io/badge/contributions_12mo-{data['total_contributions']}-8250df?style=for-the-badge)
+![gate](https://img.shields.io/badge/llm--eval--gate-{EVAL_GATE_TESTS}_tests_%2B_{EVAL_GATE_OS}_OS_CI_green-2ea043?style=for-the-badge&logo=pytest&logoColor=white)
 
 </div>
 
@@ -707,8 +729,9 @@ def build_readme(data: dict) -> str:
     ["近 12 个月 contributions", f"{data['total_contributions']:,}", "GraphQL `contributionsCollection`（滚动 12 个月）"],
     ["commits / pull requests", f"{data['commits']} / {data['pull_requests']}", "同上"],
     ["已合并的上游 PR", f"{len(merged)}", src_merged_pull],
+    ["改动已落地的上游仓库", f"{data['upstream_reach_repos']} 个 · 合计 {data['upstream_reach']:,}★", src_merged_pull],
     ["正在评审的上游 PR", f"{len(openp)}", src_open_pull],
-    ["公开仓库", f"{data['public_repos']}", src_user],
+    ["公开仓库", f"{data['public_repos']}（其中 {data['forks']} 个 fork 就是上面这些 PR 的分支源）", src_user],
 ])}
 
 ## ✅ 已合并的上游贡献（{len(merged)}）
@@ -728,22 +751,20 @@ def build_readme(data: dict) -> str:
 
 ## 🧰 自己的项目
 
-### [`llm-eval-gate`](https://github.com/CJstate/llm-eval-gate)
+### [`llm-eval-gate`](https://github.com/CJstate/llm-eval-gate) — 把「评测退化」变成可执行的 CI 判定
 
-把模型评测接进 CI 的失败判定：给它两份 lm-evaluation-harness 的结果文件，它在**考虑随机波动**的前提下判断
-这次评测是不是真的退化了——用相对阈值和基于标准误的噪声带，而不是「小数点后几位变小了就红」。
+给它两份 lm-evaluation-harness 的结果文件（`before` / `after`），它在**考虑随机波动**的前提下判断这次评测是不是
+真的退化了：用相对阈值 + 基于标准误的噪声带，而不是「小数点后几位变小了就红」。LLM 评测本身噪声就大，
+判据写错只有两种下场——天天假警报，或者把真回归放过去。
 
-- `v0.1.0` 已发版，102 个测试
+- `v0.1.0` 已发版；{EVAL_GATE_TESTS} 个测试（`pytest --collect-only -q` 可复现）
 - GitHub Actions 在 Ubuntu（Python 3.11 / 3.12 / 3.13）+ Windows + macOS 上全绿，并且会把自己当 Action 跑一遍（`self-gate`）
-- **零运行时依赖**（`dependencies = []`），只需要两份 harness 结果文件，不绑定具体模型
+- **零运行时依赖**（`pyproject.toml` 里 `dependencies = []`），不绑定具体模型，只吃 harness 的结果文件
 
-### [`fold-blur-demo`](https://github.com/CJstate/fold-blur-demo)
-
-纯 CSS 的折角模糊效果演示（`backdrop-filter` 的可折叠实现），用来验证「不引第三方库也能做出 iOS 风格的景深分层」。
-
-### [`CJstate`](https://github.com/CJstate/CJstate)
-
-就是你现在看的这个主页：SVG 素材和 README 全部由脚本生成。
+```bash
+pip install "git+https://github.com/CJstate/llm-eval-gate@v0.1.0"
+llm-eval-gate check before.json after.json     # 退出码就是 CI 判定结果
+```
 
 ## 🧭 我的工作方式
 
