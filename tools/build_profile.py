@@ -42,11 +42,6 @@ MERGED_NOTES = {
 }
 
 OPEN_NOTES = {
-    "huggingface/huggingface_hub#5077": (
-        "评测与可观测性",
-        "`RepoCard` 在非 UTF-8 默认编码 / 带 BOM 的卡片上崩溃或静默丢元数据，三处读写路径统一 `utf-8-sig`",
-        "等维护者批准 workflow + review",
-    ),
     "huggingface/accelerate#4360": (
         "训练与推理框架",
         "`debug_launcher` 在 Windows 上无法启动（fork / NamedTemporaryFile / gloo 网卡名三处 Unix-only 假设）",
@@ -122,35 +117,42 @@ OPEN_NOTES = {
         "补上 macrostructure 的文档说明，让生成的页面结构可预期（纯文档）",
         "等 review",
     ),
+    "simonw/llm#1737": (
+        "工具链 / 平台 DX",
+        "`llm templates edit` 按 UTF-8 写模板，读回却用 locale 编码，中文 Windows 上模板 / `-f` 片段 / `--functions` 文件直接解码失败；统一改为 UTF-8 优先、locale 回退，并补回归测试",
+        "等维护者批准 workflow",
+    ),
 }
 
 CASE_STUDIES = [
     {
-        "title": "huggingface/huggingface_hub#5077 —— 一个不可见的 BOM 让卡片元数据被静默清空",
-        "url": "https://github.com/huggingface/huggingface_hub/pull/5077",
+        "title": "simonw/llm#1737 —— 写模板用 UTF-8，读回来却用系统 locale 编码",
+        "url": "https://github.com/simonw/llm/pull/1737",
         "rows": [
             (
                 "现象",
-                "在默认编码不是 UTF-8 的机器上（中文 Windows 是 `cp936`），`RepoCard.load()` 打开含非 ASCII "
-                "字符的 README 直接抛 `UnicodeDecodeError: 'gbk' codec can't decode byte 0xad in position 30`；"
-                "而开头带 UTF-8 BOM 的卡片更隐蔽：**不报错**，但元数据整段消失，只在日志里留一条 warning。",
+                "在默认编码为 `cp936` 的 Windows 上，把模板存成 UTF-8 再 `llm -t 模板` 直接失败："
+                "`UnicodeDecodeError: 'gbk' codec can't decode byte 0xaa in position 16`。"
+                "`-f 片段.md` 与 `--functions 工具.py` 两个入口同样打不开。",
             ),
             (
                 "根因",
-                "两件事叠加。一是三处读写路径依赖 locale 默认编码。二是元数据用 `REGEX_YAML_BLOCK = ^(\\s*---)` "
-                "定位，而 BOM 字符 U+FEFF 不属于 `\\s`，于是 `---` 之前多了一个不可见字符，正则匹配失败，"
-                "`data_dict` 落成 `{}`——失败是静默的，这比抛异常更危险。",
+                "模块跟自己不一致：`llm templates edit` 新建模板时写的是 "
+                "`path.write_text(DEFAULT_TEMPLATE, \"utf-8\")`（`llm/cli.py:2646`），"
+                "而 `load_template()` 读回时是 `path.read_text()`（`llm/cli.py:4274`）——用的是 locale 默认编码。"
+                "片段与 `--functions` 两处（`llm/cli.py:293`、`llm/cli.py:4287`）完全相同。",
             ),
             (
                 "修复",
-                "`RepoCard.load` / `from_template` / `metadata_save` 统一改为 `encoding=\"utf-8-sig\"`（它同时兼容"
-                "有 BOM 和无 BOM），并让 `metadata_save` 不再把 BOM 重复写回文件。",
+                "抽出 `_read_text_file()`：先按 UTF-8 读，只有文件确实不是合法 UTF-8 时才回退到 locale 默认编码，"
+                "所以原本用 GBK / CP1252 保存的旧文件不会被弄坏。这个逐编码回退的写法与仓库里 "
+                "`llm embed-multi --files` 已有的 `(\"utf-8\", \"latin-1\")` 处理保持一致。",
             ),
             (
                 "证据",
-                "新增 6 个回归测试：BOM 加载、非 ASCII 加载、BOM 模板、非 ASCII 模板、默认模板路径、保存后无重复块。"
-                "非网络子集在 Python 3.12.13 与 3.13.13 上全绿，`ruff check` / `ruff format` 干净；"
-                "按审查机器人（Bugbot）的意见修掉了 `Path.read_text(newline=...)` 只在 3.13+ 存在的问题。",
+                "新增 3 个回归测试（模板 / 片段 / `--functions` 文件），用一个在任意平台上模拟「locale 不是 UTF-8」"
+                "的 fixture 驱动。改之前三条全挂：`UnicodeDecodeError: 'ascii' codec can't decode byte 0xe7 in "
+                "position 8`；改之后 `3 passed`，全量测试 `1185 passed, 1 skipped, 6 xfailed, 15 xpassed`。",
             ),
         ],
     },
@@ -231,12 +233,15 @@ WORKFLOW_NOTES = [
     (
         "挑环境类缺陷，而不是抢热点",
         "我熟悉的是「只在真实环境里出现」的那类 bug：非 UTF-8 默认编码、Windows 检出、"
-        "首次贡献者的 CI 门禁、跨平台终端能力差异。这类问题复现成本高、报告少，但修完是真收益。",
+        "首次贡献者的 CI 门禁、跨平台终端能力差异。这类问题复现成本高、报告少；"
+        "但也最容易被判 low impact：必须能说清「谁真的会踩到」，否则再干净的修复也只是噪声。",
     ),
     (
         "踩过的坑写进公开复盘",
-        "早期我也提交过多余的文档与格式改动，被维护者当作噪声关掉了；"
-        "现在每个 PR 都先确认自己真的复现了问题，并且在被指出问题后公开更正自己的判断。",
+        "早期提交过多余的文档与格式改动，被维护者当作噪声关掉；后来一个能稳定复现的编码缺陷，"
+        "仍然被判 low impact——理由是没有真实用户报告，复现是「合成的」。"
+        "所以现在提交前会先问：这个问题有人真的踩到吗？没有就先去找真实报告或明确使用场景，"
+        "被指出问题时也公开更正自己的判断。",
     ),
 ]
 
@@ -718,9 +723,6 @@ def build_readme(data: dict) -> str:
 
 </div>
 
-> 这个主页只写**能点开验证**的东西：每个数字、每个 PR 都能点进去核对。
-> 三张图和下面所有统计数字由 [`tools/build_profile.py`](tools/build_profile.py) 调用 GitHub API 生成，不是手填的。
-
 ## 📌 概览
 
 <img alt="Contribution activity" src="docs/activity.svg" width="100%">
@@ -773,20 +775,6 @@ llm-eval-gate check before.json after.json     # 退出码就是 CI 判定结果
 ## 🧱 技术栈
 
 {md_table(["方向", "常用"], stack_rows)}
-
-## 🔁 复现这个主页
-
-```bash
-gh auth login
-python tools/build_profile.py --out .     # 重新生成 docs/*.svg 和 README.md
-```
-
-## 📬 联系
-
-- GitHub：[@{data['login']}](https://github.com/{data['login']})
-- 有合适的上游 issue / PR 想让我接手，欢迎直接开 issue 或在这里 @ 我
-
-<sub>数据更新时间：{data['today']} · 上面每个数字都能由 `tools/build_profile.py` 重新生成，欢迎核对</sub>
 """
     return text
 
