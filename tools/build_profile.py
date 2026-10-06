@@ -256,6 +256,8 @@ STACK_ROWS = [
 # 自有项目的可核对事实（本地实测后手填，均给出复现命令）
 EVAL_GATE_TESTS = 102          # cd projects/llm-eval-gate && pytest --collect-only -q
 EVAL_GATE_OS = 3               # ubuntu / windows-latest / macos-latest matrix
+HUI_TESTS = 139                # cd projects/hui-harness && pytest --collect-only -q
+HUI_LINES = 2972               # Get-ChildItem hui/*.py | Measure-Object -Line
 
 STARS_FALLBACK = {
     "pranshuparmar/witr": 22578,
@@ -720,6 +722,7 @@ def build_readme(data: dict) -> str:
 ![reach](https://img.shields.io/badge/upstream_stars_reached-{_compact(data['upstream_reach'])}-f0883e?style=for-the-badge)
 ![contrib](https://img.shields.io/badge/contributions_12mo-{data['total_contributions']}-8250df?style=for-the-badge)
 ![gate](https://img.shields.io/badge/llm--eval--gate-{EVAL_GATE_TESTS}_tests_%2B_{EVAL_GATE_OS}_OS_CI_green-2ea043?style=for-the-badge&logo=pytest&logoColor=white)
+![hui](https://img.shields.io/badge/hui--harness-{HUI_TESTS}_tests_%2B_0_runtime_deps-2ea043?style=for-the-badge&logo=python&logoColor=white)
 
 </div>
 
@@ -766,6 +769,24 @@ def build_readme(data: dict) -> str:
 ```bash
 pip install "git+https://github.com/CJstate/llm-eval-gate@v0.1.0"
 llm-eval-gate check before.json after.json     # 退出码就是 CI 判定结果
+```
+
+### [`hui-harness`](https://github.com/CJstate/hui-harness) — 一个零依赖、可重放的编程 Agent
+
+从零写的 agent harness，把「工具调用循环 + 权限策略 + 会话日志」压到约 {HUI_LINES:,} 行纯标准库，而且**跑过的会话事后能重放核对**：
+每条工具结果连同它的 sha256 一起写进 append-only JSONL，`hui replay` 会真的再执行一遍并逐条比对哈希，对不上就当场失败。
+CI 在 Linux 和 Windows 上跑这个重放当门禁——「可复现」是被验证的，不是被声称的。
+
+- {HUI_TESTS} 个测试 + `ruff check` / `ruff format --check` 干净；CI 矩阵 Linux / Windows / macOS × Python 3.10–3.13，外加打包安装检查
+- **零运行时依赖**（`urllib` / `json` / `subprocess` / `difflib`），`pip install` 不会拉进来任何东西
+- 上下文压缩按「整组」丢弃：assistant 的 `tool_call` 与它的结果永远不会被拆开（拆开就等于损坏会话）
+- 编码与换行按真实 Windows 环境处理：UTF-8 → 本地代码页（GBK/CP936）→ Latin-1 逐级回退，保留 BOM 与 CRLF，cp936 控制台不再因为一个 em dash 崩掉
+- 权限策略分 `read-only` / `workspace-write` / `danger-full-access`，约 20 条破坏性命令要显式授权，且从不使用 `shell=True`
+
+```bash
+git clone https://github.com/CJstate/hui-harness && cd hui-harness && pip install -e .
+hui demo                              # 不需要 API key：真实执行工具并写出会话日志
+hui replay .sessions/session-*.jsonl  # 重放并逐条核对工具结果的 sha256
 ```
 
 ## 🧭 我的工作方式
