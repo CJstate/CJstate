@@ -117,6 +117,12 @@ OPEN_NOTES = {
         "补上 macrostructure 的文档说明，让生成的页面结构可预期（纯文档）",
         "等 review",
     ),
+    "Nutlope/hallmark#77": (
+        "工具链 / 平台 DX",
+        "技能包只发布 `skills/`，文档里 13 处 `../../` 相对链接装完即死（含 agent 必读指令流里的一处），"
+        "改绝对 URL 并附零依赖链接检查器防止回归",
+        "等 review",
+    ),
     "simonw/llm#1737": (
         "工具链 / 平台 DX",
         "`llm templates edit` 按 UTF-8 写模板，读回却用 locale 编码，中文 Windows 上模板 / `-f` 片段 / `--functions` 文件直接解码失败；统一改为 UTF-8 优先、locale 回退，并补回归测试",
