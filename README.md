@@ -11,7 +11,7 @@
 <sub>AI / LLM engineering · training &amp; inference infra · evaluation tooling · cross-platform (Windows) DX</sub>
 
 ![merged](https://img.shields.io/badge/upstream_PRs_merged-5-2ea043?style=for-the-badge&logo=github&logoColor=white)
-![review](https://img.shields.io/badge/upstream_PRs_in_review-24-0969da?style=for-the-badge&logo=git&logoColor=white)
+![review](https://img.shields.io/badge/upstream_PRs_in_review-25-0969da?style=for-the-badge&logo=git&logoColor=white)
 ![reach](https://img.shields.io/badge/upstream_stars_reached-122k-f0883e?style=for-the-badge)
 ![contrib](https://img.shields.io/badge/contributions_12mo-130-8250df?style=for-the-badge)
 ![gate](https://img.shields.io/badge/llm--eval--gate-102_tests_%2B_3_OS_CI_green-2ea043?style=for-the-badge&logo=pytest&logoColor=white)
@@ -29,7 +29,7 @@
 | commits / pull requests | 37 / 77 | 同上 |
 | 已合并的上游 PR | 5 | `author:CJstate is:pr is:merged` |
 | 改动已落地的上游仓库 | 4 个 · 合计 122,587★ | `author:CJstate is:pr is:merged` |
-| 正在评审的上游 PR | 24 | `author:CJstate is:pr is:open` |
+| 正在评审的上游 PR | 25 | `author:CJstate is:pr is:open` |
 | 公开仓库 | 16（其中 13 个 fork 就是上面这些 PR 的分支源） | `GET /users/CJstate` |
 
 ## ✅ 已合并的上游贡献（5）
@@ -81,7 +81,7 @@
 
 [打开 PR](https://github.com/huggingface/accelerate/pull/4360)
 
-## 🔄 正在评审的上游 PR（24）
+## 🔄 正在评审的上游 PR（25）
 
 ### 训练与推理框架（6）
 
@@ -103,7 +103,7 @@
 | [#4484](https://github.com/traceloop/openllmetry/pull/4484) `traceloop/openllmetry` | Groq 流式响应的 usage 指标丢失，补上流式路径的 token 统计并加指标回归测试 | 已 rebase 到最新 main，等 review |
 | [#4114](https://github.com/EleutherAI/lm-evaluation-harness/pull/4114) `EleutherAI/lm-evaluation-harness` | `simple_evaluate` 对非法输入静默返回空结果，补上输入校验与回归测试 | 等维护者批准 workflow + 签 CLA |
 
-### 工具链 / 平台 DX（14）
+### 工具链 / 平台 DX（15）
 
 | PR | 内容 | 当前状态 |
 | --- | --- | --- |
@@ -111,6 +111,7 @@
 | [#1780](https://github.com/suzuki-shunsuke/pinact/pull/1780) `suzuki-shunsuke/pinact` | issue #1441：仓库只打 tag 不发 release 时（如当时的 dorny/paths-filter），最新版本解析在 releases 上短路，`-u` 反而要把 v4.0.1「更新」回 v4.0.0 并告警；tags 始终解析、tag-only 新版本胜出 | CI 已过 commit-signing 检查（SSH 签名），等 review |
 | [#1781](https://github.com/suzuki-shunsuke/pinact/pull/1781) `suzuki-shunsuke/pinact` | issue #1579：`v4` 与 `v4.0.0` 是同一版本却被当作「不更新」，`run -u` 留下 `# v4` 而普通 pin 写 `# v4.0.0`，两命令结果不一致；语义相等即通过、更新时重 pin 并把短注解展开为长 tag | CI 已过 commit-signing 检查（SSH 签名），等 review |
 | [#400](https://github.com/darrenburns/posting/pull/400) `darrenburns/posting` | issue #394：集合浏览器里高亮即打开请求（可配置 `collection_browser.open_on_highlight`，默认关），j/k 步进时编辑器跟随光标；顺带修了挂载期高亮导致 compose 中断的竞态 | open，等 review |
+| [#401](https://github.com/darrenburns/posting/pull/401) `darrenburns/posting` | issue #320：切到别的请求后 Response 区还挂着上一个请求的响应，且毫无归属提示；响应 tabs 上方常驻一行「METHOD URL」标明该响应来自哪个请求 | open，等 review |
 | [#540](https://github.com/bmf-san/ggc/pull/540) `bmf-san/ggc` | config / interactive / history 测试在 Windows 全红（vim 路径、USERPROFILE、POSIX 权限断言）；用测试夹具 + GOOS 门禁修复 | 首贡献者 workflow 等维护者批准 |
 | [#541](https://github.com/bmf-san/ggc/pull/541) `bmf-san/ggc` | 101 处 `exec.Command("echo", ...)` mock 在 Windows 上被 PATH 里的真 echo.exe 劫持；改为 helper-process 构造器 | 首贡献者 workflow 等维护者批准 |
 | [#542](https://github.com/bmf-san/ggc/pull/542) `bmf-san/ggc` | config/cmd 测试的编辑器桩与临时目录清理在 Windows 失败；抽共享 `testutil.InstallEditorStubsOnPath` | 首贡献者 workflow 等维护者批准 |
