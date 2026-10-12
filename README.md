@@ -11,7 +11,7 @@
 <sub>AI / LLM engineering · training &amp; inference infra · evaluation tooling · cross-platform (Windows) DX</sub>
 
 ![merged](https://img.shields.io/badge/upstream_PRs_merged-5-2ea043?style=for-the-badge&logo=github&logoColor=white)
-![review](https://img.shields.io/badge/upstream_PRs_in_review-25-0969da?style=for-the-badge&logo=git&logoColor=white)
+![review](https://img.shields.io/badge/upstream_PRs_in_review-26-0969da?style=for-the-badge&logo=git&logoColor=white)
 ![reach](https://img.shields.io/badge/upstream_stars_reached-122k-f0883e?style=for-the-badge)
 ![contrib](https://img.shields.io/badge/contributions_12mo-130-8250df?style=for-the-badge)
 ![gate](https://img.shields.io/badge/llm--eval--gate-102_tests_%2B_3_OS_CI_green-2ea043?style=for-the-badge&logo=pytest&logoColor=white)
@@ -29,7 +29,7 @@
 | commits / pull requests | 37 / 77 | 同上 |
 | 已合并的上游 PR | 5 | `author:CJstate is:pr is:merged` |
 | 改动已落地的上游仓库 | 4 个 · 合计 122,587★ | `author:CJstate is:pr is:merged` |
-| 正在评审的上游 PR | 25 | `author:CJstate is:pr is:open` |
+| 正在评审的上游 PR | 26 | `author:CJstate is:pr is:open` |
 | 公开仓库 | 16（其中 13 个 fork 就是上面这些 PR 的分支源） | `GET /users/CJstate` |
 
 ## ✅ 已合并的上游贡献（5）
@@ -81,7 +81,7 @@
 
 [打开 PR](https://github.com/huggingface/accelerate/pull/4360)
 
-## 🔄 正在评审的上游 PR（25）
+## 🔄 正在评审的上游 PR（26）
 
 ### 训练与推理框架（6）
 
@@ -103,7 +103,7 @@
 | [#4484](https://github.com/traceloop/openllmetry/pull/4484) `traceloop/openllmetry` | Groq 流式响应的 usage 指标丢失，补上流式路径的 token 统计并加指标回归测试 | 已 rebase 到最新 main，等 review |
 | [#4114](https://github.com/EleutherAI/lm-evaluation-harness/pull/4114) `EleutherAI/lm-evaluation-harness` | `simple_evaluate` 对非法输入静默返回空结果，补上输入校验与回归测试 | 等维护者批准 workflow + 签 CLA |
 
-### 工具链 / 平台 DX（15）
+### 工具链 / 平台 DX（16）
 
 | PR | 内容 | 当前状态 |
 | --- | --- | --- |
@@ -118,6 +118,7 @@
 | [#245](https://github.com/pranshuparmar/witr/pull/245) `pranshuparmar/witr` | `TestDetectGitInfo` 会被 temp 目录上层的真实 git 仓库污染；把 fixture 隔离成 hermetic | open，等 review |
 | [#77](https://github.com/Nutlope/hallmark/pull/77) `Nutlope/hallmark` | 技能包只发布 `skills/`，文档里 13 处 `../../` 相对链接装完即死（含 agent 必读指令流里的一处），改绝对 URL 并附零依赖链接检查器防止回归 | 等 review |
 | [#1737](https://github.com/simonw/llm/pull/1737) `simonw/llm` | `llm templates edit` 按 UTF-8 写模板，读回却用 locale 编码，中文 Windows 上模板 / `-f` 片段 / `--functions` 文件直接解码失败；统一改为 UTF-8 优先、locale 回退，并补回归测试 | 等维护者批准 workflow |
+| [#1762](https://github.com/simonw/llm/pull/1762) `simonw/llm` | issue #1722：`embed_multi` 用 `zip` 拼接模型输出，插件少返回嵌入时静默丢条目、多返回时静默丢弃，均无报错；写入前校验数量并抛出带期望/实际数的 ValueError | open，等 review |
 | [#114](https://github.com/browser-use/jev-ultrafast/pull/114) `browser-use/jev-ultrafast` | no-progress guard 把「本轮没有观测到结果」误判成「没有进展」，导致有效的长任务被提前中断 | clean，等 review |
 | [#1720](https://github.com/anthropics/skills/pull/1720) `anthropics/skills` | `mcp-builder` 生成评估报告时按 locale 编码写文件，在中文 Windows 上产出乱码；显式写 UTF-8 | 等 review |
 | [#7217](https://github.com/public-apis/public-apis/pull/7217) `public-apis/public-apis` | Pirate Weather 条目指向已失效的地址，换成可访问的官方入口 | clean，等 review |
