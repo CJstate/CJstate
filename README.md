@@ -10,8 +10,8 @@
 
 <sub>AI / LLM engineering · training &amp; inference infra · evaluation tooling · cross-platform (Windows) DX</sub>
 
-![merged](https://img.shields.io/badge/upstream_PRs_merged-4-2ea043?style=for-the-badge&logo=github&logoColor=white)
-![review](https://img.shields.io/badge/upstream_PRs_in_review-17-0969da?style=for-the-badge&logo=git&logoColor=white)
+![merged](https://img.shields.io/badge/upstream_PRs_merged-5-2ea043?style=for-the-badge&logo=github&logoColor=white)
+![review](https://img.shields.io/badge/upstream_PRs_in_review-22-0969da?style=for-the-badge&logo=git&logoColor=white)
 ![reach](https://img.shields.io/badge/upstream_stars_reached-122k-f0883e?style=for-the-badge)
 ![contrib](https://img.shields.io/badge/contributions_12mo-130-8250df?style=for-the-badge)
 ![gate](https://img.shields.io/badge/llm--eval--gate-102_tests_%2B_3_OS_CI_green-2ea043?style=for-the-badge&logo=pytest&logoColor=white)
@@ -27,12 +27,12 @@
 | --- | --- | --- |
 | 近 12 个月 contributions | 130 | GraphQL `contributionsCollection`（滚动 12 个月） |
 | commits / pull requests | 37 / 77 | 同上 |
-| 已合并的上游 PR | 4 | `author:CJstate is:pr is:merged` |
-| 改动已落地的上游仓库 | 3 个 · 合计 122,102★ | `author:CJstate is:pr is:merged` |
-| 正在评审的上游 PR | 17 | `author:CJstate is:pr is:open` |
+| 已合并的上游 PR | 5 | `author:CJstate is:pr is:merged` |
+| 改动已落地的上游仓库 | 4 个 · 合计 122,587★ | `author:CJstate is:pr is:merged` |
+| 正在评审的上游 PR | 22 | `author:CJstate is:pr is:open` |
 | 公开仓库 | 16（其中 13 个 fork 就是上面这些 PR 的分支源） | `GET /users/CJstate` |
 
-## ✅ 已合并的上游贡献（4）
+## ✅ 已合并的上游贡献（5）
 
 这些改动已经进了上游主干，可以直接点开 commit 看 diff：
 
@@ -42,6 +42,7 @@
 | [`pranshuparmar/witr`](https://github.com/pranshuparmar/witr) 22.6k★ | [#239](https://github.com/pranshuparmar/witr/pull/239) | 不支持高亮 ANSI 的终端上，`--help` 的配色图例被静默降级；改为按终端能力逐级回退 | 2026-10-03 |
 | [`nvm-sh/nvm`](https://github.com/nvm-sh/nvm) 95.3k★ | [#3915](https://github.com/nvm-sh/nvm/pull/3915) | `nvm --help` 里 set-colors 的图例显示为未着色文本；改为在 help 分支里应用同一套颜色变量 | 2026-09-03 |
 | [`DependencyTrack/dependency-track`](https://github.com/DependencyTrack/dependency-track) 4.3k★ | [#7096](https://github.com/DependencyTrack/dependency-track/pull/7096) | README 的 CI 徽章指向已废弃的分支，点开是 404；改指 `main` | 2026-08-24 |
+| [`k8sgpt-ai/k8sgpt-operator`](https://github.com/k8sgpt-ai/k8sgpt-operator) 485★ | [#855](https://github.com/k8sgpt-ai/k8sgpt-operator/pull/855) | 为 `K8sGPT` CRD 与 chart 增加 tolerations 支持，让控制器能调度到被 taint 污染的节点 | 2026-10-10 |
 
 ## 🔬 三个深挖案例
 
@@ -80,7 +81,7 @@
 
 [打开 PR](https://github.com/huggingface/accelerate/pull/4360)
 
-## 🔄 正在评审的上游 PR（17）
+## 🔄 正在评审的上游 PR（22）
 
 ### 训练与推理框架（6）
 
@@ -102,13 +103,18 @@
 | [#4484](https://github.com/traceloop/openllmetry/pull/4484) `traceloop/openllmetry` | Groq 流式响应的 usage 指标丢失，补上流式路径的 token 统计并加指标回归测试 | 已 rebase 到最新 main，等 review |
 | [#4114](https://github.com/EleutherAI/lm-evaluation-harness/pull/4114) `EleutherAI/lm-evaluation-harness` | `simple_evaluate` 对非法输入静默返回空结果，补上输入校验与回归测试 | 等维护者批准 workflow + 签 CLA |
 
-### 工具链 / 平台 DX（7）
+### 工具链 / 平台 DX（12）
 
 | PR | 内容 | 当前状态 |
 | --- | --- | --- |
+| [#1779](https://github.com/suzuki-shunsuke/pinact/pull/1779) `suzuki-shunsuke/pinact` | issue #1449：debug 级日志完全看不到 `uses` 行上发生了什么（pin/更新/无操作/失败全静默）；为每条被处理的 `uses` 行补 INFO/WARN 日志，`--no-api` 路径也覆盖 | CI 已过 commit-signing 检查（SSH 签名），等 review |
+| [#400](https://github.com/darrenburns/posting/pull/400) `darrenburns/posting` | issue #394：集合浏览器里高亮即打开请求（可配置 `collection_browser.open_on_highlight`，默认关），j/k 步进时编辑器跟随光标；顺带修了挂载期高亮导致 compose 中断的竞态 | open，等 review |
+| [#540](https://github.com/bmf-san/ggc/pull/540) `bmf-san/ggc` | config / interactive / history 测试在 Windows 全红（vim 路径、USERPROFILE、POSIX 权限断言）；用测试夹具 + GOOS 门禁修复 | 首贡献者 workflow 等维护者批准 |
+| [#541](https://github.com/bmf-san/ggc/pull/541) `bmf-san/ggc` | 101 处 `exec.Command("echo", ...)` mock 在 Windows 上被 PATH 里的真 echo.exe 劫持；改为 helper-process 构造器 | 首贡献者 workflow 等维护者批准 |
+| [#542](https://github.com/bmf-san/ggc/pull/542) `bmf-san/ggc` | config/cmd 测试的编辑器桩与临时目录清理在 Windows 失败；抽共享 `testutil.InstallEditorStubsOnPath` | 首贡献者 workflow 等维护者批准 |
+| [#245](https://github.com/pranshuparmar/witr/pull/245) `pranshuparmar/witr` | `TestDetectGitInfo` 会被 temp 目录上层的真实 git 仓库污染；把 fixture 隔离成 hermetic | open，等 review |
 | [#77](https://github.com/Nutlope/hallmark/pull/77) `Nutlope/hallmark` | 技能包只发布 `skills/`，文档里 13 处 `../../` 相对链接装完即死（含 agent 必读指令流里的一处），改绝对 URL 并附零依赖链接检查器防止回归 | 等 review |
 | [#1737](https://github.com/simonw/llm/pull/1737) `simonw/llm` | `llm templates edit` 按 UTF-8 写模板，读回却用 locale 编码，中文 Windows 上模板 / `-f` 片段 / `--functions` 文件直接解码失败；统一改为 UTF-8 优先、locale 回退，并补回归测试 | 等维护者批准 workflow |
-| [#855](https://github.com/k8sgpt-ai/k8sgpt-operator/pull/855) `k8sgpt-ai/k8sgpt-operator` | 为 `K8sGPT` CRD 与 chart 增加 tolerations 支持，让控制器能调度到被 taint 的节点 | 已 approved，等维护者裁量 #820 vs #855 |
 | [#114](https://github.com/browser-use/jev-ultrafast/pull/114) `browser-use/jev-ultrafast` | no-progress guard 把「本轮没有观测到结果」误判成「没有进展」，导致有效的长任务被提前中断 | clean，等 review |
 | [#1720](https://github.com/anthropics/skills/pull/1720) `anthropics/skills` | `mcp-builder` 生成评估报告时按 locale 编码写文件，在中文 Windows 上产出乱码；显式写 UTF-8 | 等 review |
 | [#7217](https://github.com/public-apis/public-apis/pull/7217) `public-apis/public-apis` | Pirate Weather 条目指向已失效的地址，换成可访问的官方入口 | clean，等 review |
