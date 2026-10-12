@@ -1,171 +1,172 @@
-﻿<div align="center">
+<h1 align="center">CJstate</h1>
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="docs/banner-dark.svg">
-  <source media="(prefers-color-scheme: light)" srcset="docs/banner-light.svg">
-  <img alt="CJstate — AI / LLM engineering · training &amp; inference infra · model evaluation" src="docs/banner-light.svg" width="100%">
-</picture>
+<p align="center">
+  <b>AI / LLM Engineering</b> · 训练与推理基础设施 · 模型评测 · 跨平台（Windows）DX<br/>
+  <sub><i>写进上游主干的代码，和能复现的证据。</i></sub>
+</p>
 
-**AI / LLM 工程 · 训练与推理基础设施 · 模型评测 · 跨平台 / Windows DX**
+<p align="center">
+  <a href="#-已合并-5">🔵 5 个 PR 已合并</a>&nbsp;·&nbsp;
+  <a href="#-在评-25">🟢 25 个在评</a>&nbsp;·&nbsp;
+  <a href="https://github.com/CJstate/llm-eval-gate">⭐ llm-eval-gate</a>&nbsp;·&nbsp;
+  <a href="https://github.com/CJstate/hui-harness">🛠️ hui-harness</a>
+</p>
 
-<sub>AI / LLM engineering · training &amp; inference infra · evaluation tooling · cross-platform (Windows) DX</sub>
+---
 
-![merged](https://img.shields.io/badge/upstream_PRs_merged-5-2ea043?style=for-the-badge&logo=github&logoColor=white)
-![review](https://img.shields.io/badge/upstream_PRs_in_review-25-0969da?style=for-the-badge&logo=git&logoColor=white)
-![reach](https://img.shields.io/badge/upstream_stars_reached-122k-f0883e?style=for-the-badge)
-![contrib](https://img.shields.io/badge/contributions_12mo-130-8250df?style=for-the-badge)
-![gate](https://img.shields.io/badge/llm--eval--gate-102_tests_%2B_3_OS_CI_green-2ea043?style=for-the-badge&logo=pytest&logoColor=white)
-![hui](https://img.shields.io/badge/hui--harness-139_tests_%2B_0_runtime_deps-2ea043?style=for-the-badge&logo=python&logoColor=white)
+> **30 秒版本**
+>
+> - 我的上游 PR 进过 **witr（22.6k★）、nvm（95k★）、k8sgpt-operator、dependency-track** 的主干 —— 每一条都能点开 commit 看 diff。
+> - 我专挑一类 bug：**只在真实环境出现的那类**。CI 全绿但 Windows 检出编译失败、中文 Windows 上 UTF-8 文件读不回来、`v4` 和 `v4.0.0` 是同一版本却被判为「不更新」。这类问题复现成本高，所以每个修复我都带完整的根因链和回归测试。
+> - 两个个人项目都是**零依赖 + 证据可复现**的思路：[llm-eval-gate](https://github.com/CJstate/llm-eval-gate) 把「评测是否真的退化」变成 CI 退出码；[hui-harness](https://github.com/CJstate/hui-harness) 把 agent 会话做成哈希链，重放即校验。
 
-</div>
+---
 
-## 📌 概览
+## 🔵 已合并（5）
 
-<img alt="Contribution activity" src="docs/activity.svg" width="100%">
+<details open>
+<summary><b>点开看每个 PR 做了什么</b>（全部已进上游主干）</summary>
 
-| 指标 | 数值 | 来源 |
-| --- | --- | --- |
-| 近 12 个月 contributions | 130 | GraphQL `contributionsCollection`（滚动 12 个月） |
-| commits / pull requests | 37 / 77 | 同上 |
-| 已合并的上游 PR | 5 | `author:CJstate is:pr is:merged` |
-| 改动已落地的上游仓库 | 4 个 · 合计 122,587★ | `author:CJstate is:pr is:merged` |
-| 正在评审的上游 PR | 25 | `author:CJstate is:pr is:open` |
-| 公开仓库 | 16（其中 13 个 fork 就是上面这些 PR 的分支源） | `GET /users/CJstate` |
-
-## ✅ 已合并的上游贡献（5）
-
-这些改动已经进了上游主干，可以直接点开 commit 看 diff：
-
-| 项目 | PR | 做了什么 | 合并日期 |
+| 项目 | PR | 一句话 | 合并 |
 | --- | --- | --- | --- |
-| [`pranshuparmar/witr`](https://github.com/pranshuparmar/witr) 22.6k★ | [#242](https://github.com/pranshuparmar/witr/pull/242) | 根 `main.go` 是受版本控制的符号链接，Git for Windows 检出后 `go build` / `go test` 全废；改为真实入口并把入口逻辑抽到 `internal/app.Main()` | 2026-10-04 |
-| [`pranshuparmar/witr`](https://github.com/pranshuparmar/witr) 22.6k★ | [#239](https://github.com/pranshuparmar/witr/pull/239) | 不支持高亮 ANSI 的终端上，`--help` 的配色图例被静默降级；改为按终端能力逐级回退 | 2026-10-03 |
-| [`nvm-sh/nvm`](https://github.com/nvm-sh/nvm) 95.3k★ | [#3915](https://github.com/nvm-sh/nvm/pull/3915) | `nvm --help` 里 set-colors 的图例显示为未着色文本；改为在 help 分支里应用同一套颜色变量 | 2026-09-03 |
-| [`DependencyTrack/dependency-track`](https://github.com/DependencyTrack/dependency-track) 4.3k★ | [#7096](https://github.com/DependencyTrack/dependency-track/pull/7096) | README 的 CI 徽章指向已废弃的分支，点开是 404；改指 `main` | 2026-08-24 |
-| [`k8sgpt-ai/k8sgpt-operator`](https://github.com/k8sgpt-ai/k8sgpt-operator) 485★ | [#855](https://github.com/k8sgpt-ai/k8sgpt-operator/pull/855) | 为 `K8sGPT` CRD 与 chart 增加 tolerations 支持，让控制器能调度到被 taint 污染的节点 | 2026-10-10 |
+| [witr](https://github.com/pranshuparmar/witr) `22.6k★` | [#242](https://github.com/pranshuparmar/witr/pull/242) | 根 `main.go` 是符号链接，Windows 检出后 `go build` 全废 → 改为真实入口 + lint 守卫 | 2026-10-04 |
+| [witr](https://github.com/pranshuparmar/witr) `22.6k★` | [#239](https://github.com/pranshuparmar/witr/pull/239) | 不支持高亮 ANSI 的终端上配色被静默降级 → 按终端能力逐级回退 | 2026-10-03 |
+| [nvm](https://github.com/nvm-sh/nvm) `95.3k★` | [#3915](https://github.com/nvm-sh/nvm/pull/3915) | `nvm --help` 颜色图例未着色 → help 分支应用同一套颜色变量 | 2026-09-03 |
+| [k8sgpt-operator](https://github.com/k8sgpt-ai/k8sgpt-operator) | [#855](https://github.com/k8sgpt-ai/k8sgpt-operator/pull/855) | CRD/chart 增加 `tolerations`，控制器可调度到被 taint 的节点 | 2026-10-10 |
+| [dependency-track](https://github.com/DependencyTrack/dependency-track) | [#7096](https://github.com/DependencyTrack/dependency-track/pull/7096) | README CI 徽章 404 → 改指 `main` | 2026-08-24 |
 
-## 🔬 三个深挖案例
+</details>
 
-数量上我远不是最活跃的贡献者，所以我把重点放在「根因讲清楚、证据能复现」上。
+## 🔬 深挖案例：我是怎么修一个 bug 的
 
-### 1. simonw/llm#1737 —— 写模板用 UTF-8，读回来却用系统 locale 编码
-
-| | |
-| --- | --- |
-| **现象** | 在默认编码为 `cp936` 的 Windows 上，把模板存成 UTF-8 再 `llm -t 模板` 直接失败：`UnicodeDecodeError: 'gbk' codec can't decode byte 0xaa in position 16`。`-f 片段.md` 与 `--functions 工具.py` 两个入口同样打不开。 |
-| **根因** | 模块跟自己不一致：`llm templates edit` 新建模板时写的是 `path.write_text(DEFAULT_TEMPLATE, "utf-8")`（`llm/cli.py:2646`），而 `load_template()` 读回时是 `path.read_text()`（`llm/cli.py:4274`）——用的是 locale 默认编码。片段与 `--functions` 两处（`llm/cli.py:293`、`llm/cli.py:4287`）完全相同。 |
-| **修复** | 抽出 `_read_text_file()`：先按 UTF-8 读，只有文件确实不是合法 UTF-8 时才回退到 locale 默认编码，所以原本用 GBK / CP1252 保存的旧文件不会被弄坏。这个逐编码回退的写法与仓库里 `llm embed-multi --files` 已有的 `("utf-8", "latin-1")` 处理保持一致。 |
-| **证据** | 新增 3 个回归测试（模板 / 片段 / `--functions` 文件），用一个在任意平台上模拟「locale 不是 UTF-8」的 fixture 驱动。改之前三条全挂：`UnicodeDecodeError: 'ascii' codec can't decode byte 0xe7 in position 8`；改之后 `3 passed`，全量测试 `1185 passed, 1 skipped, 6 xfailed, 15 xpassed`。 |
-
-[打开 PR](https://github.com/simonw/llm/pull/1737)
-
-### 2. pranshuparmar/witr#242 —— CI 全绿，但真实 Windows 检出连编译都过不去（已合并）
+<details>
+<summary><b>案例 1 · simonw/llm#1737</b> —— 同一个模块写文件用 UTF-8，读文件却用系统 locale</summary>
 
 | | |
 | --- | --- |
-| **现象** | `git clone` 之后 `go build ./...` 立刻失败：`main.go:1:1: expected 'package', found cmd`，`go test ./...` 直接 `[setup failed]`，`make test` / `make lint` 在这台机器上全废。而仓库的 `Tests: Unit (windows-latest)` 是**绿的**。 |
-| **根因** | `git ls-files -s main.go` 显示 mode `120000`——根入口是个符号链接，指向 `cmd/witr/main.go`。Git for Windows 默认 `core.symlinks=false`，符号链接落盘成一个 16 字节的普通文本文件，内容就是字符串 `cmd/witr/main.go`，于是根目录多了一个不是合法 Go 包的 `.go` 文件。CI 之所以掩盖了它，是因为 `actions/checkout` 会真的创建符号链接。 |
-| **修复** | 根入口改为真实文件，并把入口逻辑抽到 `internal/app.Main()`（`SetVersion` + `Execute`），根包与 `cmd/witr` 共用同一份实现；lint job 里加一条守卫：受版本控制的文件不允许是 `120000`。 |
-| **证据** | `go build ./...` / `go vet ./...` / `gofmt -l .` / `go test ./...` 全部通过；linux（amd64、loong64）、darwin（amd64、arm64）、freebsd/amd64、windows（amd64、arm64）七组交叉编译全部 exit 0；`go build .` 与 `go build ./cmd/witr` 两个产物的 `--help`（2237 字符）和 `--version` 输出逐字节一致——证明重构没有改变任何用户可见行为。 |
+| **现象** | cp936 的 Windows 上 `llm -t 模板` 直接失败：`UnicodeDecodeError: 'gbk' codec can't decode byte 0xaa`。`-f` 片段与 `--functions` 同样打不开。 |
+| **根因** | 写入是 `path.write_text(..., "utf-8")`（`llm/cli.py:2646`），读回是 `path.read_text()`（`llm/cli.py:4274`）——locale 默认编码。三处入口同病。 |
+| **修复** | 抽出 `_read_text_file()`：UTF-8 优先、确实不是合法 UTF-8 才回退 locale，旧 GBK/CP1252 文件不受影响。与仓库里 `embed-multi --files` 的既有回退策略一致。 |
+| **证据** | 3 个回归测试先失败后通过；全量 `1185 passed, 1 skipped, 6 xfailed, 15 xpassed`。 |
 
-[打开 PR](https://github.com/pranshuparmar/witr/pull/242)
+🔗 [打开 PR](https://github.com/simonw/llm/pull/1737)
+</details>
 
-### 3. huggingface/accelerate#4360 —— `debug_launcher` 里的三处 Unix-only 假设
+<details>
+<summary><b>案例 2 · witr#242（已合并）</b> —— CI 全绿，真实 Windows 检出连编译都过不去</summary>
 
 | | |
 | --- | --- |
-| **现象** | Windows 上 `accelerate debug_launcher script.py` 起不来：先是 `ValueError: cannot find context for 'fork'`；绕过之后变成 `PermissionError: [Errno 13]`，子进程打不开 rendezvous 文件。 |
-| **根因** | 三处只在 Unix 成立的前提：(1) 硬编码 `start_method="fork"`，而 Windows 只有 `spawn`；(2) rendezvous 文件用 `NamedTemporaryFile` 创建，文件句柄留在父进程，spawn 出来的子进程无法打开一个仍被别处持有的文件；(3) 无条件设置 `gloo_socket_ifname="lo"`，但 Windows 的环回接口不叫 `lo`。 |
-| **修复** | `_debug_start_method()` 按平台实际能力在 `fork` / `spawn` 之间选择；`NamedTemporaryFile` 换成 `TemporaryDirectory`（只把路径传下去，谁都不持有句柄）；`_has_loopback_alias()` 先探测 `lo` 是否存在，只在存在时才设置该环境变量。 |
-| **证据** | 本机 Windows 复现 → 修复后 `debug_launcher` 可正常启动多进程调试；相关测试在本机 Python 3.13 + torch 2.9 上通过（`spawn` 分支需要 `if __name__ == "__main__"` 守卫，这一点写进了 docstring）；PR 目前等维护者批准 workflow 后跑 CI。 |
+| **现象** | clone 后 `go build ./...` 报 `expected 'package', found cmd`；而仓库 CI 的 Windows job 是绿的。 |
+| **根因** | `git ls-files -s main.go` 显示 mode `120000`：根入口是符号链接。Git for Windows 默认 `core.symlinks=false`，落盘成 16 字节文本文件。CI 掩盖了它，因为 `actions/checkout` 会真的创建符号链接。 |
+| **修复** | 根入口改为真实文件，入口逻辑抽到 `internal/app.Main()`；lint 加守卫：受版本控制的文件不允许是 `120000`。 |
+| **证据** | 七组交叉编译 exit 0；两个构建产物的 `--help`/`--version` 输出逐字节一致 —— 重构零行为变化。 |
 
-[打开 PR](https://github.com/huggingface/accelerate/pull/4360)
+🔗 [打开 PR](https://github.com/pranshuparmar/witr/pull/242)
+</details>
 
-## 🔄 正在评审的上游 PR（25）
+<details>
+<summary><b>案例 3 · accelerate#4360</b> —— `debug_launcher` 里三处 Unix-only 假设</summary>
 
-### 训练与推理框架（6）
+| | |
+| --- | --- |
+| **现象** | Windows 上先 `ValueError: cannot find context for 'fork'`，绕过后 `PermissionError: [Errno 13]`。 |
+| **根因** | 硬编码 `start_method="fork"`；rendezvous 用 `NamedTemporaryFile`（父进程持句柄，spawn 子进程打不开）；无条件设 `gloo_socket_ifname="lo"`。 |
+| **修复** | 按平台能力选 `fork`/`spawn`；`TemporaryDirectory` 只传路径不持句柄；先探测 `lo` 存在才设置。 |
+| **证据** | 本机复现 → 修复后多进程调试正常启动；测试在 Python 3.13 + torch 2.9 通过。 |
 
-| PR | 内容 | 当前状态 |
+🔗 [打开 PR](https://github.com/huggingface/accelerate/pull/4360)
+</details>
+
+## 🟢 在评（25）
+
+<details open>
+<summary><b>训练与推理框架（6）</b></summary>
+
+| PR | 内容 | 状态 |
 | --- | --- | --- |
-| [#4361](https://github.com/huggingface/accelerate/pull/4361) `huggingface/accelerate` | checkpoint 随机状态无法恢复时只静默继续，改为按 rank 一次性告警，避免复现性无声漂移 | 等维护者批准 workflow |
-| [#4360](https://github.com/huggingface/accelerate/pull/4360) `huggingface/accelerate` | `debug_launcher` 在 Windows 上无法启动（fork / NamedTemporaryFile / gloo 网卡名三处 Unix-only 假设） | 等维护者批准 workflow |
-| [#21975](https://github.com/Lightning-AI/pytorch-lightning/pull/21975) `Lightning-AI/pytorch-lightning` | `Trainer(enable_device_summary=...)` 与既有参数组合时的行为不一致，补上开关与文档 | 等维护者批准 workflow |
-| [#8693](https://github.com/huggingface/datasets/pull/8693) `huggingface/datasets` | `Dataset.from_dict` 的注解接受 `List[...]` 却拒绝等价的 `Sequence[...]`，补齐类型注解判定 | 等维护者批准 workflow |
-| [#21974](https://github.com/Lightning-AI/pytorch-lightning/pull/21974) `Lightning-AI/pytorch-lightning` | 文档里 `:emphasize-lines:` 的行号在包含代码换行时整体偏移，改为按渲染后的行计算 | 等维护者批准 workflow |
-| [#21939](https://github.com/Lightning-AI/pytorch-lightning/pull/21939) `Lightning-AI/pytorch-lightning` | Windows 上无符号链接权限时测试直接报错，改为跳过并说明原因，而不是判失败 | 等维护者批准 workflow |
+| [accelerate#4361](https://github.com/huggingface/accelerate/pull/4361) | checkpoint 随机状态恢复失败时按 rank 一次性告警，而不是静默继续 | 等批准 workflow |
+| [accelerate#4360](https://github.com/huggingface/accelerate/pull/4360) | `debug_launcher` 三处 Unix-only 假设（见案例 3） | 等批准 workflow |
+| [pytorch-lightning#21975](https://github.com/Lightning-AI/pytorch-lightning/pull/21975) | `enable_device_summary` 与既有参数组合行为不一致，补开关与文档 | 等批准 workflow |
+| [datasets#8693](https://github.com/huggingface/datasets/pull/8693) | 注解接受 `List[...]` 却拒绝 `Sequence[...]`，补齐类型判定 | 等批准 workflow |
+| [pytorch-lightning#21974](https://github.com/Lightning-AI/pytorch-lightning/pull/21974) | 文档 `:emphasize-lines:` 行号按渲染后行计算 | 等批准 workflow |
+| [pytorch-lightning#21939](https://github.com/Lightning-AI/pytorch-lightning/pull/21939) | 无符号链接权限时跳过并说明，而不是判失败 | 等批准 workflow |
 
-### 评测与可观测性（4）
+</details>
 
-| PR | 内容 | 当前状态 |
+<details open>
+<summary><b>评测与可观测性（4）</b></summary>
+
+| PR | 内容 | 状态 |
 | --- | --- | --- |
-| [#26206](https://github.com/mlflow/mlflow/pull/26206) `mlflow/mlflow` | artifact 预览里的图片被强制缩放，小图放大后糊成一片；改为按容器宽度自适应 | 等 core maintainer approval（fork PR 门禁） |
-| [#4216](https://github.com/EleutherAI/lm-evaluation-harness/pull/4216) `EleutherAI/lm-evaluation-harness` | `make_table` 对共享子任务重复计数，导致评测表格里的样本数与实际不符 | 等维护者批准 workflow + 签 CLA |
-| [#4484](https://github.com/traceloop/openllmetry/pull/4484) `traceloop/openllmetry` | Groq 流式响应的 usage 指标丢失，补上流式路径的 token 统计并加指标回归测试 | 已 rebase 到最新 main，等 review |
-| [#4114](https://github.com/EleutherAI/lm-evaluation-harness/pull/4114) `EleutherAI/lm-evaluation-harness` | `simple_evaluate` 对非法输入静默返回空结果，补上输入校验与回归测试 | 等维护者批准 workflow + 签 CLA |
+| [mlflow#26206](https://github.com/mlflow/mlflow/pull/26206) | artifact 图片按容器宽度自适应，不再强制缩放 | 等核心维护者批准 |
+| [lm-eval-harness#4216](https://github.com/EleutherAI/lm-evaluation-harness/pull/4216) | `make_table` 对共享子任务重复计数 | 等批准 workflow + CLA |
+| [openllmetry#4484](https://github.com/traceloop/openllmetry/pull/4484) | Groq 流式 usage 丢失，补 token 统计 + 回归测试 | 已 rebase，等 review |
+| [lm-eval-harness#4114](https://github.com/EleutherAI/lm-evaluation-harness/pull/4114) | `simple_evaluate` 非法输入静默返回空，补输入校验 | 等批准 workflow + CLA |
 
-### 工具链 / 平台 DX（15）
+</details>
 
-| PR | 内容 | 当前状态 |
+<details open>
+<summary><b>工具链 / 平台 DX（15）</b></summary>
+
+| PR | 内容 | 状态 |
 | --- | --- | --- |
-| [#1779](https://github.com/suzuki-shunsuke/pinact/pull/1779) `suzuki-shunsuke/pinact` | issue #1449：debug 级日志完全看不到 `uses` 行上发生了什么（pin/更新/无操作/失败全静默）；为每条被处理的 `uses` 行补 INFO/WARN 日志，`--no-api` 路径也覆盖 | CI 已过 commit-signing 检查（SSH 签名），等 review |
-| [#1780](https://github.com/suzuki-shunsuke/pinact/pull/1780) `suzuki-shunsuke/pinact` | issue #1441：仓库只打 tag 不发 release 时（如当时的 dorny/paths-filter），最新版本解析在 releases 上短路，`-u` 反而要把 v4.0.1「更新」回 v4.0.0 并告警；tags 始终解析、tag-only 新版本胜出 | CI 已过 commit-signing 检查（SSH 签名），等 review |
-| [#1781](https://github.com/suzuki-shunsuke/pinact/pull/1781) `suzuki-shunsuke/pinact` | issue #1579：`v4` 与 `v4.0.0` 是同一版本却被当作「不更新」，`run -u` 留下 `# v4` 而普通 pin 写 `# v4.0.0`，两命令结果不一致；语义相等即通过、更新时重 pin 并把短注解展开为长 tag | CI 已过 commit-signing 检查（SSH 签名），等 review |
-| [#400](https://github.com/darrenburns/posting/pull/400) `darrenburns/posting` | issue #394：集合浏览器里高亮即打开请求（可配置 `collection_browser.open_on_highlight`，默认关），j/k 步进时编辑器跟随光标；顺带修了挂载期高亮导致 compose 中断的竞态 | open，等 review |
-| [#401](https://github.com/darrenburns/posting/pull/401) `darrenburns/posting` | issue #320：切到别的请求后 Response 区还挂着上一个请求的响应，且毫无归属提示；响应 tabs 上方常驻一行「METHOD URL」标明该响应来自哪个请求 | open，等 review |
-| [#540](https://github.com/bmf-san/ggc/pull/540) `bmf-san/ggc` | config / interactive / history 测试在 Windows 全红（vim 路径、USERPROFILE、POSIX 权限断言）；用测试夹具 + GOOS 门禁修复 | 首贡献者 workflow 等维护者批准 |
-| [#541](https://github.com/bmf-san/ggc/pull/541) `bmf-san/ggc` | 101 处 `exec.Command("echo", ...)` mock 在 Windows 上被 PATH 里的真 echo.exe 劫持；改为 helper-process 构造器 | 首贡献者 workflow 等维护者批准 |
-| [#542](https://github.com/bmf-san/ggc/pull/542) `bmf-san/ggc` | config/cmd 测试的编辑器桩与临时目录清理在 Windows 失败；抽共享 `testutil.InstallEditorStubsOnPath` | 首贡献者 workflow 等维护者批准 |
-| [#245](https://github.com/pranshuparmar/witr/pull/245) `pranshuparmar/witr` | `TestDetectGitInfo` 会被 temp 目录上层的真实 git 仓库污染；把 fixture 隔离成 hermetic | open，等 review |
-| [#77](https://github.com/Nutlope/hallmark/pull/77) `Nutlope/hallmark` | 技能包只发布 `skills/`，文档里 13 处 `../../` 相对链接装完即死（含 agent 必读指令流里的一处），改绝对 URL 并附零依赖链接检查器防止回归 | 等 review |
-| [#1737](https://github.com/simonw/llm/pull/1737) `simonw/llm` | `llm templates edit` 按 UTF-8 写模板，读回却用 locale 编码，中文 Windows 上模板 / `-f` 片段 / `--functions` 文件直接解码失败；统一改为 UTF-8 优先、locale 回退，并补回归测试 | 等维护者批准 workflow |
-| [#114](https://github.com/browser-use/jev-ultrafast/pull/114) `browser-use/jev-ultrafast` | no-progress guard 把「本轮没有观测到结果」误判成「没有进展」，导致有效的长任务被提前中断 | clean，等 review |
-| [#1720](https://github.com/anthropics/skills/pull/1720) `anthropics/skills` | `mcp-builder` 生成评估报告时按 locale 编码写文件，在中文 Windows 上产出乱码；显式写 UTF-8 | 等 review |
-| [#7217](https://github.com/public-apis/public-apis/pull/7217) `public-apis/public-apis` | Pirate Weather 条目指向已失效的地址，换成可访问的官方入口 | clean，等 review |
-| [#72](https://github.com/Nutlope/hallmark/pull/72) `Nutlope/hallmark` | 补上 macrostructure 的文档说明，让生成的页面结构可预期（纯文档） | 等 review |
+| [pinact#1779](https://github.com/suzuki-shunsuke/pinact/pull/1779) | `uses` 行操作全静默 → 每行 INFO/WARN 日志（含 `--no-api`） | 签名 ✅ 等 review |
+| [pinact#1780](https://github.com/suzuki-shunsuke/pinact/pull/1780) | 只打 tag 不发 release 时版本解析短路 → tags 始终参与 | 签名 ✅ 等 review |
+| [pinact#1781](https://github.com/suzuki-shunsuke/pinact/pull/1781) | `v4`==`v4.0.0` 被判不更新、`-u` 与 pin 结果不一致 → 语义相等 + 注解展开 | 签名 ✅ 等 review |
+| [posting#400](https://github.com/darrenburns/posting/pull/400) | 高亮即打开（可配置、默认关）+ 修挂载期 compose 竞态 | 等 review |
+| [posting#401](https://github.com/darrenburns/posting/pull/401) | Response 区常驻「METHOD URL」归属提示 | 等 review |
+| [ggc#540](https://github.com/bmf-san/ggc/pull/540) | Windows 下 config/interactive/history 测试全红 → 夹具 + GOOS 门禁 | 首贡献门禁待批 |
+| [ggc#541](https://github.com/bmf-san/ggc/pull/541) | 101 处 `exec.Command("echo")` mock 被真 echo.exe 劫持 → helper process | 首贡献门禁待批 |
+| [ggc#542](https://github.com/bmf-san/ggc/pull/542) | 编辑器桩与临时目录清理 → 共享 `testutil` | 首贡献门禁待批 |
+| [witr#245](https://github.com/pranshuparmar/witr/pull/245) | `TestDetectGitInfo` 被上层真实 git 仓库污染 → hermetic fixture | 等 review |
+| [hallmark#77](https://github.com/Nutlope/hallmark/pull/77) | 13 处 `../../` 相对链接装完即死 → 绝对 URL + 链接检查器 | 等 review |
+| [llm#1737](https://github.com/simonw/llm/pull/1737) | 写 UTF-8 读 locale（见案例 1） | 等批准 workflow |
+| [jev-ultrafast#114](https://github.com/browser-use/jev-ultrafast/pull/114) | no-progress guard 误判「无观测」为「无进展」 | 等 review |
+| [skills#1720](https://github.com/anthropics/skills/pull/1720) | `mcp-builder` 评估报告 locale 编码乱码 → 显式 UTF-8 | 等 review |
+| [public-apis#7217](https://github.com/public-apis/public-apis/pull/7217) | Pirate Weather 条目失效 → 官方入口 | 等 review |
+| [hallmark#72](https://github.com/Nutlope/hallmark/pull/72) | macrostructure 文档补全 | 等 review |
+
+</details>
 
 ## 🧰 自己的项目
 
-### [`llm-eval-gate`](https://github.com/CJstate/llm-eval-gate) — 把「评测退化」变成可执行的 CI 判定
+<table>
+<tr>
+<td width="50%" valign="top">
 
-给它两份 lm-evaluation-harness 的结果文件（`before` / `after`），它在**考虑随机波动**的前提下判断这次评测是不是
-真的退化了：用相对阈值 + 基于标准误的噪声带，而不是「小数点后几位变小了就红」。LLM 评测本身噪声就大，
-判据写错只有两种下场——天天假警报，或者把真回归放过去。
+### [llm-eval-gate](https://github.com/CJstate/llm-eval-gate)
 
-- `v0.1.0` 已发版；102 个测试（`pytest --collect-only -q` 可复现）
-- GitHub Actions 在 Ubuntu（Python 3.11 / 3.12 / 3.13）+ Windows + macOS 上全绿，并且会把自己当 Action 跑一遍（`self-gate`）
-- **零运行时依赖**（`pyproject.toml` 里 `dependencies = []`），不绑定具体模型，只吃 harness 的结果文件
+**把「评测退化」变成 CI 的退出码。** 吃两份 lm-evaluation-harness 结果文件，在考虑随机波动的前提下判定这次评测是不是真的退化了 —— 相对阈值 + 基于标准误的噪声带，而不是「小数点后几位变小就红」。
+
+✅ `v0.1.0` 已发版 · 102 tests · Ubuntu/Windows/macOS CI 全绿（含 self-gate）· 零运行时依赖
 
 ```bash
 pip install "git+https://github.com/CJstate/llm-eval-gate@v0.1.0"
-llm-eval-gate check before.json after.json     # 退出码就是 CI 判定结果
+llm-eval-gate check before.json after.json
 ```
 
-### [`hui-harness`](https://github.com/CJstate/hui-harness) — 一个零依赖、可重放的编程 Agent
+</td>
+<td width="50%" valign="top">
 
-从零写的 agent harness，把「工具调用循环 + 权限策略 + 会话日志」压到约 2,972 行纯标准库，而且**跑过的会话事后能重放核对**：
-每条工具结果连同它的 sha256 一起写进 append-only JSONL，`hui replay` 会真的再执行一遍并逐条比对哈希，对不上就当场失败。
-CI 在 Linux 和 Windows 上跑这个重放当门禁——「可复现」是被验证的，不是被声称的。
+### [hui-harness](https://github.com/CJstate/hui-harness)
 
-- 139 个测试 + `ruff check` / `ruff format --check` 干净；CI 矩阵 Linux / Windows / macOS × Python 3.10–3.13，外加打包安装检查
-- **零运行时依赖**（`urllib` / `json` / `subprocess` / `difflib`），`pip install` 不会拉进来任何东西
-- 上下文压缩按「整组」丢弃：assistant 的 `tool_call` 与它的结果永远不会被拆开（拆开就等于损坏会话）
-- 编码与换行按真实 Windows 环境处理：UTF-8 → 本地代码页（GBK/CP936）→ Latin-1 逐级回退，保留 BOM 与 CRLF，cp936 控制台不再因为一个 em dash 崩掉
-- 权限策略分 `read-only` / `workspace-write` / `danger-full-access`，约 20 条破坏性命令要显式授权，且从不使用 `shell=True`
+**零依赖、可重放的编程 Agent。** 工具调用循环 + 权限策略 + 会话日志，约 3k 行纯标准库。会话是哈希链：`hui replay` 真的重跑一遍并逐条核对 sha256，对不上当场失败 —— 「可复现」是被 CI 验证的，不是被声称的。
+
+✅ 139 tests · Linux/Windows/macOS × Python 3.10–3.13 · 零依赖 · 破坏性命令显式授权
 
 ```bash
-git clone https://github.com/CJstate/hui-harness && cd hui-harness && pip install -e .
-hui demo                              # 不需要 API key：真实执行工具并写出会话日志
-hui replay .sessions/session-*.jsonl  # 重放并逐条核对工具结果的 sha256
+pip install -e . && hui demo
+hui replay .sessions/session-*.jsonl
 ```
 
-## 🧭 我的工作方式
+</td>
+</tr>
+</table>
 
-| 习惯 | 说明 |
-| --- | --- |
-| **先复现，再改代码** | 每个修复都从一条能贴出来的失败信息开始（`failure` 优先于「看起来应该修一下」），修完再贴修复后的输出。上面三个案例的「现象」一栏都是原始报错。 |
-| **最小 diff + 回归测试** | 只动根因相关的那几行，不夹带格式化、重命名和顺手重构；能写测试的地方一定带一个会先失败的测试。 |
-| **挑环境类缺陷，而不是抢热点** | 我熟悉的是「只在真实环境里出现」的那类 bug：非 UTF-8 默认编码、Windows 检出、首次贡献者的 CI 门禁、跨平台终端能力差异。这类问题复现成本高、报告少；但也最容易被判 low impact：必须能说清「谁真的会踩到」，否则再干净的修复也只是噪声。 |
-| **踩过的坑写进公开复盘** | 早期提交过多余的文档与格式改动，被维护者当作噪声关掉；后来一个能稳定复现的编码缺陷，仍然被判 low impact——理由是没有真实用户报告，复现是「合成的」。所以现在提交前会先问：这个问题有人真的踩到吗？没有就先去找真实报告或明确使用场景，被指出问题时也公开更正自己的判断。 |
+## 🧭 工作方式
+
+**先复现，再动手** —— 每个修复从一条能贴出来的报错开始，修完贴修复后的输出（上面案例的「现象」栏都是原始报错）。**最小 diff + 回归测试** —— 不夹带格式化和顺手重构。**挑环境类缺陷而非抢热点** —— 非 UTF-8 默认编码、Windows 检出、首贡献者 CI 门禁、跨平台终端差异：复现成本高、报告少，但每个都是真人会踩的坑。**公开更正自己** —— 早期被维护者指出过噪声提交和误判，复盘都留在 PR 里，构成我现在的提交标准。
 
 ## 🧱 技术栈
 
@@ -174,5 +175,12 @@ hui replay .sessions/session-*.jsonl  # 重放并逐条核对工具结果的 sha
 | **语言** | Python（3.9–3.13）· Go · TypeScript · Shell · PowerShell |
 | **训练 / 推理** | PyTorch · 🤗 Transformers · 🤗 Accelerate · 🤗 PEFT · FSDP · DeepSpeed · vLLM |
 | **数据 / 评测** | 🤗 Datasets · lm-evaluation-harness · MLflow · OpenLLMetry / OpenTelemetry |
-| **工程** | pytest / pytest-mock · ruff · mypy · GitHub Actions（含 Windows / macOS matrix）· Docker · k8s |
+| **工程** | pytest · ruff · mypy · GitHub Actions（Windows / macOS matrix）· Docker · k8s |
 | **平台** | Windows 与 Linux 双栈 · 终端能力探测 · 编码 / locale 兼容 · 交叉编译 |
+
+---
+
+<p align="center">
+  <sub>每个数字都能点开验证 · 每个修复都带复现证据</sub><br/>
+  <a href="https://github.com/CJstate"><img src="https://img.shields.io/badge/GitHub-@CJstate-181717?style=flat-square&logo=github&logoColor=white" /></a>
+</p>
