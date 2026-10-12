@@ -1,5 +1,3 @@
-<h1 align="center">CJstate</h1>
-
 <p align="center">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="docs/banner-dark.svg">
@@ -9,7 +7,8 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/CJstate/llm-eval-gate"><img alt="llm-eval-gate tests" src="https://img.shields.io/badge/llm--eval--gate-102_tests_·_3_OS_CI-2ea043?style=flat-square&logo=pytest&logoColor=white" /></a>
+  <a href="https://github.com/CJstate/llm-eval-gate"><img alt="llm-eval-gate" src="https://img.shields.io/github/v/release/CJstate/llm-eval-gate?style=flat-square&label=llm-eval-gate&color=2ea043" /></a>
+  <a href="https://github.com/CJstate/llm-eval-gate/actions"><img alt="llm-eval-gate CI" src="https://img.shields.io/github/actions/workflow/status/CJstate/llm-eval-gate/ci.yml?branch=main&style=flat-square&label=CI&color=2ea043" /></a>
   <a href="https://github.com/CJstate/hui-harness"><img alt="hui-harness" src="https://img.shields.io/badge/hui--harness-139_tests_·_zero_deps-2ea043?style=flat-square&logo=python&logoColor=white" /></a>
   <a href="#-已合并-5"><img alt="merged PRs" src="https://img.shields.io/badge/upstream_PRs_merged-5-2ea043?style=flat-square&logo=github&logoColor=white" /></a>
   <a href="#-在评-25"><img alt="open PRs" src="https://img.shields.io/badge/upstream_PRs_in_review-25-0969da?style=flat-square&logo=git&logoColor=white" /></a>
@@ -180,7 +179,10 @@
 
 **把「评测退化」变成 CI 的退出码。** 吃两份 lm-evaluation-harness 结果文件，在考虑随机波动的前提下判定这次评测是不是真的退化了 —— 相对阈值 + 基于标准误的噪声带，而不是「小数点后几位变小就红」。
 
-`v0.1.0` 已发版 · **102 tests** · Ubuntu/Windows/macOS CI 全绿（含 self-gate）· 零运行时依赖
+<a href="https://github.com/CJstate/llm-eval-gate/actions/workflows/ci.yml"><img alt="CI" src="https://img.shields.io/github/actions/workflow/status/CJstate/llm-eval-gate/ci.yml?branch=main&style=flat-square&label=CI&color=2ea043" /></a>
+<img alt="tests" src="https://img.shields.io/badge/tests-102_·_3_OS-2ea043?style=flat-square" />
+<img alt="release" src="https://img.shields.io/github/v/release/CJstate/llm-eval-gate?style=flat-square&label=release&color=8250df" />
+<img alt="deps" src="https://img.shields.io/badge/runtime_deps-0-2ea043?style=flat-square" />
 
 ```bash
 pip install "git+https://github.com/CJstate/llm-eval-gate@v0.1.0"
@@ -194,7 +196,10 @@ llm-eval-gate check before.json after.json
 
 **零依赖、可重放的编程 Agent。** 工具调用循环 + 权限策略 + 会话日志，约 3k 行纯标准库。会话是哈希链：`hui replay` 真的重跑一遍并逐条核对 sha256，对不上当场失败 —— 「可复现」是被 CI 验证的，不是被声称的。
 
-**139 tests** · Linux/Windows/macOS × Python 3.10–3.13 · 零依赖 · 破坏性命令显式授权
+<img alt="tests" src="https://img.shields.io/badge/tests-139_·_9_matrix-2ea043?style=flat-square" />
+<img alt="deps" src="https://img.shields.io/badge/runtime_deps-0-2ea043?style=flat-square" />
+<img alt="python" src="https://img.shields.io/badge/python-3.10–3.13-0969da?style=flat-square&logo=python&logoColor=white" />
+<img alt="replay" src="https://img.shields.io/badge/sha256--chain-verified-8250df?style=flat-square" />
 
 ```bash
 pip install -e . && hui demo
@@ -208,6 +213,21 @@ hui replay .sessions/session-*.jsonl
 ## 🧭 工作方式
 
 **先复现，再动手** —— 每个修复从一条能贴出来的报错开始，修完贴修复后的输出（上面案例的「现象」栏都是原始报错）。**最小 diff + 回归测试** —— 不夹带格式化和顺手重构。**挑环境类缺陷而非抢热点** —— 非 UTF-8 默认编码、Windows 检出、首贡献者 CI 门禁、跨平台终端差异：复现成本高、报告少，但每个都是真人会踩的坑。**公开更正自己** —— 早期被维护者指出过噪声提交和误判，复盘都留在 PR 里，构成我现在的提交标准。
+
+## 📊 GitHub 统计
+
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-stats.vercel.app/api?username=CJstate&show_icons=true&hide_border=true&bg_color=0a0f1e&title_color=4dd4c0&text_color=c9d1d9&icon_color=4dd4c0&hide=issues,contribs" />
+    <source media="(prefers-color-scheme: light)" srcset="https://github-readme-stats.vercel.app/api?username=CJstate&show_icons=true&hide_border=true&bg_color=e9eef8&title_color=0f766e&text_color=0b1220&icon_color=0f766e&hide=issues,contribs" />
+    <img alt="GitHub stats" src="https://github-readme-stats.vercel.app/api?username=CJstate&show_icons=true&hide_border=true&bg_color=0a0f1e&title_color=4dd4c0&text_color=c9d1d9&icon_color=4dd4c0&hide=issues,contribs" width="49%" />
+  </picture>
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-streak-stats.herokuapp.com/?user=CJstate&hide_border=true&background=0a0f1e&ring=4dd4c0&fire=f0883e&currStreakLabel=4dd4c0" />
+    <source media="(prefers-color-scheme: light)" srcset="https://github-readme-streak-stats.herokuapp.com/?user=CJstate&hide_border=true&background=e9eef8&ring=0f766e&fire=f0883e&currStreakLabel=0f766e" />
+    <img alt="streak" src="https://github-readme-streak-stats.herokuapp.com/?user=CJstate&hide_border=true&background=0a0f1e&ring=4dd4c0&fire=f0883e&currStreakLabel=4dd4c0" width="49%" />
+  </picture>
+</p>
 
 ## 🧱 技术栈
 
