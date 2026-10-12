@@ -1,31 +1,72 @@
 <h1 align="center">CJstate</h1>
 
 <p align="center">
-  <b>AI / LLM Engineering</b> · 训练与推理基础设施 · 模型评测 · 跨平台（Windows）DX<br/>
-  <sub><i>写进上游主干的代码，和能复现的证据。</i></sub>
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="docs/banner-dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="docs/banner-light.svg">
+    <img alt="CJstate — AI / LLM engineering · training & inference infra · model evaluation" src="docs/banner-light.svg" width="100%">
+  </picture>
 </p>
 
 <p align="center">
-  <a href="#-已合并-5">🔵 5 个 PR 已合并</a>&nbsp;·&nbsp;
-  <a href="#-在评-25">🟢 25 个在评</a>&nbsp;·&nbsp;
-  <a href="https://github.com/CJstate/llm-eval-gate">⭐ llm-eval-gate</a>&nbsp;·&nbsp;
-  <a href="https://github.com/CJstate/hui-harness">🛠️ hui-harness</a>
+  <a href="https://github.com/CJstate/llm-eval-gate"><img alt="llm-eval-gate tests" src="https://img.shields.io/badge/llm--eval--gate-102_tests_·_3_OS_CI-2ea043?style=flat-square&logo=pytest&logoColor=white" /></a>
+  <a href="https://github.com/CJstate/hui-harness"><img alt="hui-harness" src="https://img.shields.io/badge/hui--harness-139_tests_·_zero_deps-2ea043?style=flat-square&logo=python&logoColor=white" /></a>
+  <a href="#-已合并-5"><img alt="merged PRs" src="https://img.shields.io/badge/upstream_PRs_merged-5-2ea043?style=flat-square&logo=github&logoColor=white" /></a>
+  <a href="#-在评-25"><img alt="open PRs" src="https://img.shields.io/badge/upstream_PRs_in_review-25-0969da?style=flat-square&logo=git&logoColor=white" /></a>
+  <img alt="stars reached" src="https://img.shields.io/badge/upstream_stars_reached-122k-f0883e?style=flat-square" />
+  <img alt="contributions" src="https://img.shields.io/badge/contributions_12mo-130-8250df?style=flat-square" />
 </p>
 
 ---
 
-> **30 秒版本**
->
-> - 我的上游 PR 进过 **witr（22.6k★）、nvm（95k★）、k8sgpt-operator、dependency-track** 的主干 —— 每一条都能点开 commit 看 diff。
-> - 我专挑一类 bug：**只在真实环境出现的那类**。CI 全绿但 Windows 检出编译失败、中文 Windows 上 UTF-8 文件读不回来、`v4` 和 `v4.0.0` 是同一版本却被判为「不更新」。这类问题复现成本高，所以每个修复我都带完整的根因链和回归测试。
-> - 两个个人项目都是**零依赖 + 证据可复现**的思路：[llm-eval-gate](https://github.com/CJstate/llm-eval-gate) 把「评测是否真的退化」变成 CI 退出码；[hui-harness](https://github.com/CJstate/hui-harness) 把 agent 会话做成哈希链，重放即校验。
+> [!NOTE]
+> **30 秒版本** —— 我的上游 PR 进过 **witr（22.6k★）、nvm（95k★）、k8sgpt-operator、dependency-track** 的主干，每一条都能点开 commit 看 diff。我专修**只在真实环境出现的 bug**：CI 全绿但 Windows 检出编译失败、中文 Windows 上 UTF-8 读不回来、`v4` 与 `v4.0.0` 是同一版本却被判「不更新」。这类问题复现成本高，所以每个修复都带完整根因链 + 回归测试。两个个人项目遵循同一原则：**零依赖、证据可复现**。
+
+<h2 align="center">🔗 速览</h2>
+
+<table>
+<tr>
+<td width="50%" valign="top">
+
+### ✅ 已合并（5）
+
+进过 **4 个上游仓库**的主干，合计覆盖 **122,587★** 的项目：
+
+| PR | 内容 |
+| --- | --- |
+| [witr#242](https://github.com/pranshuparmar/witr/pull/242) | 符号链接入口 → 真实 `main.go` |
+| [witr#239](https://github.com/pranshuparmar/witr/pull/239) | 终端颜色按能力回退 |
+| [nvm#3915](https://github.com/nvm-sh/nvm/pull/3915) | help 图例着色 |
+| [k8sgpt-operator#855](https://github.com/k8sgpt-ai/k8sgpt-operator/pull/855) | tolerations 支持 |
+| [dependency-track#7096](https://github.com/DependencyTrack/dependency-track/pull/7096) | CI 徽章修复 |
+
+<sub>详细说明见下方「已合并」章节。</sub>
+
+</td>
+<td width="50%" valign="top">
+
+### 🚧 在评（25）
+
+按领域分布：
+
+- **训练与推理** 6 —— accelerate ×2 · pytorch-lightning ×3 · datasets
+- **评测与观测** 4 —— mlflow · lm-eval ×2 · openllmetry
+- **工具链 / DX** 15 —— pinact ×3 · posting ×2 · ggc ×3 · witr · hallmark ×2 · llm · jev · skills · public-apis
+
+全部点得开、逐条带「一句话内容 + 当前状态」。
+
+<sub>完整清单见下方「在评」章节。</sub>
+
+</td>
+</tr>
+</table>
 
 ---
 
 ## 🔵 已合并（5）
 
 <details open>
-<summary><b>点开看每个 PR 做了什么</b>（全部已进上游主干）</summary>
+<summary><b>每个 PR 做了什么</b>（全部已进上游主干）</summary>
 
 | 项目 | PR | 一句话 | 合并 |
 | --- | --- | --- | --- |
@@ -80,7 +121,7 @@
 
 ## 🟢 在评（25）
 
-<details open>
+<details>
 <summary><b>训练与推理框架（6）</b></summary>
 
 | PR | 内容 | 状态 |
@@ -94,7 +135,7 @@
 
 </details>
 
-<details open>
+<details>
 <summary><b>评测与可观测性（4）</b></summary>
 
 | PR | 内容 | 状态 |
@@ -139,7 +180,7 @@
 
 **把「评测退化」变成 CI 的退出码。** 吃两份 lm-evaluation-harness 结果文件，在考虑随机波动的前提下判定这次评测是不是真的退化了 —— 相对阈值 + 基于标准误的噪声带，而不是「小数点后几位变小就红」。
 
-✅ `v0.1.0` 已发版 · 102 tests · Ubuntu/Windows/macOS CI 全绿（含 self-gate）· 零运行时依赖
+`v0.1.0` 已发版 · **102 tests** · Ubuntu/Windows/macOS CI 全绿（含 self-gate）· 零运行时依赖
 
 ```bash
 pip install "git+https://github.com/CJstate/llm-eval-gate@v0.1.0"
@@ -153,7 +194,7 @@ llm-eval-gate check before.json after.json
 
 **零依赖、可重放的编程 Agent。** 工具调用循环 + 权限策略 + 会话日志，约 3k 行纯标准库。会话是哈希链：`hui replay` 真的重跑一遍并逐条核对 sha256，对不上当场失败 —— 「可复现」是被 CI 验证的，不是被声称的。
 
-✅ 139 tests · Linux/Windows/macOS × Python 3.10–3.13 · 零依赖 · 破坏性命令显式授权
+**139 tests** · Linux/Windows/macOS × Python 3.10–3.13 · 零依赖 · 破坏性命令显式授权
 
 ```bash
 pip install -e . && hui demo
