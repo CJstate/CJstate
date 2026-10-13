@@ -11,7 +11,6 @@
 <div>&nbsp;</div>
 
 <div>
-  <a href="mailto:1507965754@qq.com"><img src="https://img.shields.io/badge/Email-%E9%82%AE%E7%AE%B1-8c36db" /></a>&emsp;
   <img src="https://komarev.com/ghpvc/?username=CJstate&label=Views&color=orange&style=flat" alt="访问量统计" />
 </div>
 
@@ -34,7 +33,7 @@
 
 <img align="right" width="88" src="docs/jobs.png" />
 
-<p>&emsp;&emsp;嗨，我是陈金辉（Jinhui Chen）。写 Python 和 Go，喜欢把工具做到<strong>零依赖</strong>，把测试做到<strong>任何一台机器上都能复现</strong>。</p>
+<p>&emsp;&emsp;嗨，我是 Jinhui Chen。写 Python 和 Go，喜欢把工具做到<strong>零依赖</strong>，把测试做到<strong>任何一台机器上都能复现</strong>。</p>
 <p>&emsp;&emsp;自己写了两个小而硬的东西：一个纯标准库的编程 agent harness，一个给 LLM 评测判「真退化还是噪声」的统计门禁。</p>
 <p>&emsp;&emsp;上游那边修 bug 的口味偏刁：专挑 CI 结构上抓不到的问题——符号链接、locale 编码、测试污染、被 mock 劫持的命令。<strong>绿灯和用户报错之间那道缝，就是我在找的东西。</strong></p>
 <p>&emsp;&emsp;<strong>Small tools, zero dependencies, and the bugs CI cannot see.</strong></p>
@@ -180,9 +179,3 @@ cp936 的 Windows 上 `llm -t 模板` 直接抛 `UnicodeDecodeError`：`template
 </div>
 
 ---
-
-<div align="center">
-
-**陈金辉 / Jinhui Chen** · [1507965754@qq.com](mailto:1507965754@qq.com)
-
-</div>
