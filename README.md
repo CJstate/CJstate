@@ -34,9 +34,9 @@ llm-eval-gate check before.json after.json
 
 #### [hui-harness](https://github.com/CJstate/hui-harness)
 
-约 3k 行纯标准库的编程 agent：工具循环、权限策略、上下文压缩、多provider SSE。最较真的一个设计是会话日志——哈希链追加，`hui replay` 会真的重放并逐条核对每个工具结果的 sha256，对不上就直接失败。可复现不是口号，是 CI 里跑的一条断言。
+约 2.6k 行纯标准库的编程 agent：工具循环、权限策略、上下文压缩、多provider SSE。最较真的一个设计是会话日志——哈希链追加，`hui replay` 会真的重放并逐条核对每个工具结果的 sha256，对不上就直接失败。可复现不是口号，是 CI 里跑的一条断言。
 
-3.10–3.13 × Linux/Windows/macOS 矩阵，139 个测试。
+3.10–3.13 × Linux/Windows/macOS 矩阵，140 个测试。
 
 ![CI](https://img.shields.io/github/actions/workflow/status/CJstate/hui-harness/ci.yml?branch=main&style=flat-square&label=CI)
 
