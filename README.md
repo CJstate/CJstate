@@ -43,46 +43,27 @@
 
 <img width="100%" src="docs/hr.gif" />
 
-# 🚀 自己写的两个东西
+# 💼 上游贡献
 
 <table>
-<tr>
-<td width="50%" valign="top">
+<tr><td>
 
-#### [llm-eval-gate](https://github.com/CJstate/llm-eval-gate)
+### 🏛️ 参与过的项目
 
-LLM 评测最烦的问题：两次跑分差了 0.3 个点，是真退化还是随机波动？吃两份 lm-evaluation-harness 结果，按每个任务自己的标准误算噪声带，只有跌幅既超相对阈值、又落在噪声带外才让 CI 挂。
+<div align="center">
 
-纯标准库，零运行时依赖，102 个测试。
+[![nvm](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fapi.github.com%2Frepos%2Fnvm-sh%2Fnvm&query=%24.stargazers_count&logo=gnu-bash&logoColor=white&label=nvm&color=2496ED)](https://github.com/nvm-sh/nvm)
+[![witr](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fapi.github.com%2Frepos%2Fpranshuparmar%2Fwitr&query=%24.stargazers_count&logo=go&logoColor=white&label=witr&color=00ADD8)](https://github.com/pranshuparmar/witr)
+[![accelerate](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fapi.github.com%2Frepos%2Fhuggingface%2Faccelerate&query=%24.stargazers_count&logo=huggingface&logoColor=yellow&label=accelerate&color=FFD21E)](https://github.com/huggingface/accelerate)
+[![datasets](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fapi.github.com%2Frepos%2Fhuggingface%2Fdatasets&query=%24.stargazers_count&logo=huggingface&logoColor=yellow&label=datasets&color=FFD21E)](https://github.com/huggingface/datasets)
+[![pytorch-lightning](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fapi.github.com%2Frepos%2FLightning-AI%2Fpytorch-lightning&query=%24.stargazers_count&logo=pytorchlightning&logoColor=white&label=pytorch-lightning&color=792EE5)](https://github.com/Lightning-AI/pytorch-lightning)
+[![mlflow](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fapi.github.com%2Frepos%2Fmlflow%2Fmlflow&query=%24.stargazers_count&logo=mlflow&logoColor=white&label=mlflow&color=0194E2)](https://github.com/mlflow/mlflow)
+[![lm-evaluation-harness](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fapi.github.com%2Frepos%2FEleutherAI%2Flm-evaluation-harness&query=%24.stargazers_count&logo=python&logoColor=white&label=lm-eval-harness&color=3776AB)](https://github.com/EleutherAI/lm-evaluation-harness)
 
-![CI](https://img.shields.io/github/actions/workflow/status/CJstate/llm-eval-gate/ci.yml?branch=main&style=flat-square&label=CI)
+</div>
 
-```bash
-pip install "git+https://github.com/CJstate/llm-eval-gate@v0.1.0"
-llm-eval-gate check before.json after.json
-```
-
-</td>
-<td width="50%" valign="top">
-
-#### [hui-harness](https://github.com/CJstate/hui-harness)
-
-约 2.6k 行纯标准库的编程 agent：工具循环、权限策略、上下文压缩、多 provider SSE。最较真的设计是会话日志——哈希链追加，`hui replay` 会真的重放并逐条核对每个工具结果的 sha256，对不上直接失败。
-
-3.10–3.13 × Linux/Windows/macOS 矩阵，140 个测试。
-
-![CI](https://img.shields.io/github/actions/workflow/status/CJstate/hui-harness/ci.yml?branch=main&style=flat-square&label=CI)
-
-```bash
-pip install -e . && hui demo
-hui replay .sessions/session-*.jsonl
-```
-
-</td>
-</tr>
+</td></tr>
 </table>
-
-# 💼 上游贡献
 
 <table>
 <tr><td>
@@ -145,15 +126,9 @@ cp936 的 Windows 上 `llm -t 模板` 直接抛 `UnicodeDecodeError`：`template
 </picture>
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-activity-graph.vercel.app/graph?username=CJstate&theme=react-dark&bg_color=1B222D&hide_border=true" />
-  <source media="(prefers-color-scheme: light)" srcset="https://github-readme-activity-graph.vercel.app/graph?username=CJstate&theme=xcode&hide_border=true" />
-  <img src="https://github-readme-activity-graph.vercel.app/graph?username=CJstate&theme=react-dark&hide_border=true" />
-</picture>
-
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="profile-3d-contrib/profile-night-rainbow.svg" />
-  <source media="(prefers-color-scheme: light)" srcset="profile-3d-contrib/profile-gitblock.svg" />
-  <img src="profile-3d-contrib/profile-night-rainbow.svg" />
+  <source media="(prefers-color-scheme: dark)" srcset="profile-3d-contrib/profile-season-animate.svg" />
+  <source media="(prefers-color-scheme: light)" srcset="profile-3d-contrib/profile-green-animate.svg" />
+  <img src="profile-3d-contrib/profile-green-animate.svg" />
 </picture>
 
 </div>
