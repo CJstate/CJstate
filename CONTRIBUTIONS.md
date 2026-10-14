@@ -29,7 +29,7 @@
 
 | PR | 内容 | 状态 |
 | --- | --- | --- |
-| [mlflow#26206](https://github.com/mlflow/mlflow/pull/26206) | artifact 图片被强制缩放，小图放大糊掉；改成按容器宽度 | 有一个检查失败，待查 |
+| [mlflow#26206](https://github.com/mlflow/mlflow/pull/26206) | artifact 图片被强制缩放，小图放大糊掉；改成按容器宽度 | 等 core maintainer 批准（fork PR 门禁，已排查非代码问题） |
 | [lm-eval-harness#4216](https://github.com/EleutherAI/lm-evaluation-harness/pull/4216) | make_table 把共享子任务算了两遍 | 等 review |
 | [lm-eval-harness#4384](https://github.com/EleutherAI/lm-evaluation-harness/pull/4384) | bootstrap_stderr 分块丢余数，iters=1500 实际只跑 1000 次重采样；补齐余数块并保持按序号播种的可复现性 | 等 review |
 | [openllmetry#4484](https://github.com/traceloop/openllmetry/pull/4484) | Groq 流式响应的 usage 丢了；补统计和回归测试 | 等 review |
