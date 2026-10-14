@@ -12,7 +12,7 @@
 | [k8sgpt-operator#855](https://github.com/k8sgpt-ai/k8sgpt-operator/pull/855) | 给 CRD 和 chart 加 tolerations，控制器能调度到被打 taint 的节点 | 10-10 |
 | [dependency-track#7096](https://github.com/DependencyTrack/dependency-track/pull/7096) | README 的 CI 徽章指向废弃分支，点了 404 | 08-24 |
 
-## 在评（25）
+## 在评（26）
 
 ### 训练 / 推理（6）
 
@@ -25,12 +25,13 @@
 | [pytorch-lightning#21974](https://github.com/Lightning-AI/pytorch-lightning/pull/21974) | 文档 :emphasize-lines: 行号按渲染后的行算 | 等 review |
 | [pytorch-lightning#21939](https://github.com/Lightning-AI/pytorch-lightning/pull/21939) | 没符号链接权限时 skip 并说明原因，而不是 fail | 等 review |
 
-### 评测 / 可观测（4）
+### 评测 / 可观测（5）
 
 | PR | 内容 | 状态 |
 | --- | --- | --- |
 | [mlflow#26206](https://github.com/mlflow/mlflow/pull/26206) | artifact 图片被强制缩放，小图放大糊掉；改成按容器宽度 | 有一个检查失败，待查 |
 | [lm-eval-harness#4216](https://github.com/EleutherAI/lm-evaluation-harness/pull/4216) | make_table 把共享子任务算了两遍 | 等 review |
+| [lm-eval-harness#4384](https://github.com/EleutherAI/lm-evaluation-harness/pull/4384) | bootstrap_stderr 分块丢余数，iters=1500 实际只跑 1000 次重采样；补齐余数块并保持按序号播种的可复现性 | 等 review |
 | [openllmetry#4484](https://github.com/traceloop/openllmetry/pull/4484) | Groq 流式响应的 usage 丢了；补统计和回归测试 | 等 review |
 | [lm-eval-harness#4114](https://github.com/EleutherAI/lm-evaluation-harness/pull/4114) | simple_evaluate 非法输入静默给空结果 | 等 review |
 
