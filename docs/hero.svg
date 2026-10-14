@@ -27,7 +27,7 @@
   <circle cx="1040" cy="40" r="300" fill="url(#hglow)"/>
   <rect width="1200" height="300" fill="url(#hdots)"/>
 
-  <text x="952" y="248" font-family="Consolas, Menlo, monospace" font-size="190" font-weight="700" fill="#ffffff" opacity="0.035">>_</text>
+  <text x="1020" y="236" font-family="Consolas, Menlo, monospace" font-size="150" font-weight="700" fill="#ffffff" opacity="0.04">>_</text>
 
   <rect x="80" y="86" width="64" height="4" rx="2" fill="url(#haccent)"/>
 

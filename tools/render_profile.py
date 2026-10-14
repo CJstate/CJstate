@@ -124,7 +124,7 @@ def render_metrics(stats: dict, days: list[tuple[str, int]], theme: str) -> str:
     cell, gap = 11, 3
     weeks = (len(days) + 6) // 7
     heat_w = weeks * (cell + gap)
-    x0, y0 = 80, 176
+    x0, y0 = 80, 190
 
     cells = []
     for i, (day, count) in enumerate(days):
@@ -152,8 +152,8 @@ def render_metrics(stats: dict, days: list[tuple[str, int]], theme: str) -> str:
         x = bx + i * (bw + bgap)
         stat_svg.append(
             f'''
-    <text x="{x}" y="96" font-family="'Segoe UI',Helvetica,Arial,sans-serif" font-size="46" font-weight="700" fill="{accent0 if i % 2 == 0 else accent1}">{esc(val)}</text>
-    <text x="{x}" y="124" font-family="'Segoe UI',Helvetica,Arial,sans-serif" font-size="13.5" letter-spacing="0.6" fill="{mut}">{esc(label.upper())}</text>'''
+    <text x="{x}" y="118" font-family="'Segoe UI',Helvetica,Arial,sans-serif" font-size="42" font-weight="700" fill="{accent0 if i % 2 == 0 else accent1}">{esc(val)}</text>
+    <text x="{x}" y="146" font-family="'Segoe UI',Helvetica,Arial,sans-serif" font-size="13.5" letter-spacing="0.6" fill="{mut}">{esc(label.upper())}</text>'''
         )
     stats_svg = "\n   ".join(stat_svg)
 
@@ -170,7 +170,7 @@ def render_metrics(stats: dict, days: list[tuple[str, int]], theme: str) -> str:
   <rect x="80" y="42" width="46" height="4" rx="2" fill="url(#mrule)"/>
   <text x="80" y="70" font-family="'Segoe UI',Helvetica,Arial,sans-serif" font-size="14" letter-spacing="2" fill="{mut}">UPSTREAM ACTIVITY · ROLLING 12 MONTHS</text>
    {stats_svg}
-  <line x1="80" y1="152" x2="1120" y2="152" stroke="{grid}" stroke-width="1"/>
+  <line x1="80" y1="160" x2="1120" y2="160" stroke="{grid}" stroke-width="1"/>
       {heat}
   <text x="80" y="300" font-family="'Segoe UI',Helvetica,Arial,sans-serif" font-size="13" fill="{mut}">least ─ most · {esc(first_merge_txt)} · generated from the GitHub API, no manual numbers</text>
 </svg>
