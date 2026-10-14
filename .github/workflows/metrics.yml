@@ -1,4 +1,4 @@
-name: refresh profile metrics
+name: refresh profile visuals
 
 on:
   schedule:
@@ -14,7 +14,7 @@ permissions:
   contents: write
 
 jobs:
-  render:
+  metrics:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
@@ -24,7 +24,7 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: render metrics from live GitHub data
+      - name: render metrics board from live GitHub data
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
@@ -34,3 +34,23 @@ jobs:
           git add docs/metrics-dark.svg docs/metrics-light.svg
           git diff --cached --quiet || git commit -m "chore: refresh metrics board"
           git push
+
+  snake:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: generate contribution snake
+        uses: Platane/snk/svg-only@v3
+        with:
+          github_user_name: CJstate
+          outputs: |
+            dist/github-contribution-grid-snake.svg
+            dist/github-contribution-grid-snake-dark.svg?palette=github-dark
+
+      - name: push to output branch
+        uses: crazy-max/ghaction-github-pages@v4
+        with:
+          target_branch: output
+          build_dir: dist
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

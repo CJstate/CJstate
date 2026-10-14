@@ -140,6 +140,36 @@ def render_metrics(stats: dict, days: list[tuple[str, int]], theme: str) -> str:
     first_merge = stats.get("first_merge")
     first_merge_txt = f"first upstream merge · {first_merge}" if first_merge else "upstream contributor"
 
+    # ---- monthly activity bars (the "Activity overview" strip) ----
+    # aggregate the rolling 12 months by calendar month
+    monthly: dict[str, int] = {}
+    for day, count in days:
+        monthly[day[:7]] = monthly.get(day[:7], 0) + count
+    months = sorted(monthly)[-6:]
+    bw_, bgap_ = 72, 34
+    bar_x0, base_y, max_h = 80, 236, 62
+    peak = max(monthly.values()) or 1
+    bars = []
+    for i, m in enumerate(months):
+        h = max(3, round(monthly[m] / peak * max_h))
+        x = bar_x0 + i * (bw_ + bgap_)
+        # bars grow from the baseline, staggered left-to-right
+        val_label = (
+            f'''
+    <text x="{x + bw_ / 2}" y="{base_y - h - 6}" text-anchor="middle" font-family="'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" fill="{ink}" opacity="0.85">{monthly[m]}</text>'''
+            if monthly[m] > 0
+            else ""
+        )
+        bars.append(
+            f'''
+    <rect x="{x}" y="{base_y - h}" width="{bw_}" height="{h}" rx="4" fill="url(#bar{i % 2})">
+      <animate attributeName="height" from="0" to="{h}" dur="0.5s" begin="{0.12 * i}s" fill="freeze"/>
+      <animate attributeName="y" from="{base_y}" to="{base_y - h}" dur="0.5s" begin="{0.12 * i}s" fill="freeze"/>
+    </rect>
+    <text x="{x + bw_ / 2}" y="{base_y + 16}" text-anchor="middle" font-family="'Segoe UI',Helvetica,Arial,sans-serif" font-size="10.5" fill="{mut}">{m[5:]}</text>{val_label}'''
+        )
+    bars_svg = "".join(bars)
+
     blocks = [
         (fmt(stats["merged"]), "PRs merged upstream"),
         (fmt(stats["open"]), "PRs in review"),
@@ -165,14 +195,20 @@ def render_metrics(stats: dict, days: list[tuple[str, int]], theme: str) -> str:
     <linearGradient id="mrule" x1="0" y1="0" x2="1" y2="0">
       <stop offset="0" stop-color="{accent0}"/><stop offset="0.5" stop-color="{accent1}"/><stop offset="1" stop-color="{accent1}" stop-opacity="0"/>
     </linearGradient>
+    <linearGradient id="bar0" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="{accent0}"/><stop offset="1" stop-color="{accent0}" stop-opacity="0.35"/>
+    </linearGradient>
+    <linearGradient id="bar1" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="{accent1}"/><stop offset="1" stop-color="{accent1}" stop-opacity="0.35"/>
+    </linearGradient>
   </defs>
   <rect width="1200" height="332" fill="url(#mbg)" rx="14"/>
   <rect x="80" y="42" width="46" height="4" rx="2" fill="url(#mrule)"/>
   <text x="80" y="70" font-family="'Segoe UI',Helvetica,Arial,sans-serif" font-size="14" letter-spacing="2" fill="{mut}">UPSTREAM ACTIVITY · ROLLING 12 MONTHS</text>
    {stats_svg}
   <line x1="80" y1="160" x2="1120" y2="160" stroke="{grid}" stroke-width="1"/>
-      {heat}
-  <text x="80" y="300" font-family="'Segoe UI',Helvetica,Arial,sans-serif" font-size="13" fill="{mut}">least ─ most · {esc(first_merge_txt)} · generated from the GitHub API, no manual numbers</text>
+  <text x="80" y="184" font-family="'Segoe UI',Helvetica,Arial,sans-serif" font-size="11.5" letter-spacing="1.6" fill="{mut}">ACTIVITY OVERVIEW · MONTHLY CONTRIBUTIONS</text>{bars_svg}
+  <text x="1120" y="300" text-anchor="end" font-family="'Segoe UI',Helvetica,Arial,sans-serif" font-size="13" fill="{mut}">generated from the GitHub API · no manual numbers · {esc(first_merge_txt)}</text>
 </svg>
 '''
 
