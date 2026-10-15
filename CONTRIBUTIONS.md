@@ -12,7 +12,7 @@
 | [k8sgpt-operator#855](https://github.com/k8sgpt-ai/k8sgpt-operator/pull/855) | 给 CRD 和 chart 加 tolerations，控制器能调度到被打 taint 的节点 | 10-10 |
 | [dependency-track#7096](https://github.com/DependencyTrack/dependency-track/pull/7096) | README 的 CI 徽章指向废弃分支，点了 404 | 08-24 |
 
-## 在评（26）
+## 在评（27）
 
 ### 训练 / 推理（6）
 
@@ -34,6 +34,7 @@
 | [lm-eval-harness#4384](https://github.com/EleutherAI/lm-evaluation-harness/pull/4384) | bootstrap_stderr 分块丢余数，iters=1500 实际只跑 1000 次重采样；补齐余数块并保持按序号播种的可复现性 | 等 review |
 | [openllmetry#4484](https://github.com/traceloop/openllmetry/pull/4484) | Groq 流式响应的 usage 丢了；补统计和回归测试 | 等 review |
 | [lm-eval-harness#4114](https://github.com/EleutherAI/lm-evaluation-harness/pull/4114) | simple_evaluate 非法输入静默给空结果 | 等 review |
+| [cookiecutter#2290](https://github.com/cookiecutter/cookiecutter/pull/2290) | default_context 里第一个无效覆盖会吞掉后面全部条目且只报第一个错；改为逐条收集、报出所有无效变量 | CI 全绿（13/13 矩阵），等 review |
 
 ### 工具链 / DX（15）
 
