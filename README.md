@@ -24,7 +24,7 @@ under test. None of them can fail in CI, because CI is the machine that has the
 thing the user does not.
 
 Every number on this page is fetched from the GitHub API at render time by
-[`tools/render_profile.py`](tools/render_profile.py) — 550 lines of stdlib
+[`tools/render_profile.py`](tools/render_profile.py) — 557 lines of stdlib
 Python, no third-party cards, no badge services. If a service goes down, nothing
 here breaks, because nothing here is hosted anywhere else.
 

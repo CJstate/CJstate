@@ -284,19 +284,30 @@ def stagger(count: int, step: float = 0.055, base: float = 0.1) -> str:
 # ------------------------------------------------------------------- the hero
 
 
+# ------------------------------------------------------------------- the hero
+
+# GitHub renders README images inside a column that is about 800px wide at the
+# common desktop breakpoint. A 1200px board is therefore downscaled by ~0.66 and
+# every 11px label lands at 7px on screen -- legible in the source file, mush in
+# the place anyone actually reads it. Both boards are drawn at 800px instead, so
+# a pixel is a pixel.
+
+W = 800
+
+
 def render_hero(scheme: str, data: dict, motion: bool = True) -> str:
     p = PALETTES[scheme]
     stats = data["stats"]
-    c = Canvas(p, 1200, 380)
+    c = Canvas(p, W, 452)
     cls = (lambda name: f' class="{name}"') if motion else (lambda name: "")
 
     c.add(
         '<title>Jinhui Chen - upstream contributions, rendered from the GitHub API</title>'
     )
 
-    # ---- identity, left
-    c.text(56, 104, "Jinhui Chen", 54, "ink", 700, SANS, tracking=-2.4)
-    c.text(56, 148, "I fix the bugs CI cannot see.", 21, "ink", 500, SANS, tracking=-0.3)
+    # ---- identity
+    c.text(40, 78, "Jinhui Chen", 40, "ink", 700, SANS, tracking=-1.8)
+    c.text(40, 112, "I fix the bugs CI cannot see.", 17, "ink", 500, SANS, tracking=-0.2)
 
     thesis = [
         "Symlinks Git for Windows never checks out. A locale encoding that eats",
@@ -304,60 +315,44 @@ def render_hero(scheme: str, data: dict, motion: bool = True) -> str:
     ]
     for i, line in enumerate(thesis):
         c.add(
-            f'<text x="56" y="{184 + i * 21}" font-family="{SANS}" font-size="13.5" '
+            f'<text x="40" y="{144 + i * 20}" font-family="{SANS}" font-size="12.5" '
             f'fill="{p["body"]}">{esc(line)}</text>'
         )
 
-    c.text(56, 246, "Go gateways", 12.5, "accent")
-    c.text(56, 266, "zero-dependency Python tooling", 12.5, "accent")
-    c.text(56, 286, "LLM evaluation harnesses", 12.5, "accent")
-
-    # ---- the receipts, bottom-left, small and unembellished
-    c.rule(56, 312, 660)
-    c.text(
-        56,
-        336,
-        f'{stats["merged"]} merged upstream \u00b7 {stats["repos"]} repositories '
-        f'\u00b7 {stats["additions"]} lines added across {stats["files"]} files',
-        12,
-        "body",
-    )
-    c.text(56, 356, f'rendered {data["generated"][:10]} from the GitHub API', 10.5, "muted")
-
-    # ---- oscilloscope, right
-    px, py, pw, ph = 744, 56, 400, 268
+    # ---- the oscilloscope: the whole thesis in one picture
+    px, py, pw, ph = 40, 186, W - 80, 150
     c.add(
         f'<rect x="{px}" y="{py}" width="{pw}" height="{ph}" rx="10" '
         f'fill="{p["panel"]}" stroke="{p["line"]}"/>'
     )
-    for i in range(1, 5):
-        gy = py + (ph / 5) * i
+    for i in range(1, 4):
+        gy = py + (ph / 4) * i
         c.add(
             f'<line x1="{px + 1}" y1="{gy:.1f}" x2="{px + pw - 1}" y2="{gy:.1f}" '
             f'stroke="{p["grid"]}" stroke-width="1"/>'
         )
-    for i in range(1, 7):
-        gx = px + (pw / 7) * i
+    for i in range(1, 9):
+        gx = px + (pw / 9) * i
         c.add(
             f'<line x1="{gx:.1f}" y1="{py + 1}" x2="{gx:.1f}" y2="{py + ph - 1}" '
             f'stroke="{p["grid"]}" stroke-width="1"/>'
         )
 
-    mid = py + ph / 2
+    mid = py + ph / 2 + 6
 
     # Green: the shape CI reports. Red: the shape a user reports. They never
     # agree, and the distance between them is the job.
     green = (
-        f"M{px + 20},{mid - 30} "
-        f"C{px + 78},{mid - 30} {px + 90},{mid + 10} {px + 146},{mid + 10} "
-        f"S{px + 214},{mid - 24} {px + 272},{mid - 24} "
-        f"S{px + 336},{mid + 14} {px + pw - 20},{mid + 14}"
+        f"M{px + 22},{mid - 22} "
+        f"C{px + 96},{mid - 22} {px + 112},{mid + 8} {px + 186},{mid + 8} "
+        f"S{px + 268},{mid - 18} {px + 344},{mid - 18} "
+        f"S{px + 430},{mid + 12} {px + pw - 26},{mid + 12}"
     )
     red = (
-        f"M{px + 20},{mid + 30} "
-        f"C{px + 72},{mid + 30} {px + 86},{mid - 20} {px + 140},{mid - 20} "
-        f"S{px + 206},{mid + 40} {px + 264},{mid + 40} "
-        f"S{px + 330},{mid - 44} {px + pw - 20},{mid - 44}"
+        f"M{px + 22},{mid + 24} "
+        f"C{px + 92},{mid + 24} {px + 110},{mid - 16} {px + 180},{mid - 16} "
+        f"S{px + 262},{mid + 30} {px + 338},{mid + 30} "
+        f"S{px + 424},{mid - 34} {px + pw - 26},{mid - 34}"
     )
     for path, colour in ((green, "merged"), (red, "#E5534B")):
         stroke = p[colour] if colour in p else colour
@@ -367,25 +362,39 @@ def render_hero(scheme: str, data: dict, motion: bool = True) -> str:
             f'stroke-dasharray="5 4" stroke-dashoffset="0"{cls("flow")}/>'
         )
 
-    # Endpoint beads on each trace: the CI dot is steady, the user dot
-    # breathes, because the second one is the one that keeps changing.
-    c.add(f'<circle cx="{px + pw - 20}" cy="{mid + 14}" r="3.4" fill="{p["merged"]}"/>')
+    c.add(f'<circle cx="{px + pw - 26}" cy="{mid + 12}" r="3.4" fill="{p["merged"]}"/>')
     c.add(
-        f'<circle cx="{px + pw - 20}" cy="{mid - 44}" r="3.4" fill="#E5534B"{cls("bead")}/>'
+        f'<circle cx="{px + pw - 26}" cy="{mid - 34}" r="3.4" fill="#E5534B"{cls("bead")}/>'
     )
 
-    # The sweep is pure ornament on top of a complete picture, so it is the
-    # one thing allowed to start at opacity 0.
+    # Pure ornament, so it is the one element allowed to start invisible.
     c.add(
-        f'<rect x="{px + 20}" y="{py + 26}" width="1.5" height="{ph - 52}" '
+        f'<rect x="{px + 22}" y="{py + 30}" width="1.5" height="{ph - 60}" '
         f'fill="{p["accent"]}" opacity="0"{cls("sweep")}/>'
     )
 
-    c.text(px + 18, py + 24, "ci status", 10, "muted")
-    c.add(f'<circle cx="{px + 82}" cy="{py + 20}" r="3" fill="{p["merged"]}"/>')
-    c.text(px + pw - 18, py + 24, "a real machine", 10, "muted", anchor="end")
-    c.add(f'<circle cx="{px + pw - 122}" cy="{py + 20}" r="3" fill="#E5534B"/>')
-    c.text(px + 18, py + ph - 14, "the distance between these two is the work", 10, "muted")
+    c.text(px + 14, py + 22, "ci status", 10.5, "muted")
+    c.add(f'<circle cx="{px + 78}" cy="{py + 18}" r="3" fill="{p["merged"]}"/>')
+    c.text(px + pw - 14, py + 22, "a real machine", 10.5, "muted", anchor="end")
+    c.add(f'<circle cx="{px + pw - 116}" cy="{py + 18}" r="3" fill="#E5534B"/>')
+    c.text(px + 14, py + ph - 12, "the distance between these two is the work", 10.5, "muted")
+
+    # ---- the receipts, stated plainly
+    c.rule(40, 358, W - 40)
+    c.text(
+        40,
+        380,
+        f'{stats["merged"]} merged upstream \u00b7 {stats["repos"]} repositories '
+        f'\u00b7 {stats["additions"]} lines added across {stats["files"]} files',
+        12,
+        "body",
+    )
+    c.text(
+        40, 404, "Go gateways  \u00b7  zero-dependency Python tooling  \u00b7  "
+                 "LLM evaluation harnesses",
+        12, "accent",
+    )
+    c.text(40, 428, f'rendered {data["generated"][:10]} from the GitHub API', 10.5, "muted")
 
     if motion:
         c.style(
@@ -395,7 +404,7 @@ def render_hero(scheme: str, data: dict, motion: bool = True) -> str:
             ".bead{animation:bead 2.6s ease-in-out infinite}"
             "@keyframes sweep{0%{opacity:0;transform:translateX(0)}"
             "10%{opacity:.5}90%{opacity:.5}100%{opacity:0;"
-            f"transform:translateX({pw - 42}px)}}"
+            f"transform:translateX({pw - 48}px)}}"
             f".sweep{{animation:sweep 5.4s linear 1s infinite}}"
             "@media (prefers-reduced-motion:reduce){"
             ".flow,.bead,.sweep{animation:none}.sweep{opacity:0}}"
@@ -409,77 +418,77 @@ def render_hero(scheme: str, data: dict, motion: bool = True) -> str:
 def render_metrics(scheme: str, data: dict, motion: bool = True) -> str:
     """The activity ledger: every merged pull request, one row each.
 
-    Deliberately not a bar chart. The trailing year has eight empty months
-    and a burst at the end, so a monthly histogram spends two thirds of its
-    ink saying "nothing happened" -- an honest chart that argues against
-    itself. The rows below are the same data stated as evidence: what landed
-    where, and how much of it.
+    Deliberately not a bar chart. The trailing year has eight empty months and
+    a burst at the end, so a monthly histogram spends two thirds of its ink
+    saying "nothing happened" -- an honest chart that argues against itself.
+    The rows below are the same data stated as evidence: what landed where, and
+    how much of it.
     """
     p = PALETTES[scheme]
     stats = data["stats"]
     prs = data["merged_prs"]
-    c = Canvas(p, 1200, 392)
+
+    row_h = 24
+    top = 62
+    body_h = row_h * 12
+    rail_y = top + body_h + 30
+    h = rail_y + 96
+    c = Canvas(p, W, h)
     cls = (lambda name: f' class="{name}"') if motion else (lambda name: "")
 
     c.add(
         "<title>Merged upstream contributions, rendered from the GitHub API</title>"
     )
 
-    # ---- right rail: the four totals, stacked
-    rail_x = 846
-    c.add(
-        f'<line x1="{rail_x - 34}" y1="56" x2="{rail_x - 34}" y2="336" '
-        f'stroke="{p["line"]}"/>'
-    )
+    # ---- the ledger: columns are named once, then never repeated
+    col_repo, col_lines, col_date = 40, W - 132, W - 40
+    c.text(col_repo, 40, "merged upstream", 10.5, "muted")
+    c.text(col_lines, 40, "lines", 10.5, "muted", anchor="end")
+    c.text(col_date, 40, "merged", 10.5, "muted", anchor="end")
+    c.rule(40, 50, W - 40)
+
+    for i, pr in enumerate(prs[:12]):
+        y = top + 14 + i * row_h
+        c.add(
+            f'<circle cx="{col_repo + 4}" cy="{y - 4}" r="2.8" fill="{p["merged"]}" '
+            f'opacity="{1 - i * 0.055:.2f}"/>'
+        )
+        c.text(col_repo + 16, y, f'{pr["repo"]}', 11.5, "ink")
+        c.text(
+            col_repo + 16 + 7.35 * len(pr["repo"]) + 9, y, f'#{pr["number"]}',
+            11.5, "muted",
+        )
+        c.text(col_lines, y, f'+{pr["additions"]}', 11, "merged", anchor="end")
+        c.text(col_date, y, pr["merged_at"][5:], 11, "faint", anchor="end")
+
+    # ---- the totals, in one row under the ledger
+    c.rule(40, rail_y - 14, W - 40)
     figures = [
-        (str(stats["merged"]), "merged upstream", "merged"),
+        (str(stats["merged"]), "merged", "merged"),
         (str(stats["additions"]), "lines added", "ink"),
         (str(stats["files"]), "files touched", "ink"),
         (str(stats["repos"]), "repositories", "accent"),
     ]
+    step = (W - 80) / 4
     for i, (value, label, colour) in enumerate(figures):
-        y = 104 + i * 72
-        c.text(rail_x, y, value, 40, colour, 700, tracking=-1.8)
-        c.text(rail_x, y + 22, label, 11.5, "body")
+        x = 40 + i * step
+        c.text(x, rail_y + 34, value, 34, colour, 700, tracking=-1.4)
+        c.text(x, rail_y + 56, label, 11, "body")
         if i:
             c.add(
-                f'<line x1="{rail_x}" y1="{y - 42}" x2="1156" y2="{y - 42}" '
-                f'stroke="{p["grid"]}"/>'
+                f'<line x1="{x - 20:g}" y1="{rail_y + 4}" x2="{x - 20:g}" '
+                f'y2="{rail_y + 62}" stroke="{p["line"]}"/>'
             )
 
-    # ---- left: the ledger itself
-    c.text(44, 40, "merged upstream", 11, "muted")
-    c.text(720, 40, "lines", 10.5, "muted", anchor="end")
-    c.text(800, 40, "merged", 10.5, "muted", anchor="end")
-    c.rule(44, 52, rail_x - 34)
-
-    row_h = 23
-    for i, pr in enumerate(prs[:12]):
-        y = 76 + i * row_h
-        base = y - 4
-        # the dot: merged, so it is green and it stays green
-        c.add(
-            f'<circle cx="48" cy="{base}" r="2.6" fill="{p["merged"]}" '
-            f'opacity="{1 - i * 0.055:.2f}"/>'
-        )
-        c.text(60, y, f'{pr["repo"]}', 11, "ink")
-        c.text(
-            60 + 7.05 * len(pr["repo"]) + 8, y, f'#{pr["number"]}', 11, "muted"
-        )
-        c.text(720, y, f'+{pr["additions"]}', 10.5, "merged", anchor="end")
-        c.text(800, y, pr["merged_at"][5:], 10, "faint", anchor="end")
-
-    c.rule(44, 356, rail_x - 34)
     c.text(
-        44,
-        374,
-        f'{stats["merged"]} merged across {stats["repos"]} repositories '
-        f'\u00b7 {stats["open"]} still in review \u00b7 {stats["commits"]} commits in the last year',
+        40,
+        h - 14,
+        f'{stats["open"]} still in review \u00b7 {stats["commits"]} commits in the last year',
         10.5,
         "muted",
     )
     c.text(
-        1156, 374, f'rendered {data["generated"][:10]} from the GitHub API',
+        W - 40, h - 14, f'rendered {data["generated"][:10]} from the GitHub API',
         10.5, "muted", anchor="end",
     )
 
@@ -488,8 +497,8 @@ def render_metrics(scheme: str, data: dict, motion: bool = True) -> str:
         # light and costs one element. Everything above is already complete
         # without it.
         c.add(
-            f'<rect x="46" y="64" width="4" height="4" rx="2" fill="{p["merged"]}" '
-            f'opacity="0"{cls("pulse")}/>'
+            f'<rect x="{col_repo + 2}" y="{top}" width="4" height="4" rx="2" '
+            f'fill="{p["merged"]}" opacity="0"{cls("pulse")}/>'
         )
         c.style(
             "@keyframes pulse{0%{opacity:0;transform:translateY(0)}"

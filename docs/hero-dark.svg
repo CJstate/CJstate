@@ -1,37 +1,35 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="380" viewBox="0 0 1200 380" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" role="img">
-<rect width="1200" height="380" rx="16" fill="#0E1318"/>
-<rect x=".5" y=".5" width="1199" height="379" rx="16" fill="none" stroke="#232E38"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="452" viewBox="0 0 800 452" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" role="img">
+<rect width="800" height="452" rx="16" fill="#0E1318"/>
+<rect x=".5" y=".5" width="799" height="451" rx="16" fill="none" stroke="#232E38"/>
 <title>Jinhui Chen - upstream contributions, rendered from the GitHub API</title>
-<text x="56" y="104" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="54" font-weight="700" fill="#EDF3F8" text-anchor="start" letter-spacing="-2.4">Jinhui Chen</text>
-<text x="56" y="148" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="21" font-weight="500" fill="#EDF3F8" text-anchor="start" letter-spacing="-0.3">I fix the bugs CI cannot see.</text>
-<text x="56" y="184" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="13.5" fill="#93A7B7">Symlinks Git for Windows never checks out. A locale encoding that eats</text>
-<text x="56" y="205" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="13.5" fill="#93A7B7">the file you just wrote. ANSI colour a terminal silently drops.</text>
-<text x="56" y="246" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="12.5" font-weight="400" fill="#5AC8FA" text-anchor="start">Go gateways</text>
-<text x="56" y="266" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="12.5" font-weight="400" fill="#5AC8FA" text-anchor="start">zero-dependency Python tooling</text>
-<text x="56" y="286" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="12.5" font-weight="400" fill="#5AC8FA" text-anchor="start">LLM evaluation harnesses</text>
-<line x1="56" y1="312" x2="660" y2="312" stroke="#232E38" stroke-width="1"/>
-<text x="56" y="336" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="12" font-weight="400" fill="#93A7B7" text-anchor="start">12 merged upstream · 27 repositories · 700 lines added across 36 files</text>
-<text x="56" y="356" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10.5" font-weight="400" fill="#6C8093" text-anchor="start">rendered 2026-10-27 from the GitHub API</text>
-<rect x="744" y="56" width="400" height="268" rx="10" fill="#151C23" stroke="#232E38"/>
-<line x1="745" y1="109.6" x2="1143" y2="109.6" stroke="#1B242C" stroke-width="1"/>
-<line x1="745" y1="163.2" x2="1143" y2="163.2" stroke="#1B242C" stroke-width="1"/>
-<line x1="745" y1="216.8" x2="1143" y2="216.8" stroke="#1B242C" stroke-width="1"/>
-<line x1="745" y1="270.4" x2="1143" y2="270.4" stroke="#1B242C" stroke-width="1"/>
-<line x1="801.1" y1="57" x2="801.1" y2="323" stroke="#1B242C" stroke-width="1"/>
-<line x1="858.3" y1="57" x2="858.3" y2="323" stroke="#1B242C" stroke-width="1"/>
-<line x1="915.4" y1="57" x2="915.4" y2="323" stroke="#1B242C" stroke-width="1"/>
-<line x1="972.6" y1="57" x2="972.6" y2="323" stroke="#1B242C" stroke-width="1"/>
-<line x1="1029.7" y1="57" x2="1029.7" y2="323" stroke="#1B242C" stroke-width="1"/>
-<line x1="1086.9" y1="57" x2="1086.9" y2="323" stroke="#1B242C" stroke-width="1"/>
-<path d="M764,160.0 C822,160.0 834,200.0 890,200.0 S958,166.0 1016,166.0 S1080,204.0 1124,204.0" fill="none" stroke="#46C46A" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="5 4" stroke-dashoffset="0" class="flow"/>
-<path d="M764,220.0 C816,220.0 830,170.0 884,170.0 S950,230.0 1008,230.0 S1074,146.0 1124,146.0" fill="none" stroke="#E5534B" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="5 4" stroke-dashoffset="0" class="flow"/>
-<circle cx="1124" cy="204.0" r="3.4" fill="#46C46A"/>
-<circle cx="1124" cy="146.0" r="3.4" fill="#E5534B" class="bead"/>
-<rect x="764" y="82" width="1.5" height="216" fill="#5AC8FA" opacity="0" class="sweep"/>
-<text x="762" y="80" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10" font-weight="400" fill="#6C8093" text-anchor="start">ci status</text>
-<circle cx="826" cy="76" r="3" fill="#46C46A"/>
-<text x="1126" y="80" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10" font-weight="400" fill="#6C8093" text-anchor="end">a real machine</text>
-<circle cx="1022" cy="76" r="3" fill="#E5534B"/>
-<text x="762" y="310" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10" font-weight="400" fill="#6C8093" text-anchor="start">the distance between these two is the work</text>
-<style>@keyframes flow{to{stroke-dashoffset:-18}}.flow{animation:flow 1.15s linear infinite}@keyframes bead{0%,100%{opacity:1;r:3.4}50%{opacity:.35;r:2.4}}.bead{animation:bead 2.6s ease-in-out infinite}@keyframes sweep{0%{opacity:0;transform:translateX(0)}10%{opacity:.5}90%{opacity:.5}100%{opacity:0;transform:translateX(358px)}.sweep{animation:sweep 5.4s linear 1s infinite}@media (prefers-reduced-motion:reduce){.flow,.bead,.sweep{animation:none}.sweep{opacity:0}}</style>
+<text x="40" y="78" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="40" font-weight="700" fill="#EDF3F8" text-anchor="start" letter-spacing="-1.8">Jinhui Chen</text>
+<text x="40" y="112" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="17" font-weight="500" fill="#EDF3F8" text-anchor="start" letter-spacing="-0.2">I fix the bugs CI cannot see.</text>
+<text x="40" y="144" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="12.5" fill="#93A7B7">Symlinks Git for Windows never checks out. A locale encoding that eats</text>
+<text x="40" y="164" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="12.5" fill="#93A7B7">the file you just wrote. ANSI colour a terminal silently drops.</text>
+<rect x="40" y="186" width="720" height="150" rx="10" fill="#151C23" stroke="#232E38"/>
+<line x1="41" y1="223.5" x2="759" y2="223.5" stroke="#1B242C" stroke-width="1"/>
+<line x1="41" y1="261.0" x2="759" y2="261.0" stroke="#1B242C" stroke-width="1"/>
+<line x1="41" y1="298.5" x2="759" y2="298.5" stroke="#1B242C" stroke-width="1"/>
+<line x1="120.0" y1="187" x2="120.0" y2="335" stroke="#1B242C" stroke-width="1"/>
+<line x1="200.0" y1="187" x2="200.0" y2="335" stroke="#1B242C" stroke-width="1"/>
+<line x1="280.0" y1="187" x2="280.0" y2="335" stroke="#1B242C" stroke-width="1"/>
+<line x1="360.0" y1="187" x2="360.0" y2="335" stroke="#1B242C" stroke-width="1"/>
+<line x1="440.0" y1="187" x2="440.0" y2="335" stroke="#1B242C" stroke-width="1"/>
+<line x1="520.0" y1="187" x2="520.0" y2="335" stroke="#1B242C" stroke-width="1"/>
+<line x1="600.0" y1="187" x2="600.0" y2="335" stroke="#1B242C" stroke-width="1"/>
+<line x1="680.0" y1="187" x2="680.0" y2="335" stroke="#1B242C" stroke-width="1"/>
+<path d="M62,245.0 C136,245.0 152,275.0 226,275.0 S308,249.0 384,249.0 S470,279.0 734,279.0" fill="none" stroke="#46C46A" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="5 4" stroke-dashoffset="0"/>
+<path d="M62,291.0 C132,291.0 150,251.0 220,251.0 S302,297.0 378,297.0 S464,233.0 734,233.0" fill="none" stroke="#E5534B" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="5 4" stroke-dashoffset="0"/>
+<circle cx="734" cy="279.0" r="3.4" fill="#46C46A"/>
+<circle cx="734" cy="233.0" r="3.4" fill="#E5534B"/>
+<rect x="62" y="216" width="1.5" height="90" fill="#5AC8FA" opacity="0"/>
+<text x="54" y="208" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10.5" font-weight="400" fill="#6C8093" text-anchor="start">ci status</text>
+<circle cx="118" cy="204" r="3" fill="#46C46A"/>
+<text x="746" y="208" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10.5" font-weight="400" fill="#6C8093" text-anchor="end">a real machine</text>
+<circle cx="644" cy="204" r="3" fill="#E5534B"/>
+<text x="54" y="324" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10.5" font-weight="400" fill="#6C8093" text-anchor="start">the distance between these two is the work</text>
+<line x1="40" y1="358" x2="760" y2="358" stroke="#232E38" stroke-width="1"/>
+<text x="40" y="380" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="12" font-weight="400" fill="#93A7B7" text-anchor="start">12 merged upstream · 27 repositories · 700 lines added across 36 files</text>
+<text x="40" y="404" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="12" font-weight="400" fill="#5AC8FA" text-anchor="start">Go gateways  ·  zero-dependency Python tooling  ·  LLM evaluation harnesses</text>
+<text x="40" y="428" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10.5" font-weight="400" fill="#6C8093" text-anchor="start">rendered 2026-10-27 from the GitHub API</text>
 </svg>
