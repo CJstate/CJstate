@@ -1,13 +1,22 @@
 #!/usr/bin/env python3
-"""Render the profile's metrics board SVGs from live GitHub data.
+"""Render every visual on this profile from live GitHub data.
 
-Everything shown is fetched at render time: merged/open PR counts via the
-search API, the contribution calendar via GraphQL. No third-party card
-services, no cached or invented numbers.
+No third-party card service is involved. The SVGs and the JSON that feeds
+them are regenerated straight from the GitHub REST and GraphQL APIs by
+.github/workflows/profile.yml, so when a number appears on this profile it
+came out of an API response on the run that drew it.
+
+Design rule for the motion: every element's *base* attribute is its final,
+fully-drawn state, and animation only replays an entrance on top of it. A
+renderer that ignores animation -- a screenshot, a sanitizer that drops
+<style>, an email client -- still shows a complete, correct picture. The
+inverse (base at zero, real value only in the keyframe) fails to a blank
+image, which is how most generated README art quietly breaks.
 
 Usage:
-    python tools/render_profile.py            # writes docs/metrics-*.svg
-    python tools/render_profile.py --out DIR  # override output directory
+    python tools/render_profile.py                  # fetch and write docs/
+    python tools/render_profile.py --from FILE      # render a saved payload
+    python tools/render_profile.py --out DIR
 """
 
 from __future__ import annotations
@@ -17,224 +26,523 @@ import datetime as dt
 import json
 import subprocess
 import sys
+import urllib.parse
+from collections import OrderedDict
 from pathlib import Path
 
-# ---------------------------------------------------------------- fetching
+USER = "CJstate"
+
+# ------------------------------------------------------------------ palettes
+# Two independently tuned sets. The light board is not the dark board with
+# the channels inverted: a #3FB950 that reads as "merged" on graphite turns
+# to mush on paper, and #5AC8FA disappears entirely.
+
+PALETTES = {
+    "dark": {
+        "bg": "#0E1318",
+        "panel": "#151C23",
+        "line": "#232E38",
+        "ink": "#EDF3F8",
+        "body": "#93A7B7",
+        "muted": "#6C8093",
+        "faint": "#3D4A57",
+        "accent": "#5AC8FA",
+        "merged": "#46C46A",
+        "pending": "#E8B93F",
+        "grid": "#1B242C",
+    },
+    "light": {
+        "bg": "#FCFCFB",
+        "panel": "#F4F6F7",
+        "line": "#DFE4E8",
+        "ink": "#0E1318",
+        "body": "#41535F",
+        "muted": "#6C8093",
+        "faint": "#AFBAC2",
+        "accent": "#0A7196",
+        "merged": "#17753A",
+        "pending": "#8A5D00",
+        "grid": "#EDF0F2",
+    },
+}
+
+MONO = "ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace"
+SANS = "-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif"
+
+
+# ------------------------------------------------------------------ fetching
 
 
 def gh(*args: str) -> str:
-    # encoding="utf-8" on purpose: gh emits UTF-8 regardless of the system
-    # locale, and the default on Windows (cp936) dies on PR titles that are
-    # not GBK — the exact bug class this profile talks about.
-    out = subprocess.run(
-        ["gh", *args],
-        capture_output=True,
-        text=True,
-        check=True,
-        encoding="utf-8",
+    # encoding="utf-8" is load-bearing, not habit: gh emits UTF-8 whatever
+    # the system locale says, and this machine's default (cp936) raises on
+    # any title that is not GBK-representable.
+    proc = subprocess.run(
+        ["gh", *args], capture_output=True, text=True, encoding="utf-8"
     )
-    return out.stdout
+    if proc.returncode != 0:
+        sys.stderr.write(proc.stderr)
+        raise SystemExit(f"gh {' '.join(args)} failed")
+    return proc.stdout
 
 
-def fetch_pr_stats() -> dict:
-    """Merged/open PR counts, distinct repos touched, first merge date."""
-    q_merged = "author:CJstate type:pr is:merged"
-    q_open = "author:CJstate type:pr is:open is:public"
-    merged = json.loads(
-        gh("api", f"search/issues?q={q_merged}&per_page=100")
+def gh_json(*args: str):
+    return json.loads(gh(*args))
+
+
+CALENDAR_QUERY = """
+query($login: String!) {
+  user(login: $login) {
+    contributionsCollection {
+      totalCommitContributions
+      totalPullRequestContributions
+      totalIssueContributions
+      contributionCalendar {
+        totalContributions
+        weeks { contributionDays { date contributionCount } }
+      }
+    }
+  }
+}
+"""
+
+
+def search(query: str) -> dict:
+    return gh_json("api", f"search/issues?q={urllib.parse.quote(query)}&per_page=100")
+
+
+def repo_of(item: dict) -> str:
+    return item["repository_url"].split("/repos/", 1)[-1]
+
+
+def monthly(days: list[dict]) -> list[dict]:
+    """Fold the contribution calendar into trailing calendar months."""
+    buckets: "OrderedDict[str, int]" = OrderedDict()
+    for day in days:
+        buckets[day["d"][:7]] = buckets.get(day["d"][:7], 0) + day["c"]
+    return [{"m": k, "c": buckets[k]} for k in list(buckets)[-12:]]
+
+
+def fetch() -> dict:
+    merged_items = search(f"author:{USER} type:pr is:merged").get("items", [])
+    open_items = search(f"author:{USER} type:pr is:open").get("items", [])
+
+    prs = []
+    for item in merged_items:
+        repo = repo_of(item)
+        num = item["number"]
+        detail = gh_json("api", f"repos/{repo}/pulls/{num}")
+        prs.append(
+            {
+                "repo": repo,
+                "number": num,
+                "title": item["title"],
+                "merged_at": (detail.get("merged_at") or "")[:10],
+                "additions": detail.get("additions", 0),
+                "deletions": detail.get("deletions", 0),
+                "changed_files": detail.get("changed_files", 0),
+                "url": item["html_url"],
+            }
+        )
+    prs.sort(key=lambda p: p["merged_at"], reverse=True)
+
+    open_by_repo: "OrderedDict[str, int]" = OrderedDict()
+    for item in sorted(open_items, key=repo_of):
+        repo = repo_of(item)
+        open_by_repo[repo] = open_by_repo.get(repo, 0) + 1
+
+    repos = sorted({p["repo"] for p in prs} | set(open_by_repo))
+
+    cal = gh_json(
+        "api", "graphql", "-f", f"query={CALENDAR_QUERY}", "-f", f"login={USER}"
     )
-    opened = json.loads(gh("api", f"search/issues?q={q_open}&per_page=100"))
-    repos = sorted(
-        {item["repository_url"].rsplit("/", 2)[-2:] and item["repository_url"].split("/repos/")[-1]
-         for item in merged.get("items", [])}
-        | {item["repository_url"].split("/repos/")[-1]
-           for item in opened.get("items", [])}
-    )
-    merge_dates = [
-        item["closed_at"][:10]
-        for item in merged.get("items", [])
-        if item.get("closed_at")
+    collection = cal["data"]["user"]["contributionsCollection"]
+    calendar = collection["contributionCalendar"]
+    days = [
+        {"d": day["date"], "c": day["contributionCount"]}
+        for week in calendar["weeks"]
+        for day in week["contributionDays"]
     ]
+
+    own = gh_json("api", f"users/{USER}/repos?per_page=100&sort=pushed")
+    originals = [
+        {
+            "name": r["name"],
+            "description": r.get("description") or "",
+            "language": r.get("language") or "",
+            "url": r["html_url"],
+            "topics": r.get("topics", []),
+            "pushed_at": (r.get("pushed_at") or "")[:10],
+        }
+        for r in own
+        if not r["fork"] and r["name"] != USER
+    ]
+
     return {
-        "merged": merged.get("total_count", 0),
-        "open": opened.get("total_count", 0),
-        "repos": len(repos),
-        "first_merge": min(merge_dates) if merge_dates else None,
+        "generated": dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "stats": {
+            "merged": len(prs),
+            "open": len(open_items),
+            "repos": len(repos),
+            "commits": collection["totalCommitContributions"],
+            "contributions": calendar["totalContributions"],
+            "originals": len(originals),
+            "additions": sum(p["additions"] for p in prs),
+            "deletions": sum(p["deletions"] for p in prs),
+            "files": sum(p["changed_files"] for p in prs),
+        },
+        "merged_prs": prs,
+        "open_by_repo": open_by_repo,
+        "calendar": days,
+        "monthly": monthly(days),
+        "originals": originals,
     }
 
 
-def fetch_calendar(user: str = "CJstate") -> list[tuple[str, int]]:
-    """365 days of contributions, oldest first."""
-    q = """
-    query($login: String!) {
-      user(login: $login) {
-        contributionsCollection {
-          contributionCalendar {
-            weeks { contributionDays { date contributionCount } }
-          }
-        }
-      }
-    }"""
-    raw = gh("api", "graphql", "-f", f"query={q}", "-f", f"login={user}")
-    data = json.loads(raw)
-    weeks = data["data"]["user"]["contributionsCollection"]["contributionCalendar"]["weeks"]
-    days = [(d["date"], d["contributionCount"]) for w in weeks for d in w["contributionDays"]]
-    return days[-371:]  # full grid worth (~53 weeks)
+# --------------------------------------------------------------------- svg io
 
 
-# ---------------------------------------------------------------- svg bits
+def esc(text: str) -> str:
+    return (
+        text.replace("&", "&amp;")
+        .replace("<", "&lt;")
+        .replace(">", "&gt;")
+        .replace('"', "&quot;")
+    )
 
 
-def fmt(n: int) -> str:
-    return f"{n:,}"
+def clip(text: str, limit: int) -> str:
+    return text if len(text) <= limit else text[: limit - 1].rstrip() + "\u2026"
 
 
-def esc(s: str) -> str:
-    return s.replace("&", "&").replace("<", "<").replace(">", ">")
+class Canvas:
+    """Collects SVG parts while resolving palette tokens at emit time."""
 
+    def __init__(self, palette: dict, width: int, height: int, radius: int = 16):
+        self.p = palette
+        self.w = width
+        self.h = height
+        self.parts: list[str] = [
+            f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" '
+            f'height="{height}" viewBox="0 0 {width} {height}" '
+            f'font-family="{MONO}" role="img">',
+            f'<rect width="{width}" height="{height}" rx="{radius}" fill="{palette["bg"]}"/>',
+            f'<rect x=".5" y=".5" width="{width - 1}" height="{height - 1}" '
+            f'rx="{radius}" fill="none" stroke="{palette["line"]}"/>',
+        ]
 
-LEVELS = {
-    "dark": ["#151c2e", "#16385c", "#1e5c8c", "#2b8fb3", "#3fd0b0"],
-    "light": ["#ebedf0", "#9be9a8", "#40c463", "#30a14e", "#216e39"],
-}
+    def add(self, markup: str) -> None:
+        self.parts.append(markup)
 
+    def text(
+        self,
+        x: float,
+        y: float,
+        body: str,
+        size: float = 13,
+        colour: str = "body",
+        weight: int = 400,
+        family: str | None = None,
+        anchor: str = "start",
+        tracking: float | None = None,
+        opacity: float | None = None,
+    ) -> None:
+        attrs = [
+            f'x="{x:g}"',
+            f'y="{y:g}"',
+            f'font-family="{family or MONO}"',
+            f'font-size="{size:g}"',
+            f'font-weight="{weight}"',
+            f'fill="{self.p[colour]}"',
+            f'text-anchor="{anchor}"',
+        ]
+        if tracking is not None:
+            attrs.append(f'letter-spacing="{tracking:g}"')
+        if opacity is not None:
+            attrs.append(f'opacity="{opacity:g}"')
+        self.add(f"<text {' '.join(attrs)}>{esc(body)}</text>")
 
-def heat_color(count: int, theme: str) -> str:
-    lv = LEVELS[theme]
-    if count <= 0:
-        return lv[0]
-    if count <= 2:
-        return lv[1]
-    if count <= 5:
-        return lv[2]
-    if count <= 9:
-        return lv[3]
-    return lv[4]
-
-
-def render_metrics(stats: dict, days: list[tuple[str, int]], theme: str) -> str:
-    dark = theme == "dark"
-    bg0, bg1 = ("#0a0f1c", "#0e1830") if dark else ("#ffffff", "#f6f8fa")
-    ink = "#e8eefc" if dark else "#1f2328"
-    mut = "#8ea0c0" if dark else "#656d76"
-    grid = "#1c2740" if dark else "#d7dde4"
-    accent0, accent1 = "#6ea8fe", "#3fd0b0"
-
-    # heatmap geometry: weeks x 7, cell 11px, gap 3
-    cell, gap = 11, 3
-    weeks = (len(days) + 6) // 7
-    heat_w = weeks * (cell + gap)
-    x0, y0 = 80, 190
-
-    cells = []
-    for i, (day, count) in enumerate(days):
-        wk, dow = divmod(i, 7)
-        x = x0 + wk * (cell + gap)
-        y = y0 + dow * (cell + gap)
-        cells.append(
-            f'<rect x="{x}" y="{y}" width="{cell}" height="{cell}" rx="2.5" fill="{heat_color(count, theme)}"/>'
+    def rule(self, x1, y, x2, colour="line", width=1, dash=None) -> None:
+        extra = f' stroke-dasharray="{dash}"' if dash else ""
+        self.add(
+            f'<line x1="{x1:g}" y1="{y:g}" x2="{x2:g}" y2="{y:g}" '
+            f'stroke="{self.p[colour]}" stroke-width="{width:g}"{extra}/>'
         )
-    heat = "\n      ".join(cells)
 
-    total_year = sum(c for _, c in days)
-    first_merge = stats.get("first_merge")
-    first_merge_txt = f"first upstream merge · {first_merge}" if first_merge else "upstream contributor"
+    def style(self, css: str) -> None:
+        self.add(f"<style>{css}</style>")
 
-    # ---- monthly activity bars (the "Activity overview" strip) ----
-    # aggregate the rolling 12 months by calendar month
-    monthly: dict[str, int] = {}
-    for day, count in days:
-        monthly[day[:7]] = monthly.get(day[:7], 0) + count
-    months = sorted(monthly)[-6:]
-    bw_, bgap_ = 72, 34
-    bar_x0, base_y, max_h = 80, 236, 62
-    peak = max(monthly.values()) or 1
-    bars = []
-    for i, m in enumerate(months):
-        h = max(3, round(monthly[m] / peak * max_h))
-        x = bar_x0 + i * (bw_ + bgap_)
-        # bars grow from the baseline, staggered left-to-right
-        val_label = (
-            f'''
-    <text x="{x + bw_ / 2}" y="{base_y - h - 6}" text-anchor="middle" font-family="'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" fill="{ink}" opacity="0.85">{monthly[m]}</text>'''
-            if monthly[m] > 0
-            else ""
-        )
-        bars.append(
-            f'''
-    <rect x="{x}" y="{base_y - h}" width="{bw_}" height="{h}" rx="4" fill="url(#bar{i % 2})">
-      <animate attributeName="height" from="0" to="{h}" dur="0.5s" begin="{0.12 * i}s" fill="freeze"/>
-      <animate attributeName="y" from="{base_y}" to="{base_y - h}" dur="0.5s" begin="{0.12 * i}s" fill="freeze"/>
-    </rect>
-    <text x="{x + bw_ / 2}" y="{base_y + 16}" text-anchor="middle" font-family="'Segoe UI',Helvetica,Arial,sans-serif" font-size="10.5" fill="{mut}">{m[5:]}</text>{val_label}'''
-        )
-    bars_svg = "".join(bars)
+    def finish(self) -> str:
+        self.parts.append("</svg>")
+        return "\n".join(self.parts)
 
-    blocks = [
-        (fmt(stats["merged"]), "PRs merged upstream"),
-        (fmt(stats["open"]), "PRs in review"),
-        (fmt(stats["repos"]), "repositories touched"),
-        (fmt(total_year), "contributions · 12 mo"),
+
+def stagger(count: int, step: float = 0.055, base: float = 0.1) -> str:
+    return "".join(f".i{n}{{animation-delay:{base + n * step:.3f}s}}" for n in range(count))
+
+
+# ------------------------------------------------------------------- the hero
+
+
+def render_hero(scheme: str, data: dict, motion: bool = True) -> str:
+    p = PALETTES[scheme]
+    stats = data["stats"]
+    c = Canvas(p, 1200, 380)
+    cls = (lambda name: f' class="{name}"') if motion else (lambda name: "")
+
+    c.add(
+        '<title>Jinhui Chen - upstream contributions, rendered from the GitHub API</title>'
+    )
+
+    # ---- identity, left
+    c.text(56, 104, "Jinhui Chen", 54, "ink", 700, SANS, tracking=-2.4)
+    c.text(56, 148, "I fix the bugs CI cannot see.", 21, "ink", 500, SANS, tracking=-0.3)
+
+    thesis = [
+        "Symlinks Git for Windows never checks out. A locale encoding that eats",
+        "the file you just wrote. ANSI colour a terminal silently drops.",
     ]
-    bx, bw, bgap = 80, 236, 24
-    stat_svg = []
-    for i, (val, label) in enumerate(blocks):
-        x = bx + i * (bw + bgap)
-        stat_svg.append(
-            f'''
-    <text x="{x}" y="118" font-family="'Segoe UI',Helvetica,Arial,sans-serif" font-size="42" font-weight="700" fill="{accent0 if i % 2 == 0 else accent1}">{esc(val)}</text>
-    <text x="{x}" y="146" font-family="'Segoe UI',Helvetica,Arial,sans-serif" font-size="13.5" letter-spacing="0.6" fill="{mut}">{esc(label.upper())}</text>'''
+    for i, line in enumerate(thesis):
+        c.add(
+            f'<text x="56" y="{184 + i * 21}" font-family="{SANS}" font-size="13.5" '
+            f'fill="{p["body"]}">{esc(line)}</text>'
         )
-    stats_svg = "\n   ".join(stat_svg)
 
-    return f'''<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="332" viewBox="0 0 1200 332" role="img" aria-label="Contribution metrics">
-  <defs>
-    <linearGradient id="mbg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="{bg0}"/><stop offset="1" stop-color="{bg1}"/>
-    </linearGradient>
-    <linearGradient id="mrule" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0" stop-color="{accent0}"/><stop offset="0.5" stop-color="{accent1}"/><stop offset="1" stop-color="{accent1}" stop-opacity="0"/>
-    </linearGradient>
-    <linearGradient id="bar0" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="{accent0}"/><stop offset="1" stop-color="{accent0}" stop-opacity="0.35"/>
-    </linearGradient>
-    <linearGradient id="bar1" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="{accent1}"/><stop offset="1" stop-color="{accent1}" stop-opacity="0.35"/>
-    </linearGradient>
-  </defs>
-  <rect width="1200" height="332" fill="url(#mbg)" rx="14"/>
-  <rect x="80" y="42" width="46" height="4" rx="2" fill="url(#mrule)"/>
-  <text x="80" y="70" font-family="'Segoe UI',Helvetica,Arial,sans-serif" font-size="14" letter-spacing="2" fill="{mut}">UPSTREAM ACTIVITY · ROLLING 12 MONTHS</text>
-   {stats_svg}
-  <line x1="80" y1="160" x2="1120" y2="160" stroke="{grid}" stroke-width="1"/>
-  <text x="80" y="184" font-family="'Segoe UI',Helvetica,Arial,sans-serif" font-size="11.5" letter-spacing="1.6" fill="{mut}">ACTIVITY OVERVIEW · MONTHLY CONTRIBUTIONS</text>{bars_svg}
-  <text x="1120" y="300" text-anchor="end" font-family="'Segoe UI',Helvetica,Arial,sans-serif" font-size="13" fill="{mut}">generated from the GitHub API · no manual numbers · {esc(first_merge_txt)}</text>
-</svg>
-'''
+    c.text(56, 246, "Go gateways", 12.5, "accent")
+    c.text(56, 266, "zero-dependency Python tooling", 12.5, "accent")
+    c.text(56, 286, "LLM evaluation harnesses", 12.5, "accent")
+
+    # ---- the receipts, bottom-left, small and unembellished
+    c.rule(56, 312, 660)
+    c.text(
+        56,
+        336,
+        f'{stats["merged"]} merged upstream \u00b7 {stats["repos"]} repositories '
+        f'\u00b7 {stats["additions"]} lines added across {stats["files"]} files',
+        12,
+        "body",
+    )
+    c.text(56, 356, f'rendered {data["generated"][:10]} from the GitHub API', 10.5, "muted")
+
+    # ---- oscilloscope, right
+    px, py, pw, ph = 744, 56, 400, 268
+    c.add(
+        f'<rect x="{px}" y="{py}" width="{pw}" height="{ph}" rx="10" '
+        f'fill="{p["panel"]}" stroke="{p["line"]}"/>'
+    )
+    for i in range(1, 5):
+        gy = py + (ph / 5) * i
+        c.add(
+            f'<line x1="{px + 1}" y1="{gy:.1f}" x2="{px + pw - 1}" y2="{gy:.1f}" '
+            f'stroke="{p["grid"]}" stroke-width="1"/>'
+        )
+    for i in range(1, 7):
+        gx = px + (pw / 7) * i
+        c.add(
+            f'<line x1="{gx:.1f}" y1="{py + 1}" x2="{gx:.1f}" y2="{py + ph - 1}" '
+            f'stroke="{p["grid"]}" stroke-width="1"/>'
+        )
+
+    mid = py + ph / 2
+
+    # Green: the shape CI reports. Red: the shape a user reports. They never
+    # agree, and the distance between them is the job.
+    green = (
+        f"M{px + 20},{mid - 30} "
+        f"C{px + 78},{mid - 30} {px + 90},{mid + 10} {px + 146},{mid + 10} "
+        f"S{px + 214},{mid - 24} {px + 272},{mid - 24} "
+        f"S{px + 336},{mid + 14} {px + pw - 20},{mid + 14}"
+    )
+    red = (
+        f"M{px + 20},{mid + 30} "
+        f"C{px + 72},{mid + 30} {px + 86},{mid - 20} {px + 140},{mid - 20} "
+        f"S{px + 206},{mid + 40} {px + 264},{mid + 40} "
+        f"S{px + 330},{mid - 44} {px + pw - 20},{mid - 44}"
+    )
+    for path, colour in ((green, "merged"), (red, "#E5534B")):
+        stroke = p[colour] if colour in p else colour
+        c.add(
+            f'<path d="{path}" fill="none" stroke="{stroke}" stroke-width="1.9" '
+            f'stroke-linecap="round" stroke-linejoin="round" '
+            f'stroke-dasharray="5 4" stroke-dashoffset="0"{cls("flow")}/>'
+        )
+
+    # Endpoint beads on each trace: the CI dot is steady, the user dot
+    # breathes, because the second one is the one that keeps changing.
+    c.add(f'<circle cx="{px + pw - 20}" cy="{mid + 14}" r="3.4" fill="{p["merged"]}"/>')
+    c.add(
+        f'<circle cx="{px + pw - 20}" cy="{mid - 44}" r="3.4" fill="#E5534B"{cls("bead")}/>'
+    )
+
+    # The sweep is pure ornament on top of a complete picture, so it is the
+    # one thing allowed to start at opacity 0.
+    c.add(
+        f'<rect x="{px + 20}" y="{py + 26}" width="1.5" height="{ph - 52}" '
+        f'fill="{p["accent"]}" opacity="0"{cls("sweep")}/>'
+    )
+
+    c.text(px + 18, py + 24, "ci status", 10, "muted")
+    c.add(f'<circle cx="{px + 82}" cy="{py + 20}" r="3" fill="{p["merged"]}"/>')
+    c.text(px + pw - 18, py + 24, "a real machine", 10, "muted", anchor="end")
+    c.add(f'<circle cx="{px + pw - 122}" cy="{py + 20}" r="3" fill="#E5534B"/>')
+    c.text(px + 18, py + ph - 14, "the distance between these two is the work", 10, "muted")
+
+    if motion:
+        c.style(
+            "@keyframes flow{to{stroke-dashoffset:-18}}"
+            ".flow{animation:flow 1.15s linear infinite}"
+            "@keyframes bead{0%,100%{opacity:1;r:3.4}50%{opacity:.35;r:2.4}}"
+            ".bead{animation:bead 2.6s ease-in-out infinite}"
+            "@keyframes sweep{0%{opacity:0;transform:translateX(0)}"
+            "10%{opacity:.5}90%{opacity:.5}100%{opacity:0;"
+            f"transform:translateX({pw - 42}px)}}"
+            f".sweep{{animation:sweep 5.4s linear 1s infinite}}"
+            "@media (prefers-reduced-motion:reduce){"
+            ".flow,.bead,.sweep{animation:none}.sweep{opacity:0}}"
+        )
+    return c.finish()
+
+
+# ---------------------------------------------------------- the metrics board
+
+
+def render_metrics(scheme: str, data: dict, motion: bool = True) -> str:
+    """The activity ledger: every merged pull request, one row each.
+
+    Deliberately not a bar chart. The trailing year has eight empty months
+    and a burst at the end, so a monthly histogram spends two thirds of its
+    ink saying "nothing happened" -- an honest chart that argues against
+    itself. The rows below are the same data stated as evidence: what landed
+    where, and how much of it.
+    """
+    p = PALETTES[scheme]
+    stats = data["stats"]
+    prs = data["merged_prs"]
+    c = Canvas(p, 1200, 392)
+    cls = (lambda name: f' class="{name}"') if motion else (lambda name: "")
+
+    c.add(
+        "<title>Merged upstream contributions, rendered from the GitHub API</title>"
+    )
+
+    # ---- right rail: the four totals, stacked
+    rail_x = 846
+    c.add(
+        f'<line x1="{rail_x - 34}" y1="56" x2="{rail_x - 34}" y2="336" '
+        f'stroke="{p["line"]}"/>'
+    )
+    figures = [
+        (str(stats["merged"]), "merged upstream", "merged"),
+        (str(stats["additions"]), "lines added", "ink"),
+        (str(stats["files"]), "files touched", "ink"),
+        (str(stats["repos"]), "repositories", "accent"),
+    ]
+    for i, (value, label, colour) in enumerate(figures):
+        y = 104 + i * 72
+        c.text(rail_x, y, value, 40, colour, 700, tracking=-1.8)
+        c.text(rail_x, y + 22, label, 11.5, "body")
+        if i:
+            c.add(
+                f'<line x1="{rail_x}" y1="{y - 42}" x2="1156" y2="{y - 42}" '
+                f'stroke="{p["grid"]}"/>'
+            )
+
+    # ---- left: the ledger itself
+    c.text(44, 40, "merged upstream", 11, "muted")
+    c.text(720, 40, "lines", 10.5, "muted", anchor="end")
+    c.text(800, 40, "merged", 10.5, "muted", anchor="end")
+    c.rule(44, 52, rail_x - 34)
+
+    row_h = 23
+    for i, pr in enumerate(prs[:12]):
+        y = 76 + i * row_h
+        base = y - 4
+        # the dot: merged, so it is green and it stays green
+        c.add(
+            f'<circle cx="48" cy="{base}" r="2.6" fill="{p["merged"]}" '
+            f'opacity="{1 - i * 0.055:.2f}"/>'
+        )
+        c.text(60, y, f'{pr["repo"]}', 11, "ink")
+        c.text(
+            60 + 7.05 * len(pr["repo"]) + 8, y, f'#{pr["number"]}', 11, "muted"
+        )
+        c.text(720, y, f'+{pr["additions"]}', 10.5, "merged", anchor="end")
+        c.text(800, y, pr["merged_at"][5:], 10, "faint", anchor="end")
+
+    c.rule(44, 356, rail_x - 34)
+    c.text(
+        44,
+        374,
+        f'{stats["merged"]} merged across {stats["repos"]} repositories '
+        f'\u00b7 {stats["open"]} still in review \u00b7 {stats["commits"]} commits in the last year',
+        10.5,
+        "muted",
+    )
+    c.text(
+        1156, 374, f'rendered {data["generated"][:10]} from the GitHub API',
+        10.5, "muted", anchor="end",
+    )
+
+    if motion:
+        # A pulse runs down the ledger's leading edge: it reads as a status
+        # light and costs one element. Everything above is already complete
+        # without it.
+        c.add(
+            f'<rect x="46" y="64" width="4" height="4" rx="2" fill="{p["merged"]}" '
+            f'opacity="0"{cls("pulse")}/>'
+        )
+        c.style(
+            "@keyframes pulse{0%{opacity:0;transform:translateY(0)}"
+            "10%{opacity:.9}90%{opacity:.9}100%{opacity:0;"
+            f"transform:translateY({row_h * 11}px)}}"
+            f".pulse{{animation:pulse 7s cubic-bezier(.45,0,.55,1) .8s infinite}}"
+            "@media (prefers-reduced-motion:reduce){.pulse{animation:none}}"
+        )
+    return c.finish()
+
+
+# ---------------------------------------------------------------------- main
 
 
 def main() -> None:
-    ap = argparse.ArgumentParser()
-    ap.add_argument("--out", default="docs")
-    ap.add_argument("--user", default="CJstate")
-    args = ap.parse_args()
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--out", default="docs")
+    parser.add_argument(
+        "--from", dest="source", default=None,
+        help="render from a saved payload instead of calling the API",
+    )
+    parser.add_argument(
+        "--static", action="store_true",
+        help="omit animation so the output can be checked as a still image",
+    )
+    args = parser.parse_args()
 
     out = Path(args.out)
-    out.mkdir(parents=True, exist_ok=True)
+    (out / "data").mkdir(parents=True, exist_ok=True)
 
-    stats = fetch_pr_stats()
-    days = fetch_calendar(args.user)
-    for theme in ("dark", "light"):
-        svg = render_metrics(stats, days, theme)
-        path = out / f"metrics-{theme}.svg"
-        path.write_text(svg, encoding="utf-8")
-        print(f"wrote {path} ({len(svg)} bytes)")
-    print("stats:", json.dumps(stats, ensure_ascii=False))
+    if args.source:
+        data = json.loads(Path(args.source).read_text(encoding="utf-8"))
+    else:
+        data = fetch()
+
+    motion = not args.static
+    (out / "data" / "live.json").write_text(
+        json.dumps(data, ensure_ascii=False, indent=1), encoding="utf-8"
+    )
+    for scheme in ("dark", "light"):
+        (out / f"hero-{scheme}.svg").write_text(
+            render_hero(scheme, data, motion), encoding="utf-8"
+        )
+        (out / f"metrics-{scheme}.svg").write_text(
+            render_metrics(scheme, data, motion), encoding="utf-8"
+        )
+
+    s = data["stats"]
+    print(
+        f"rendered: {s['merged']} merged, {s['open']} open, {s['repos']} repos, "
+        f"{s['commits']} commits, {s['additions']} lines added"
+    )
 
 
 if __name__ == "__main__":
-    try:
-        main()
-    except subprocess.CalledProcessError as e:
-        print("gh failed:", e.stderr, file=sys.stderr)
-        sys.exit(1)
+    main()

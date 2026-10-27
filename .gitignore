@@ -1,0 +1,5 @@
+# Chrome screenshots I use to review the SVGs; not part of the published page.
+preview/
+
+__pycache__/
+*.pyc
