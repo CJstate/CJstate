@@ -78,6 +78,8 @@
 <text x="580" y="414" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="34" font-weight="700" fill="#0A7196" text-anchor="start" letter-spacing="-1.4">27</text>
 <text x="580" y="436" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11" font-weight="400" fill="#41535F" text-anchor="start">repositories</text>
 <line x1="560" y1="384" x2="560" y2="442" stroke="#DFE4E8"/>
-<text x="40" y="462" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10.5" font-weight="400" fill="#6C8093" text-anchor="start">38 still in review · 79 commits in the last year</text>
+<text x="40" y="462" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10.5" font-weight="400" fill="#6C8093" text-anchor="start">38 still in review · 80 commits in the last year</text>
 <text x="760" y="462" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10.5" font-weight="400" fill="#6C8093" text-anchor="end">rendered 2026-10-27 from the GitHub API</text>
+<rect x="42" y="62" width="4" height="4" rx="2" fill="#17753A" opacity="0" class="pulse"/>
+<style>@keyframes pulse{0%{opacity:0;transform:translateY(0)}10%{opacity:.9}90%{opacity:.9}100%{opacity:0;transform:translateY(264px)}.pulse{animation:pulse 7s cubic-bezier(.45,0,.55,1) .8s infinite}@media (prefers-reduced-motion:reduce){.pulse{animation:none}}</style>
 </svg>
