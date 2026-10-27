@@ -1,11 +1,11 @@
 {
- "generated": "2026-10-27T12:18:37Z",
+ "generated": "2026-10-27T12:27:30Z",
  "stats": {
   "merged": 12,
   "open": 38,
   "repos": 27,
-  "commits": 78,
-  "contributions": 226,
+  "commits": 79,
+  "contributions": 227,
   "originals": 2,
   "additions": 700,
   "deletions": 60,
@@ -14,7 +14,6 @@
  "merged_prs": [
   {
    "repo": "Mihirajmera/agent-access-review",
-   "owner": "Mihirajmera",
    "number": 20,
    "title": "feat(catalog): classify sqlite, brave-search and gdrive MCP servers",
    "merged_at": "2026-10-24",
@@ -25,7 +24,6 @@
   },
   {
    "repo": "Mihirajmera/agent-access-review",
-   "owner": "Mihirajmera",
    "number": 19,
    "title": "feat: add --format json to scan for machine-readable findings",
    "merged_at": "2026-10-24",
@@ -36,7 +34,6 @@
   },
   {
    "repo": "pranshuparmar/witr",
-   "owner": "pranshuparmar",
    "number": 245,
    "title": "test(proc): make TestDetectGitInfo hermetic against repos above the temp dir",
    "merged_at": "2026-10-19",
@@ -47,7 +44,6 @@
   },
   {
    "repo": "syncronix-labs/aegora",
-   "owner": "syncronix-labs",
    "number": 19,
    "title": "feat(cmd): add --version flag",
    "merged_at": "2026-10-18",
@@ -58,7 +54,6 @@
   },
   {
    "repo": "bmf-san/ggc",
-   "owner": "bmf-san",
    "number": 542,
    "title": "test: make config and cmd tests pass on Windows",
    "merged_at": "2026-10-16",
@@ -69,7 +64,6 @@
   },
   {
    "repo": "bmf-san/ggc",
-   "owner": "bmf-san",
    "number": 541,
    "title": "test: replace Unix-only exec mocks in git tests with a helper process",
    "merged_at": "2026-10-16",
@@ -80,7 +74,6 @@
   },
   {
    "repo": "bmf-san/ggc",
-   "owner": "bmf-san",
    "number": 540,
    "title": "test: make config, interactive and history tests pass on Windows",
    "merged_at": "2026-10-14",
@@ -91,7 +84,6 @@
   },
   {
    "repo": "k8sgpt-ai/k8sgpt-operator",
-   "owner": "k8sgpt-ai",
    "number": 855,
    "title": "feat: add tolerations support",
    "merged_at": "2026-10-10",
@@ -102,7 +94,6 @@
   },
   {
    "repo": "pranshuparmar/witr",
-   "owner": "pranshuparmar",
    "number": 242,
    "title": "fix(build): replace the symlinked root main.go with a real entry point",
    "merged_at": "2026-10-04",
@@ -113,7 +104,6 @@
   },
   {
    "repo": "pranshuparmar/witr",
-   "owner": "pranshuparmar",
    "number": 239,
    "title": "fix(output): keep colors on terminals without bright ANSI support",
    "merged_at": "2026-10-03",
@@ -124,7 +114,6 @@
   },
   {
    "repo": "nvm-sh/nvm",
-   "owner": "nvm-sh",
    "number": 3915,
    "title": "[Fix] `nvm --help`: render the set-colors legend in color",
    "merged_at": "2026-09-03",
@@ -135,7 +124,6 @@
   },
   {
    "repo": "DependencyTrack/dependency-track",
-   "owner": "DependencyTrack",
    "number": 7096,
    "title": "docs: point README CI badges at main branch",
    "merged_at": "2026-08-24",
@@ -1635,7 +1623,7 @@
   },
   {
    "d": "2026-10-27",
-   "c": 1
+   "c": 2
   }
  ],
  "monthly": [
@@ -1685,7 +1673,7 @@
   },
   {
    "m": "2026-10",
-   "c": 125
+   "c": 126
   }
  ],
  "originals": [
