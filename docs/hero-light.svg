@@ -31,6 +31,6 @@
 <line x1="40" y1="358" x2="760" y2="358" stroke="#DFE4E8" stroke-width="1"/>
 <text x="40" y="380" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="12" font-weight="400" fill="#41535F" text-anchor="start">12 merged upstream · 27 repositories · 700 lines added across 36 files</text>
 <text x="40" y="404" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="12" font-weight="400" fill="#0A7196" text-anchor="start">Go gateways  ·  zero-dependency Python tooling  ·  LLM evaluation harnesses</text>
-<text x="40" y="428" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10.5" font-weight="400" fill="#6C8093" text-anchor="start">rendered 2026-10-27 from the GitHub API</text>
+<text x="40" y="428" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10.5" font-weight="400" fill="#6C8093" text-anchor="start">rendered 2026-10-28 from the GitHub API</text>
 <style>@keyframes flow{to{stroke-dashoffset:-18}}.flow{animation:flow 1.15s linear infinite}@keyframes bead{0%,100%{opacity:1;r:3.4}50%{opacity:.35;r:2.4}}.bead{animation:bead 2.6s ease-in-out infinite}@keyframes sweep{0%{opacity:0;transform:translateX(0)}10%{opacity:.5}90%{opacity:.5}100%{opacity:0;transform:translateX(672px)}.sweep{animation:sweep 5.4s linear 1s infinite}@media (prefers-reduced-motion:reduce){.flow,.bead,.sweep{animation:none}.sweep{opacity:0}}</style>
 </svg>
