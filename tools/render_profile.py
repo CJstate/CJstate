@@ -23,6 +23,7 @@ from __future__ import annotations
 import argparse
 import datetime as dt
 import json
+import math
 import subprocess
 import sys
 import urllib.parse
@@ -52,7 +53,7 @@ PALETTES = {
         "hot": "#E5534B",
     },
     "light": {
-        "bg": "#FCFCFB",
+        "bg": "#FFFFFF",
         "panel": "#F3F6F7",
         "line": "#DDE3E7",
         "ink": "#0D1117",
@@ -114,6 +115,19 @@ def repo_of(item: dict) -> str:
     return item["repository_url"].split("/repos/", 1)[-1]
 
 
+def count_files(full_name: str, branch: str) -> int:
+    """How many files are actually in the repository.
+
+    A star count on a two-week-old repository is a score of zero; the size of
+    the thing is a fact. The tree endpoint returns every path in one call.
+    """
+    try:
+        tree = gh_json("api", f"repos/{full_name}/git/trees/{branch}?recursive=1")
+    except Exception:
+        return 0
+    return sum(1 for node in tree.get("tree", []) if node.get("type") == "blob")
+
+
 def fetch() -> dict:
     merged_items = search(f"author:{USER} type:pr is:merged").get("items", [])
     open_items = search(f"author:{USER} type:pr is:open").get("items", [])
@@ -164,8 +178,8 @@ def fetch() -> dict:
             "url": r["html_url"],
             "topics": r.get("topics", []),
             "pushed_at": (r.get("pushed_at") or "")[:10],
-            "stars": r.get("stargazers_count", 0),
             "size": r.get("size", 0),
+            "files": count_files(r["full_name"], r.get("default_branch") or "main"),
         }
         for r in own
         if not r["fork"] and r["name"] != USER
@@ -212,7 +226,11 @@ def clip(text: str, limit: int) -> str:
 class Canvas:
     """Collects SVG parts while resolving palette tokens at emit time."""
 
-    def __init__(self, palette: dict, width: int, height: int, radius: int = 16):
+    def __init__(self, palette: dict, width: int, height: int, radius: int = 0):
+        # The background is the exact colour GitHub paints behind a README, and
+        # there is no border: a framed card inside GitHub's own card is what
+        # makes a profile read as three boxes stacked on top of each other.
+        # Seamless, the type and the plots simply sit on the page.
         self.p = palette
         self.w = width
         self.h = height
@@ -220,9 +238,7 @@ class Canvas:
             f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" '
             f'height="{height}" viewBox="0 0 {width} {height}" '
             f'font-family="{MONO}" role="img">',
-            f'<rect width="{width}" height="{height}" rx="{radius}" fill="{palette["bg"]}"/>',
-            f'<rect x=".5" y=".5" width="{width - 1}" height="{height - 1}" '
-            f'rx="{radius}" fill="none" stroke="{palette["line"]}"/>',
+            f'<rect width="{width}" height="{height}" fill="{palette["bg"]}"/>',
         ]
 
     def add(self, markup: str) -> None:
@@ -303,6 +319,29 @@ class Canvas:
         self.text(x, y, body.upper(), 9.5, "muted", 500, MONO,
                   anchor=anchor, tracking=1.6)
 
+    def field(self, x, y, w, h, bars=64, step=0.030) -> None:
+        """A dense stand of hairlines under a fixed envelope.
+
+        Drawn the way a plotter would draw it: the geometry you see is the
+        finished shape, and the animation only lets the stand shimmer. It
+        carries no information -- it is texture, so the two traces over it have
+        something to be read against. The taper is what stops it reading as a
+        barcode: tall through the middle, absent at both ends.
+        """
+        for i in range(bars):
+            t = i / (bars - 1)
+            env = abs(math.sin(t * 6.9)) * 0.58 + abs(math.sin(t * 17.3 + 0.7)) * 0.42
+            taper = math.sin(math.pi * t) ** 0.55
+            height = h * (0.06 + 0.94 * env ** 1.7) * taper
+            bx = x + t * w
+            self.add(
+                f'<line x1="{bx:.1f}" y1="{y + h / 2 - height / 2:.1f}" '
+                f'x2="{bx:.1f}" y2="{y + h / 2 + height / 2:.1f}" '
+                f'stroke="{self.p["line"]}" stroke-width="1.1" '
+                f'stroke-linecap="round" class="wave" '
+                f'style="animation-delay:{i * step:.3f}s"/>'
+            )
+
     def style(self, css: str) -> None:
         self.add(f"<style>{css}</style>")
 
@@ -336,7 +375,7 @@ def render_intro(scheme: str, data: dict, motion: bool = True) -> str:
     """Who I am, in the fewest words that still say something."""
     p = PALETTES[scheme]
     stats = data["stats"]
-    c = Canvas(p, W, 448)
+    c = Canvas(p, W, 526)
     k = (lambda name: f' class="{name}"') if motion else (lambda name: "")
 
     c.add("<title>Jinhui Chen</title>")
@@ -350,79 +389,74 @@ def render_intro(scheme: str, data: dict, motion: bool = True) -> str:
             500, SANS, -0.3, step=0.014, cls="t")
 
     prose = [
-        "Most of what I do is read a system until it tells me how it breaks. The bugs I end up",
-        "fixing are the quiet ones: a symlink Git for Windows checks out as a 16-byte text file,",
-        "a locale encoding that eats the file you just wrote, a secret a tool promises to redact",
-        "and then writes to disk anyway. None of them can fail in CI, because CI is the machine",
-        "that already has the thing the user does not.",
+        "Most of what I do is read a system until it tells me how it breaks. The bugs I",
+        "end up fixing are the quiet ones: a symlink Git for Windows checks out as a",
+        "16-byte text file, a locale encoding that eats the file you just wrote, a secret",
+        "a tool promises to redact and then writes to disk anyway. None of them can fail",
+        "in CI, because CI is the machine that already has what the user does not.",
     ]
     for i, line in enumerate(prose):
         c.add(
-            f'<text x="{PAD}" y="{196 + i * 21}" font-family="{MONO}" font-size="12.5" '
+            f'<text x="{PAD}" y="{194 + i * 20}" font-family="{MONO}" font-size="12.5" '
             f'fill="{p["body"]}">{esc(line)}</text>'
         )
 
-    # ---- the signal: two traces that never agree
-    px, py, pw, ph = PAD, 300, W - 2 * PAD, 104
-    c.add(
-        f'<rect x="{px}" y="{py}" width="{pw}" height="{ph}" rx="9" '
-        f'fill="{p["panel"]}" stroke="{p["line"]}"/>'
-    )
-    for i in range(1, 3):
-        gy = py + (ph / 3) * i
+    # ---- the signal: two traces that never agree, over a stand of hairlines
+    px, py, pw, ph = PAD, 310, W - 2 * PAD, 124
+    mid = py + ph / 2
+
+    c.field(px, py, pw, ph)
+
+    # A reference axis and a tick row: without them the traces are a squiggle,
+    # with them they are a plot.
+    c.rule(px, mid, px + pw, "line", 1)
+    for i in range(13):
+        tx = px + (pw / 12) * i
         c.add(
-            f'<line x1="{px + 1}" y1="{gy:.1f}" x2="{px + pw - 1}" y2="{gy:.1f}" '
-            f'stroke="{p["grid"]}" stroke-width="1"/>'
-        )
-    for i in range(1, 12):
-        gx = px + (pw / 12) * i
-        c.add(
-            f'<line x1="{gx:.1f}" y1="{py + 1}" x2="{gx:.1f}" y2="{py + ph - 1}" '
-            f'stroke="{p["grid"]}" stroke-width="1"/>'
+            f'<line x1="{tx:.1f}" y1="{py + ph + 4}" x2="{tx:.1f}" '
+            f'y2="{py + ph + 9}" stroke="{p["line"]}" stroke-width="1"/>'
         )
 
-    mid = py + ph / 2 + 2
-    green = (
-        f"M{px + 16},{mid - 16} "
-        f"C{px + 88},{mid - 16} {px + 104},{mid + 6} {px + 176},{mid + 6} "
-        f"S{px + 256},{mid - 13} {px + 330},{mid - 13} "
-        f"S{px + 414},{mid + 9} {px + pw - 18},{mid + 9}"
-    )
-    red = (
-        f"M{px + 16},{mid + 17} "
-        f"C{px + 86},{mid + 17} {px + 102},{mid - 11} {px + 172},{mid - 11} "
-        f"S{px + 250},{mid + 21} {px + 326},{mid + 21} "
-        f"S{px + 410},{mid - 24} {px + pw - 18},{mid - 24}"
-    )
-    for path, colour in ((green, p["merged"]), (red, p["hot"])):
+    def trace(freq, phase, amp, n=84):
+        pts = []
+        for i in range(n + 1):
+            t = i / n
+            v = (math.sin(t * freq + phase) * 0.62
+                 + math.sin(t * freq * 2.7 + phase * 1.9) * 0.38)
+            pts.append(f"{px + t * pw:.1f},{mid + v * amp:.1f}")
+        return "M" + " L".join(pts)
+
+    for freq, phase, amp, colour in (
+        (7.4, 0.4, 30, p["merged"]),
+        (9.1, 2.3, 25, p["hot"]),
+    ):
         c.add(
-            f'<path d="{path}" fill="none" stroke="{colour}" stroke-width="1.8" '
-            f'stroke-linecap="round" stroke-linejoin="round" '
-            f'stroke-dasharray="5 4"{k("flow")}/>'
+            f'<path d="{trace(freq, phase, amp)}" fill="none" stroke="{colour}" '
+            f'stroke-width="2" stroke-linecap="round" stroke-linejoin="round" '
+            f'stroke-dasharray="7 5"{k("flow")}/>'
         )
 
-    c.add(f'<circle cx="{px + pw - 18}" cy="{mid + 9}" r="3.2" fill="{p["merged"]}"/>')
-    c.add(f'<circle cx="{px + pw - 18}" cy="{mid - 24}" r="3.2" fill="{p["hot"]}"{k("bead")}/>')
+    c.rule(px, py + ph + 10, px + pw, "line", 1)
+
+    c.text(px, py - 12, "green build", 9.5, "muted")
+    c.add(f'<circle cx="{px + 74}" cy="{py - 15.5}" r="2.6" fill="{p["merged"]}"/>')
+    c.text(px + pw, py - 12, "a real machine", 9.5, "muted", anchor="end")
+    c.add(f'<circle cx="{px + pw - 84}" cy="{py - 15.5}" r="2.6" fill="{p["hot"]}"/>')
 
     # Ornament only, so this is the one element allowed to start invisible.
     c.add(
-        f'<rect x="{px + 16}" y="{py + 22}" width="1.4" height="{ph - 44}" '
+        f'<rect x="{px + 12}" y="{py + 14}" width="1.4" height="{ph - 28}" '
         f'fill="{p["accent"]}" opacity="0"{k("sweep")}/>'
     )
 
-    c.text(px + 12, py + 17, "green build", 9.5, "muted")
-    c.add(f'<circle cx="{px + 82}" cy="{py + 13}" r="2.6" fill="{p["merged"]}"/>')
-    c.text(px + pw - 12, py + 17, "a real machine", 9.5, "muted", anchor="end")
-    c.add(f'<circle cx="{px + pw - 100}" cy="{py + 13}" r="2.6" fill="{p["hot"]}"/>')
-
-    c.rule(PAD, 424, W - PAD, "line", 1)
+    c.rule(PAD, 478, W - PAD, "line", 1)
     c.text(
-        PAD, 444,
-        f'{stats["merged"]} merged upstream \u00b7 {stats["repos"]} repositories '
+        PAD, 500,
+        f'{stats["merged"]} merged upstream \u00b7 {stats["repos"]} public repos '
         f'\u00b7 {stats["contributions"]} contributions this year',
         11, "body",
     )
-    c.text(W - PAD, 444, data["generated"][:10], 10.5, "faint", anchor="end")
+    c.text(W - PAD, 500, data["generated"][:10], 10.5, "faint", anchor="end")
 
     if motion:
         c.style(
@@ -440,7 +474,9 @@ def render_intro(scheme: str, data: dict, motion: bool = True) -> str:
             "12%{opacity:.45}88%{opacity:.45}100%{opacity:0;"
             f"transform:translateX({pw - 48}px)}}"
             ".sweep{animation:sweep 6s linear 1.2s infinite}"
-            + _reduce_motion("g t draw flow bead sweep")
+            "@keyframes shimmer{0%,100%{opacity:.42}50%{opacity:1}}"
+            ".wave{animation:shimmer 3.6s ease-in-out infinite}"
+            + _reduce_motion("g t draw flow bead sweep wave")
         )
     return c.finish()
 
@@ -496,17 +532,18 @@ def render_projects(scheme: str, data: dict, motion: bool = True) -> str:
             + "/>"
         )
         c.text(PAD + 20, top, repo["name"], 21, "ink", 600, SANS, tracking=-0.4)
-
-        c.text(PAD + 20 + 11.4 * len(repo["name"]) + 14, top - 2,
-               f'/{repo["language"].lower() or "code"}', 11.5, "faint")
+        c.text(W - PAD, top - 2, repo["language"].lower() or "code", 11.5, "faint",
+               anchor="end")
 
         for j, line in enumerate(notes):
             c.text(PAD + 20, top + 24 + j * 18, line, 11.8, "body")
 
-        # Facts sit on one line, each a number over its own label.
+        # Facts sit on one line, each a number over its own label. Star counts
+        # are deliberately absent: two honest numbers about the code say more
+        # than a popularity score that is still zero.
         facts = [
-            (str(repo["stars"]), "stars"),
-            (str(repo["size"]), "kb"),
+            (f'{repo["files"]}', "files"),
+            (f'{repo["size"]}', "kb"),
             (repo["pushed_at"][:7], "last push"),
         ]
         fx = PAD + 20
@@ -587,7 +624,9 @@ def render_contributions(scheme: str, data: dict, motion: bool = True) -> str:
         )
         c.text(col_repo, y, clip(pr["repo"], 46), 11.5, "ink")
         c.text(col_num, y, f'#{pr["number"]}', 11, "muted")
-        c.text(col_lines, y, f'+{pr["additions"]}', 11, "merged", anchor="end")
+        c.text(col_lines, y,
+               f'+{pr["additions"]}' if pr["additions"] or pr["deletions"] else '\u2014',
+               11, "merged", anchor="end")
         c.text(col_date, y, pr["merged_at"][5:], 10.5, "faint", anchor="end")
 
     # ---- where the lines landed, one column per repository
@@ -617,11 +656,12 @@ def render_contributions(scheme: str, data: dict, motion: bool = True) -> str:
                "muted", anchor="middle")
 
     c.rule(PAD, base + 34, W - PAD, "line", 1)
+    distinct = len({pr["repo"] for pr in prs})
     figures = [
         (str(stats["merged"]), "merged"),
         (str(stats["additions"]), "lines added"),
         (str(stats["files"]), "files touched"),
-        (str(stats["open"]), "in review"),
+        (str(distinct), "upstream repos"),
     ]
     step = (W - 2 * PAD) / 4
     for i, (value, label) in enumerate(figures):
