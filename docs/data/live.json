@@ -1,17 +1,27 @@
 {
- "generated": "2026-10-28T06:53:20Z",
+ "generated": "2026-10-28T14:36:00Z",
  "stats": {
-  "merged": 12,
-  "open": 44,
+  "merged": 13,
+  "open": 43,
   "repos": 27,
-  "commits": 80,
-  "contributions": 234,
+  "commits": 81,
+  "contributions": 235,
   "originals": 2,
-  "additions": 700,
+  "additions": 824,
   "deletions": 60,
-  "files": 36
+  "files": 37
  },
  "merged_prs": [
+  {
+   "repo": "k8sgpt-ai/k8sgpt",
+   "number": 1841,
+   "title": "test: cover the server-mode analyze handler",
+   "merged_at": "2026-10-28",
+   "additions": 124,
+   "deletions": 0,
+   "changed_files": 1,
+   "url": "https://github.com/k8sgpt-ai/k8sgpt/pull/1841"
+  },
   {
    "repo": "Mihirajmera/agent-access-review",
    "number": 20,
@@ -147,7 +157,7 @@
   "go-resty/resty": 1,
   "huggingface/accelerate": 2,
   "huggingface/datasets": 1,
-  "k8sgpt-ai/k8sgpt": 4,
+  "k8sgpt-ai/k8sgpt": 3,
   "mlflow/mlflow": 1,
   "public-apis/public-apis": 1,
   "simonw/llm": 2,
@@ -1628,57 +1638,7 @@
   },
   {
    "d": "2026-10-28",
-   "c": 0
-  }
- ],
- "monthly": [
-  {
-   "m": "2025-11",
-   "c": 0
-  },
-  {
-   "m": "2025-12",
-   "c": 0
-  },
-  {
-   "m": "2026-01",
-   "c": 0
-  },
-  {
-   "m": "2026-02",
-   "c": 0
-  },
-  {
-   "m": "2026-03",
-   "c": 19
-  },
-  {
-   "m": "2026-04",
-   "c": 0
-  },
-  {
-   "m": "2026-05",
-   "c": 0
-  },
-  {
-   "m": "2026-06",
-   "c": 0
-  },
-  {
-   "m": "2026-07",
-   "c": 0
-  },
-  {
-   "m": "2026-08",
-   "c": 12
-  },
-  {
-   "m": "2026-09",
-   "c": 70
-  },
-  {
-   "m": "2026-10",
-   "c": 133
+   "c": 1
   }
  ],
  "originals": [
@@ -1700,7 +1660,9 @@
     "replay",
     "zero-dependencies"
    ],
-   "pushed_at": "2026-10-11"
+   "pushed_at": "2026-10-11",
+   "stars": 0,
+   "size": 181
   },
   {
    "name": "llm-eval-gate",
@@ -1717,7 +1679,9 @@
     "python",
     "regression-testing"
    ],
-   "pushed_at": "2026-10-01"
+   "pushed_at": "2026-10-01",
+   "stars": 1,
+   "size": 102
   }
  ]
 }

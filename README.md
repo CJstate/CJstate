@@ -1,15 +1,21 @@
 <div align="center">
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="docs/hero-dark.svg">
-  <source media="(prefers-color-scheme: light)" srcset="docs/hero-light.svg">
-  <img src="docs/hero-dark.svg" width="100%" alt="Jinhui Chen — I fix the bugs CI cannot see">
+  <source media="(prefers-color-scheme: dark)" srcset="docs/intro-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="docs/intro-light.svg">
+  <img src="docs/intro-dark.svg" width="100%" alt="Jinhui Chen — I look for the failures that leave no trace">
 </picture>
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="docs/metrics-dark.svg">
-  <source media="(prefers-color-scheme: light)" srcset="docs/metrics-light.svg">
-  <img src="docs/metrics-dark.svg" width="100%" alt="Every merged pull request, one row each">
+  <source media="(prefers-color-scheme: dark)" srcset="docs/work-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="docs/work-light.svg">
+  <img src="docs/work-dark.svg" width="100%" alt="hui-harness and llm-eval-gate">
+</picture>
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/upstream-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="docs/upstream-light.svg">
+  <img src="docs/upstream-dark.svg" width="100%" alt="Every merged pull request, one row each">
 </picture>
 
 </div>
@@ -23,10 +29,8 @@ wrote, ANSI colour a terminal silently drops, a mock that replaces the command
 under test. None of them can fail in CI, because CI is the machine that has the
 thing the user does not.
 
-Every number on this page is fetched from the GitHub API at render time by
-[`tools/render_profile.py`](tools/render_profile.py) — 557 lines of stdlib
-Python, no third-party cards, no badge services. If a service goes down, nothing
-here breaks, because nothing here is hosted anywhere else.
+I read a system until it tells me how it breaks. That is most of what I do, and
+it is why the work below is mostly about the parts nobody sees.
 
 ## What I built
 
@@ -42,35 +46,18 @@ so a two-point wobble inside the error bar does not page anyone.
 
 ## What I landed upstream
 
-Twelve pull requests merged into projects I do not own. The ones I would want
+Thirteen pull requests merged into projects I do not own. The ones I would want
 reviewed first:
 
 | Pull request | What it fixes |
 | --- | --- |
 | [witr#242](https://github.com/pranshuparmar/witr/pull/242) | The root `main.go` was a version-controlled symlink. Git for Windows checks it out as a 16-byte text file and `go build` fails for every user — while CI stays green, because `actions/checkout` does create the symlink. Replaced with a real entry point plus a lint guard. |
+| [k8sgpt#1841](https://github.com/k8sgpt-ai/k8sgpt/pull/1841) | The server-mode analyze handler had no test that could tell a dropped request from an empty result. |
 | [nvm#3915](https://github.com/nvm-sh/nvm/pull/3915) | `nvm --help` documented a colour legend it never rendered in colour. |
 | [k8sgpt-operator#855](https://github.com/k8sgpt-ai/k8sgpt-operator/pull/855) | Tolerations support across the operator's CRD, controller and manifests. |
 | [ggc#542](https://github.com/bmf-san/ggc/pull/542) | Config and command tests that only passed on Unix. |
 | [agent-access-review#19](https://github.com/Mihirajmera/agent-access-review/pull/19) | `--format json` for machine-readable scan findings. |
 | [witr#239](https://github.com/pranshuparmar/witr/pull/239) | Colour output died on terminals without bright-ANSI support. |
-
-## How this page works
-
-```bash
-python tools/render_profile.py --out docs          # fetch live, render
-python tools/render_profile.py --out docs --static # no animation, for review
-```
-
-`render_profile.py` calls `gh api` for the merged and open pull requests, walks
-the contribution calendar, and emits four SVGs plus a JSON payload. A scheduled
-workflow runs it daily and commits whatever changed, so the boards cannot drift
-away from the account they describe.
-
-The animation is CSS, layered on top of a complete static drawing: every element
-carries its final geometry and colour as its base state. A renderer that ignores
-keyframes — a screenshot tool, a sanitizer, a mail client — still gets the whole
-picture. Elements whose only purpose is motion are the only ones that start
-invisible, and they all respect `prefers-reduced-motion`.
 
 ## Elsewhere
 

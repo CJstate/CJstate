@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="372" viewBox="0 0 800 372" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" role="img">
+<rect width="800" height="372" rx="16" fill="#FCFCFB"/>
+<rect x=".5" y=".5" width="799" height="371" rx="16" fill="none" stroke="#DDE3E7"/>
+<title>Selected work</title>
+<text x="40" y="40" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="9.5" font-weight="500" fill="#6B8093" text-anchor="start" letter-spacing="1.6">SELECTED WORK</text>
+<line x1="40" y1="50" x2="760" y2="50" stroke="#DDE3E7" stroke-width="1" class="draw"/>
+<rect x="40" y="64" width="2" height="118" rx="1" fill="#0A7196" opacity=".55" class="rail r0"/>
+<text x="60" y="78" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="21" font-weight="600" fill="#0D1117" text-anchor="start" letter-spacing="-0.4">hui-harness</text>
+<text x="199.4" y="76" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11.5" font-weight="400" fill="#AEB9C1" text-anchor="start">/python</text>
+<text x="60" y="102" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11.8" font-weight="400" fill="#405260" text-anchor="start">A coding agent you can replay. Every tool call, model reply and policy</text>
+<text x="60" y="120" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11.8" font-weight="400" fill="#405260" text-anchor="start">decision lands in a hash-chained log, so a run is verified, not trusted.</text>
+<text x="60" y="174" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="15" font-weight="600" fill="#0D1117" text-anchor="start" letter-spacing="-0.3">0</text>
+<text x="60" y="190" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="9.5" font-weight="400" fill="#6B8093" text-anchor="start" letter-spacing="0.9">stars</text>
+<text x="138" y="174" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="15" font-weight="600" fill="#0D1117" text-anchor="start" letter-spacing="-0.3">181</text>
+<text x="138" y="190" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="9.5" font-weight="400" fill="#6B8093" text-anchor="start" letter-spacing="0.9">kb</text>
+<text x="216" y="174" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="15" font-weight="600" fill="#0D1117" text-anchor="start" letter-spacing="-0.3">2026-10</text>
+<text x="216" y="190" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="9.5" font-weight="400" fill="#6B8093" text-anchor="start" letter-spacing="0.9">last push</text>
+<line x1="60" y1="208" x2="760" y2="208" stroke="#DDE3E7" stroke-width="1"/>
+<rect x="40" y="212" width="2" height="118" rx="1" fill="#0A7196" opacity=".55" class="rail r1"/>
+<text x="60" y="226" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="21" font-weight="600" fill="#0D1117" text-anchor="start" letter-spacing="-0.4">llm-eval-gate</text>
+<text x="222.2" y="224" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11.5" font-weight="400" fill="#AEB9C1" text-anchor="start">/python</text>
+<text x="60" y="250" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11.8" font-weight="400" fill="#405260" text-anchor="start">A CI gate that fails only on a real regression. Relative thresholds and</text>
+<text x="60" y="268" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11.8" font-weight="400" fill="#405260" text-anchor="start">stderr-aware noise bands over lm-evaluation-harness, so a two-point</text>
+<text x="60" y="286" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11.8" font-weight="400" fill="#405260" text-anchor="start">wobble inside the error bar pages nobody.</text>
+<text x="60" y="322" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="15" font-weight="600" fill="#0D1117" text-anchor="start" letter-spacing="-0.3">1</text>
+<text x="60" y="338" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="9.5" font-weight="400" fill="#6B8093" text-anchor="start" letter-spacing="0.9">stars</text>
+<text x="138" y="322" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="15" font-weight="600" fill="#0D1117" text-anchor="start" letter-spacing="-0.3">102</text>
+<text x="138" y="338" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="9.5" font-weight="400" fill="#6B8093" text-anchor="start" letter-spacing="0.9">kb</text>
+<text x="216" y="322" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="15" font-weight="600" fill="#0D1117" text-anchor="start" letter-spacing="-0.3">2026-10</text>
+<text x="216" y="338" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="9.5" font-weight="400" fill="#6B8093" text-anchor="start" letter-spacing="0.9">last push</text>
+<line x1="40" y1="344" x2="760" y2="344" stroke="#DDE3E7" stroke-width="1"/>
+<text x="40" y="364" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11" font-weight="400" fill="#405260" text-anchor="start">Both are stdlib Python. Both exist because a green build told me nothing.</text>
+<style>@keyframes g{from{opacity:0;fill:#0A7196}to{opacity:1}}@keyframes draw{from{transform:scaleX(0)}to{transform:scaleX(1)}}.draw{transform-origin:left center;animation:draw .9s cubic-bezier(.5,0,.2,1) .15s both}@keyframes rail{from{transform:scaleY(0)}to{transform:scaleY(1)}}.rail{transform-origin:top center;animation:rail .7s cubic-bezier(.5,0,.2,1) both}.r0{animation-delay:.35s}.r1{animation-delay:.62s}@media (prefers-reduced-motion:reduce){.draw,.rail{animation:none!important}}</style>
+</svg>

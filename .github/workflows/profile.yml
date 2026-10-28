@@ -36,7 +36,7 @@ jobs:
       - name: check the renderer still parses
         run: python -m py_compile tools/render_profile.py
 
-      - name: render both boards from live GitHub data
+      - name: render every board from live GitHub data
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: python tools/render_profile.py --out docs
@@ -44,8 +44,9 @@ jobs:
       - name: fail loudly if the render produced nothing
         run: |
           set -eu
-          for f in docs/hero-dark.svg docs/hero-light.svg \
-                   docs/metrics-dark.svg docs/metrics-light.svg \
+          for f in docs/intro-dark.svg docs/intro-light.svg \
+                   docs/work-dark.svg docs/work-light.svg \
+                   docs/upstream-dark.svg docs/upstream-light.svg \
                    docs/data/live.json; do
             test -s "$f" || { echo "missing or empty: $f"; exit 1; }
           done
