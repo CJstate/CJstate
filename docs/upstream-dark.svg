@@ -2,7 +2,7 @@
 <rect width="800" height="679" fill="#0D1117"/>
 <title>Merged upstream</title>
 <text x="40" y="40" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="9.5" font-weight="500" fill="#6B8093" text-anchor="start" letter-spacing="1.6">MERGED UPSTREAM</text>
-<line x1="40" y1="50" x2="760" y2="50" stroke="#222D38" stroke-width="1"/>
+<line x1="40" y1="50" x2="760" y2="50" stroke="#222D38" stroke-width="1" class="draw"/>
 <text x="40" y="78" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="9.5" font-weight="500" fill="#46C46A" text-anchor="start" letter-spacing="1.4">latest</text>
 <text x="40" y="100" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="13" font-weight="500" fill="#EEF4F9" text-anchor="start" letter-spacing="-0.1">test: cover the server-mode analyze handler</text>
 <text x="40" y="120" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10.5" font-weight="400" fill="#6B8093" text-anchor="start">k8sgpt-ai/k8sgpt  #1841  +124 / -0  2026-10-28</text>
@@ -78,28 +78,28 @@
 <text x="760" y="460" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10.5" font-weight="400" fill="#3C4956" text-anchor="end">08-24</text>
 <line x1="40" y1="495" x2="760" y2="495" stroke="#222D38" stroke-width="1"/>
 <text x="40" y="515" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="9.5" font-weight="400" fill="#6B8093" text-anchor="start" letter-spacing="1.2">where the lines landed</text>
-<rect x="68.0" y="533.0" width="34" height="48.0" rx="2" fill="#46C46A" opacity=".82"/>
+<rect x="68.0" y="533.0" width="34" height="48.0" rx="2" fill="#46C46A" opacity=".82" class="col c0"/>
 <text x="85" y="526" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10" font-weight="500" fill="#94A8B8" text-anchor="middle">147</text>
 <text x="85" y="596" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="9" font-weight="400" fill="#6B8093" text-anchor="middle">k8sgpt-op</text>
-<rect x="158.0" y="533.6" width="34" height="47.4" rx="2" fill="#46C46A" opacity=".82"/>
+<rect x="158.0" y="533.6" width="34" height="47.4" rx="2" fill="#46C46A" opacity=".82" class="col c1"/>
 <text x="175" y="526.571" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10" font-weight="500" fill="#94A8B8" text-anchor="middle">145</text>
 <text x="175" y="596" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="9" font-weight="400" fill="#6B8093" text-anchor="middle">witr</text>
-<rect x="248.0" y="534.1" width="34" height="46.9" rx="2" fill="#46C46A" opacity=".82"/>
+<rect x="248.0" y="534.1" width="34" height="46.9" rx="2" fill="#46C46A" opacity=".82" class="col c2"/>
 <text x="265" y="527.143" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10" font-weight="500" fill="#94A8B8" text-anchor="middle">143</text>
 <text x="265" y="596" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="9" font-weight="400" fill="#6B8093" text-anchor="middle">ggc</text>
-<rect x="338.0" y="534.7" width="34" height="46.3" rx="2" fill="#46C46A" opacity=".82"/>
+<rect x="338.0" y="534.7" width="34" height="46.3" rx="2" fill="#46C46A" opacity=".82" class="col c3"/>
 <text x="355" y="527.714" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10" font-weight="500" fill="#94A8B8" text-anchor="middle">141</text>
 <text x="355" y="596" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="9" font-weight="400" fill="#6B8093" text-anchor="middle">agent-access</text>
-<rect x="428.0" y="539.6" width="34" height="41.4" rx="2" fill="#46C46A" opacity=".82"/>
+<rect x="428.0" y="539.6" width="34" height="41.4" rx="2" fill="#46C46A" opacity=".82" class="col c4"/>
 <text x="445" y="532.571" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10" font-weight="500" fill="#94A8B8" text-anchor="middle">124</text>
 <text x="445" y="596" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="9" font-weight="400" fill="#6B8093" text-anchor="middle">k8sgpt</text>
-<rect x="518.0" y="542.7" width="34" height="38.3" rx="2" fill="#46C46A" opacity=".82"/>
+<rect x="518.0" y="542.7" width="34" height="38.3" rx="2" fill="#46C46A" opacity=".82" class="col c5"/>
 <text x="535" y="535.714" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10" font-weight="500" fill="#94A8B8" text-anchor="middle">113</text>
 <text x="535" y="596" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="9" font-weight="400" fill="#6B8093" text-anchor="middle">nvm</text>
-<rect x="608.0" y="572.4" width="34" height="8.6" rx="2" fill="#46C46A" opacity=".82"/>
+<rect x="608.0" y="572.4" width="34" height="8.6" rx="2" fill="#46C46A" opacity=".82" class="col c6"/>
 <text x="625" y="565.429" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10" font-weight="500" fill="#94A8B8" text-anchor="middle">9</text>
 <text x="625" y="596" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="9" font-weight="400" fill="#6B8093" text-anchor="middle">aegora</text>
-<rect x="698.0" y="574.4" width="34" height="6.6" rx="2" fill="#46C46A" opacity=".82"/>
+<rect x="698.0" y="574.4" width="34" height="6.6" rx="2" fill="#46C46A" opacity=".82" class="col c7"/>
 <text x="715" y="567.429" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10" font-weight="500" fill="#94A8B8" text-anchor="middle">2</text>
 <text x="715" y="596" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="9" font-weight="400" fill="#6B8093" text-anchor="middle">dep-track</text>
 <line x1="40" y1="615" x2="760" y2="615" stroke="#222D38" stroke-width="1"/>
@@ -111,4 +111,6 @@
 <text x="400" y="665" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10" font-weight="400" fill="#6B8093" text-anchor="start" letter-spacing="0.8">files touched</text>
 <text x="580" y="647" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="26" font-weight="600" fill="#EEF4F9" text-anchor="start" letter-spacing="-1">8</text>
 <text x="580" y="665" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10" font-weight="400" fill="#6B8093" text-anchor="start" letter-spacing="0.8">upstream repos</text>
+<rect x="42" y="176" width="4" height="4" rx="2" fill="#46C46A" opacity="0" class="pulse"/>
+<style>@keyframes draw{from{transform:scaleX(0)}to{transform:scaleX(1)}}.draw{transform-origin:left center;animation:draw .9s cubic-bezier(.5,0,.2,1) .15s both}@keyframes pulse{0%{opacity:0;transform:translateY(0)}8%{opacity:.9}92%{opacity:.9}100%{opacity:0;transform:translateY(253px)}.pulse{animation:pulse 7.5s cubic-bezier(.45,0,.55,1) .9s infinite}@media (prefers-reduced-motion:reduce){.draw,.pulse{animation:none!important}}</style>
 </svg>
