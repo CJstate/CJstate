@@ -1,17 +1,47 @@
 {
- "generated": "2026-10-29T07:11:09Z",
+ "generated": "2026-10-30T07:13:57Z",
  "stats": {
-  "merged": 13,
-  "open": 43,
-  "repos": 27,
-  "commits": 83,
-  "contributions": 237,
+  "merged": 16,
+  "open": 38,
+  "repos": 26,
+  "commits": 86,
+  "contributions": 240,
   "originals": 2,
-  "additions": 824,
-  "deletions": 60,
-  "files": 37
+  "additions": 1361,
+  "deletions": 148,
+  "files": 57
  },
  "merged_prs": [
+  {
+   "repo": "k8sgpt-ai/k8sgpt",
+   "number": 1851,
+   "title": "build(deps): pin filepath-securejoin to v0.4.1 to unblock License Compliance",
+   "merged_at": "2026-10-30",
+   "additions": 4,
+   "deletions": 2,
+   "changed_files": 2,
+   "url": "https://github.com/k8sgpt-ai/k8sgpt/pull/1851"
+  },
+  {
+   "repo": "syncronix-labs/aegora",
+   "number": 52,
+   "title": "feat(cache): evict the least recently used entry at capacity",
+   "merged_at": "2026-10-29",
+   "additions": 345,
+   "deletions": 23,
+   "changed_files": 5,
+   "url": "https://github.com/syncronix-labs/aegora/pull/52"
+  },
+  {
+   "repo": "syncronix-labs/aegora",
+   "number": 50,
+   "title": "fix: include the request ID in gateway-generated JSON errors",
+   "merged_at": "2026-10-29",
+   "additions": 188,
+   "deletions": 63,
+   "changed_files": 13,
+   "url": "https://github.com/syncronix-labs/aegora/pull/50"
+  },
   {
    "repo": "k8sgpt-ai/k8sgpt",
    "number": 1841,
@@ -147,7 +177,6 @@
   "EleutherAI/lm-evaluation-harness": 3,
   "Lightning-AI/pytorch-lightning": 3,
   "Mihirajmera/agent-access-review": 6,
-  "Nutlope/hallmark": 2,
   "anthropics/claude-agent-sdk-python": 1,
   "anthropics/skills": 1,
   "apache/echarts": 2,
@@ -157,13 +186,13 @@
   "go-resty/resty": 1,
   "huggingface/accelerate": 2,
   "huggingface/datasets": 1,
-  "k8sgpt-ai/k8sgpt": 3,
+  "k8sgpt-ai/k8sgpt": 2,
   "mlflow/mlflow": 1,
   "public-apis/public-apis": 1,
   "simonw/llm": 2,
   "suzuki-shunsuke/pinact": 4,
   "suzuki-shunsuke/tfcmt": 1,
-  "syncronix-labs/aegora": 3,
+  "syncronix-labs/aegora": 1,
   "tqdm/tqdm": 1,
   "traceloop/openllmetry": 1
  },
@@ -1634,7 +1663,7 @@
   },
   {
    "d": "2026-10-27",
-   "c": 9
+   "c": 11
   },
   {
    "d": "2026-10-28",
@@ -1643,6 +1672,10 @@
   {
    "d": "2026-10-29",
    "c": 0
+  },
+  {
+   "d": "2026-10-30",
+   "c": 1
   }
  ],
  "originals": [

@@ -1,11 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="800" height="679" viewBox="0 0 800 679" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" role="img">
-<rect width="800" height="679" fill="#FFFFFF"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="748" viewBox="0 0 800 748" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" role="img">
+<rect width="800" height="748" fill="#FFFFFF"/>
 <title>Merged upstream</title>
 <text x="40" y="40" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="9.5" font-weight="500" fill="#6B8093" text-anchor="start" letter-spacing="1.6">MERGED UPSTREAM</text>
 <line x1="40" y1="50" x2="760" y2="50" stroke="#DDE3E7" stroke-width="1" class="draw"/>
 <text x="40" y="78" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="9.5" font-weight="500" fill="#17753A" text-anchor="start" letter-spacing="1.4">latest</text>
-<text x="40" y="100" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="13" font-weight="500" fill="#0D1117" text-anchor="start" letter-spacing="-0.1">test: cover the server-mode analyze handler</text>
-<text x="40" y="120" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10.5" font-weight="400" fill="#6B8093" text-anchor="start">k8sgpt-ai/k8sgpt  #1841  +124 / -0  2026-10-28</text>
+<text x="40" y="100" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="13" font-weight="500" fill="#0D1117" text-anchor="start" letter-spacing="-0.1">build(deps): pin filepath-securejoin to v0.4.1 to unblock License Compliance</text>
+<text x="40" y="120" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10.5" font-weight="400" fill="#6B8093" text-anchor="start">k8sgpt-ai/k8sgpt  #1851  +4 / -2  2026-10-30</text>
 <text x="56" y="158" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="9.5" font-weight="400" fill="#6B8093" text-anchor="start" letter-spacing="1.2">repository</text>
 <text x="476" y="158" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="9.5" font-weight="400" fill="#6B8093" text-anchor="start" letter-spacing="1.2">pr</text>
 <text x="652" y="158" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="9.5" font-weight="400" fill="#6B8093" text-anchor="end" letter-spacing="1.2">lines</text>
@@ -13,104 +13,119 @@
 <line x1="40" y1="168" x2="760" y2="168" stroke="#DDE3E7" stroke-width="1"/>
 <circle cx="44" cy="180" r="2.6" fill="#17753A" opacity="1.00"/>
 <text x="56" y="184" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11.5" font-weight="400" fill="#0D1117" text-anchor="start">k8sgpt-ai/k8sgpt</text>
-<text x="476" y="184" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11" font-weight="400" fill="#6B8093" text-anchor="start">#1841</text>
-<text x="652" y="184" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11" font-weight="400" fill="#17753A" text-anchor="end">+124</text>
-<text x="760" y="184" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10.5" font-weight="400" fill="#AEB9C1" text-anchor="end">10-28</text>
+<text x="476" y="184" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11" font-weight="400" fill="#6B8093" text-anchor="start">#1851</text>
+<text x="652" y="184" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11" font-weight="400" fill="#17753A" text-anchor="end">+4</text>
+<text x="760" y="184" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10.5" font-weight="400" fill="#AEB9C1" text-anchor="end">10-30</text>
 <circle cx="44" cy="203" r="2.6" fill="#17753A" opacity="0.95"/>
-<text x="56" y="207" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11.5" font-weight="400" fill="#0D1117" text-anchor="start">Mihirajmera/agent-access-review</text>
-<text x="476" y="207" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11" font-weight="400" fill="#6B8093" text-anchor="start">#20</text>
-<text x="652" y="207" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11" font-weight="400" fill="#17753A" text-anchor="end">+40</text>
-<text x="760" y="207" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10.5" font-weight="400" fill="#AEB9C1" text-anchor="end">10-24</text>
+<text x="56" y="207" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11.5" font-weight="400" fill="#0D1117" text-anchor="start">syncronix-labs/aegora</text>
+<text x="476" y="207" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11" font-weight="400" fill="#6B8093" text-anchor="start">#52</text>
+<text x="652" y="207" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11" font-weight="400" fill="#17753A" text-anchor="end">+345</text>
+<text x="760" y="207" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10.5" font-weight="400" fill="#AEB9C1" text-anchor="end">10-29</text>
 <circle cx="44" cy="226" r="2.6" fill="#17753A" opacity="0.90"/>
-<text x="56" y="230" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11.5" font-weight="400" fill="#0D1117" text-anchor="start">Mihirajmera/agent-access-review</text>
-<text x="476" y="230" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11" font-weight="400" fill="#6B8093" text-anchor="start">#19</text>
-<text x="652" y="230" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11" font-weight="400" fill="#17753A" text-anchor="end">+101</text>
-<text x="760" y="230" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10.5" font-weight="400" fill="#AEB9C1" text-anchor="end">10-24</text>
+<text x="56" y="230" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11.5" font-weight="400" fill="#0D1117" text-anchor="start">syncronix-labs/aegora</text>
+<text x="476" y="230" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11" font-weight="400" fill="#6B8093" text-anchor="start">#50</text>
+<text x="652" y="230" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11" font-weight="400" fill="#17753A" text-anchor="end">+188</text>
+<text x="760" y="230" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10.5" font-weight="400" fill="#AEB9C1" text-anchor="end">10-29</text>
 <circle cx="44" cy="249" r="2.6" fill="#17753A" opacity="0.85"/>
-<text x="56" y="253" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11.5" font-weight="400" fill="#0D1117" text-anchor="start">pranshuparmar/witr</text>
-<text x="476" y="253" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11" font-weight="400" fill="#6B8093" text-anchor="start">#245</text>
-<text x="652" y="253" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11" font-weight="400" fill="#17753A" text-anchor="end">+14</text>
-<text x="760" y="253" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10.5" font-weight="400" fill="#AEB9C1" text-anchor="end">10-19</text>
+<text x="56" y="253" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11.5" font-weight="400" fill="#0D1117" text-anchor="start">k8sgpt-ai/k8sgpt</text>
+<text x="476" y="253" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11" font-weight="400" fill="#6B8093" text-anchor="start">#1841</text>
+<text x="652" y="253" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11" font-weight="400" fill="#17753A" text-anchor="end">+124</text>
+<text x="760" y="253" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10.5" font-weight="400" fill="#AEB9C1" text-anchor="end">10-28</text>
 <circle cx="44" cy="272" r="2.6" fill="#17753A" opacity="0.80"/>
-<text x="56" y="276" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11.5" font-weight="400" fill="#0D1117" text-anchor="start">syncronix-labs/aegora</text>
-<text x="476" y="276" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11" font-weight="400" fill="#6B8093" text-anchor="start">#19</text>
-<text x="652" y="276" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11" font-weight="400" fill="#17753A" text-anchor="end">+9</text>
-<text x="760" y="276" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10.5" font-weight="400" fill="#AEB9C1" text-anchor="end">10-18</text>
+<text x="56" y="276" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11.5" font-weight="400" fill="#0D1117" text-anchor="start">Mihirajmera/agent-access-review</text>
+<text x="476" y="276" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11" font-weight="400" fill="#6B8093" text-anchor="start">#20</text>
+<text x="652" y="276" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11" font-weight="400" fill="#17753A" text-anchor="end">+40</text>
+<text x="760" y="276" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10.5" font-weight="400" fill="#AEB9C1" text-anchor="end">10-24</text>
 <circle cx="44" cy="295" r="2.6" fill="#17753A" opacity="0.75"/>
-<text x="56" y="299" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11.5" font-weight="400" fill="#0D1117" text-anchor="start">bmf-san/ggc</text>
-<text x="476" y="299" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11" font-weight="400" fill="#6B8093" text-anchor="start">#542</text>
-<text x="652" y="299" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11" font-weight="400" fill="#17753A" text-anchor="end">+102</text>
-<text x="760" y="299" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10.5" font-weight="400" fill="#AEB9C1" text-anchor="end">10-16</text>
+<text x="56" y="299" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11.5" font-weight="400" fill="#0D1117" text-anchor="start">Mihirajmera/agent-access-review</text>
+<text x="476" y="299" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11" font-weight="400" fill="#6B8093" text-anchor="start">#19</text>
+<text x="652" y="299" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11" font-weight="400" fill="#17753A" text-anchor="end">+101</text>
+<text x="760" y="299" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10.5" font-weight="400" fill="#AEB9C1" text-anchor="end">10-24</text>
 <circle cx="44" cy="318" r="2.6" fill="#17753A" opacity="0.70"/>
-<text x="56" y="322" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11.5" font-weight="400" fill="#0D1117" text-anchor="start">bmf-san/ggc</text>
-<text x="476" y="322" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11" font-weight="400" fill="#6B8093" text-anchor="start">#541</text>
-<text x="652" y="322" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11" font-weight="400" fill="#17753A" text-anchor="end">—</text>
-<text x="760" y="322" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10.5" font-weight="400" fill="#AEB9C1" text-anchor="end">10-16</text>
+<text x="56" y="322" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11.5" font-weight="400" fill="#0D1117" text-anchor="start">pranshuparmar/witr</text>
+<text x="476" y="322" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11" font-weight="400" fill="#6B8093" text-anchor="start">#245</text>
+<text x="652" y="322" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11" font-weight="400" fill="#17753A" text-anchor="end">+14</text>
+<text x="760" y="322" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10.5" font-weight="400" fill="#AEB9C1" text-anchor="end">10-19</text>
 <circle cx="44" cy="341" r="2.6" fill="#17753A" opacity="0.65"/>
-<text x="56" y="345" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11.5" font-weight="400" fill="#0D1117" text-anchor="start">bmf-san/ggc</text>
-<text x="476" y="345" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11" font-weight="400" fill="#6B8093" text-anchor="start">#540</text>
-<text x="652" y="345" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11" font-weight="400" fill="#17753A" text-anchor="end">+41</text>
-<text x="760" y="345" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10.5" font-weight="400" fill="#AEB9C1" text-anchor="end">10-14</text>
+<text x="56" y="345" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11.5" font-weight="400" fill="#0D1117" text-anchor="start">syncronix-labs/aegora</text>
+<text x="476" y="345" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11" font-weight="400" fill="#6B8093" text-anchor="start">#19</text>
+<text x="652" y="345" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11" font-weight="400" fill="#17753A" text-anchor="end">+9</text>
+<text x="760" y="345" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10.5" font-weight="400" fill="#AEB9C1" text-anchor="end">10-18</text>
 <circle cx="44" cy="364" r="2.6" fill="#17753A" opacity="0.60"/>
-<text x="56" y="368" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11.5" font-weight="400" fill="#0D1117" text-anchor="start">k8sgpt-ai/k8sgpt-operator</text>
-<text x="476" y="368" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11" font-weight="400" fill="#6B8093" text-anchor="start">#855</text>
-<text x="652" y="368" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11" font-weight="400" fill="#17753A" text-anchor="end">+147</text>
-<text x="760" y="368" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10.5" font-weight="400" fill="#AEB9C1" text-anchor="end">10-10</text>
+<text x="56" y="368" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11.5" font-weight="400" fill="#0D1117" text-anchor="start">bmf-san/ggc</text>
+<text x="476" y="368" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11" font-weight="400" fill="#6B8093" text-anchor="start">#542</text>
+<text x="652" y="368" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11" font-weight="400" fill="#17753A" text-anchor="end">+102</text>
+<text x="760" y="368" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10.5" font-weight="400" fill="#AEB9C1" text-anchor="end">10-16</text>
 <circle cx="44" cy="387" r="2.6" fill="#17753A" opacity="0.55"/>
-<text x="56" y="391" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11.5" font-weight="400" fill="#0D1117" text-anchor="start">pranshuparmar/witr</text>
-<text x="476" y="391" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11" font-weight="400" fill="#6B8093" text-anchor="start">#242</text>
-<text x="652" y="391" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11" font-weight="400" fill="#17753A" text-anchor="end">+51</text>
-<text x="760" y="391" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10.5" font-weight="400" fill="#AEB9C1" text-anchor="end">10-04</text>
+<text x="56" y="391" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11.5" font-weight="400" fill="#0D1117" text-anchor="start">bmf-san/ggc</text>
+<text x="476" y="391" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11" font-weight="400" fill="#6B8093" text-anchor="start">#541</text>
+<text x="652" y="391" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11" font-weight="400" fill="#17753A" text-anchor="end">—</text>
+<text x="760" y="391" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10.5" font-weight="400" fill="#AEB9C1" text-anchor="end">10-16</text>
 <circle cx="44" cy="410" r="2.6" fill="#17753A" opacity="0.50"/>
-<text x="56" y="414" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11.5" font-weight="400" fill="#0D1117" text-anchor="start">pranshuparmar/witr</text>
-<text x="476" y="414" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11" font-weight="400" fill="#6B8093" text-anchor="start">#239</text>
-<text x="652" y="414" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11" font-weight="400" fill="#17753A" text-anchor="end">+80</text>
-<text x="760" y="414" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10.5" font-weight="400" fill="#AEB9C1" text-anchor="end">10-03</text>
+<text x="56" y="414" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11.5" font-weight="400" fill="#0D1117" text-anchor="start">bmf-san/ggc</text>
+<text x="476" y="414" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11" font-weight="400" fill="#6B8093" text-anchor="start">#540</text>
+<text x="652" y="414" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11" font-weight="400" fill="#17753A" text-anchor="end">+41</text>
+<text x="760" y="414" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10.5" font-weight="400" fill="#AEB9C1" text-anchor="end">10-14</text>
 <circle cx="44" cy="433" r="2.6" fill="#17753A" opacity="0.45"/>
-<text x="56" y="437" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11.5" font-weight="400" fill="#0D1117" text-anchor="start">nvm-sh/nvm</text>
-<text x="476" y="437" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11" font-weight="400" fill="#6B8093" text-anchor="start">#3915</text>
-<text x="652" y="437" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11" font-weight="400" fill="#17753A" text-anchor="end">+113</text>
-<text x="760" y="437" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10.5" font-weight="400" fill="#AEB9C1" text-anchor="end">09-03</text>
+<text x="56" y="437" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11.5" font-weight="400" fill="#0D1117" text-anchor="start">k8sgpt-ai/k8sgpt-operator</text>
+<text x="476" y="437" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11" font-weight="400" fill="#6B8093" text-anchor="start">#855</text>
+<text x="652" y="437" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11" font-weight="400" fill="#17753A" text-anchor="end">+147</text>
+<text x="760" y="437" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10.5" font-weight="400" fill="#AEB9C1" text-anchor="end">10-10</text>
 <circle cx="44" cy="456" r="2.6" fill="#17753A" opacity="0.40"/>
-<text x="56" y="460" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11.5" font-weight="400" fill="#0D1117" text-anchor="start">DependencyTrack/dependency-track</text>
-<text x="476" y="460" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11" font-weight="400" fill="#6B8093" text-anchor="start">#7096</text>
-<text x="652" y="460" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11" font-weight="400" fill="#17753A" text-anchor="end">+2</text>
-<text x="760" y="460" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10.5" font-weight="400" fill="#AEB9C1" text-anchor="end">08-24</text>
-<line x1="40" y1="495" x2="760" y2="495" stroke="#DDE3E7" stroke-width="1"/>
-<text x="40" y="515" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="9.5" font-weight="400" fill="#6B8093" text-anchor="start" letter-spacing="1.2">where the lines landed</text>
-<rect x="68.0" y="533.0" width="34" height="48.0" rx="2" fill="#17753A" opacity=".82" class="col c0"/>
-<text x="85" y="526" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10" font-weight="500" fill="#405260" text-anchor="middle">147</text>
-<text x="85" y="596" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="9" font-weight="400" fill="#6B8093" text-anchor="middle">k8sgpt-op</text>
-<rect x="158.0" y="533.6" width="34" height="47.4" rx="2" fill="#17753A" opacity=".82" class="col c1"/>
-<text x="175" y="526.571" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10" font-weight="500" fill="#405260" text-anchor="middle">145</text>
-<text x="175" y="596" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="9" font-weight="400" fill="#6B8093" text-anchor="middle">witr</text>
-<rect x="248.0" y="534.1" width="34" height="46.9" rx="2" fill="#17753A" opacity=".82" class="col c2"/>
-<text x="265" y="527.143" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10" font-weight="500" fill="#405260" text-anchor="middle">143</text>
-<text x="265" y="596" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="9" font-weight="400" fill="#6B8093" text-anchor="middle">ggc</text>
-<rect x="338.0" y="534.7" width="34" height="46.3" rx="2" fill="#17753A" opacity=".82" class="col c3"/>
-<text x="355" y="527.714" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10" font-weight="500" fill="#405260" text-anchor="middle">141</text>
-<text x="355" y="596" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="9" font-weight="400" fill="#6B8093" text-anchor="middle">agent-access</text>
-<rect x="428.0" y="539.6" width="34" height="41.4" rx="2" fill="#17753A" opacity=".82" class="col c4"/>
-<text x="445" y="532.571" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10" font-weight="500" fill="#405260" text-anchor="middle">124</text>
-<text x="445" y="596" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="9" font-weight="400" fill="#6B8093" text-anchor="middle">k8sgpt</text>
-<rect x="518.0" y="542.7" width="34" height="38.3" rx="2" fill="#17753A" opacity=".82" class="col c5"/>
-<text x="535" y="535.714" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10" font-weight="500" fill="#405260" text-anchor="middle">113</text>
-<text x="535" y="596" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="9" font-weight="400" fill="#6B8093" text-anchor="middle">nvm</text>
-<rect x="608.0" y="572.4" width="34" height="8.6" rx="2" fill="#17753A" opacity=".82" class="col c6"/>
-<text x="625" y="565.429" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10" font-weight="500" fill="#405260" text-anchor="middle">9</text>
-<text x="625" y="596" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="9" font-weight="400" fill="#6B8093" text-anchor="middle">aegora</text>
-<rect x="698.0" y="574.4" width="34" height="6.6" rx="2" fill="#17753A" opacity=".82" class="col c7"/>
-<text x="715" y="567.429" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10" font-weight="500" fill="#405260" text-anchor="middle">2</text>
-<text x="715" y="596" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="9" font-weight="400" fill="#6B8093" text-anchor="middle">dep-track</text>
-<line x1="40" y1="615" x2="760" y2="615" stroke="#DDE3E7" stroke-width="1"/>
-<text x="40" y="647" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="26" font-weight="600" fill="#0D1117" text-anchor="start" letter-spacing="-1">13</text>
-<text x="40" y="665" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10" font-weight="400" fill="#6B8093" text-anchor="start" letter-spacing="0.8">merged</text>
-<text x="220" y="647" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="26" font-weight="600" fill="#0D1117" text-anchor="start" letter-spacing="-1">824</text>
-<text x="220" y="665" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10" font-weight="400" fill="#6B8093" text-anchor="start" letter-spacing="0.8">lines added</text>
-<text x="400" y="647" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="26" font-weight="600" fill="#0D1117" text-anchor="start" letter-spacing="-1">37</text>
-<text x="400" y="665" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10" font-weight="400" fill="#6B8093" text-anchor="start" letter-spacing="0.8">files touched</text>
-<text x="580" y="647" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="26" font-weight="600" fill="#0D1117" text-anchor="start" letter-spacing="-1">8</text>
-<text x="580" y="665" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10" font-weight="400" fill="#6B8093" text-anchor="start" letter-spacing="0.8">upstream repos</text>
+<text x="56" y="460" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11.5" font-weight="400" fill="#0D1117" text-anchor="start">pranshuparmar/witr</text>
+<text x="476" y="460" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11" font-weight="400" fill="#6B8093" text-anchor="start">#242</text>
+<text x="652" y="460" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11" font-weight="400" fill="#17753A" text-anchor="end">+51</text>
+<text x="760" y="460" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10.5" font-weight="400" fill="#AEB9C1" text-anchor="end">10-04</text>
+<circle cx="44" cy="479" r="2.6" fill="#17753A" opacity="0.35"/>
+<text x="56" y="483" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11.5" font-weight="400" fill="#0D1117" text-anchor="start">pranshuparmar/witr</text>
+<text x="476" y="483" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11" font-weight="400" fill="#6B8093" text-anchor="start">#239</text>
+<text x="652" y="483" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11" font-weight="400" fill="#17753A" text-anchor="end">+80</text>
+<text x="760" y="483" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10.5" font-weight="400" fill="#AEB9C1" text-anchor="end">10-03</text>
+<circle cx="44" cy="502" r="2.6" fill="#17753A" opacity="0.30"/>
+<text x="56" y="506" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11.5" font-weight="400" fill="#0D1117" text-anchor="start">nvm-sh/nvm</text>
+<text x="476" y="506" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11" font-weight="400" fill="#6B8093" text-anchor="start">#3915</text>
+<text x="652" y="506" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11" font-weight="400" fill="#17753A" text-anchor="end">+113</text>
+<text x="760" y="506" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10.5" font-weight="400" fill="#AEB9C1" text-anchor="end">09-03</text>
+<circle cx="44" cy="525" r="2.6" fill="#17753A" opacity="0.25"/>
+<text x="56" y="529" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11.5" font-weight="400" fill="#0D1117" text-anchor="start">DependencyTrack/dependency-track</text>
+<text x="476" y="529" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11" font-weight="400" fill="#6B8093" text-anchor="start">#7096</text>
+<text x="652" y="529" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11" font-weight="400" fill="#17753A" text-anchor="end">+2</text>
+<text x="760" y="529" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10.5" font-weight="400" fill="#AEB9C1" text-anchor="end">08-24</text>
+<line x1="40" y1="564" x2="760" y2="564" stroke="#DDE3E7" stroke-width="1"/>
+<text x="40" y="584" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="9.5" font-weight="400" fill="#6B8093" text-anchor="start" letter-spacing="1.2">where the lines landed</text>
+<rect x="68.0" y="602.0" width="34" height="48.0" rx="2" fill="#17753A" opacity=".82" class="col c0"/>
+<text x="85" y="595" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10" font-weight="500" fill="#405260" text-anchor="middle">542</text>
+<text x="85" y="665" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="9" font-weight="400" fill="#6B8093" text-anchor="middle">aegora</text>
+<rect x="158.0" y="632.6" width="34" height="17.4" rx="2" fill="#17753A" opacity=".82" class="col c1"/>
+<text x="175" y="625.609" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10" font-weight="500" fill="#405260" text-anchor="middle">147</text>
+<text x="175" y="665" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="9" font-weight="400" fill="#6B8093" text-anchor="middle">k8sgpt-op</text>
+<rect x="248.0" y="632.8" width="34" height="17.2" rx="2" fill="#17753A" opacity=".82" class="col c2"/>
+<text x="265" y="625.764" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10" font-weight="500" fill="#405260" text-anchor="middle">145</text>
+<text x="265" y="665" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="9" font-weight="400" fill="#6B8093" text-anchor="middle">witr</text>
+<rect x="338.0" y="632.9" width="34" height="17.1" rx="2" fill="#17753A" opacity=".82" class="col c3"/>
+<text x="355" y="625.919" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10" font-weight="500" fill="#405260" text-anchor="middle">143</text>
+<text x="355" y="665" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="9" font-weight="400" fill="#6B8093" text-anchor="middle">ggc</text>
+<rect x="428.0" y="633.1" width="34" height="16.9" rx="2" fill="#17753A" opacity=".82" class="col c4"/>
+<text x="445" y="626.074" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10" font-weight="500" fill="#405260" text-anchor="middle">141</text>
+<text x="445" y="665" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="9" font-weight="400" fill="#6B8093" text-anchor="middle">agent-access</text>
+<rect x="518.0" y="634.1" width="34" height="15.9" rx="2" fill="#17753A" opacity=".82" class="col c5"/>
+<text x="535" y="627.081" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10" font-weight="500" fill="#405260" text-anchor="middle">128</text>
+<text x="535" y="665" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="9" font-weight="400" fill="#6B8093" text-anchor="middle">k8sgpt</text>
+<rect x="608.0" y="635.2" width="34" height="14.8" rx="2" fill="#17753A" opacity=".82" class="col c6"/>
+<text x="625" y="628.244" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10" font-weight="500" fill="#405260" text-anchor="middle">113</text>
+<text x="625" y="665" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="9" font-weight="400" fill="#6B8093" text-anchor="middle">nvm</text>
+<rect x="698.0" y="643.8" width="34" height="6.2" rx="2" fill="#17753A" opacity=".82" class="col c7"/>
+<text x="715" y="636.845" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10" font-weight="500" fill="#405260" text-anchor="middle">2</text>
+<text x="715" y="665" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="9" font-weight="400" fill="#6B8093" text-anchor="middle">dep-track</text>
+<line x1="40" y1="684" x2="760" y2="684" stroke="#DDE3E7" stroke-width="1"/>
+<text x="40" y="716" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="26" font-weight="600" fill="#0D1117" text-anchor="start" letter-spacing="-1">16</text>
+<text x="40" y="734" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10" font-weight="400" fill="#6B8093" text-anchor="start" letter-spacing="0.8">merged</text>
+<text x="220" y="716" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="26" font-weight="600" fill="#0D1117" text-anchor="start" letter-spacing="-1">1361</text>
+<text x="220" y="734" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10" font-weight="400" fill="#6B8093" text-anchor="start" letter-spacing="0.8">lines added</text>
+<text x="400" y="716" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="26" font-weight="600" fill="#0D1117" text-anchor="start" letter-spacing="-1">57</text>
+<text x="400" y="734" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10" font-weight="400" fill="#6B8093" text-anchor="start" letter-spacing="0.8">files touched</text>
+<text x="580" y="716" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="26" font-weight="600" fill="#0D1117" text-anchor="start" letter-spacing="-1">8</text>
+<text x="580" y="734" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10" font-weight="400" fill="#6B8093" text-anchor="start" letter-spacing="0.8">upstream repos</text>
 <rect x="42" y="176" width="4" height="4" rx="2" fill="#17753A" opacity="0" class="pulse"/>
 <style>@keyframes draw{from{transform:scaleX(0)}to{transform:scaleX(1)}}.draw{transform-origin:left center;animation:draw .9s cubic-bezier(.5,0,.2,1) .15s both}@keyframes pulse{0%{opacity:0;transform:translateY(0)}8%{opacity:.9}92%{opacity:.9}100%{opacity:0;transform:translateY(253px)}.pulse{animation:pulse 7.5s cubic-bezier(.45,0,.55,1) .9s infinite}@media (prefers-reduced-motion:reduce){.draw,.pulse{animation:none!important}}</style>
 </svg>
