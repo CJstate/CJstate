@@ -1,15 +1,15 @@
 {
- "generated": "2026-10-30T07:13:57Z",
+ "generated": "2026-10-31T07:02:30Z",
  "stats": {
-  "merged": 16,
-  "open": 38,
+  "merged": 17,
+  "open": 42,
   "repos": 26,
-  "commits": 86,
-  "contributions": 240,
+  "commits": 87,
+  "contributions": 246,
   "originals": 2,
-  "additions": 1361,
-  "deletions": 148,
-  "files": 57
+  "additions": 1375,
+  "deletions": 171,
+  "files": 58
  },
  "merged_prs": [
   {
@@ -21,6 +21,16 @@
    "deletions": 2,
    "changed_files": 2,
    "url": "https://github.com/k8sgpt-ai/k8sgpt/pull/1851"
+  },
+  {
+   "repo": "k8sgpt-ai/k8sgpt",
+   "number": 1848,
+   "title": "test: assert the EnsureDirExists failure portably",
+   "merged_at": "2026-10-30",
+   "additions": 14,
+   "deletions": 23,
+   "changed_files": 1,
+   "url": "https://github.com/k8sgpt-ai/k8sgpt/pull/1848"
   },
   {
    "repo": "syncronix-labs/aegora",
@@ -186,13 +196,13 @@
   "go-resty/resty": 1,
   "huggingface/accelerate": 2,
   "huggingface/datasets": 1,
-  "k8sgpt-ai/k8sgpt": 2,
+  "k8sgpt-ai/k8sgpt": 1,
   "mlflow/mlflow": 1,
   "public-apis/public-apis": 1,
   "simonw/llm": 2,
   "suzuki-shunsuke/pinact": 4,
   "suzuki-shunsuke/tfcmt": 1,
-  "syncronix-labs/aegora": 1,
+  "syncronix-labs/aegora": 6,
   "tqdm/tqdm": 1,
   "traceloop/openllmetry": 1
  },
@@ -1675,7 +1685,11 @@
   },
   {
    "d": "2026-10-30",
-   "c": 1
+   "c": 7
+  },
+  {
+   "d": "2026-10-31",
+   "c": 0
   }
  ],
  "originals": [
