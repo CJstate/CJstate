@@ -156,6 +156,17 @@ def fetch() -> dict:
         repo = repo_of(item)
         open_by_repo[repo] = open_by_repo.get(repo, 0) + 1
 
+    open_prs = [
+        {
+            "repo": repo_of(item),
+            "number": item["number"],
+            "title": item["title"],
+            "url": item["html_url"],
+            "created_at": (item.get("created_at") or "")[:10],
+        }
+        for item in open_items
+    ]
+
     repos = sorted({p["repo"] for p in prs} | set(open_by_repo))
 
     cal = gh_json(
@@ -200,6 +211,7 @@ def fetch() -> dict:
             "files": sum(p["changed_files"] for p in prs),
         },
         "merged_prs": prs,
+        "open_prs": open_prs,
         "open_by_repo": open_by_repo,
         "calendar": days,
         "originals": originals,
@@ -378,13 +390,13 @@ def render_intro(scheme: str, data: dict, motion: bool = True) -> str:
     c = Canvas(p, W, 526)
     k = (lambda name: f' class="{name}"') if motion else (lambda name: "")
 
-    c.add("<title>Jinhui Chen</title>")
+    c.add("<title>CJstate</title>")
 
-    c.chars(PAD, 80, "Jinhui Chen", 44, "ink", 700, SANS, -1.7)
+    c.chars(PAD, 80, "CJstate", 44, "ink", 700, SANS, -1.7)
 
     c.rule(PAD, 104, W - PAD, "line", 1, cls=("draw" if motion else None))
 
-    c.text(PAD, 136, "Backend engineer.", 19, "ink", 600, SANS, tracking=-0.3)
+    c.text(PAD, 136, "Backend engineer · LLM tooling.", 19, "ink", 600, SANS, tracking=-0.3)
     c.chars(PAD, 162, "I look for the failures that leave no trace.", 19, "accent",
             500, SANS, -0.3, step=0.014, cls="t")
 
@@ -452,8 +464,8 @@ def render_intro(scheme: str, data: dict, motion: bool = True) -> str:
     c.rule(PAD, 478, W - PAD, "line", 1)
     c.text(
         PAD, 500,
-        f'{stats["merged"]} merged upstream \u00b7 {stats["repos"]} public repos '
-        f'\u00b7 {stats["contributions"]} contributions this year',
+        f'{stats["merged"]} merged \u00b7 {stats["open"]} open \u00b7 {stats["repos"]} upstream repos '
+        f'\u00b7 {stats["contributions"]} contributions in 12 months',
         11, "body",
     )
     c.text(W - PAD, 500, data["generated"][:10], 10.5, "faint", anchor="end")
@@ -586,7 +598,7 @@ def render_contributions(scheme: str, data: dict, motion: bool = True) -> str:
     # has, so the ledger and the total underneath can never disagree.
     head, row_h = 158, 23
     top = head + 26
-    shown = prs[:16]
+    shown = prs[:20]
     ribbon_top = top + len(shown) * row_h + 24
     base = ribbon_top + 74
     c = Canvas(p, W, base + 98)
@@ -688,6 +700,406 @@ def render_contributions(scheme: str, data: dict, motion: bool = True) -> str:
     return c.finish()
 
 
+# -------------------------------------------------------------------- readme
+
+# Everything below is judgement, not measurement: the tables are built from the
+# same live payload as the boards, and a PR that is not in the payload cannot
+# appear.  A note that no longer has a matching merged/open PR is simply
+# skipped, so merging is the only way a row can move from one table to the
+# other.
+
+MERGED_NOTES = {
+    "k8sgpt-ai/k8sgpt#1851": (
+        "Pin `filepath-securejoin` to v0.4.1 to unblock the License Compliance gate."
+    ),
+    "k8sgpt-ai/k8sgpt#1848": (
+        "Assert the `EnsureDirExists` failure portably instead of relying on Unix paths."
+    ),
+    "syncronix-labs/aegora#52": (
+        "Evict the least recently used entry when the cache reaches capacity."
+    ),
+    "syncronix-labs/aegora#50": (
+        "Include the request ID in gateway-generated JSON errors."
+    ),
+    "k8sgpt-ai/k8sgpt#1841": (
+        "Add direct in-process tests for the server-mode analyze handler."
+    ),
+    "Mihirajmera/agent-access-review#20": (
+        "Classify sqlite, brave-search and gdrive MCP servers in the catalog."
+    ),
+    "Mihirajmera/agent-access-review#19": (
+        "Add `--format json` to `scan` for machine-readable findings."
+    ),
+    "pranshuparmar/witr#245": (
+        "Make `TestDetectGitInfo` hermetic against Git repositories above the temp dir."
+    ),
+    "syncronix-labs/aegora#19": "Add a `--version` flag to the gateway CLI.",
+    "bmf-san/ggc#542": "Make the config and command tests pass on Windows.",
+    "bmf-san/ggc#541": "Replace Unix-only exec mocks in the git tests with a helper process.",
+    "bmf-san/ggc#540": "Make the config, interactive and history tests pass on Windows.",
+    "k8sgpt-ai/k8sgpt-operator#855": (
+        "Add tolerations to the K8sGPT CRD and chart so the controller can run on "
+        "tainted nodes."
+    ),
+    "pranshuparmar/witr#242": (
+        "Root `main.go` was a tracked symlink; Git for Windows checks it out as a "
+        "16-byte text file, so `go build` fails on a real clone while CI stays green. "
+        "Replaced it with a real entry point and added a lint guard."
+    ),
+    "pranshuparmar/witr#239": (
+        "`--help` silently lost its color legend on terminals without bright ANSI; "
+        "fall back by terminal capability instead."
+    ),
+    "nvm-sh/nvm#3915": (
+        "`nvm --help` rendered the set-colors legend as plain text; apply the same "
+        "color variables inside the help branch."
+    ),
+    "DependencyTrack/dependency-track#7096": (
+        "README CI badges pointed at a retired branch and 404'd; point them at `main`."
+    ),
+}
+
+OPEN_HIGHLIGHTS = [
+    (
+        "syncronix-labs/aegora#68",
+        "Optional per-route `timeout` bounding the whole outbound exchange, "
+        "including the response body; negative values fail config validation.",
+    ),
+    (
+        "huggingface/accelerate#4360",
+        "`debug_launcher` cannot start on Windows: `fork`, `NamedTemporaryFile` and a "
+        "hard-coded `lo` interface are all Unix-only assumptions.",
+    ),
+    (
+        "EleutherAI/lm-evaluation-harness#4384",
+        "Run the trailing partial chunk in `bootstrap_stderr` instead of dropping it.",
+    ),
+    (
+        "mlflow/mlflow#26206",
+        "Artifact images were force-scaled and blurred; size them to the container width.",
+    ),
+    (
+        "k8sgpt-ai/k8sgpt#1845",
+        "Mute known findings through an exclusions config key; prints the finding hash "
+        "users paste into the config (approved).",
+    ),
+    (
+        "simonw/llm#1737",
+        "Templates were written as UTF-8 but read with the locale encoding; use UTF-8 "
+        "first with a locale fallback and add regression tests.",
+    ),
+    (
+        "tqdm/tqdm#1880",
+        "Strip terminal control sequences from untrusted `desc` / message strings.",
+    ),
+    (
+        "anthropics/skills#1720",
+        "`mcp-builder` wrote its evaluation report with the locale encoding; write UTF-8.",
+    ),
+]
+
+CASE_STUDIES = [
+    {
+        "title": "simonw/llm#1737 — written as UTF-8, read back with the system locale",
+        "url": "https://github.com/simonw/llm/pull/1737",
+        "rows": [
+            (
+                "Symptom",
+                "On Windows with a `cp936` default encoding, saving a template and then "
+                "running `llm -t <name>` fails with `UnicodeDecodeError: 'gbk' codec "
+                "can't decode byte 0xaa in position 16`. The `-f fragment.md` and "
+                "`--functions tool.py` paths fail the same way.",
+            ),
+            (
+                "Root cause",
+                "The module disagreed with itself: `llm templates edit` wrote via "
+                "`path.write_text(DEFAULT_TEMPLATE, \"utf-8\")` (`llm/cli.py:2646`) while "
+                "`load_template()` read via `path.read_text()` (`llm/cli.py:4274`), which "
+                "uses the locale encoding. The fragment and `--functions` paths "
+                "(`llm/cli.py:293`, `llm/cli.py:4287`) were identical.",
+            ),
+            (
+                "Fix",
+                "Added `_read_text_file()`: try UTF-8 first, fall back to the locale "
+                "encoding only when the file is not valid UTF-8, so old GBK / CP1252 "
+                "files keep working. This mirrors the existing "
+                "`(\"utf-8\", \"latin-1\")` fallback in `llm embed-multi --files`.",
+            ),
+            (
+                "Evidence",
+                "Three regression tests (template, fragment, `--functions`) driven by a "
+                "fixture that simulates a non-UTF-8 locale on any platform. All three "
+                "failed before (`UnicodeDecodeError: 'ascii' codec...`) and pass after; "
+                "the full suite ran `1185 passed, 1 skipped, 6 xfailed, 15 xpassed`.",
+            ),
+        ],
+    },
+    {
+        "title": "pranshuparmar/witr#242 — CI green, real Windows checkout cannot compile (merged)",
+        "url": "https://github.com/pranshuparmar/witr/pull/242",
+        "rows": [
+            (
+                "Symptom",
+                "After `git clone`, `go build ./...` fails with `main.go:1:1: expected "
+                "'package', found cmd`, `go test ./...` reports `[setup failed]`, and "
+                "`make test` / `make lint` are broken on the machine. The repository's "
+                "`Tests: Unit (windows-latest)` job was green.",
+            ),
+            (
+                "Root cause",
+                "`git ls-files -s main.go` showed mode `120000`: the root entry point was "
+                "a symlink to `cmd/witr/main.go`. Git for Windows defaults to "
+                "`core.symlinks=false`, so the symlink lands as a 16-byte text file whose "
+                "content is the string `cmd/witr/main.go` — a `.go` file that is not a "
+                "valid Go package. CI hid it because `actions/checkout` does create real "
+                "symlinks.",
+            ),
+            (
+                "Fix",
+                "Replaced the root entry point with a real file and moved the entry logic "
+                "into `internal/app.Main()` (`SetVersion` + `Execute`), shared by the root "
+                "package and `cmd/witr`; added a lint guard that rejects tracked `120000` "
+                "files.",
+            ),
+            (
+                "Evidence",
+                "`go build ./...`, `go vet ./...`, `gofmt -l .` and `go test ./...` all "
+                "pass; seven cross-compilations (linux amd64/loong64, darwin amd64/arm64, "
+                "freebsd/amd64, windows amd64/arm64) exit 0; `go build .` and "
+                "`go build ./cmd/witr` produce byte-identical `--help` (2237 chars) and "
+                "`--version` output.",
+            ),
+        ],
+    },
+    {
+        "title": "huggingface/accelerate#4360 — three Unix-only assumptions in `debug_launcher`",
+        "url": "https://github.com/huggingface/accelerate/pull/4360",
+        "rows": [
+            (
+                "Symptom",
+                "On Windows, `accelerate debug_launcher script.py` first fails with "
+                "`ValueError: cannot find context for 'fork'`; bypassing that produces "
+                "`PermissionError: [Errno 13]` because the child cannot open the "
+                "rendezvous file.",
+            ),
+            (
+                "Root cause",
+                "Three Unix-only assumptions: (1) `start_method=\"fork\"` is hard-coded "
+                "and Windows only has `spawn`; (2) the rendezvous file is created with "
+                "`NamedTemporaryFile`, so the parent keeps the handle and the spawned "
+                "child cannot open it; (3) `gloo_socket_ifname=\"lo\"` is set "
+                "unconditionally even though the Windows loopback interface is not `lo`.",
+            ),
+            (
+                "Fix",
+                "`_debug_start_method()` chooses `fork` / `spawn` from platform "
+                "capability; `NamedTemporaryFile` became `TemporaryDirectory` (only the "
+                "path crosses the process boundary); `_has_loopback_alias()` probes for "
+                "`lo` before setting the variable.",
+            ),
+            (
+                "Evidence",
+                "Reproduced on a Windows host, then `debug_launcher` started a "
+                "multi-process debug session. Relevant tests pass on Python 3.13 + torch "
+                "2.9 (`spawn` needs the `if __name__ == \"__main__\"` guard, documented "
+                "in the docstring). The PR waits for maintainer workflow approval to run "
+                "CI.",
+            ),
+        ],
+    },
+]
+
+WORKFLOW_NOTES = [
+    (
+        "Reproduce, then change code",
+        "Every fix starts from a failure message I can paste, and ends with the output "
+        "after the fix. The Symptom rows above are the original errors.",
+    ),
+    (
+        "Minimal diff + regression test",
+        "Touch only the lines on the root-cause path; no drive-by formatting, renames or "
+        "refactors. Where a test is possible, it is written to fail first.",
+    ),
+    (
+        "Environment-class defects, not trends",
+        "The bugs I know best only appear in real environments: non-UTF-8 default "
+        "encodings, Windows checkouts, first-contributor CI gates, terminal capability "
+        "differences. They are expensive to reproduce, so few people report them — and "
+        "easy to dismiss as low impact, so I have to show who actually hits them.",
+    ),
+    (
+        "Publish the misses",
+        "Early on I sent documentation and formatting changes that maintainers closed as "
+        "noise; a reproducible encoding bug was still called low impact because no real "
+        "user had reported it and the repro was \"synthetic\". So I now ask before "
+        "submitting: does a real user hit this? If not, find a real report or a concrete "
+        "usage scenario first — and correct myself publicly when I get it wrong.",
+    ),
+]
+
+STACK_ROWS = [
+    ("Languages", "Python (3.9–3.13) · Go · TypeScript · Shell · PowerShell"),
+    (
+        "Training / inference",
+        "PyTorch · Transformers · Accelerate · PEFT · FSDP · DeepSpeed · vLLM",
+    ),
+    (
+        "Data / evaluation",
+        "Datasets · lm-evaluation-harness · MLflow · OpenLLMetry / OpenTelemetry",
+    ),
+    (
+        "Engineering",
+        "pytest · ruff · mypy · GitHub Actions (Windows / macOS matrix) · Docker · Kubernetes",
+    ),
+    (
+        "Platforms",
+        "Windows + Linux · terminal capability detection · encoding / locale compatibility · cross-compilation",
+    ),
+]
+
+HUI_TESTS = 139
+EVAL_GATE_TESTS = 102
+
+
+def md_table(headers: list[str], rows: list[list[str]]) -> str:
+    out = ["| " + " | ".join(headers) + " |", "|" + "|".join([" --- "] * len(headers)) + "|"]
+    out.extend("| " + " | ".join(row) + " |" for row in rows)
+    return "\n".join(out)
+
+
+def render_readme(data: dict) -> str:
+    stats = data["stats"]
+    merged = data["merged_prs"]
+    open_prs = data.get("open_prs") or []
+    open_by_key = {f'{p["repo"]}#{p["number"]}': p for p in open_prs}
+    open_repos = len(data.get("open_by_repo") or {})
+
+    merged_rows = [
+        [
+            f'[`{p["repo"]}`](https://github.com/{p["repo"]})',
+            f'[#{p["number"]}]({p["url"]})',
+            MERGED_NOTES.get(f'{p["repo"]}#{p["number"]}', p["title"]),
+            p["merged_at"],
+        ]
+        for p in merged
+    ]
+
+    open_rows = []
+    for key, note in OPEN_HIGHLIGHTS:
+        pr = open_by_key.get(key)
+        if pr:
+            open_rows.append([f'[#{pr["number"]}]({pr["url"]}) `{pr["repo"]}`', note])
+
+    case_blocks = []
+    for i, case in enumerate(CASE_STUDIES, 1):
+        rows = "\n".join(f"| **{label}** | {text} |" for label, text in case["rows"])
+        case_blocks.append(
+            f"### {i}. {case['title']}\n\n| | |\n| --- | --- |\n{rows}\n\n"
+            f"[View pull request]({case['url']})\n"
+        )
+
+    all_open_url = (
+        f"https://github.com/search?q=author%3A{USER}+is%3Apr+is%3Aopen&type=pullrequests"
+    )
+
+    return f"""<div align="center">
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/intro-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="docs/intro-light.svg">
+  <img src="docs/intro-dark.svg" width="100%" alt="CJstate — I look for the failures that leave no trace">
+</picture>
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/work-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="docs/work-light.svg">
+  <img src="docs/work-dark.svg" width="100%" alt="hui-harness and llm-eval-gate">
+</picture>
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/upstream-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="docs/upstream-light.svg">
+  <img src="docs/upstream-dark.svg" width="100%" alt="Merged upstream pull requests, one row each">
+</picture>
+
+**I look for the failures that leave no trace** — Windows checkouts, non-UTF-8 locales, terminal capability differences.
+Backend engineer working on LLM tooling and Go infrastructure.
+
+[Upstream](#upstream-contributions) · [Case studies](#case-studies) · [Open PRs](#open-pull-requests) · [Projects](#projects) · [Toolchain](#toolchain)
+
+</div>
+
+## At a glance
+
+{md_table(["Metric", "Value"], [
+    ["Merged upstream PRs", f"{stats['merged']}"],
+    ["Open upstream PRs", f"{stats['open']}"],
+    ["Repositories with a merged or open PR", f"{stats['repos']}"],
+    ["Lines in merged PRs", f"+{stats['additions']:,} / -{stats['deletions']:,}"],
+    ["File changes across merged PRs", f"{stats['files']}"],
+    ["Commits, last 12 months", f"{stats['commits']}"],
+    ["Contributions, last 12 months", f"{stats['contributions']}"],
+])}
+
+## Upstream contributions
+
+Every merged pull request, with the failure it fixed. The board above is the same ledger, drawn from the API.
+
+{md_table(["Project", "PR", "What changed", "Merged"], merged_rows)}
+
+## Case studies
+
+Three root causes, each written up with the failure, the mechanism and the evidence that it is fixed.
+
+{chr(10).join(case_blocks)}
+## Open pull requests
+
+{stats['open']} open across {open_repos} upstream repositories. Highlights:
+
+{md_table(["PR", "What it changes"], open_rows)}
+
+[See every open pull request on GitHub]({all_open_url})
+
+## Projects
+
+### [`hui-harness`](https://github.com/CJstate/hui-harness) — a coding agent you can replay
+
+Every tool call, model reply and policy decision lands in a hash-chained JSONL log;
+`hui replay` re-executes the session and fails on the first hash mismatch, so a run
+is verified rather than trusted.
+
+- {HUI_TESTS} tests; `ruff check` / `ruff format --check` clean; CI matrix Linux / Windows / macOS × Python 3.10–3.13
+- **Zero runtime dependencies** (`urllib` / `json` / `subprocess` / `difflib`); `pip install` pulls nothing
+- Context compaction drops whole groups: an assistant `tool_call` and its result are never split apart
+- Encoding and newlines handled for real Windows environments: UTF-8 → local code page (GBK / CP936) → Latin-1 fallback, preserving BOM and CRLF
+- Permission policies: `read-only` / `workspace-write` / `danger-full-access`; about 20 destructive commands require explicit approval and `shell=True` is never used
+
+### [`llm-eval-gate`](https://github.com/CJstate/llm-eval-gate) — turn evaluation noise into a CI verdict
+
+Give it two lm-evaluation-harness result files (`before` / `after`) and it decides
+whether the run actually regressed: a relative threshold plus a standard-error band,
+instead of "the third decimal went down, turn the build red".
+
+- {EVAL_GATE_TESTS} tests; **zero runtime dependencies** (`dependencies = []` in `pyproject.toml`)
+- GitHub Actions green on Ubuntu (Python 3.11 / 3.12 / 3.13), Windows and macOS; the project runs itself as an action
+- Model-agnostic: it reads harness result files, not model outputs
+
+## How I work
+
+{md_table(["Habit", "What it means"], [[f"**{name}**", body] for name, body in WORKFLOW_NOTES])}
+
+## Toolchain
+
+{md_table(["Area", "What I use"], [[f"**{name}**", body] for name, body in STACK_ROWS])}
+
+## Open to
+
+AI / LLM infrastructure, training &amp; inference, and evaluation-tooling roles.
+
+The three boards and the contribution tables are regenerated from the GitHub API by `tools/render_profile.py`; the two project test counts are measured locally.
+"""
+
+
 # ---------------------------------------------------------------------- main
 
 BOARDS = (
@@ -707,6 +1119,10 @@ def main() -> None:
     parser.add_argument(
         "--static", action="store_true",
         help="omit animation so the output can be checked as a still image",
+    )
+    parser.add_argument(
+        "--readme", default=None,
+        help="also write the markdown README to this path",
     )
     args = parser.parse_args()
 
@@ -728,6 +1144,11 @@ def main() -> None:
             (out / f"{name}-{scheme}.svg").write_text(
                 render(scheme, data, motion), encoding="utf-8"
             )
+
+    if args.readme:
+        Path(args.readme).write_text(
+            render_readme(data), encoding="utf-8", newline="\n"
+        )
 
     s = data["stats"]
     print(

@@ -1,8 +1,8 @@
 name: refresh profile visuals
 
-# Every number in the profile SVGs is fetched from the GitHub API at render
-# time. Nothing is hand-written, so nothing can drift out of date or quietly
-# become a lie.
+# Every number in the profile boards and README is fetched from the GitHub API
+# at render time. Nothing is hand-written, so nothing can drift out of date or
+# quietly become a lie.
 
 on:
   schedule:
@@ -36,10 +36,10 @@ jobs:
       - name: check the renderer still parses
         run: python -m py_compile tools/render_profile.py
 
-      - name: render every board from live GitHub data
+      - name: render every board and the README from live GitHub data
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: python tools/render_profile.py --out docs
+        run: python tools/render_profile.py --out docs --readme README.md
 
       - name: fail loudly if the render produced nothing
         run: |
@@ -47,7 +47,7 @@ jobs:
           for f in docs/intro-dark.svg docs/intro-light.svg \
                    docs/work-dark.svg docs/work-light.svg \
                    docs/upstream-dark.svg docs/upstream-light.svg \
-                   docs/data/live.json; do
+                   docs/data/live.json README.md; do
             test -s "$f" || { echo "missing or empty: $f"; exit 1; }
           done
 
@@ -55,7 +55,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add docs
+          git add docs README.md
           if git diff --cached --quiet; then
             echo "no change since the last run"
           else

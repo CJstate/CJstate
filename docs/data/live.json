@@ -1,11 +1,11 @@
 {
- "generated": "2026-10-31T07:02:30Z",
+ "generated": "2026-10-31T14:11:59Z",
  "stats": {
   "merged": 17,
-  "open": 42,
+  "open": 43,
   "repos": 26,
   "commits": 87,
-  "contributions": 246,
+  "contributions": 247,
   "originals": 2,
   "additions": 1375,
   "deletions": 171,
@@ -183,6 +183,309 @@
    "url": "https://github.com/DependencyTrack/dependency-track/pull/7096"
   }
  ],
+ "open_prs": [
+  {
+   "repo": "syncronix-labs/aegora",
+   "number": 68,
+   "title": "feat(proxy): add a per-route upstream timeout",
+   "url": "https://github.com/syncronix-labs/aegora/pull/68",
+   "created_at": "2026-10-31"
+  },
+  {
+   "repo": "syncronix-labs/aegora",
+   "number": 67,
+   "title": "feat: make /readyz report the dependencies this config actually uses",
+   "url": "https://github.com/syncronix-labs/aegora/pull/67",
+   "created_at": "2026-10-30"
+  },
+  {
+   "repo": "syncronix-labs/aegora",
+   "number": 66,
+   "title": "feat: count cache hits and misses per route",
+   "url": "https://github.com/syncronix-labs/aegora/pull/66",
+   "created_at": "2026-10-30"
+  },
+  {
+   "repo": "syncronix-labs/aegora",
+   "number": 65,
+   "title": "feat(cache): cap the stored lifetime at the origin's max-age",
+   "url": "https://github.com/syncronix-labs/aegora/pull/65",
+   "created_at": "2026-10-30"
+  },
+  {
+   "repo": "syncronix-labs/aegora",
+   "number": 64,
+   "title": "test: add fuzz targets for routing, cache keys and config loading",
+   "url": "https://github.com/syncronix-labs/aegora/pull/64",
+   "created_at": "2026-10-30"
+  },
+  {
+   "repo": "syncronix-labs/aegora",
+   "number": 63,
+   "title": "feat: send Retry-After on circuit breaker 503 responses",
+   "url": "https://github.com/syncronix-labs/aegora/pull/63",
+   "created_at": "2026-10-30"
+  },
+  {
+   "repo": "Mihirajmera/agent-access-review",
+   "number": 26,
+   "title": "fix: read a single-value list field and a quoted boolean in a manifest",
+   "url": "https://github.com/Mihirajmera/agent-access-review/pull/26",
+   "created_at": "2026-10-27"
+  },
+  {
+   "repo": "Mihirajmera/agent-access-review",
+   "number": 25,
+   "title": "fix: read a manifest whatever its extension, and accept a full timestamp",
+   "url": "https://github.com/Mihirajmera/agent-access-review/pull/25",
+   "created_at": "2026-10-27"
+  },
+  {
+   "repo": "Mihirajmera/agent-access-review",
+   "number": 24,
+   "title": "fix: take the AAR-11 endpoint host from urlsplit, not a regex",
+   "url": "https://github.com/Mihirajmera/agent-access-review/pull/24",
+   "created_at": "2026-10-27"
+  },
+  {
+   "repo": "Mihirajmera/agent-access-review",
+   "number": 23,
+   "title": "fix: stop the decision sheet from evaluating config values as formulas",
+   "url": "https://github.com/Mihirajmera/agent-access-review/pull/23",
+   "created_at": "2026-10-27"
+  },
+  {
+   "repo": "Mihirajmera/agent-access-review",
+   "number": 22,
+   "title": "fix: report and redact credentials carried in a server URL",
+   "url": "https://github.com/Mihirajmera/agent-access-review/pull/22",
+   "created_at": "2026-10-27"
+  },
+  {
+   "repo": "Mihirajmera/agent-access-review",
+   "number": 21,
+   "title": "fix: stop losing findings silently in three places",
+   "url": "https://github.com/Mihirajmera/agent-access-review/pull/21",
+   "created_at": "2026-10-27"
+  },
+  {
+   "repo": "syncronix-labs/aegora",
+   "number": 51,
+   "title": "feat: add dedicated Prometheus counters for shed and queue-dropped requests",
+   "url": "https://github.com/syncronix-labs/aegora/pull/51",
+   "created_at": "2026-10-26"
+  },
+  {
+   "repo": "simonw/llm",
+   "number": 1814,
+   "title": "Run pip in a child process for install and uninstall",
+   "url": "https://github.com/simonw/llm/pull/1814",
+   "created_at": "2026-10-25"
+  },
+  {
+   "repo": "suzuki-shunsuke/tfcmt",
+   "number": 2586,
+   "title": "fix(notifier): post a fallback comment when the comment body is too long",
+   "url": "https://github.com/suzuki-shunsuke/tfcmt/pull/2586",
+   "created_at": "2026-10-24"
+  },
+  {
+   "repo": "suzuki-shunsuke/pinact",
+   "number": 1802,
+   "title": "fix(run): derive GitHub Actions annotation title from the log level",
+   "url": "https://github.com/suzuki-shunsuke/pinact/pull/1802",
+   "created_at": "2026-10-24"
+  },
+  {
+   "repo": "apache/echarts",
+   "number": 21807,
+   "title": "test(visualMap): cover vertical handle-label separation for close ranges",
+   "url": "https://github.com/apache/echarts/pull/21807",
+   "created_at": "2026-10-24"
+  },
+  {
+   "repo": "go-resty/resty",
+   "number": 1268,
+   "title": "chore(deps): update golang.org/x/net and x/time to latest. close #1251",
+   "url": "https://github.com/go-resty/resty/pull/1268",
+   "created_at": "2026-10-24"
+  },
+  {
+   "repo": "apache/echarts",
+   "number": 21806,
+   "title": "fix(marker): resolve the value of coord markPoint from the series data. close #20410",
+   "url": "https://github.com/apache/echarts/pull/21806",
+   "created_at": "2026-10-24"
+  },
+  {
+   "repo": "k8sgpt-ai/k8sgpt",
+   "number": 1845,
+   "title": "feat: mute known findings via an exclusions config key",
+   "url": "https://github.com/k8sgpt-ai/k8sgpt/pull/1845",
+   "created_at": "2026-10-18"
+  },
+  {
+   "repo": "anthropics/claude-agent-sdk-python",
+   "number": 1413,
+   "title": "fix: match the CLI's UTF-16 project directory naming for non-BMP paths",
+   "url": "https://github.com/anthropics/claude-agent-sdk-python/pull/1413",
+   "created_at": "2026-10-18"
+  },
+  {
+   "repo": "tqdm/tqdm",
+   "number": 1880,
+   "title": "fix(std): strip terminal control sequences from untrusted desc/messages",
+   "url": "https://github.com/tqdm/tqdm/pull/1880",
+   "created_at": "2026-10-15"
+  },
+  {
+   "repo": "cookiecutter/cookiecutter",
+   "number": 2290,
+   "title": "fix(generate): report every invalid default_context overwrite",
+   "url": "https://github.com/cookiecutter/cookiecutter/pull/2290",
+   "created_at": "2026-10-15"
+  },
+  {
+   "repo": "EleutherAI/lm-evaluation-harness",
+   "number": 4384,
+   "title": "fix(metrics): run the trailing partial chunk in bootstrap_stderr",
+   "url": "https://github.com/EleutherAI/lm-evaluation-harness/pull/4384",
+   "created_at": "2026-10-14"
+  },
+  {
+   "repo": "darrenburns/posting",
+   "number": 401,
+   "title": "feat: show which request a response belongs to",
+   "url": "https://github.com/darrenburns/posting/pull/401",
+   "created_at": "2026-10-12"
+  },
+  {
+   "repo": "suzuki-shunsuke/pinact",
+   "number": 1781,
+   "title": "fix(run): make `run -u` agree with a plain pin on short tags",
+   "url": "https://github.com/suzuki-shunsuke/pinact/pull/1781",
+   "created_at": "2026-10-12"
+  },
+  {
+   "repo": "suzuki-shunsuke/pinact",
+   "number": 1780,
+   "title": "fix(run): consider tags newer than the latest release",
+   "url": "https://github.com/suzuki-shunsuke/pinact/pull/1780",
+   "created_at": "2026-10-12"
+  },
+  {
+   "repo": "suzuki-shunsuke/pinact",
+   "number": 1779,
+   "title": "feat(run): log matched uses operations",
+   "url": "https://github.com/suzuki-shunsuke/pinact/pull/1779",
+   "created_at": "2026-10-12"
+  },
+  {
+   "repo": "darrenburns/posting",
+   "number": 400,
+   "title": "feat: add collection_browser.open_on_highlight option",
+   "url": "https://github.com/darrenburns/posting/pull/400",
+   "created_at": "2026-10-12"
+  },
+  {
+   "repo": "simonw/llm",
+   "number": 1737,
+   "title": "Read templates, fragments and --functions files as UTF-8 with locale fallback",
+   "url": "https://github.com/simonw/llm/pull/1737",
+   "created_at": "2026-10-05"
+  },
+  {
+   "repo": "huggingface/accelerate",
+   "number": 4361,
+   "title": "Warn when the checkpoint random states cannot be restored",
+   "url": "https://github.com/huggingface/accelerate/pull/4361",
+   "created_at": "2026-10-02"
+  },
+  {
+   "repo": "huggingface/accelerate",
+   "number": 4360,
+   "title": "Fix `debug_launcher` on Windows",
+   "url": "https://github.com/huggingface/accelerate/pull/4360",
+   "created_at": "2026-10-02"
+  },
+  {
+   "repo": "Lightning-AI/pytorch-lightning",
+   "number": 21975,
+   "title": "feat: add enable_device_summary flag to Trainer (fixes #13378)",
+   "url": "https://github.com/Lightning-AI/pytorch-lightning/pull/21975",
+   "created_at": "2026-09-27"
+  },
+  {
+   "repo": "huggingface/datasets",
+   "number": 8693,
+   "title": "fix: use Sequence instead of List for PathLike type annotations (fixes #5354)",
+   "url": "https://github.com/huggingface/datasets/pull/8693",
+   "created_at": "2026-09-27"
+  },
+  {
+   "repo": "Lightning-AI/pytorch-lightning",
+   "number": 21974,
+   "title": "docs: add :emphasize-lines: to code blocks in warnings.rst (fixes #12119)",
+   "url": "https://github.com/Lightning-AI/pytorch-lightning/pull/21974",
+   "created_at": "2026-09-27"
+  },
+  {
+   "repo": "mlflow/mlflow",
+   "number": 26206,
+   "title": "Fix artifact image scaling in comparison view (fixes #20703)",
+   "url": "https://github.com/mlflow/mlflow/pull/26206",
+   "created_at": "2026-09-27"
+  },
+  {
+   "repo": "EleutherAI/lm-evaluation-harness",
+   "number": 4216,
+   "title": "fix(utils): stop make_table from repeating shared subtasks",
+   "url": "https://github.com/EleutherAI/lm-evaluation-harness/pull/4216",
+   "created_at": "2026-09-23"
+  },
+  {
+   "repo": "browser-use/jev-ultrafast",
+   "number": 114,
+   "title": "fix: no-progress guard must not ignore unobserved outcomes (#94)",
+   "url": "https://github.com/browser-use/jev-ultrafast/pull/114",
+   "created_at": "2026-09-22"
+  },
+  {
+   "repo": "traceloop/openllmetry",
+   "number": 4484,
+   "title": "fix(groq): keep usage from choice-less streaming chunks",
+   "url": "https://github.com/traceloop/openllmetry/pull/4484",
+   "created_at": "2026-09-19"
+  },
+  {
+   "repo": "Lightning-AI/pytorch-lightning",
+   "number": 21939,
+   "title": "tests: skip test_tensorboard_with_symlink on Windows without symlink privilege",
+   "url": "https://github.com/Lightning-AI/pytorch-lightning/pull/21939",
+   "created_at": "2026-09-08"
+  },
+  {
+   "repo": "EleutherAI/lm-evaluation-harness",
+   "number": 4114,
+   "title": "Add regression tests for simple_evaluate() input validation (addresses #1883)",
+   "url": "https://github.com/EleutherAI/lm-evaluation-harness/pull/4114",
+   "created_at": "2026-09-07"
+  },
+  {
+   "repo": "anthropics/skills",
+   "number": 1720,
+   "title": "fix(mcp-builder): write evaluation report as UTF-8",
+   "url": "https://github.com/anthropics/skills/pull/1720",
+   "created_at": "2026-09-03"
+  },
+  {
+   "repo": "public-apis/public-apis",
+   "number": 7217,
+   "title": "docs(readme): replace dead Pirate Weather link with working API docs URL",
+   "url": "https://github.com/public-apis/public-apis/pull/7217",
+   "created_at": "2026-09-03"
+  }
+ ],
  "open_by_repo": {
   "EleutherAI/lm-evaluation-harness": 3,
   "Lightning-AI/pytorch-lightning": 3,
@@ -202,7 +505,7 @@
   "simonw/llm": 2,
   "suzuki-shunsuke/pinact": 4,
   "suzuki-shunsuke/tfcmt": 1,
-  "syncronix-labs/aegora": 6,
+  "syncronix-labs/aegora": 7,
   "tqdm/tqdm": 1,
   "traceloop/openllmetry": 1
  },
@@ -1689,7 +1992,7 @@
   },
   {
    "d": "2026-10-31",
-   "c": 0
+   "c": 1
   }
  ],
  "originals": [
