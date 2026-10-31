@@ -34,8 +34,8 @@ Backend engineer working on LLM tooling and Go infrastructure.
 | Repositories with a merged or open PR | 26 |
 | Lines in merged PRs | +1,375 / -171 |
 | File changes across merged PRs | 58 |
-| Commits, last 12 months | 87 |
-| Contributions, last 12 months | 247 |
+| Commits, last 12 months | 88 |
+| Contributions, last 12 months | 248 |
 
 ## Upstream contributions
 
