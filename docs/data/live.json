@@ -1,11 +1,11 @@
 {
- "generated": "2026-11-01T07:37:03Z",
+ "generated": "2026-11-01T10:11:11Z",
  "stats": {
   "merged": 17,
   "open": 55,
   "repos": 27,
-  "commits": 88,
-  "contributions": 261,
+  "commits": 91,
+  "contributions": 264,
   "originals": 2,
   "additions": 1375,
   "deletions": 171,
@@ -2053,50 +2053,56 @@
   },
   {
    "d": "2026-11-01",
-   "c": 13
+   "c": 16
   }
  ],
  "originals": [
   {
-   "name": "hui-harness",
-   "description": "A small, dependency-free, replayable coding agent: hash-chained session logs, 8 built-in tools, policy-gated commands, OpenAI + Anthropic providers. Pure stdlib Python.",
+   "name": "Veritas-Harness",
+   "description": "A zero-dependency AI Agent harness that proves your runs are byte-level reproducible and tamper-evident.",
    "language": "Python",
-   "url": "https://github.com/CJstate/hui-harness",
+   "url": "https://github.com/CJstate/Veritas-Harness",
    "topics": [
     "agent-harness",
     "ai-agent",
     "anthropic",
+    "audit",
     "cli",
     "coding-agent",
     "developer-tools",
     "llm",
+    "mcp",
     "openai",
     "python",
     "replay",
+    "security",
     "zero-dependencies"
    ],
-   "pushed_at": "2026-10-11",
+   "pushed_at": "2026-11-01",
    "size": 181,
-   "files": 26
+   "files": 32
   },
   {
-   "name": "llm-eval-gate",
-   "description": "Fail CI when an LLM evaluation run actually regressed: relative thresholds + stderr-aware noise bands over lm-evaluation-harness results",
+   "name": "EvalGuard",
+   "description": "Statistical CI/CD gate for LLM evaluations. Catch true regressions, ignore noise.",
    "language": "Python",
-   "url": "https://github.com/CJstate/llm-eval-gate",
+   "url": "https://github.com/CJstate/EvalGuard",
    "topics": [
     "benchmark",
     "ci",
+    "ci-cd",
     "evals",
     "evaluation",
+    "github-actions",
     "llm",
     "lm-evaluation-harness",
     "python",
-    "regression-testing"
+    "regression-testing",
+    "statistics"
    ],
-   "pushed_at": "2026-10-01",
+   "pushed_at": "2026-11-01",
    "size": 102,
-   "files": 30
+   "files": 35
   }
  ]
 }

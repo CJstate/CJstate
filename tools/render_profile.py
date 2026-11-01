@@ -497,11 +497,11 @@ def render_intro(scheme: str, data: dict, motion: bool = True) -> str:
 
 
 PROJECT_NOTES = {
-    "hui-harness": [
-        "A coding agent you can replay. Every tool call, model reply and policy",
-        "decision lands in a hash-chained log, so a run is verified, not trusted.",
+    "Veritas-Harness": [
+        "Tamper-evident replay for AI agent runs. Every tool call and result lands in",
+        "a SHA-256 hash chain; replay verifies it before re-running the tools.",
     ],
-    "llm-eval-gate": [
+    "EvalGuard": [
         "A CI gate that fails only on a real regression. Relative thresholds and",
         "stderr-aware noise bands over lm-evaluation-harness, so a two-point",
         "wobble inside the error bar pages nobody.",
@@ -957,8 +957,8 @@ STACK_ROWS = [
     ),
 ]
 
-HUI_TESTS = 139
-EVAL_GATE_TESTS = 102
+VERITAS_TESTS = 141
+EVAL_GUARD_TESTS = 107
 
 
 def md_table(headers: list[str], rows: list[list[str]]) -> str:
@@ -1013,7 +1013,7 @@ def render_readme(data: dict) -> str:
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/work-dark.svg">
   <source media="(prefers-color-scheme: light)" srcset="docs/work-light.svg">
-  <img src="docs/work-dark.svg" width="100%" alt="hui-harness and llm-eval-gate">
+  <img src="docs/work-dark.svg" width="100%" alt="Veritas-Harness and EvalGuard">
 </picture>
 
 <picture>
@@ -1023,7 +1023,7 @@ def render_readme(data: dict) -> str:
 </picture>
 
 **I look for the failures that leave no trace** — Windows checkouts, non-UTF-8 locales, terminal capability differences.
-Backend engineer working on LLM tooling and Go infrastructure.
+Backend engineer building zero-dependency LLM tooling: tamper-evident agent replay and statistical eval gates.
 
 [Upstream](#upstream-contributions) · [Case studies](#case-studies) · [Open PRs](#open-pull-requests) · [Projects](#projects) · [Toolchain](#toolchain)
 
@@ -1062,26 +1062,27 @@ Three root causes, each written up with the failure, the mechanism and the evide
 
 ## Projects
 
-### [`hui-harness`](https://github.com/CJstate/hui-harness) — a coding agent you can replay
+### [`Veritas-Harness`](https://github.com/CJstate/Veritas-Harness) — a coding agent you can audit
 
-Every tool call, model reply and policy decision lands in a hash-chained JSONL log;
-`hui replay` re-executes the session and fails on the first hash mismatch, so a run
-is verified rather than trusted.
+Every tool call, model reply and MCP request lands in a hash-chained JSONL log.
+`veritas replay` verifies the chain before re-running the tools, then compares every
+fresh result by SHA-256 — a run is verified rather than trusted.
 
-- {HUI_TESTS} tests; `ruff check` / `ruff format --check` clean; CI matrix Linux / Windows / macOS × Python 3.10–3.13
+- {VERITAS_TESTS} tests; `ruff check` / `ruff format --check` clean; CI matrix Linux / Windows / macOS × Python 3.10–3.13
 - **Zero runtime dependencies** (`urllib` / `json` / `subprocess` / `difflib`); `pip install` pulls nothing
-- Context compaction drops whole groups: an assistant `tool_call` and its result are never split apart
+- 30-second tamper demo edits a real session and proves replay rejects it before executing a modified transcript
+- Minimal stdio MCP client: discovered tools are namespaced and their calls enter the same evidence log
 - Encoding and newlines handled for real Windows environments: UTF-8 → local code page (GBK / CP936) → Latin-1 fallback, preserving BOM and CRLF
-- Permission policies: `read-only` / `workspace-write` / `danger-full-access`; about 20 destructive commands require explicit approval and `shell=True` is never used
 
-### [`llm-eval-gate`](https://github.com/CJstate/llm-eval-gate) — turn evaluation noise into a CI verdict
+### [`EvalGuard`](https://github.com/CJstate/EvalGuard) — turn evaluation noise into a CI verdict
 
 Give it two lm-evaluation-harness result files (`before` / `after`) and it decides
 whether the run actually regressed: a relative threshold plus a standard-error band,
 instead of "the third decimal went down, turn the build red".
 
-- {EVAL_GATE_TESTS} tests; **zero runtime dependencies** (`dependencies = []` in `pyproject.toml`)
-- GitHub Actions green on Ubuntu (Python 3.11 / 3.12 / 3.13), Windows and macOS; the project runs itself as an action
+- {EVAL_GUARD_TESTS} tests; **zero runtime dependencies** (`dependencies = []` in `pyproject.toml`)
+- One-command offline demo: MMLU moves beyond threshold but stays inside the noise band; GSM8K is a real regression and fails the gate
+- ANSI ASCII reports, actionable regression diagnosis, clean `--json-output`, and GitHub Action JSON outputs
 - Model-agnostic: it reads harness result files, not model outputs
 
 ## How I work
