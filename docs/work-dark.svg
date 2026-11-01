@@ -10,7 +10,7 @@
 <text x="60" y="120" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11.8" font-weight="400" fill="#94A8B8" text-anchor="start">a SHA-256 hash chain; replay verifies it before re-running the tools.</text>
 <text x="60" y="174" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="15" font-weight="600" fill="#EEF4F9" text-anchor="start" letter-spacing="-0.3">32</text>
 <text x="60" y="190" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="9.5" font-weight="400" fill="#6B8093" text-anchor="start" letter-spacing="0.9">files</text>
-<text x="138" y="174" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="15" font-weight="600" fill="#EEF4F9" text-anchor="start" letter-spacing="-0.3">181</text>
+<text x="138" y="174" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="15" font-weight="600" fill="#EEF4F9" text-anchor="start" letter-spacing="-0.3">184</text>
 <text x="138" y="190" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="9.5" font-weight="400" fill="#6B8093" text-anchor="start" letter-spacing="0.9">kb</text>
 <text x="216" y="174" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="15" font-weight="600" fill="#EEF4F9" text-anchor="start" letter-spacing="-0.3">2026-11</text>
 <text x="216" y="190" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="9.5" font-weight="400" fill="#6B8093" text-anchor="start" letter-spacing="0.9">last push</text>

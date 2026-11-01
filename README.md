@@ -34,8 +34,8 @@ Backend engineer building zero-dependency LLM tooling: tamper-evident agent repl
 | Repositories with a merged or open PR | 27 |
 | Lines in merged PRs | +1,375 / -171 |
 | File changes across merged PRs | 58 |
-| Commits, last 12 months | 91 |
-| Contributions, last 12 months | 264 |
+| Commits, last 12 months | 92 |
+| Contributions, last 12 months | 265 |
 
 ## Upstream contributions
 
