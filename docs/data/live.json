@@ -1,11 +1,11 @@
 {
- "generated": "2026-10-31T14:14:01Z",
+ "generated": "2026-11-01T07:37:03Z",
  "stats": {
   "merged": 17,
-  "open": 43,
-  "repos": 26,
+  "open": 55,
+  "repos": 27,
   "commits": 88,
-  "contributions": 248,
+  "contributions": 261,
   "originals": 2,
   "additions": 1375,
   "deletions": 171,
@@ -184,6 +184,90 @@
   }
  ],
  "open_prs": [
+  {
+   "repo": "suzuki-shunsuke/pinact",
+   "number": 1833,
+   "title": "feat: support semver tags with a path prefix",
+   "url": "https://github.com/suzuki-shunsuke/pinact/pull/1833",
+   "created_at": "2026-11-01"
+  },
+  {
+   "repo": "suzuki-shunsuke/pinact",
+   "number": 1832,
+   "title": "feat: add FilePath to rule conditions",
+   "url": "https://github.com/suzuki-shunsuke/pinact/pull/1832",
+   "created_at": "2026-11-01"
+  },
+  {
+   "repo": "cybozu-go/moco",
+   "number": 965,
+   "title": "Let backup and restore jobs meet the restricted Pod Security Standard",
+   "url": "https://github.com/cybozu-go/moco/pull/965",
+   "created_at": "2026-11-01"
+  },
+  {
+   "repo": "cybozu-go/moco",
+   "number": 964,
+   "title": "Add tolerations and nodeSelector to backup and restore jobs",
+   "url": "https://github.com/cybozu-go/moco/pull/964",
+   "created_at": "2026-11-01"
+  },
+  {
+   "repo": "syncronix-labs/aegora",
+   "number": 77,
+   "title": "feat(proxy): add active health checking for route targets",
+   "url": "https://github.com/syncronix-labs/aegora/pull/77",
+   "created_at": "2026-11-01"
+  },
+  {
+   "repo": "syncronix-labs/aegora",
+   "number": 76,
+   "title": "ci: add a benchmark regression gate for pull requests",
+   "url": "https://github.com/syncronix-labs/aegora/pull/76",
+   "created_at": "2026-11-01"
+  },
+  {
+   "repo": "syncronix-labs/aegora",
+   "number": 75,
+   "title": "feat(ratelimit): add a Redis-backed token bucket",
+   "url": "https://github.com/syncronix-labs/aegora/pull/75",
+   "created_at": "2026-11-01"
+  },
+  {
+   "repo": "syncronix-labs/aegora",
+   "number": 74,
+   "title": "build(docker): harden the container health check",
+   "url": "https://github.com/syncronix-labs/aegora/pull/74",
+   "created_at": "2026-11-01"
+  },
+  {
+   "repo": "syncronix-labs/aegora",
+   "number": 73,
+   "title": "feat(admin): show breaker state and target health in /admin/routes",
+   "url": "https://github.com/syncronix-labs/aegora/pull/73",
+   "created_at": "2026-11-01"
+  },
+  {
+   "repo": "syncronix-labs/aegora",
+   "number": 72,
+   "title": "feat(proxy): add weighted round-robin load balancing",
+   "url": "https://github.com/syncronix-labs/aegora/pull/72",
+   "created_at": "2026-11-01"
+  },
+  {
+   "repo": "syncronix-labs/aegora",
+   "number": 71,
+   "title": "feat(cors): add configurable cross-origin support",
+   "url": "https://github.com/syncronix-labs/aegora/pull/71",
+   "created_at": "2026-11-01"
+  },
+  {
+   "repo": "syncronix-labs/aegora",
+   "number": 70,
+   "title": "feat(server): add optional TLS listener",
+   "url": "https://github.com/syncronix-labs/aegora/pull/70",
+   "created_at": "2026-11-01"
+  },
   {
    "repo": "syncronix-labs/aegora",
    "number": 68,
@@ -495,6 +579,7 @@
   "apache/echarts": 2,
   "browser-use/jev-ultrafast": 1,
   "cookiecutter/cookiecutter": 1,
+  "cybozu-go/moco": 2,
   "darrenburns/posting": 2,
   "go-resty/resty": 1,
   "huggingface/accelerate": 2,
@@ -503,41 +588,13 @@
   "mlflow/mlflow": 1,
   "public-apis/public-apis": 1,
   "simonw/llm": 2,
-  "suzuki-shunsuke/pinact": 4,
+  "suzuki-shunsuke/pinact": 6,
   "suzuki-shunsuke/tfcmt": 1,
-  "syncronix-labs/aegora": 7,
+  "syncronix-labs/aegora": 15,
   "tqdm/tqdm": 1,
   "traceloop/openllmetry": 1
  },
  "calendar": [
-  {
-   "d": "2025-10-26",
-   "c": 0
-  },
-  {
-   "d": "2025-10-27",
-   "c": 0
-  },
-  {
-   "d": "2025-10-28",
-   "c": 0
-  },
-  {
-   "d": "2025-10-29",
-   "c": 0
-  },
-  {
-   "d": "2025-10-30",
-   "c": 0
-  },
-  {
-   "d": "2025-10-31",
-   "c": 0
-  },
-  {
-   "d": "2025-11-01",
-   "c": 0
-  },
   {
    "d": "2025-11-02",
    "c": 0
@@ -1993,6 +2050,10 @@
   {
    "d": "2026-10-31",
    "c": 2
+  },
+  {
+   "d": "2026-11-01",
+   "c": 13
   }
  ],
  "originals": [

@@ -30,12 +30,12 @@ Backend engineer working on LLM tooling and Go infrastructure.
 | Metric | Value |
 | --- | --- |
 | Merged upstream PRs | 17 |
-| Open upstream PRs | 43 |
-| Repositories with a merged or open PR | 26 |
+| Open upstream PRs | 55 |
+| Repositories with a merged or open PR | 27 |
 | Lines in merged PRs | +1,375 / -171 |
 | File changes across merged PRs | 58 |
 | Commits, last 12 months | 88 |
-| Contributions, last 12 months | 248 |
+| Contributions, last 12 months | 261 |
 
 ## Upstream contributions
 
@@ -100,7 +100,7 @@ Three root causes, each written up with the failure, the mechanism and the evide
 
 ## Open pull requests
 
-43 open across 21 upstream repositories. Highlights:
+55 open across 22 upstream repositories. Highlights:
 
 | PR | What it changes |
 | --- | --- |
