@@ -29,13 +29,13 @@ Backend engineer building zero-dependency LLM tooling: tamper-evident agent repl
 
 | Metric | Value |
 | --- | --- |
-| Merged upstream PRs | 17 |
-| Open upstream PRs | 55 |
-| Repositories with a merged or open PR | 27 |
-| Lines in merged PRs | +1,375 / -171 |
-| File changes across merged PRs | 58 |
-| Commits, last 12 months | 92 |
-| Contributions, last 12 months | 265 |
+| Merged upstream PRs | 18 |
+| Open upstream PRs | 74 |
+| Repositories with a merged or open PR | 28 |
+| Lines in merged PRs | +1,376 / -172 |
+| File changes across merged PRs | 59 |
+| Commits, last 12 months | 93 |
+| Contributions, last 12 months | 288 |
 
 ## Upstream contributions
 
@@ -43,6 +43,7 @@ Every merged pull request, with the failure it fixed. The board above is the sam
 
 | Project | PR | What changed | Merged |
 | --- | --- | --- | --- |
+| [`k8sgpt-ai/k8sgpt`](https://github.com/k8sgpt-ai/k8sgpt) | [#1900](https://github.com/k8sgpt-ai/k8sgpt/pull/1900) | docs: link AI backend support tiers from README | 2026-11-02 |
 | [`k8sgpt-ai/k8sgpt`](https://github.com/k8sgpt-ai/k8sgpt) | [#1851](https://github.com/k8sgpt-ai/k8sgpt/pull/1851) | Pin `filepath-securejoin` to v0.4.1 to unblock the License Compliance gate. | 2026-10-30 |
 | [`k8sgpt-ai/k8sgpt`](https://github.com/k8sgpt-ai/k8sgpt) | [#1848](https://github.com/k8sgpt-ai/k8sgpt/pull/1848) | Assert the `EnsureDirExists` failure portably instead of relying on Unix paths. | 2026-10-30 |
 | [`syncronix-labs/aegora`](https://github.com/syncronix-labs/aegora) | [#52](https://github.com/syncronix-labs/aegora/pull/52) | Evict the least recently used entry when the cache reaches capacity. | 2026-10-29 |
@@ -100,7 +101,7 @@ Three root causes, each written up with the failure, the mechanism and the evide
 
 ## Open pull requests
 
-55 open across 22 upstream repositories. Highlights:
+74 open across 24 upstream repositories. Highlights:
 
 | PR | What it changes |
 | --- | --- |

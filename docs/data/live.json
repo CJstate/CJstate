@@ -1,17 +1,27 @@
 {
- "generated": "2026-11-02T07:43:47Z",
+ "generated": "2026-11-03T07:58:18Z",
  "stats": {
-  "merged": 17,
-  "open": 55,
-  "repos": 27,
-  "commits": 92,
-  "contributions": 265,
+  "merged": 18,
+  "open": 74,
+  "repos": 28,
+  "commits": 93,
+  "contributions": 288,
   "originals": 2,
-  "additions": 1375,
-  "deletions": 171,
-  "files": 58
+  "additions": 1376,
+  "deletions": 172,
+  "files": 59
  },
  "merged_prs": [
+  {
+   "repo": "k8sgpt-ai/k8sgpt",
+   "number": 1900,
+   "title": "docs: link AI backend support tiers from README",
+   "merged_at": "2026-11-02",
+   "additions": 1,
+   "deletions": 1,
+   "changed_files": 1,
+   "url": "https://github.com/k8sgpt-ai/k8sgpt/pull/1900"
+  },
   {
    "repo": "k8sgpt-ai/k8sgpt",
    "number": 1851,
@@ -184,6 +194,139 @@
   }
  ],
  "open_prs": [
+  {
+   "repo": "k8sgpt-ai/docs",
+   "number": 145,
+   "title": "docs: define AI backend support tiers",
+   "url": "https://github.com/k8sgpt-ai/docs/pull/145",
+   "created_at": "2026-11-02"
+  },
+  {
+   "repo": "k8sgpt-ai/k8sgpt-operator",
+   "number": 865,
+   "title": "feat: support Azure Workload Identity for Azure OpenAI",
+   "url": "https://github.com/k8sgpt-ai/k8sgpt-operator/pull/865",
+   "created_at": "2026-11-02"
+  },
+  {
+   "repo": "cybozu-go/moco",
+   "number": 969,
+   "title": "feat: support changing system user authentication plugins",
+   "url": "https://github.com/cybozu-go/moco/pull/969",
+   "created_at": "2026-11-02"
+  },
+  {
+   "repo": "cookiecutter/cookiecutter",
+   "number": 2299,
+   "title": "fix(vcs): preserve cached templates when clone fails",
+   "url": "https://github.com/cookiecutter/cookiecutter/pull/2299",
+   "created_at": "2026-11-02"
+  },
+  {
+   "repo": "traceloop/openllmetry",
+   "number": 4681,
+   "title": "fix(langchain): avoid duplicate invoke_agent spans in LangGraph streams",
+   "url": "https://github.com/traceloop/openllmetry/pull/4681",
+   "created_at": "2026-11-02"
+  },
+  {
+   "repo": "traceloop/openllmetry",
+   "number": 4680,
+   "title": "fix(sdk): honor TRACELOOP_TRACING_ENABLED when enabled is omitted",
+   "url": "https://github.com/traceloop/openllmetry/pull/4680",
+   "created_at": "2026-11-02"
+  },
+  {
+   "repo": "traceloop/openllmetry",
+   "number": 4679,
+   "title": "fix(traceloop-sdk): serialize list-valued association properties for metrics",
+   "url": "https://github.com/traceloop/openllmetry/pull/4679",
+   "created_at": "2026-11-02"
+  },
+  {
+   "repo": "simonw/llm",
+   "number": 1842,
+   "title": "fix: honor CLI extract flags over template defaults",
+   "url": "https://github.com/simonw/llm/pull/1842",
+   "created_at": "2026-11-02"
+  },
+  {
+   "repo": "cookiecutter/cookiecutter",
+   "number": 2298,
+   "title": "fix: handle ZIP template URLs with query strings and fragments",
+   "url": "https://github.com/cookiecutter/cookiecutter/pull/2298",
+   "created_at": "2026-11-02"
+  },
+  {
+   "repo": "cookiecutter/cookiecutter",
+   "number": 2297,
+   "title": "feat: add _force_render option for binary-like text files",
+   "url": "https://github.com/cookiecutter/cookiecutter/pull/2297",
+   "created_at": "2026-11-02"
+  },
+  {
+   "repo": "tqdm/tqdm",
+   "number": 1914,
+   "title": "fix: use element count for DataFrame.progress_map total",
+   "url": "https://github.com/tqdm/tqdm/pull/1914",
+   "created_at": "2026-11-02"
+  },
+  {
+   "repo": "tqdm/tqdm",
+   "number": 1913,
+   "title": "fix: propagate connection errors in discord and telegram",
+   "url": "https://github.com/tqdm/tqdm/pull/1913",
+   "created_at": "2026-11-02"
+  },
+  {
+   "repo": "tqdm/tqdm",
+   "number": 1912,
+   "title": "fix: support generator inputs in tqdm.asyncio.as_completed",
+   "url": "https://github.com/tqdm/tqdm/pull/1912",
+   "created_at": "2026-11-02"
+  },
+  {
+   "repo": "tqdm/tqdm",
+   "number": 1911,
+   "title": "fix: do not register progress_map on pandas groupby objects",
+   "url": "https://github.com/tqdm/tqdm/pull/1911",
+   "created_at": "2026-11-02"
+  },
+  {
+   "repo": "tqdm/tqdm",
+   "number": 1910,
+   "title": "fix(cli): validate --log option values",
+   "url": "https://github.com/tqdm/tqdm/pull/1910",
+   "created_at": "2026-11-02"
+  },
+  {
+   "repo": "tqdm/tqdm",
+   "number": 1909,
+   "title": "fix: handle multibyte delimiters split across read buffers",
+   "url": "https://github.com/tqdm/tqdm/pull/1909",
+   "created_at": "2026-11-02"
+  },
+  {
+   "repo": "cybozu-go/moco",
+   "number": 968,
+   "title": "Fix stale replication metadata on promoted primary",
+   "url": "https://github.com/cybozu-go/moco/pull/968",
+   "created_at": "2026-11-02"
+  },
+  {
+   "repo": "cybozu-go/moco",
+   "number": 967,
+   "title": "backup: record MySQL version of dump files",
+   "url": "https://github.com/cybozu-go/moco/pull/967",
+   "created_at": "2026-11-02"
+  },
+  {
+   "repo": "cybozu-go/moco",
+   "number": 966,
+   "title": "feat(chart): support custom labels and annotations on controller pods",
+   "url": "https://github.com/cybozu-go/moco/pull/966",
+   "created_at": "2026-11-02"
+  },
   {
    "repo": "suzuki-shunsuke/pinact",
    "number": 1833,
@@ -578,21 +721,23 @@
   "anthropics/skills": 1,
   "apache/echarts": 2,
   "browser-use/jev-ultrafast": 1,
-  "cookiecutter/cookiecutter": 1,
-  "cybozu-go/moco": 2,
+  "cookiecutter/cookiecutter": 4,
+  "cybozu-go/moco": 6,
   "darrenburns/posting": 2,
   "go-resty/resty": 1,
   "huggingface/accelerate": 2,
   "huggingface/datasets": 1,
+  "k8sgpt-ai/docs": 1,
   "k8sgpt-ai/k8sgpt": 1,
+  "k8sgpt-ai/k8sgpt-operator": 1,
   "mlflow/mlflow": 1,
   "public-apis/public-apis": 1,
-  "simonw/llm": 2,
+  "simonw/llm": 3,
   "suzuki-shunsuke/pinact": 6,
   "suzuki-shunsuke/tfcmt": 1,
   "syncronix-labs/aegora": 15,
-  "tqdm/tqdm": 1,
-  "traceloop/openllmetry": 1
+  "tqdm/tqdm": 7,
+  "traceloop/openllmetry": 4
  },
  "calendar": [
   {
@@ -2057,6 +2202,10 @@
   },
   {
    "d": "2026-11-02",
+   "c": 23
+  },
+  {
+   "d": "2026-11-03",
    "c": 0
   }
  ],
