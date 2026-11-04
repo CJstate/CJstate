@@ -1,17 +1,27 @@
 {
- "generated": "2026-11-03T07:58:18Z",
+ "generated": "2026-11-04T07:32:11Z",
  "stats": {
-  "merged": 18,
-  "open": 74,
-  "repos": 28,
-  "commits": 93,
-  "contributions": 288,
+  "merged": 19,
+  "open": 82,
+  "repos": 30,
+  "commits": 94,
+  "contributions": 304,
   "originals": 2,
-  "additions": 1376,
-  "deletions": 172,
-  "files": 59
+  "additions": 1724,
+  "deletions": 223,
+  "files": 77
  },
  "merged_prs": [
+  {
+   "repo": "dagucloud/dagu",
+   "number": 3522,
+   "title": "feat(xlsx): let write set a number format per column",
+   "merged_at": "2026-11-04",
+   "additions": 348,
+   "deletions": 51,
+   "changed_files": 18,
+   "url": "https://github.com/dagucloud/dagu/pull/3522"
+  },
   {
    "repo": "k8sgpt-ai/k8sgpt",
    "number": 1900,
@@ -194,6 +204,62 @@
   }
  ],
  "open_prs": [
+  {
+   "repo": "dagucloud/dagu",
+   "number": 3525,
+   "title": "Expose the zero-based repeat index as context.step.repeat_index",
+   "url": "https://github.com/dagucloud/dagu/pull/3525",
+   "created_at": "2026-11-04"
+  },
+  {
+   "repo": "dagucloud/dagu",
+   "number": 3524,
+   "title": "Add dag_discovery.skip_directories to exclude root dirs from recursive discovery",
+   "url": "https://github.com/dagucloud/dagu/pull/3524",
+   "created_at": "2026-11-04"
+  },
+  {
+   "repo": "dagucloud/dagu",
+   "number": 3523,
+   "title": "fix(artifacts): treat Office Open XML packages as binary previews",
+   "url": "https://github.com/dagucloud/dagu/pull/3523",
+   "created_at": "2026-11-04"
+  },
+  {
+   "repo": "datamodel-code-generator/datamodel-code-generator",
+   "number": 6090,
+   "title": "fix(parser): fall back to an empty __init__ when no package init exists",
+   "url": "https://github.com/datamodel-code-generator/datamodel-code-generator/pull/6090",
+   "created_at": "2026-11-03"
+  },
+  {
+   "repo": "go-resty/resty",
+   "number": 1273,
+   "title": "fix(multipart): read the full sniff buffer before MIME detection",
+   "url": "https://github.com/go-resty/resty/pull/1273",
+   "created_at": "2026-11-03"
+  },
+  {
+   "repo": "traceloop/openllmetry",
+   "number": 4684,
+   "title": "fix(mcp): keep every content block in tools/call output",
+   "url": "https://github.com/traceloop/openllmetry/pull/4684",
+   "created_at": "2026-11-03"
+  },
+  {
+   "repo": "k8sgpt-ai/k8sgpt",
+   "number": 1909,
+   "title": "fix(analyzer): honour full selector syntax for Gateway resources",
+   "url": "https://github.com/k8sgpt-ai/k8sgpt/pull/1909",
+   "created_at": "2026-11-03"
+  },
+  {
+   "repo": "k8sgpt-ai/k8sgpt-operator",
+   "number": 868,
+   "title": "fix: generate one Result per analyzer filter kind",
+   "url": "https://github.com/k8sgpt-ai/k8sgpt-operator/pull/868",
+   "created_at": "2026-11-03"
+  },
   {
    "repo": "k8sgpt-ai/docs",
    "number": 145,
@@ -723,13 +789,15 @@
   "browser-use/jev-ultrafast": 1,
   "cookiecutter/cookiecutter": 4,
   "cybozu-go/moco": 6,
+  "dagucloud/dagu": 3,
   "darrenburns/posting": 2,
-  "go-resty/resty": 1,
+  "datamodel-code-generator/datamodel-code-generator": 1,
+  "go-resty/resty": 2,
   "huggingface/accelerate": 2,
   "huggingface/datasets": 1,
   "k8sgpt-ai/docs": 1,
-  "k8sgpt-ai/k8sgpt": 1,
-  "k8sgpt-ai/k8sgpt-operator": 1,
+  "k8sgpt-ai/k8sgpt": 2,
+  "k8sgpt-ai/k8sgpt-operator": 2,
   "mlflow/mlflow": 1,
   "public-apis/public-apis": 1,
   "simonw/llm": 3,
@@ -737,7 +805,7 @@
   "suzuki-shunsuke/tfcmt": 1,
   "syncronix-labs/aegora": 15,
   "tqdm/tqdm": 7,
-  "traceloop/openllmetry": 4
+  "traceloop/openllmetry": 5
  },
  "calendar": [
   {
@@ -2206,7 +2274,11 @@
   },
   {
    "d": "2026-11-03",
-   "c": 0
+   "c": 8
+  },
+  {
+   "d": "2026-11-04",
+   "c": 8
   }
  ],
  "originals": [
