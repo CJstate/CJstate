@@ -29,13 +29,13 @@ Backend engineer building zero-dependency LLM tooling: tamper-evident agent repl
 
 | Metric | Value |
 | --- | --- |
-| Merged upstream PRs | 19 |
-| Open upstream PRs | 82 |
+| Merged upstream PRs | 21 |
+| Open upstream PRs | 92 |
 | Repositories with a merged or open PR | 30 |
-| Lines in merged PRs | +1,724 / -223 |
-| File changes across merged PRs | 77 |
-| Commits, last 12 months | 94 |
-| Contributions, last 12 months | 304 |
+| Lines in merged PRs | +2,033 / -253 |
+| File changes across merged PRs | 83 |
+| Commits, last 12 months | 96 |
+| Contributions, last 12 months | 319 |
 
 ## Upstream contributions
 
@@ -43,6 +43,8 @@ Every merged pull request, with the failure it fixed. The board above is the sam
 
 | Project | PR | What changed | Merged |
 | --- | --- | --- | --- |
+| [`dagucloud/dagu`](https://github.com/dagucloud/dagu) | [#3579](https://github.com/dagucloud/dagu/pull/3579) | fix(computer): let an act retry a smaller batch after a partial overrun | 2026-11-05 |
+| [`dagucloud/dagu`](https://github.com/dagucloud/dagu) | [#3554](https://github.com/dagucloud/dagu/pull/3554) | Honor mark_success for non-retryable exit codes | 2026-11-05 |
 | [`dagucloud/dagu`](https://github.com/dagucloud/dagu) | [#3522](https://github.com/dagucloud/dagu/pull/3522) | feat(xlsx): let write set a number format per column | 2026-11-04 |
 | [`k8sgpt-ai/k8sgpt`](https://github.com/k8sgpt-ai/k8sgpt) | [#1900](https://github.com/k8sgpt-ai/k8sgpt/pull/1900) | docs: link AI backend support tiers from README | 2026-11-02 |
 | [`k8sgpt-ai/k8sgpt`](https://github.com/k8sgpt-ai/k8sgpt) | [#1851](https://github.com/k8sgpt-ai/k8sgpt/pull/1851) | Pin `filepath-securejoin` to v0.4.1 to unblock the License Compliance gate. | 2026-10-30 |
@@ -102,7 +104,7 @@ Three root causes, each written up with the failure, the mechanism and the evide
 
 ## Open pull requests
 
-82 open across 26 upstream repositories. Highlights:
+92 open across 26 upstream repositories. Highlights:
 
 | PR | What it changes |
 | --- | --- |

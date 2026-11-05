@@ -1,17 +1,37 @@
 {
- "generated": "2026-11-04T07:32:11Z",
+ "generated": "2026-11-05T07:56:44Z",
  "stats": {
-  "merged": 19,
-  "open": 82,
+  "merged": 21,
+  "open": 92,
   "repos": 30,
-  "commits": 94,
-  "contributions": 304,
+  "commits": 96,
+  "contributions": 319,
   "originals": 2,
-  "additions": 1724,
-  "deletions": 223,
-  "files": 77
+  "additions": 2033,
+  "deletions": 253,
+  "files": 83
  },
  "merged_prs": [
+  {
+   "repo": "dagucloud/dagu",
+   "number": 3579,
+   "title": "fix(computer): let an act retry a smaller batch after a partial overrun",
+   "merged_at": "2026-11-05",
+   "additions": 245,
+   "deletions": 17,
+   "changed_files": 3,
+   "url": "https://github.com/dagucloud/dagu/pull/3579"
+  },
+  {
+   "repo": "dagucloud/dagu",
+   "number": 3554,
+   "title": "Honor mark_success for non-retryable exit codes",
+   "merged_at": "2026-11-05",
+   "additions": 64,
+   "deletions": 13,
+   "changed_files": 3,
+   "url": "https://github.com/dagucloud/dagu/pull/3554"
+  },
   {
    "repo": "dagucloud/dagu",
    "number": 3522,
@@ -206,6 +226,83 @@
  "open_prs": [
   {
    "repo": "dagucloud/dagu",
+   "number": 3578,
+   "title": "chore: regenerate llms.txt and check it in CI",
+   "url": "https://github.com/dagucloud/dagu/pull/3578",
+   "created_at": "2026-11-05"
+  },
+  {
+   "repo": "dagucloud/dagu",
+   "number": 3576,
+   "title": "fix: reject unknown with keys for the clickhouse executor (#3440)",
+   "url": "https://github.com/dagucloud/dagu/pull/3576",
+   "created_at": "2026-11-05"
+  },
+  {
+   "repo": "dagucloud/dagu",
+   "number": 3575,
+   "title": "fix: reject unknown with keys for the ssh and sftp executors (#3440)",
+   "url": "https://github.com/dagucloud/dagu/pull/3575",
+   "created_at": "2026-11-05"
+  },
+  {
+   "repo": "dagucloud/dagu",
+   "number": 3574,
+   "title": "fix: reject unknown with keys for the postgres and sqlite executors (#3440)",
+   "url": "https://github.com/dagucloud/dagu/pull/3574",
+   "created_at": "2026-11-05"
+  },
+  {
+   "repo": "dagucloud/dagu",
+   "number": 3573,
+   "title": "fix: reject unknown with keys for the redis executor (#3440)",
+   "url": "https://github.com/dagucloud/dagu/pull/3573",
+   "created_at": "2026-11-05"
+  },
+  {
+   "repo": "dagucloud/dagu",
+   "number": 3572,
+   "title": "fix: reject unknown with keys for the s3 executor (#3440)",
+   "url": "https://github.com/dagucloud/dagu/pull/3572",
+   "created_at": "2026-11-05"
+  },
+  {
+   "repo": "dagucloud/dagu",
+   "number": 3571,
+   "title": "fix: reject unknown with keys for the archive executor (#3440)",
+   "url": "https://github.com/dagucloud/dagu/pull/3571",
+   "created_at": "2026-11-05"
+  },
+  {
+   "repo": "dagucloud/dagu",
+   "number": 3570,
+   "title": "fix: reject unknown with keys for the http executor (#3440)",
+   "url": "https://github.com/dagucloud/dagu/pull/3570",
+   "created_at": "2026-11-05"
+  },
+  {
+   "repo": "dagucloud/dagu",
+   "number": 3559,
+   "title": "fix: reject unknown with keys for the jq executor (#3440)",
+   "url": "https://github.com/dagucloud/dagu/pull/3559",
+   "created_at": "2026-11-04"
+  },
+  {
+   "repo": "dagucloud/dagu",
+   "number": 3558,
+   "title": "fix: reject unknown with keys for the mail executor (#3440)",
+   "url": "https://github.com/dagucloud/dagu/pull/3558",
+   "created_at": "2026-11-04"
+  },
+  {
+   "repo": "dagucloud/dagu",
+   "number": 3553,
+   "title": "Map HTTP response status codes to step exit codes",
+   "url": "https://github.com/dagucloud/dagu/pull/3553",
+   "created_at": "2026-11-04"
+  },
+  {
+   "repo": "dagucloud/dagu",
    "number": 3525,
    "title": "Expose the zero-based repeat index as context.step.repeat_index",
    "url": "https://github.com/dagucloud/dagu/pull/3525",
@@ -272,13 +369,6 @@
    "number": 865,
    "title": "feat: support Azure Workload Identity for Azure OpenAI",
    "url": "https://github.com/k8sgpt-ai/k8sgpt-operator/pull/865",
-   "created_at": "2026-11-02"
-  },
-  {
-   "repo": "cybozu-go/moco",
-   "number": 969,
-   "title": "feat: support changing system user authentication plugins",
-   "url": "https://github.com/cybozu-go/moco/pull/969",
    "created_at": "2026-11-02"
   },
   {
@@ -788,8 +878,8 @@
   "apache/echarts": 2,
   "browser-use/jev-ultrafast": 1,
   "cookiecutter/cookiecutter": 4,
-  "cybozu-go/moco": 6,
-  "dagucloud/dagu": 3,
+  "cybozu-go/moco": 5,
+  "dagucloud/dagu": 14,
   "darrenburns/posting": 2,
   "datamodel-code-generator/datamodel-code-generator": 1,
   "go-resty/resty": 2,
@@ -2278,7 +2368,11 @@
   },
   {
    "d": "2026-11-04",
-   "c": 8
+   "c": 12
+  },
+  {
+   "d": "2026-11-05",
+   "c": 11
   }
  ],
  "originals": [
