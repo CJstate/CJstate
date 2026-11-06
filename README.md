@@ -29,13 +29,13 @@ Backend engineer building zero-dependency LLM tooling: tamper-evident agent repl
 
 | Metric | Value |
 | --- | --- |
-| Merged upstream PRs | 21 |
-| Open upstream PRs | 92 |
-| Repositories with a merged or open PR | 30 |
-| Lines in merged PRs | +2,033 / -253 |
-| File changes across merged PRs | 83 |
-| Commits, last 12 months | 96 |
-| Contributions, last 12 months | 319 |
+| Merged upstream PRs | 29 |
+| Open upstream PRs | 85 |
+| Repositories with a merged or open PR | 31 |
+| Lines in merged PRs | +2,759 / -304 |
+| File changes across merged PRs | 123 |
+| Commits, last 12 months | 104 |
+| Contributions, last 12 months | 330 |
 
 ## Upstream contributions
 
@@ -43,8 +43,16 @@ Every merged pull request, with the failure it fixed. The board above is the sam
 
 | Project | PR | What changed | Merged |
 | --- | --- | --- | --- |
+| [`dagucloud/dagu`](https://github.com/dagucloud/dagu) | [#3578](https://github.com/dagucloud/dagu/pull/3578) | chore: regenerate llms.txt and check it in CI | 2026-11-06 |
+| [`dagucloud/dagu`](https://github.com/dagucloud/dagu) | [#3596](https://github.com/dagucloud/dagu/pull/3596) | feat(runtime): expose zero-based repeat index as built-in context | 2026-11-05 |
 | [`dagucloud/dagu`](https://github.com/dagucloud/dagu) | [#3579](https://github.com/dagucloud/dagu/pull/3579) | fix(computer): let an act retry a smaller batch after a partial overrun | 2026-11-05 |
 | [`dagucloud/dagu`](https://github.com/dagucloud/dagu) | [#3554](https://github.com/dagucloud/dagu/pull/3554) | Honor mark_success for non-retryable exit codes | 2026-11-05 |
+| [`Mihirajmera/agent-access-review`](https://github.com/Mihirajmera/agent-access-review) | [#26](https://github.com/Mihirajmera/agent-access-review/pull/26) | fix: read a single-value list field and a quoted boolean in a manifest | 2026-11-05 |
+| [`Mihirajmera/agent-access-review`](https://github.com/Mihirajmera/agent-access-review) | [#25](https://github.com/Mihirajmera/agent-access-review/pull/25) | fix: read a manifest whatever its extension, and accept a full timestamp | 2026-11-05 |
+| [`Mihirajmera/agent-access-review`](https://github.com/Mihirajmera/agent-access-review) | [#24](https://github.com/Mihirajmera/agent-access-review/pull/24) | fix: take the AAR-11 endpoint host from urlsplit, not a regex | 2026-11-05 |
+| [`Mihirajmera/agent-access-review`](https://github.com/Mihirajmera/agent-access-review) | [#23](https://github.com/Mihirajmera/agent-access-review/pull/23) | fix: stop the decision sheet from evaluating config values as formulas | 2026-11-05 |
+| [`Mihirajmera/agent-access-review`](https://github.com/Mihirajmera/agent-access-review) | [#22](https://github.com/Mihirajmera/agent-access-review/pull/22) | fix: report and redact credentials carried in a server URL | 2026-11-05 |
+| [`Mihirajmera/agent-access-review`](https://github.com/Mihirajmera/agent-access-review) | [#21](https://github.com/Mihirajmera/agent-access-review/pull/21) | fix: stop losing findings silently in three places | 2026-11-05 |
 | [`dagucloud/dagu`](https://github.com/dagucloud/dagu) | [#3522](https://github.com/dagucloud/dagu/pull/3522) | feat(xlsx): let write set a number format per column | 2026-11-04 |
 | [`k8sgpt-ai/k8sgpt`](https://github.com/k8sgpt-ai/k8sgpt) | [#1900](https://github.com/k8sgpt-ai/k8sgpt/pull/1900) | docs: link AI backend support tiers from README | 2026-11-02 |
 | [`k8sgpt-ai/k8sgpt`](https://github.com/k8sgpt-ai/k8sgpt) | [#1851](https://github.com/k8sgpt-ai/k8sgpt/pull/1851) | Pin `filepath-securejoin` to v0.4.1 to unblock the License Compliance gate. | 2026-10-30 |
@@ -104,7 +112,7 @@ Three root causes, each written up with the failure, the mechanism and the evide
 
 ## Open pull requests
 
-92 open across 26 upstream repositories. Highlights:
+85 open across 26 upstream repositories. Highlights:
 
 | PR | What it changes |
 | --- | --- |

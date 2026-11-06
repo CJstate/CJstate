@@ -1,17 +1,37 @@
 {
- "generated": "2026-11-05T07:56:44Z",
+ "generated": "2026-11-06T07:58:10Z",
  "stats": {
-  "merged": 21,
-  "open": 92,
-  "repos": 30,
-  "commits": 96,
-  "contributions": 319,
+  "merged": 29,
+  "open": 85,
+  "repos": 31,
+  "commits": 104,
+  "contributions": 330,
   "originals": 2,
-  "additions": 2033,
-  "deletions": 253,
-  "files": 83
+  "additions": 2759,
+  "deletions": 304,
+  "files": 123
  },
  "merged_prs": [
+  {
+   "repo": "dagucloud/dagu",
+   "number": 3578,
+   "title": "chore: regenerate llms.txt and check it in CI",
+   "merged_at": "2026-11-06",
+   "additions": 12,
+   "deletions": 3,
+   "changed_files": 2,
+   "url": "https://github.com/dagucloud/dagu/pull/3578"
+  },
+  {
+   "repo": "dagucloud/dagu",
+   "number": 3596,
+   "title": "feat(runtime): expose zero-based repeat index as built-in context",
+   "merged_at": "2026-11-05",
+   "additions": 212,
+   "deletions": 16,
+   "changed_files": 19,
+   "url": "https://github.com/dagucloud/dagu/pull/3596"
+  },
   {
    "repo": "dagucloud/dagu",
    "number": 3579,
@@ -31,6 +51,66 @@
    "deletions": 13,
    "changed_files": 3,
    "url": "https://github.com/dagucloud/dagu/pull/3554"
+  },
+  {
+   "repo": "Mihirajmera/agent-access-review",
+   "number": 26,
+   "title": "fix: read a single-value list field and a quoted boolean in a manifest",
+   "merged_at": "2026-11-05",
+   "additions": 84,
+   "deletions": 6,
+   "changed_files": 3,
+   "url": "https://github.com/Mihirajmera/agent-access-review/pull/26"
+  },
+  {
+   "repo": "Mihirajmera/agent-access-review",
+   "number": 25,
+   "title": "fix: read a manifest whatever its extension, and accept a full timestamp",
+   "merged_at": "2026-11-05",
+   "additions": 58,
+   "deletions": 9,
+   "changed_files": 3,
+   "url": "https://github.com/Mihirajmera/agent-access-review/pull/25"
+  },
+  {
+   "repo": "Mihirajmera/agent-access-review",
+   "number": 24,
+   "title": "fix: take the AAR-11 endpoint host from urlsplit, not a regex",
+   "merged_at": "2026-11-05",
+   "additions": 46,
+   "deletions": 2,
+   "changed_files": 3,
+   "url": "https://github.com/Mihirajmera/agent-access-review/pull/24"
+  },
+  {
+   "repo": "Mihirajmera/agent-access-review",
+   "number": 23,
+   "title": "fix: stop the decision sheet from evaluating config values as formulas",
+   "merged_at": "2026-11-05",
+   "additions": 79,
+   "deletions": 5,
+   "changed_files": 4,
+   "url": "https://github.com/Mihirajmera/agent-access-review/pull/23"
+  },
+  {
+   "repo": "Mihirajmera/agent-access-review",
+   "number": 22,
+   "title": "fix: report and redact credentials carried in a server URL",
+   "merged_at": "2026-11-05",
+   "additions": 85,
+   "deletions": 3,
+   "changed_files": 3,
+   "url": "https://github.com/Mihirajmera/agent-access-review/pull/22"
+  },
+  {
+   "repo": "Mihirajmera/agent-access-review",
+   "number": 21,
+   "title": "fix: stop losing findings silently in three places",
+   "merged_at": "2026-11-05",
+   "additions": 150,
+   "deletions": 7,
+   "changed_files": 3,
+   "url": "https://github.com/Mihirajmera/agent-access-review/pull/21"
   },
   {
    "repo": "dagucloud/dagu",
@@ -226,9 +306,9 @@
  "open_prs": [
   {
    "repo": "dagucloud/dagu",
-   "number": 3578,
-   "title": "chore: regenerate llms.txt and check it in CI",
-   "url": "https://github.com/dagucloud/dagu/pull/3578",
+   "number": 3598,
+   "title": "fix(persis): fall back from an empty newest attempt when reading status",
+   "url": "https://github.com/dagucloud/dagu/pull/3598",
    "created_at": "2026-11-05"
   },
   {
@@ -303,13 +383,6 @@
   },
   {
    "repo": "dagucloud/dagu",
-   "number": 3525,
-   "title": "Expose the zero-based repeat index as context.step.repeat_index",
-   "url": "https://github.com/dagucloud/dagu/pull/3525",
-   "created_at": "2026-11-04"
-  },
-  {
-   "repo": "dagucloud/dagu",
    "number": 3524,
    "title": "Add dag_discovery.skip_directories to exclude root dirs from recursive discovery",
    "url": "https://github.com/dagucloud/dagu/pull/3524",
@@ -334,6 +407,13 @@
    "number": 1273,
    "title": "fix(multipart): read the full sniff buffer before MIME detection",
    "url": "https://github.com/go-resty/resty/pull/1273",
+   "created_at": "2026-11-03"
+  },
+  {
+   "repo": "juanfont/headscale",
+   "number": 3650,
+   "title": "db: reject pre-0.23 databases that lack a migrations table",
+   "url": "https://github.com/juanfont/headscale/pull/3650",
    "created_at": "2026-11-03"
   },
   {
@@ -499,13 +579,6 @@
   },
   {
    "repo": "cybozu-go/moco",
-   "number": 965,
-   "title": "Let backup and restore jobs meet the restricted Pod Security Standard",
-   "url": "https://github.com/cybozu-go/moco/pull/965",
-   "created_at": "2026-11-01"
-  },
-  {
-   "repo": "cybozu-go/moco",
    "number": 964,
    "title": "Add tolerations and nodeSelector to backup and restore jobs",
    "url": "https://github.com/cybozu-go/moco/pull/964",
@@ -608,48 +681,6 @@
    "title": "feat: send Retry-After on circuit breaker 503 responses",
    "url": "https://github.com/syncronix-labs/aegora/pull/63",
    "created_at": "2026-10-30"
-  },
-  {
-   "repo": "Mihirajmera/agent-access-review",
-   "number": 26,
-   "title": "fix: read a single-value list field and a quoted boolean in a manifest",
-   "url": "https://github.com/Mihirajmera/agent-access-review/pull/26",
-   "created_at": "2026-10-27"
-  },
-  {
-   "repo": "Mihirajmera/agent-access-review",
-   "number": 25,
-   "title": "fix: read a manifest whatever its extension, and accept a full timestamp",
-   "url": "https://github.com/Mihirajmera/agent-access-review/pull/25",
-   "created_at": "2026-10-27"
-  },
-  {
-   "repo": "Mihirajmera/agent-access-review",
-   "number": 24,
-   "title": "fix: take the AAR-11 endpoint host from urlsplit, not a regex",
-   "url": "https://github.com/Mihirajmera/agent-access-review/pull/24",
-   "created_at": "2026-10-27"
-  },
-  {
-   "repo": "Mihirajmera/agent-access-review",
-   "number": 23,
-   "title": "fix: stop the decision sheet from evaluating config values as formulas",
-   "url": "https://github.com/Mihirajmera/agent-access-review/pull/23",
-   "created_at": "2026-10-27"
-  },
-  {
-   "repo": "Mihirajmera/agent-access-review",
-   "number": 22,
-   "title": "fix: report and redact credentials carried in a server URL",
-   "url": "https://github.com/Mihirajmera/agent-access-review/pull/22",
-   "created_at": "2026-10-27"
-  },
-  {
-   "repo": "Mihirajmera/agent-access-review",
-   "number": 21,
-   "title": "fix: stop losing findings silently in three places",
-   "url": "https://github.com/Mihirajmera/agent-access-review/pull/21",
-   "created_at": "2026-10-27"
   },
   {
    "repo": "syncronix-labs/aegora",
@@ -872,19 +903,19 @@
  "open_by_repo": {
   "EleutherAI/lm-evaluation-harness": 3,
   "Lightning-AI/pytorch-lightning": 3,
-  "Mihirajmera/agent-access-review": 6,
   "anthropics/claude-agent-sdk-python": 1,
   "anthropics/skills": 1,
   "apache/echarts": 2,
   "browser-use/jev-ultrafast": 1,
   "cookiecutter/cookiecutter": 4,
-  "cybozu-go/moco": 5,
-  "dagucloud/dagu": 14,
+  "cybozu-go/moco": 4,
+  "dagucloud/dagu": 13,
   "darrenburns/posting": 2,
   "datamodel-code-generator/datamodel-code-generator": 1,
   "go-resty/resty": 2,
   "huggingface/accelerate": 2,
   "huggingface/datasets": 1,
+  "juanfont/headscale": 1,
   "k8sgpt-ai/docs": 1,
   "k8sgpt-ai/k8sgpt": 2,
   "k8sgpt-ai/k8sgpt-operator": 2,
@@ -2336,7 +2367,7 @@
   },
   {
    "d": "2026-10-27",
-   "c": 11
+   "c": 17
   },
   {
    "d": "2026-10-28",
@@ -2372,7 +2403,11 @@
   },
   {
    "d": "2026-11-05",
-   "c": 11
+   "c": 14
+  },
+  {
+   "d": "2026-11-06",
+   "c": 2
   }
  ],
  "originals": [
