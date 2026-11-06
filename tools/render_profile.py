@@ -709,6 +709,37 @@ def render_contributions(scheme: str, data: dict, motion: bool = True) -> str:
 # other.
 
 MERGED_NOTES = {
+    "dagucloud/dagu#3578": (
+        "Regenerate `llms.txt` and add a CI check that keeps it in sync with the skills tree."
+    ),
+    "juanfont/headscale#3650": (
+        "Reject pre-0.23 databases that lack a migrations table instead of migrating "
+        "them blindly."
+    ),
+    "dagucloud/dagu#3596": "Expose a zero-based `context.step.repeat_index` for repeat steps.",
+    "dagucloud/dagu#3579": (
+        "Let an act retry a smaller batch after a partial overrun instead of dropping "
+        "the whole batch."
+    ),
+    "dagucloud/dagu#3554": "Honour `mark_success` for non-retryable exit codes.",
+    "Mihirajmera/agent-access-review#26": (
+        "Read a single-value list field and a quoted boolean in a manifest."
+    ),
+    "Mihirajmera/agent-access-review#25": (
+        "Read a manifest regardless of extension and accept a full timestamp."
+    ),
+    "Mihirajmera/agent-access-review#24": (
+        "Take the AAR-11 endpoint host from `urlsplit` instead of a regex."
+    ),
+    "Mihirajmera/agent-access-review#23": (
+        "Stop the decision sheet from evaluating config values as formulas."
+    ),
+    "Mihirajmera/agent-access-review#22": (
+        "Report and redact credentials carried in a server URL."
+    ),
+    "Mihirajmera/agent-access-review#21": "Stop losing findings silently in three places.",
+    "dagucloud/dagu#3522": "Let `xlsx.write` set a number format per column.",
+    "k8sgpt-ai/k8sgpt#1900": "Link AI backend support tiers from the README.",
     "k8sgpt-ai/k8sgpt#1851": (
         "Pin `filepath-securejoin` to v0.4.1 to unblock the License Compliance gate."
     ),
@@ -760,6 +791,26 @@ MERGED_NOTES = {
 }
 
 OPEN_HIGHLIGHTS = [
+    (
+        "prometheus/prometheus#20351",
+        "Propagate OTLP appender `Commit` errors instead of returning a false `200 OK` "
+        "that makes senders drop a batch that was never persisted.",
+    ),
+    (
+        "prometheus/prometheus#20350",
+        "Round fractional timestamps to milliseconds in promtool so `query` and "
+        "`test rules` evaluate at the same instant as the HTTP API.",
+    ),
+    (
+        "prometheus/prometheus#20349",
+        "Emit `check service-discovery` results in a stable order instead of Go's "
+        "randomized map order.",
+    ),
+    (
+        "prometheus/prometheus#20352",
+        "Send the correct metadata type for gauge histograms in `push metrics` "
+        "instead of `UNKNOWN`.",
+    ),
     (
         "syncronix-labs/aegora#68",
         "Optional per-route `timeout` bounding the whole outbound exchange, "
@@ -902,8 +953,7 @@ CASE_STUDIES = [
                 "Reproduced on a Windows host, then `debug_launcher` started a "
                 "multi-process debug session. Relevant tests pass on Python 3.13 + torch "
                 "2.9 (`spawn` needs the `if __name__ == \"__main__\"` guard, documented "
-                "in the docstring). The PR waits for maintainer workflow approval to run "
-                "CI.",
+                "in the docstring).",
             ),
         ],
     },
@@ -916,24 +966,35 @@ WORKFLOW_NOTES = [
         "after the fix. The Symptom rows above are the original errors.",
     ),
     (
-        "Minimal diff + regression test",
-        "Touch only the lines on the root-cause path; no drive-by formatting, renames or "
-        "refactors. Where a test is possible, it is written to fail first.",
+        "Test first, ship green",
+        "A regression test is written before the fix and must fail on the unpatched code. "
+        "The fix lands only after the full affected package suite, formatting and vet all "
+        "pass. A PR is opened only when every check is green — no red CI, no untested changes.",
+    ),
+    (
+        "Root cause over symptom",
+        "Grep every caller before editing a shared function; one guard at the source beats "
+        "a patch in each sibling path. For example, the OTLP data-loss fix was one named "
+        "return value, not a retry loop in the handler.",
+    ),
+    (
+        "Minimal, scoped diff",
+        "Touch only the files on the root-cause path. No drive-by formatting, renames, "
+        "refactors, or unrelated files — a small diff is easier to review and more likely "
+        "to be merged.",
     ),
     (
         "Environment-class defects, not trends",
         "The bugs I know best only appear in real environments: non-UTF-8 default "
         "encodings, Windows checkouts, first-contributor CI gates, terminal capability "
-        "differences. They are expensive to reproduce, so few people report them — and "
-        "easy to dismiss as low impact, so I have to show who actually hits them.",
+        "differences, and randomized map iteration. They are expensive to reproduce, so "
+        "few people report them — which is why I bring a runnable reproduction instead of "
+        "a description.",
     ),
     (
-        "Publish the misses",
-        "Early on I sent documentation and formatting changes that maintainers closed as "
-        "noise; a reproducible encoding bug was still called low impact because no real "
-        "user had reported it and the repro was \"synthetic\". So I now ask before "
-        "submitting: does a real user hit this? If not, find a real report or a concrete "
-        "usage scenario first — and correct myself publicly when I get it wrong.",
+        "Claim-collision check before starting",
+        "Before writing any code I check open PRs and issue comments for someone already "
+        "working on the same fix. Duplicated effort is wasted effort, on both sides of the review.",
     ),
 ]
 
@@ -972,7 +1033,6 @@ def render_readme(data: dict) -> str:
     merged = data["merged_prs"]
     open_prs = data.get("open_prs") or []
     open_by_key = {f'{p["repo"]}#{p["number"]}': p for p in open_prs}
-    open_repos = len(data.get("open_by_repo") or {})
 
     merged_rows = [
         [
@@ -1022,8 +1082,9 @@ def render_readme(data: dict) -> str:
   <img src="docs/upstream-dark.svg" width="100%" alt="Merged upstream pull requests, one row each">
 </picture>
 
-**I look for the failures that leave no trace** — Windows checkouts, non-UTF-8 locales, terminal capability differences.
-Backend engineer building zero-dependency LLM tooling: tamper-evident agent replay and statistical eval gates.
+**I fix the failures that leave no trace** — nondeterministic output, silent data loss, timestamps that drift by a few nanoseconds, and the environment-class defects that only appear on a real Windows checkout or a non-UTF-8 locale.
+
+Backend engineer working on Go infrastructure and LLM tooling. My upstream work spans **Prometheus** (CNCF), Kubernetes tooling, and Python ML infrastructure; bug fixes are reproduced with a regression test before the change is submitted.
 
 [Upstream](#upstream-contributions) · [Case studies](#case-studies) · [Open PRs](#open-pull-requests) · [Projects](#projects) · [Toolchain](#toolchain)
 
@@ -1041,6 +1102,8 @@ Backend engineer building zero-dependency LLM tooling: tamper-evident agent repl
     ["Contributions, last 12 months", f"{stats['contributions']}"],
 ])}
 
+Numbers are drawn from the GitHub API on every refresh, not maintained by hand.
+
 ## Upstream contributions
 
 Every merged pull request, with the failure it fixed. The board above is the same ledger, drawn from the API.
@@ -1054,7 +1117,7 @@ Three root causes, each written up with the failure, the mechanism and the evide
 {chr(10).join(case_blocks)}
 ## Open pull requests
 
-{stats['open']} open across {open_repos} upstream repositories. Highlights:
+{stats['open']} open across {stats['repos']} upstream repositories. Recent work on CNCF infrastructure:
 
 {md_table(["PR", "What it changes"], open_rows)}
 
@@ -1095,9 +1158,9 @@ instead of "the third decimal went down, turn the build red".
 
 ## Open to
 
-AI / LLM infrastructure, training &amp; inference, and evaluation-tooling roles.
+Backend and infrastructure roles in observability, distributed systems, and AI / LLM tooling — especially teams that care about correctness under real-world conditions.
 
-The three boards and the contribution tables are regenerated from the GitHub API by `tools/render_profile.py`; the two project test counts are measured locally.
+The three boards above and every number in the tables are regenerated from the GitHub API by `tools/render_profile.py`; the two project test counts are measured locally. If a number here is wrong, the source is wrong, not the copy.
 """
 
 

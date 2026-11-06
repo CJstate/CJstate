@@ -1,15 +1,15 @@
 {
- "generated": "2026-11-06T07:58:10Z",
+ "generated": "2026-11-06T12:51:39Z",
  "stats": {
-  "merged": 29,
-  "open": 85,
+  "merged": 30,
+  "open": 87,
   "repos": 31,
-  "commits": 104,
-  "contributions": 330,
+  "commits": 105,
+  "contributions": 335,
   "originals": 2,
-  "additions": 2759,
-  "deletions": 304,
-  "files": 123
+  "additions": 2840,
+  "deletions": 324,
+  "files": 129
  },
  "merged_prs": [
   {
@@ -21,6 +21,16 @@
    "deletions": 3,
    "changed_files": 2,
    "url": "https://github.com/dagucloud/dagu/pull/3578"
+  },
+  {
+   "repo": "juanfont/headscale",
+   "number": 3650,
+   "title": "db: reject pre-0.23 databases that lack a migrations table",
+   "merged_at": "2026-11-06",
+   "additions": 81,
+   "deletions": 20,
+   "changed_files": 6,
+   "url": "https://github.com/juanfont/headscale/pull/3650"
   },
   {
    "repo": "dagucloud/dagu",
@@ -305,6 +315,34 @@
  ],
  "open_prs": [
   {
+   "repo": "prometheus/prometheus",
+   "number": 20352,
+   "title": "util/fmtutil: map gauge histogram metric type to its metadata type",
+   "url": "https://github.com/prometheus/prometheus/pull/20352",
+   "created_at": "2026-11-06"
+  },
+  {
+   "repo": "prometheus/prometheus",
+   "number": 20351,
+   "title": "storage/remote: propagate OTLP appender Commit errors",
+   "url": "https://github.com/prometheus/prometheus/pull/20351",
+   "created_at": "2026-11-06"
+  },
+  {
+   "repo": "prometheus/prometheus",
+   "number": 20350,
+   "title": "promtool: round fractional timestamps to milliseconds",
+   "url": "https://github.com/prometheus/prometheus/pull/20350",
+   "created_at": "2026-11-06"
+  },
+  {
+   "repo": "prometheus/prometheus",
+   "number": 20349,
+   "title": "promtool: make check service-discovery output deterministic",
+   "url": "https://github.com/prometheus/prometheus/pull/20349",
+   "created_at": "2026-11-06"
+  },
+  {
    "repo": "dagucloud/dagu",
    "number": 3598,
    "title": "fix(persis): fall back from an empty newest attempt when reading status",
@@ -396,24 +434,10 @@
    "created_at": "2026-11-04"
   },
   {
-   "repo": "datamodel-code-generator/datamodel-code-generator",
-   "number": 6090,
-   "title": "fix(parser): fall back to an empty __init__ when no package init exists",
-   "url": "https://github.com/datamodel-code-generator/datamodel-code-generator/pull/6090",
-   "created_at": "2026-11-03"
-  },
-  {
    "repo": "go-resty/resty",
    "number": 1273,
    "title": "fix(multipart): read the full sniff buffer before MIME detection",
    "url": "https://github.com/go-resty/resty/pull/1273",
-   "created_at": "2026-11-03"
-  },
-  {
-   "repo": "juanfont/headscale",
-   "number": 3650,
-   "title": "db: reject pre-0.23 databases that lack a migrations table",
-   "url": "https://github.com/juanfont/headscale/pull/3650",
    "created_at": "2026-11-03"
   },
   {
@@ -911,15 +935,14 @@
   "cybozu-go/moco": 4,
   "dagucloud/dagu": 13,
   "darrenburns/posting": 2,
-  "datamodel-code-generator/datamodel-code-generator": 1,
   "go-resty/resty": 2,
   "huggingface/accelerate": 2,
   "huggingface/datasets": 1,
-  "juanfont/headscale": 1,
   "k8sgpt-ai/docs": 1,
   "k8sgpt-ai/k8sgpt": 2,
   "k8sgpt-ai/k8sgpt-operator": 2,
   "mlflow/mlflow": 1,
+  "prometheus/prometheus": 4,
   "public-apis/public-apis": 1,
   "simonw/llm": 3,
   "suzuki-shunsuke/pinact": 6,
@@ -2395,7 +2418,7 @@
   },
   {
    "d": "2026-11-03",
-   "c": 8
+   "c": 9
   },
   {
    "d": "2026-11-04",
@@ -2407,7 +2430,7 @@
   },
   {
    "d": "2026-11-06",
-   "c": 2
+   "c": 6
   }
  ],
  "originals": [

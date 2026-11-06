@@ -18,8 +18,9 @@
   <img src="docs/upstream-dark.svg" width="100%" alt="Merged upstream pull requests, one row each">
 </picture>
 
-**I look for the failures that leave no trace** — Windows checkouts, non-UTF-8 locales, terminal capability differences.
-Backend engineer building zero-dependency LLM tooling: tamper-evident agent replay and statistical eval gates.
+**I fix the failures that leave no trace** — nondeterministic output, silent data loss, timestamps that drift by a few nanoseconds, and the environment-class defects that only appear on a real Windows checkout or a non-UTF-8 locale.
+
+Backend engineer working on Go infrastructure and LLM tooling. My upstream work spans **Prometheus** (CNCF), Kubernetes tooling, and Python ML infrastructure; bug fixes are reproduced with a regression test before the change is submitted.
 
 [Upstream](#upstream-contributions) · [Case studies](#case-studies) · [Open PRs](#open-pull-requests) · [Projects](#projects) · [Toolchain](#toolchain)
 
@@ -29,13 +30,15 @@ Backend engineer building zero-dependency LLM tooling: tamper-evident agent repl
 
 | Metric | Value |
 | --- | --- |
-| Merged upstream PRs | 29 |
-| Open upstream PRs | 85 |
+| Merged upstream PRs | 30 |
+| Open upstream PRs | 87 |
 | Repositories with a merged or open PR | 31 |
-| Lines in merged PRs | +2,759 / -304 |
-| File changes across merged PRs | 123 |
-| Commits, last 12 months | 104 |
-| Contributions, last 12 months | 330 |
+| Lines in merged PRs | +2,840 / -324 |
+| File changes across merged PRs | 129 |
+| Commits, last 12 months | 105 |
+| Contributions, last 12 months | 335 |
+
+Numbers are drawn from the GitHub API on every refresh, not maintained by hand.
 
 ## Upstream contributions
 
@@ -43,18 +46,19 @@ Every merged pull request, with the failure it fixed. The board above is the sam
 
 | Project | PR | What changed | Merged |
 | --- | --- | --- | --- |
-| [`dagucloud/dagu`](https://github.com/dagucloud/dagu) | [#3578](https://github.com/dagucloud/dagu/pull/3578) | chore: regenerate llms.txt and check it in CI | 2026-11-06 |
-| [`dagucloud/dagu`](https://github.com/dagucloud/dagu) | [#3596](https://github.com/dagucloud/dagu/pull/3596) | feat(runtime): expose zero-based repeat index as built-in context | 2026-11-05 |
-| [`dagucloud/dagu`](https://github.com/dagucloud/dagu) | [#3579](https://github.com/dagucloud/dagu/pull/3579) | fix(computer): let an act retry a smaller batch after a partial overrun | 2026-11-05 |
-| [`dagucloud/dagu`](https://github.com/dagucloud/dagu) | [#3554](https://github.com/dagucloud/dagu/pull/3554) | Honor mark_success for non-retryable exit codes | 2026-11-05 |
-| [`Mihirajmera/agent-access-review`](https://github.com/Mihirajmera/agent-access-review) | [#26](https://github.com/Mihirajmera/agent-access-review/pull/26) | fix: read a single-value list field and a quoted boolean in a manifest | 2026-11-05 |
-| [`Mihirajmera/agent-access-review`](https://github.com/Mihirajmera/agent-access-review) | [#25](https://github.com/Mihirajmera/agent-access-review/pull/25) | fix: read a manifest whatever its extension, and accept a full timestamp | 2026-11-05 |
-| [`Mihirajmera/agent-access-review`](https://github.com/Mihirajmera/agent-access-review) | [#24](https://github.com/Mihirajmera/agent-access-review/pull/24) | fix: take the AAR-11 endpoint host from urlsplit, not a regex | 2026-11-05 |
-| [`Mihirajmera/agent-access-review`](https://github.com/Mihirajmera/agent-access-review) | [#23](https://github.com/Mihirajmera/agent-access-review/pull/23) | fix: stop the decision sheet from evaluating config values as formulas | 2026-11-05 |
-| [`Mihirajmera/agent-access-review`](https://github.com/Mihirajmera/agent-access-review) | [#22](https://github.com/Mihirajmera/agent-access-review/pull/22) | fix: report and redact credentials carried in a server URL | 2026-11-05 |
-| [`Mihirajmera/agent-access-review`](https://github.com/Mihirajmera/agent-access-review) | [#21](https://github.com/Mihirajmera/agent-access-review/pull/21) | fix: stop losing findings silently in three places | 2026-11-05 |
-| [`dagucloud/dagu`](https://github.com/dagucloud/dagu) | [#3522](https://github.com/dagucloud/dagu/pull/3522) | feat(xlsx): let write set a number format per column | 2026-11-04 |
-| [`k8sgpt-ai/k8sgpt`](https://github.com/k8sgpt-ai/k8sgpt) | [#1900](https://github.com/k8sgpt-ai/k8sgpt/pull/1900) | docs: link AI backend support tiers from README | 2026-11-02 |
+| [`dagucloud/dagu`](https://github.com/dagucloud/dagu) | [#3578](https://github.com/dagucloud/dagu/pull/3578) | Regenerate `llms.txt` and add a CI check that keeps it in sync with the skills tree. | 2026-11-06 |
+| [`juanfont/headscale`](https://github.com/juanfont/headscale) | [#3650](https://github.com/juanfont/headscale/pull/3650) | Reject pre-0.23 databases that lack a migrations table instead of migrating them blindly. | 2026-11-06 |
+| [`dagucloud/dagu`](https://github.com/dagucloud/dagu) | [#3596](https://github.com/dagucloud/dagu/pull/3596) | Expose a zero-based `context.step.repeat_index` for repeat steps. | 2026-11-05 |
+| [`dagucloud/dagu`](https://github.com/dagucloud/dagu) | [#3579](https://github.com/dagucloud/dagu/pull/3579) | Let an act retry a smaller batch after a partial overrun instead of dropping the whole batch. | 2026-11-05 |
+| [`dagucloud/dagu`](https://github.com/dagucloud/dagu) | [#3554](https://github.com/dagucloud/dagu/pull/3554) | Honour `mark_success` for non-retryable exit codes. | 2026-11-05 |
+| [`Mihirajmera/agent-access-review`](https://github.com/Mihirajmera/agent-access-review) | [#26](https://github.com/Mihirajmera/agent-access-review/pull/26) | Read a single-value list field and a quoted boolean in a manifest. | 2026-11-05 |
+| [`Mihirajmera/agent-access-review`](https://github.com/Mihirajmera/agent-access-review) | [#25](https://github.com/Mihirajmera/agent-access-review/pull/25) | Read a manifest regardless of extension and accept a full timestamp. | 2026-11-05 |
+| [`Mihirajmera/agent-access-review`](https://github.com/Mihirajmera/agent-access-review) | [#24](https://github.com/Mihirajmera/agent-access-review/pull/24) | Take the AAR-11 endpoint host from `urlsplit` instead of a regex. | 2026-11-05 |
+| [`Mihirajmera/agent-access-review`](https://github.com/Mihirajmera/agent-access-review) | [#23](https://github.com/Mihirajmera/agent-access-review/pull/23) | Stop the decision sheet from evaluating config values as formulas. | 2026-11-05 |
+| [`Mihirajmera/agent-access-review`](https://github.com/Mihirajmera/agent-access-review) | [#22](https://github.com/Mihirajmera/agent-access-review/pull/22) | Report and redact credentials carried in a server URL. | 2026-11-05 |
+| [`Mihirajmera/agent-access-review`](https://github.com/Mihirajmera/agent-access-review) | [#21](https://github.com/Mihirajmera/agent-access-review/pull/21) | Stop losing findings silently in three places. | 2026-11-05 |
+| [`dagucloud/dagu`](https://github.com/dagucloud/dagu) | [#3522](https://github.com/dagucloud/dagu/pull/3522) | Let `xlsx.write` set a number format per column. | 2026-11-04 |
+| [`k8sgpt-ai/k8sgpt`](https://github.com/k8sgpt-ai/k8sgpt) | [#1900](https://github.com/k8sgpt-ai/k8sgpt/pull/1900) | Link AI backend support tiers from the README. | 2026-11-02 |
 | [`k8sgpt-ai/k8sgpt`](https://github.com/k8sgpt-ai/k8sgpt) | [#1851](https://github.com/k8sgpt-ai/k8sgpt/pull/1851) | Pin `filepath-securejoin` to v0.4.1 to unblock the License Compliance gate. | 2026-10-30 |
 | [`k8sgpt-ai/k8sgpt`](https://github.com/k8sgpt-ai/k8sgpt) | [#1848](https://github.com/k8sgpt-ai/k8sgpt/pull/1848) | Assert the `EnsureDirExists` failure portably instead of relying on Unix paths. | 2026-10-30 |
 | [`syncronix-labs/aegora`](https://github.com/syncronix-labs/aegora) | [#52](https://github.com/syncronix-labs/aegora/pull/52) | Evict the least recently used entry when the cache reaches capacity. | 2026-10-29 |
@@ -106,16 +110,20 @@ Three root causes, each written up with the failure, the mechanism and the evide
 | **Symptom** | On Windows, `accelerate debug_launcher script.py` first fails with `ValueError: cannot find context for 'fork'`; bypassing that produces `PermissionError: [Errno 13]` because the child cannot open the rendezvous file. |
 | **Root cause** | Three Unix-only assumptions: (1) `start_method="fork"` is hard-coded and Windows only has `spawn`; (2) the rendezvous file is created with `NamedTemporaryFile`, so the parent keeps the handle and the spawned child cannot open it; (3) `gloo_socket_ifname="lo"` is set unconditionally even though the Windows loopback interface is not `lo`. |
 | **Fix** | `_debug_start_method()` chooses `fork` / `spawn` from platform capability; `NamedTemporaryFile` became `TemporaryDirectory` (only the path crosses the process boundary); `_has_loopback_alias()` probes for `lo` before setting the variable. |
-| **Evidence** | Reproduced on a Windows host, then `debug_launcher` started a multi-process debug session. Relevant tests pass on Python 3.13 + torch 2.9 (`spawn` needs the `if __name__ == "__main__"` guard, documented in the docstring). The PR waits for maintainer workflow approval to run CI. |
+| **Evidence** | Reproduced on a Windows host, then `debug_launcher` started a multi-process debug session. Relevant tests pass on Python 3.13 + torch 2.9 (`spawn` needs the `if __name__ == "__main__"` guard, documented in the docstring). |
 
 [View pull request](https://github.com/huggingface/accelerate/pull/4360)
 
 ## Open pull requests
 
-85 open across 26 upstream repositories. Highlights:
+87 open across 31 upstream repositories. Recent work on CNCF infrastructure:
 
 | PR | What it changes |
 | --- | --- |
+| [#20351](https://github.com/prometheus/prometheus/pull/20351) `prometheus/prometheus` | Propagate OTLP appender `Commit` errors instead of returning a false `200 OK` that makes senders drop a batch that was never persisted. |
+| [#20350](https://github.com/prometheus/prometheus/pull/20350) `prometheus/prometheus` | Round fractional timestamps to milliseconds in promtool so `query` and `test rules` evaluate at the same instant as the HTTP API. |
+| [#20349](https://github.com/prometheus/prometheus/pull/20349) `prometheus/prometheus` | Emit `check service-discovery` results in a stable order instead of Go's randomized map order. |
+| [#20352](https://github.com/prometheus/prometheus/pull/20352) `prometheus/prometheus` | Send the correct metadata type for gauge histograms in `push metrics` instead of `UNKNOWN`. |
 | [#68](https://github.com/syncronix-labs/aegora/pull/68) `syncronix-labs/aegora` | Optional per-route `timeout` bounding the whole outbound exchange, including the response body; negative values fail config validation. |
 | [#4360](https://github.com/huggingface/accelerate/pull/4360) `huggingface/accelerate` | `debug_launcher` cannot start on Windows: `fork`, `NamedTemporaryFile` and a hard-coded `lo` interface are all Unix-only assumptions. |
 | [#4384](https://github.com/EleutherAI/lm-evaluation-harness/pull/4384) `EleutherAI/lm-evaluation-harness` | Run the trailing partial chunk in `bootstrap_stderr` instead of dropping it. |
@@ -157,9 +165,11 @@ instead of "the third decimal went down, turn the build red".
 | Habit | What it means |
 | --- | --- |
 | **Reproduce, then change code** | Every fix starts from a failure message I can paste, and ends with the output after the fix. The Symptom rows above are the original errors. |
-| **Minimal diff + regression test** | Touch only the lines on the root-cause path; no drive-by formatting, renames or refactors. Where a test is possible, it is written to fail first. |
-| **Environment-class defects, not trends** | The bugs I know best only appear in real environments: non-UTF-8 default encodings, Windows checkouts, first-contributor CI gates, terminal capability differences. They are expensive to reproduce, so few people report them — and easy to dismiss as low impact, so I have to show who actually hits them. |
-| **Publish the misses** | Early on I sent documentation and formatting changes that maintainers closed as noise; a reproducible encoding bug was still called low impact because no real user had reported it and the repro was "synthetic". So I now ask before submitting: does a real user hit this? If not, find a real report or a concrete usage scenario first — and correct myself publicly when I get it wrong. |
+| **Test first, ship green** | A regression test is written before the fix and must fail on the unpatched code. The fix lands only after the full affected package suite, formatting and vet all pass. A PR is opened only when every check is green — no red CI, no untested changes. |
+| **Root cause over symptom** | Grep every caller before editing a shared function; one guard at the source beats a patch in each sibling path. For example, the OTLP data-loss fix was one named return value, not a retry loop in the handler. |
+| **Minimal, scoped diff** | Touch only the files on the root-cause path. No drive-by formatting, renames, refactors, or unrelated files — a small diff is easier to review and more likely to be merged. |
+| **Environment-class defects, not trends** | The bugs I know best only appear in real environments: non-UTF-8 default encodings, Windows checkouts, first-contributor CI gates, terminal capability differences, and randomized map iteration. They are expensive to reproduce, so few people report them — which is why I bring a runnable reproduction instead of a description. |
+| **Claim-collision check before starting** | Before writing any code I check open PRs and issue comments for someone already working on the same fix. Duplicated effort is wasted effort, on both sides of the review. |
 
 ## Toolchain
 
@@ -173,6 +183,6 @@ instead of "the third decimal went down, turn the build red".
 
 ## Open to
 
-AI / LLM infrastructure, training &amp; inference, and evaluation-tooling roles.
+Backend and infrastructure roles in observability, distributed systems, and AI / LLM tooling — especially teams that care about correctness under real-world conditions.
 
-The three boards and the contribution tables are regenerated from the GitHub API by `tools/render_profile.py`; the two project test counts are measured locally.
+The three boards above and every number in the tables are regenerated from the GitHub API by `tools/render_profile.py`; the two project test counts are measured locally. If a number here is wrong, the source is wrong, not the copy.
