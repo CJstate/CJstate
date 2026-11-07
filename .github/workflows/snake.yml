@@ -1,0 +1,48 @@
+name: render snake
+
+# The snake is animated over the real contribution graph. It only visualizes
+# commits that already exist; it never creates or fakes any contribution data.
+
+on:
+  schedule:
+    - cron: "23 */6 * * *"
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - "docs/snake-*.svg"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: render-snake
+  cancel-in-progress: true
+
+jobs:
+  snake:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: generate contribution snake
+        uses: Platane/snk/svg-only@v3.3.0
+        with:
+          github_user_name: ${{ github.repository_owner }}
+          outputs: |
+            docs/snake-dark.svg?palette=github-dark&color_snake=#7aa2f7&color_dots=#161b22,#1f6feb,#2158a5,#2f81f7,#79c0ff
+            docs/snake-light.svg?palette=github-light&color_snake=#0969da&color_dots=#ebedf0,#9be9a8,#40c463,#30a14e,#216e39
+
+      - name: commit snake if it moved
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/snake-dark.svg docs/snake-light.svg
+          if git diff --cached --quiet; then
+            echo "snake unchanged since the last render"
+            exit 0
+          fi
+          git commit -m "chore: refresh contribution snake"
+          git push
