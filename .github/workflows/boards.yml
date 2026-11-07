@@ -1,0 +1,61 @@
+name: render boards
+
+# Every number on the boards is fetched from the GitHub API at render time and
+# baked into self-hosted SVGs. Nothing is hand-written, nothing is estimated,
+# and nothing depends on a third-party renderer being reachable.
+
+on:
+  schedule:
+    - cron: "37 */6 * * *"
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - "tools/render_boards.py"
+      - ".github/workflows/boards.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: render-boards
+  cancel-in-progress: true
+
+jobs:
+  boards:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: check the renderer still parses
+        run: python -m py_compile tools/render_boards.py
+
+      - name: render the boards from live GitHub data
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python tools/render_boards.py docs
+
+      - name: fail loudly if the render produced nothing
+        run: |
+          set -eu
+          for f in docs/hero.svg docs/typing.svg docs/stats.svg; do
+            test -s "$f" || { echo "missing or empty: $f"; exit 1; }
+          done
+
+      - name: commit boards if they moved
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/hero.svg docs/typing.svg docs/stats.svg
+          if git diff --cached --quiet; then
+            echo "boards unchanged since the last render"
+            exit 0
+          fi
+          git commit -m "chore: refresh profile boards from the GitHub API"
+          git push

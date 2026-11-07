@@ -33,13 +33,12 @@ jobs:
           github_user_name: ${{ github.repository_owner }}
           outputs: |
             docs/snake-dark.svg?palette=github-dark&color_snake=#7aa2f7&color_dots=#161b22,#1f6feb,#2158a5,#2f81f7,#79c0ff
-            docs/snake-light.svg?palette=github-light&color_snake=#0969da&color_dots=#ebedf0,#9be9a8,#40c463,#30a14e,#216e39
 
       - name: commit snake if it moved
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add docs/snake-dark.svg docs/snake-light.svg
+          git add docs/snake-dark.svg
           if git diff --cached --quiet; then
             echo "snake unchanged since the last render"
             exit 0

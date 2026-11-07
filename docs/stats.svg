@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="190" viewBox="0 0 900 190" role="img" aria-label="Live GitHub metrics">
+
+<defs>
+  <linearGradient id="sky" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#04070f"/>
+    <stop offset="0.55" stop-color="#0a1120"/>
+    <stop offset="1" stop-color="#101a30"/>
+  </linearGradient>
+  <linearGradient id="nameGrad" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0" stop-color="#00e5ff"/>
+    <stop offset="0.55" stop-color="#6ea8ff"/>
+    <stop offset="1" stop-color="#bd34fe"/>
+  </linearGradient>
+  <linearGradient id="flame" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0" stop-color="#00ffa3"/>
+    <stop offset="1" stop-color="#00e5ff" stop-opacity="0"/>
+  </linearGradient>
+  <filter id="glow" x="-60%" y="-60%" width="220%" height="220%">
+    <feGaussianBlur stdDeviation="3.2" result="b"/>
+    <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+  <filter id="softGlow" x="-60%" y="-60%" width="220%" height="220%">
+    <feGaussianBlur stdDeviation="1.6" result="b"/>
+    <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+</defs>
+
+<rect width="900" height="190" fill="url(#sky)" rx="14"/>
+<line x1="0" y1="0" x2="0" y2="190" stroke="#12203a" stroke-width="1"/><line x1="52" y1="0" x2="52" y2="190" stroke="#12203a" stroke-width="1"/><line x1="104" y1="0" x2="104" y2="190" stroke="#12203a" stroke-width="1"/><line x1="156" y1="0" x2="156" y2="190" stroke="#12203a" stroke-width="1"/><line x1="208" y1="0" x2="208" y2="190" stroke="#12203a" stroke-width="1"/><line x1="260" y1="0" x2="260" y2="190" stroke="#12203a" stroke-width="1"/><line x1="312" y1="0" x2="312" y2="190" stroke="#12203a" stroke-width="1"/><line x1="364" y1="0" x2="364" y2="190" stroke="#12203a" stroke-width="1"/><line x1="416" y1="0" x2="416" y2="190" stroke="#12203a" stroke-width="1"/><line x1="468" y1="0" x2="468" y2="190" stroke="#12203a" stroke-width="1"/><line x1="520" y1="0" x2="520" y2="190" stroke="#12203a" stroke-width="1"/><line x1="572" y1="0" x2="572" y2="190" stroke="#12203a" stroke-width="1"/><line x1="624" y1="0" x2="624" y2="190" stroke="#12203a" stroke-width="1"/><line x1="676" y1="0" x2="676" y2="190" stroke="#12203a" stroke-width="1"/><line x1="728" y1="0" x2="728" y2="190" stroke="#12203a" stroke-width="1"/><line x1="780" y1="0" x2="780" y2="190" stroke="#12203a" stroke-width="1"/><line x1="832" y1="0" x2="832" y2="190" stroke="#12203a" stroke-width="1"/><line x1="884" y1="0" x2="884" y2="190" stroke="#12203a" stroke-width="1"/><line x1="0" y1="0" x2="900" y2="0" stroke="#12203a" stroke-width="1"/><line x1="0" y1="52" x2="900" y2="52" stroke="#12203a" stroke-width="1"/><line x1="0" y1="104" x2="900" y2="104" stroke="#12203a" stroke-width="1"/><line x1="0" y1="156" x2="900" y2="156" stroke="#12203a" stroke-width="1"/>
+<circle cx="358" cy="0" r="1.1" fill="#9fb6d9" opacity="0.5"><animate attributeName="opacity" values="0.12;0.55;0.12" dur="4.2s" begin="0.00s" repeatCount="indefinite"/></circle><circle cx="315" cy="12" r="1.1" fill="#9fb6d9" opacity="0.5"><animate attributeName="opacity" values="0.12;0.55;0.12" dur="4.2s" begin="1.37s" repeatCount="indefinite"/></circle><circle cx="782" cy="2" r="1.1" fill="#9fb6d9" opacity="0.5"><animate attributeName="opacity" values="0.12;0.55;0.12" dur="4.2s" begin="2.74s" repeatCount="indefinite"/></circle><circle cx="859" cy="88" r="1.1" fill="#9fb6d9" opacity="0.5"><animate attributeName="opacity" values="0.12;0.55;0.12" dur="4.2s" begin="4.11s" repeatCount="indefinite"/></circle><circle cx="546" cy="97" r="1.1" fill="#9fb6d9" opacity="0.5"><animate attributeName="opacity" values="0.12;0.55;0.12" dur="4.2s" begin="0.48s" repeatCount="indefinite"/></circle><circle cx="743" cy="175" r="1.1" fill="#9fb6d9" opacity="0.5"><animate attributeName="opacity" values="0.12;0.55;0.12" dur="4.2s" begin="1.85s" repeatCount="indefinite"/></circle><circle cx="550" cy="130" r="1.1" fill="#9fb6d9" opacity="0.5"><animate attributeName="opacity" values="0.12;0.55;0.12" dur="4.2s" begin="3.22s" repeatCount="indefinite"/></circle><circle cx="867" cy="58" r="1.1" fill="#9fb6d9" opacity="0.5"><animate attributeName="opacity" values="0.12;0.55;0.12" dur="4.2s" begin="4.59s" repeatCount="indefinite"/></circle><circle cx="794" cy="117" r="1.1" fill="#9fb6d9" opacity="0.5"><animate attributeName="opacity" values="0.12;0.55;0.12" dur="4.2s" begin="0.96s" repeatCount="indefinite"/></circle><circle cx="331" cy="44" r="1.1" fill="#9fb6d9" opacity="0.5"><animate attributeName="opacity" values="0.12;0.55;0.12" dur="4.2s" begin="2.33s" repeatCount="indefinite"/></circle><circle cx="378" cy="45" r="1.1" fill="#9fb6d9" opacity="0.5"><animate attributeName="opacity" values="0.12;0.55;0.12" dur="4.2s" begin="3.70s" repeatCount="indefinite"/></circle><circle cx="35" cy="78" r="1.1" fill="#9fb6d9" opacity="0.5"><animate attributeName="opacity" values="0.12;0.55;0.12" dur="4.2s" begin="0.07s" repeatCount="indefinite"/></circle><circle cx="202" cy="139" r="1.1" fill="#9fb6d9" opacity="0.5"><animate attributeName="opacity" values="0.12;0.55;0.12" dur="4.2s" begin="1.44s" repeatCount="indefinite"/></circle><circle cx="879" cy="135" r="1.1" fill="#9fb6d9" opacity="0.5"><animate attributeName="opacity" values="0.12;0.55;0.12" dur="4.2s" begin="2.81s" repeatCount="indefinite"/></circle><circle cx="266" cy="35" r="1.1" fill="#9fb6d9" opacity="0.5"><animate attributeName="opacity" values="0.12;0.55;0.12" dur="4.2s" begin="4.18s" repeatCount="indefinite"/></circle><circle cx="163" cy="144" r="1.1" fill="#9fb6d9" opacity="0.5"><animate attributeName="opacity" values="0.12;0.55;0.12" dur="4.2s" begin="0.55s" repeatCount="indefinite"/></circle><circle cx="570" cy="99" r="1.1" fill="#9fb6d9" opacity="0.5"><animate attributeName="opacity" values="0.12;0.55;0.12" dur="4.2s" begin="1.92s" repeatCount="indefinite"/></circle><circle cx="587" cy="48" r="1.1" fill="#9fb6d9" opacity="0.5"><animate attributeName="opacity" values="0.12;0.55;0.12" dur="4.2s" begin="3.29s" repeatCount="indefinite"/></circle><circle cx="214" cy="178" r="1.1" fill="#9fb6d9" opacity="0.5"><animate attributeName="opacity" values="0.12;0.55;0.12" dur="4.2s" begin="4.66s" repeatCount="indefinite"/></circle><circle cx="351" cy="15" r="1.1" fill="#9fb6d9" opacity="0.5"><animate attributeName="opacity" values="0.12;0.55;0.12" dur="4.2s" begin="1.03s" repeatCount="indefinite"/></circle><circle cx="98" cy="97" r="1.1" fill="#9fb6d9" opacity="0.5"><animate attributeName="opacity" values="0.12;0.55;0.12" dur="4.2s" begin="2.40s" repeatCount="indefinite"/></circle><circle cx="355" cy="160" r="1.1" fill="#9fb6d9" opacity="0.5"><animate attributeName="opacity" values="0.12;0.55;0.12" dur="4.2s" begin="3.77s" repeatCount="indefinite"/></circle><circle cx="222" cy="32" r="1.1" fill="#9fb6d9" opacity="0.5"><animate attributeName="opacity" values="0.12;0.55;0.12" dur="4.2s" begin="0.14s" repeatCount="indefinite"/></circle><circle cx="599" cy="49" r="1.1" fill="#9fb6d9" opacity="0.5"><animate attributeName="opacity" values="0.12;0.55;0.12" dur="4.2s" begin="1.51s" repeatCount="indefinite"/></circle><circle cx="586" cy="19" r="1.1" fill="#9fb6d9" opacity="0.5"><animate attributeName="opacity" values="0.12;0.55;0.12" dur="4.2s" begin="2.88s" repeatCount="indefinite"/></circle><circle cx="183" cy="39" r="1.1" fill="#9fb6d9" opacity="0.5"><animate attributeName="opacity" values="0.12;0.55;0.12" dur="4.2s" begin="4.25s" repeatCount="indefinite"/></circle><circle cx="290" cy="75" r="1.1" fill="#9fb6d9" opacity="0.5"><animate attributeName="opacity" values="0.12;0.55;0.12" dur="4.2s" begin="0.62s" repeatCount="indefinite"/></circle><circle cx="7" cy="55" r="1.1" fill="#9fb6d9" opacity="0.5"><animate attributeName="opacity" values="0.12;0.55;0.12" dur="4.2s" begin="1.99s" repeatCount="indefinite"/></circle><circle cx="234" cy="185" r="1.1" fill="#9fb6d9" opacity="0.5"><animate attributeName="opacity" values="0.12;0.55;0.12" dur="4.2s" begin="3.36s" repeatCount="indefinite"/></circle><circle cx="71" cy="43" r="1.1" fill="#9fb6d9" opacity="0.5"><animate attributeName="opacity" values="0.12;0.55;0.12" dur="4.2s" begin="4.73s" repeatCount="indefinite"/></circle><circle cx="418" cy="5" r="1.1" fill="#9fb6d9" opacity="0.5"><animate attributeName="opacity" values="0.12;0.55;0.12" dur="4.2s" begin="1.10s" repeatCount="indefinite"/></circle><circle cx="375" cy="169" r="1.1" fill="#9fb6d9" opacity="0.5"><animate attributeName="opacity" values="0.12;0.55;0.12" dur="4.2s" begin="2.47s" repeatCount="indefinite"/></circle><circle cx="842" cy="121" r="1.1" fill="#9fb6d9" opacity="0.5"><animate attributeName="opacity" values="0.12;0.55;0.12" dur="4.2s" begin="3.84s" repeatCount="indefinite"/></circle><circle cx="19" cy="170" r="1.1" fill="#9fb6d9" opacity="0.5"><animate attributeName="opacity" values="0.12;0.55;0.12" dur="4.2s" begin="0.21s" repeatCount="indefinite"/></circle><circle cx="606" cy="140" r="1.1" fill="#9fb6d9" opacity="0.5"><animate attributeName="opacity" values="0.12;0.55;0.12" dur="4.2s" begin="1.58s" repeatCount="indefinite"/></circle><circle cx="803" cy="180" r="1.1" fill="#9fb6d9" opacity="0.5"><animate attributeName="opacity" values="0.12;0.55;0.12" dur="4.2s" begin="2.95s" repeatCount="indefinite"/></circle><circle cx="610" cy="97" r="1.1" fill="#9fb6d9" opacity="0.5"><animate attributeName="opacity" values="0.12;0.55;0.12" dur="4.2s" begin="4.32s" repeatCount="indefinite"/></circle><circle cx="27" cy="178" r="1.1" fill="#9fb6d9" opacity="0.5"><animate attributeName="opacity" values="0.12;0.55;0.12" dur="4.2s" begin="0.69s" repeatCount="indefinite"/></circle><circle cx="854" cy="8" r="1.1" fill="#9fb6d9" opacity="0.5"><animate attributeName="opacity" values="0.12;0.55;0.12" dur="4.2s" begin="2.06s" repeatCount="indefinite"/></circle><circle cx="391" cy="87" r="1.1" fill="#9fb6d9" opacity="0.5"><animate attributeName="opacity" values="0.12;0.55;0.12" dur="4.2s" begin="3.43s" repeatCount="indefinite"/></circle><circle cx="438" cy="50" r="1.1" fill="#9fb6d9" opacity="0.5"><animate attributeName="opacity" values="0.12;0.55;0.12" dur="4.2s" begin="4.80s" repeatCount="indefinite"/></circle><circle cx="95" cy="45" r="1.1" fill="#9fb6d9" opacity="0.5"><animate attributeName="opacity" values="0.12;0.55;0.12" dur="4.2s" begin="1.17s" repeatCount="indefinite"/></circle>
+
+  <g opacity="0">
+    <animate attributeName="opacity" values="0;1" begin="0.0s" dur="0.6s" fill="freeze"/>
+    <animateTransform attributeName="transform" type="translate" from="0 10" to="0 0" begin="0.0s" dur="0.6s" fill="freeze"/>
+    <rect x="24" y="30" width="275" height="62" rx="10" fill="#0b1424" stroke="#1c2d4f" stroke-width="1"/>
+    <rect x="24" y="30" width="3.5" height="62" rx="1.5" fill="#00ffa3" filter="url(#softGlow)">
+      <animate attributeName="opacity" values="0.55;1;0.55" dur="3s" repeatCount="indefinite"/>
+    </rect>
+    <text x="46" y="74" font-size="27" font-weight="700" fill="#00ffa3" font-family="'Segoe UI', Helvetica, sans-serif">30</text>
+    <text x="46" y="96" font-size="10.5" fill="#7d8aa5" letter-spacing="2.2" font-family="'Segoe UI', sans-serif">MERGED PRS · LIVE</text>
+  </g>
+  <g opacity="0">
+    <animate attributeName="opacity" values="0;1" begin="0.12s" dur="0.6s" fill="freeze"/>
+    <animateTransform attributeName="transform" type="translate" from="0 10" to="0 0" begin="0.12s" dur="0.6s" fill="freeze"/>
+    <rect x="317" y="30" width="275" height="62" rx="10" fill="#0b1424" stroke="#1c2d4f" stroke-width="1"/>
+    <rect x="317" y="30" width="3.5" height="62" rx="1.5" fill="#00e5ff" filter="url(#softGlow)">
+      <animate attributeName="opacity" values="0.55;1;0.55" dur="3s" repeatCount="indefinite"/>
+    </rect>
+    <text x="339" y="74" font-size="27" font-weight="700" fill="#00e5ff" font-family="'Segoe UI', Helvetica, sans-serif">343</text>
+    <text x="339" y="96" font-size="10.5" fill="#7d8aa5" letter-spacing="2.2" font-family="'Segoe UI', sans-serif">CONTRIBUTIONS · LAST YEAR</text>
+  </g>
+  <g opacity="0">
+    <animate attributeName="opacity" values="0;1" begin="0.24s" dur="0.6s" fill="freeze"/>
+    <animateTransform attributeName="transform" type="translate" from="0 10" to="0 0" begin="0.24s" dur="0.6s" fill="freeze"/>
+    <rect x="610" y="30" width="275" height="62" rx="10" fill="#0b1424" stroke="#1c2d4f" stroke-width="1"/>
+    <rect x="610" y="30" width="3.5" height="62" rx="1.5" fill="#bd34fe" filter="url(#softGlow)">
+      <animate attributeName="opacity" values="0.55;1;0.55" dur="3s" repeatCount="indefinite"/>
+    </rect>
+    <text x="632" y="74" font-size="27" font-weight="700" fill="#bd34fe" font-family="'Segoe UI', Helvetica, sans-serif">10</text>
+    <text x="632" y="96" font-size="10.5" fill="#7d8aa5" letter-spacing="2.2" font-family="'Segoe UI', sans-serif">REPOS WITH MERGED PRS</text>
+  </g>
+  <g opacity="0">
+    <animate attributeName="opacity" values="0;1" begin="0.36s" dur="0.6s" fill="freeze"/>
+    <animateTransform attributeName="transform" type="translate" from="0 10" to="0 0" begin="0.36s" dur="0.6s" fill="freeze"/>
+    <rect x="24" y="110" width="275" height="62" rx="10" fill="#0b1424" stroke="#1c2d4f" stroke-width="1"/>
+    <rect x="24" y="110" width="3.5" height="62" rx="1.5" fill="#ffb86b" filter="url(#softGlow)">
+      <animate attributeName="opacity" values="0.55;1;0.55" dur="3s" repeatCount="indefinite"/>
+    </rect>
+    <text x="46" y="154" font-size="27" font-weight="700" fill="#ffb86b" font-family="'Segoe UI', Helvetica, sans-serif">13</text>
+    <text x="46" y="176" font-size="10.5" fill="#7d8aa5" letter-spacing="2.2" font-family="'Segoe UI', sans-serif">MERGED THIS MONTH</text>
+  </g>
+  <g opacity="0">
+    <animate attributeName="opacity" values="0;1" begin="0.48s" dur="0.6s" fill="freeze"/>
+    <animateTransform attributeName="transform" type="translate" from="0 10" to="0 0" begin="0.48s" dur="0.6s" fill="freeze"/>
+    <rect x="317" y="110" width="275" height="62" rx="10" fill="#0b1424" stroke="#1c2d4f" stroke-width="1"/>
+    <rect x="317" y="110" width="3.5" height="62" rx="1.5" fill="#6ea8ff" filter="url(#softGlow)">
+      <animate attributeName="opacity" values="0.55;1;0.55" dur="3s" repeatCount="indefinite"/>
+    </rect>
+    <text x="339" y="154" font-size="27" font-weight="700" fill="#6ea8ff" font-family="'Segoe UI', Helvetica, sans-serif">83</text>
+    <text x="339" y="176" font-size="10.5" fill="#7d8aa5" letter-spacing="2.2" font-family="'Segoe UI', sans-serif">PRS IN FLIGHT</text>
+  </g>
+  <g opacity="0">
+    <animate attributeName="opacity" values="0;1" begin="0.6s" dur="0.6s" fill="freeze"/>
+    <animateTransform attributeName="transform" type="translate" from="0 10" to="0 0" begin="0.6s" dur="0.6s" fill="freeze"/>
+    <rect x="610" y="110" width="275" height="62" rx="10" fill="#0b1424" stroke="#1c2d4f" stroke-width="1"/>
+    <rect x="610" y="110" width="3.5" height="62" rx="1.5" fill="#00ffa3" filter="url(#softGlow)">
+      <animate attributeName="opacity" values="0.55;1;0.55" dur="3s" repeatCount="indefinite"/>
+    </rect>
+    <text x="632" y="154" font-size="27" font-weight="700" fill="#00ffa3" font-family="'Segoe UI', Helvetica, sans-serif">40</text>
+    <text x="632" y="176" font-size="10.5" fill="#7d8aa5" letter-spacing="2.2" font-family="'Segoe UI', sans-serif">PUBLIC REPOS</text>
+  </g>
+</svg>
