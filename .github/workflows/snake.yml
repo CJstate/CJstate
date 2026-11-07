@@ -44,4 +44,9 @@ jobs:
             exit 0
           fi
           git commit -m "chore: refresh contribution snake"
-          git push
+          for i in 1 2 3; do
+            if git push; then exit 0; fi
+            echo "push raced with another workflow, retrying ($i)"
+            git pull --rebase origin main || git rebase --abort || true
+          done
+          exit 1
