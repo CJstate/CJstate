@@ -14,10 +14,15 @@ Backend engineer focused on Go infrastructure and LLM tooling. I work mainly on 
 
 ## Open source
 
-Merged pull requests, with the defect each one removed:
+Merged pull requests only, with the defect each one removed. Withdrawn and
+still-open PRs are deliberately omitted: I would rather show the fixes that
+actually shipped than the ones still in review.
 
 | Project | PR | What it fixed |
 | --- | --- | --- |
+| [nvm-sh/nvm](https://github.com/nvm-sh/nvm) | [#3915](https://github.com/nvm-sh/nvm/pull/3915) | `nvm --help` printed the set-colors legend as literal escape sequences instead of rendering it in color. |
+| [klauspost/compress](https://github.com/klauspost/compress) | [#1302](https://github.com/klauspost/compress/pull/1302) | `gzip.Reader.WriteTo` stored a destination write error in `z.err`, which doubles as the end-of-stream marker, so a failed write was mistaken for a clean end of stream and the CRC/trailer check was silently skipped. Writer errors are now wrapped so they stay distinct from `io.EOF`. Two sibling fixes in the same package followed: [#1303](https://github.com/klauspost/compress/pull/1303) (s2 keeps `ErrCorrupt`) and [#1304](https://github.com/klauspost/compress/pull/1304) (flate keeps the reader failed after a short write). |
+| [k8sgpt-ai/k8sgpt](https://github.com/k8sgpt-ai/k8sgpt) | [#1845](https://github.com/k8sgpt-ai/k8sgpt/pull/1845) | Findings already known to an operator had no way to be silenced, so every analysis re-reported them. Added an `exclusions` config key with a content hash and expiry, applied before the AI call and in server mode, with the muted count reported so a mute cannot silently swallow findings. |
 | [juanfont/headscale](https://github.com/juanfont/headscale) | [#3650](https://github.com/juanfont/headscale/pull/3650) | Pre-0.23 databases without a migrations table were migrated blindly; now they are rejected with a clear error instead of being corrupted. |
 | [pranshuparmar/witr](https://github.com/pranshuparmar/witr) | [#242](https://github.com/pranshuparmar/witr/pull/242) | The root `main.go` was a tracked symlink. Git for Windows checks symlinks out as plain text, so `go build` failed on a real clone while CI stayed green. Replaced it with a real entry point and added a lint guard for tracked symlinks. |
 | [dagucloud/dagu](https://github.com/dagucloud/dagu) | [#3554](https://github.com/dagucloud/dagu/pull/3554) | `mark_success` was ignored for non-retryable exit codes, so marked steps still failed the workflow. |
