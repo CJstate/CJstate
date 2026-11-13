@@ -46,6 +46,10 @@ Backend engineer working on **Go infrastructure, cloud-native tooling, and relia
   <img src="https://cdn.jsdelivr.net/gh/CJstate/CJstate@main/docs/profile-streak.svg" alt="Contribution Streak" />
 </div>
 
+<div align="center">
+  <img src="https://cdn.jsdelivr.net/gh/CJstate/CJstate@main/docs/profile-langs.svg" alt="Top Languages" />
+</div>
+
 ---
 
 #### 🐍 Contribution Graph
