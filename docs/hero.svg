@@ -59,7 +59,7 @@
   <text x="48" y="106" font-size="12.5" fill="#7d8aa5" letter-spacing="4.2">BACKEND · GO INFRASTRUCTURE · K8S TOOLING · PROMETHEUS</text>
 
   <text x="46" y="158" font-size="54" font-weight="700" fill="#00ffa3" filter="url(#glow)">
-    48
+    51
     <animate attributeName="opacity" values="0.86;1;0.86" dur="2.6s" repeatCount="indefinite"/>
   </text>
   <rect x="48" y="170" width="150" height="2.2" rx="1" fill="#00ffa3" opacity="0.55">
@@ -67,10 +67,10 @@
   </rect>
   <text x="48" y="188" font-size="11.5" fill="#7d8aa5" letter-spacing="3">MERGED PULL REQUESTS · LIVE</text>
 
-  <text x="352" y="154" font-size="30" font-weight="600" fill="#00e5ff">398</text>
+  <text x="352" y="154" font-size="30" font-weight="600" fill="#00e5ff">413</text>
   <text x="352" y="174" font-size="10.5" fill="#7d8aa5" letter-spacing="2">CONTRIBUTIONS · LAST YEAR</text>
 
-  <text x="622" y="154" font-size="30" font-weight="600" fill="#bd34fe">12</text>
+  <text x="622" y="154" font-size="30" font-weight="600" fill="#bd34fe">13</text>
   <text x="622" y="174" font-size="10.5" fill="#7d8aa5" letter-spacing="2">REPOS WITH MERGED PRS</text>
 </g>
 <g opacity="0.95"><animateMotion path="M -80 168 Q 300 40 1000 96" dur="8.5s" rotate="auto" repeatCount="indefinite"/><path d="M -14 0 L -70 0" stroke="url(#flame)" stroke-width="3.2" stroke-linecap="round" opacity="0.9"><animate attributeName="stroke-width" values="3.2;4.8;3.2" dur="0.7s" repeatCount="indefinite"/></path><circle cx="-34" cy="0" r="1.8" fill="#00ffa3"><animate attributeName="opacity" values="0.9;0" dur="0.8s" repeatCount="indefinite"/></circle><circle cx="-52" cy="-2" r="1.3" fill="#00e5ff"><animate attributeName="opacity" values="0.7;0" dur="1.1s" begin="0.3s" repeatCount="indefinite"/></circle><g transform="scale(1.5)"><path d="M -14 0 L -2 -6.5 L 24 0 L -2 6.5 Z" fill="#dbe7ff" filter="url(#softGlow)"/><path d="M -2 -6.5 L 8 -12 L 12 -3.5 Z" fill="#00e5ff" opacity="0.9"/><path d="M -2 6.5 L 8 12 L 12 3.5 Z" fill="#00e5ff" opacity="0.9"/><circle cx="9" cy="0" r="2.8" fill="#bd34fe"/><path d="M 24 0 L 19 -3.4 L 19 3.4 Z" fill="#6ea8ff" opacity="0.85"/></g></g>
