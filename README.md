@@ -78,6 +78,7 @@ error for a clean end of stream, an inherited environment scope that quietly wid
 <div align="center">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="./docs/snake-dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="./docs/snake-light.svg">
     <img src="./docs/snake-dark.svg" alt="Contribution snake eating the real contribution graph" width="900">
   </picture>
 </div>
