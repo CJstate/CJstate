@@ -64,6 +64,28 @@ Backend engineer working on **Go infrastructure, cloud-native tooling, and relia
 
 ---
 
+<br/>
+
+### 🤝 Connect with me
+
+<div align="center">
+
+Bug reports, reproducible failures, and patches for upstream Go projects are always welcome.
+The fastest way to reach me is email; the profile above stays the source of truth for my work.
+
+</div>
+
+<div align="center">
+  <a href="mailto:1507965754@qq.com">
+    <img src="https://img.shields.io/badge/Email-1507965754%40qq.com-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Email" />
+  </a>
+  <a href="https://github.com/CJstate">
+    <img src="https://img.shields.io/badge/GitHub-CJstate-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub" />
+  </a>
+</div>
+
+<br/>
+
 <div align="center">
 
 *"Reproduce it. Write the failing test. Ship the smallest fix that makes it green."*
