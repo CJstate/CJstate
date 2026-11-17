@@ -1,68 +1,110 @@
-# CJstate
+<div align="center">
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=28&pause=1000&color=36BCF7&center=true&vCenter=true&width=600&lines=Backend+Engineer;Cloud+Native+Developer;Data+Infrastructure+Enthusiast;TDD+Advocate" alt="Typing SVG" />
+</div>
 
-Backend engineer. I work on Go infrastructure, cloud-native tooling, and the unglamorous edges of I/O where errors get lost and state goes stale.
+<div align="center">
+  <img src="https://komarev.com/ghpvc/?username=CJstate&style=for-the-badge&color=blue" alt="Profile Views" />
+  <img src="https://img.shields.io/github/followers/CJstate?style=for-the-badge&color=blue" alt="Followers" />
+</div>
 
-**Stack:** Go · Python · Rust · Kubernetes · Prometheus · Docker · GitHub Actions
+---
 
-I start from a reproducible failure, write the test that exposes it, and ship the smallest change that makes the suite green. Most of the bugs below were found on a Windows machine running a real clone — the ones Linux CI never sees.
+### Hi, I'm CJstate 👋
 
-## Selected open source work
+Backend engineer working on **Go infrastructure, cloud-native tooling, and reliable data paths**. I reproduce a defect locally, write the failing test first, and open a PR only after the affected suites, vet, and formatting are green. Most fixes start with a failure I actually hit: a writer that accepts only part of a buffer, a reader that mistakes a write error for a clean end of stream, an inherited environment scope that quietly widens.
 
-Merged pull requests only. A few representative fixes across 19 upstream projects:
+#### 💻 Stack
 
-### Go / systems
+<div align="center">
 
-- **[valyala/fasthttp](https://github.com/valyala/fasthttp/pulls?q=is%3Apr+author%3ACJstate+is%3Amerged)** — `WriteTo` implementations in five exported types returned the raw result of one `w.Write`, silently accepting short writes. Now report `io.ErrShortWrite` so callers can detect partial output ([#2541](https://github.com/valyala/fasthttp/pull/2541), with follow-ups in [#2542](https://github.com/valyala/fasthttp/pull/2542), [#2543](https://github.com/valyala/fasthttp/pull/2543)). Also fixed `Accept-Encoding` parsing that stopped scanning after a `q=0` member ([#2590](https://github.com/valyala/fasthttp/pull/2590)).
+![Go](https://img.shields.io/badge/Go-00ADD8?style=for-the-badge&logo=go&logoColor=white) ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white) ![Rust](https://img.shields.io/badge/Rust-000000?style=for-the-badge&logo=rust&logoColor=white)
 
-- **[klauspost/compress](https://github.com/klauspost/compress/pulls?q=is%3Apr+author%3ACJstate+is%3Amerged)** — `gzip.Reader.WriteTo` reused `z.err` as both the write-error slot and the end-of-stream marker, so a failed destination write was mistaken for a clean finish and the CRC check was skipped. Writer errors are now wrapped and kept distinct from `io.EOF` ([#1302](https://github.com/klauspost/compress/pull/1302)). Related fixes cover short writes in flate and s2 ([#1303](https://github.com/klauspost/compress/pull/1303), [#1304](https://github.com/klauspost/compress/pull/1304), [#1316](https://github.com/klauspost/compress/pull/1316)).
+![Kubernetes](https://img.shields.io/badge/Kubernetes-326CE5?style=for-the-badge&logo=kubernetes&logoColor=white) ![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white) ![Linux](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black) ![Prometheus](https://img.shields.io/badge/Prometheus-E6522C?style=for-the-badge&logo=prometheus&logoColor=white)
 
-- **[juanfont/headscale](https://github.com/juanfont/headscale/pull/3650)** — pre-0.23 databases without a migrations table were migrated blindly and could be corrupted. They are now rejected with a clear error.
+</div>
 
-- **[bmf-san/ggc](https://github.com/bmf-san/ggc/pull/542)** — config and command test suites used Unix-only process mocks, so `go test` failed on Windows even though CI stayed green. Reworked the mocks and added a guard against tracked symlinks in [witr](https://github.com/pranshuparmar/witr/pull/242), another Windows build breakage.
+#### 🚀 Featured Open Source Contributions
 
-### Cloud native / observability
+> Merged pull requests only. Still-open and withdrawn PRs are deliberately omitted - I would rather show the fixes that actually shipped.
 
-- **[k8sgpt-ai/k8sgpt](https://github.com/k8sgpt-ai/k8sgpt/pull/1845)** — added an `exclusions` config key so operators can mute known findings by content hash with an expiry, applied consistently in CLI and server mode with the muted count reported.
+- 🛠️ **[klauspost/compress - #1302](https://github.com/klauspost/compress/pull/1302)**: `gzip.Reader.WriteTo` stored a destination write error in `z.err`, which doubles as the end-of-stream marker. A failed write was therefore mistaken for a clean end of stream and the CRC/trailer check was silently skipped. Writer errors are now wrapped with `%w` so they stay distinct from `io.EOF`. Merged by the author.
 
-- **[k8sgpt-ai/k8sgpt-operator](https://github.com/k8sgpt-ai/k8sgpt-operator/pull/855)** — exposed tolerations through the CRD and Helm chart so the controller can schedule on tainted nodes.
+- ⚡ **[k8sgpt-ai/k8sgpt - #1845](https://github.com/k8sgpt-ai/k8sgpt/pull/1845)**: Findings already known to an operator had no way to be silenced, so every analysis re-reported them. Added an `exclusions` config key with a content hash and expiry, applied before analysis and in server mode, with the muted count reported so a mute cannot silently swallow findings.
 
-- **[prometheus/prometheus](https://github.com/prometheus/prometheus/pull/20352)** — `MetricFamiliesToWriteRequest` looked up gauge-histogram metadata with the `dto` enum name (`GAUGE_HISTOGRAM`) against a map keyed by the `prompb` name (`GAUGEHISTOGRAM`), dropping the type. Fixed the mapping so remote-write metadata survives.
+- 🐳 **[dagucloud/dagu](https://github.com/dagucloud/dagu/pulls?q=is%3Apr+author%3ACJstate+is%3Amerged)**: A run of merged fixes across the workflow engine - unknown-key validation for the `jq`, `http`, `archive`, `s3`, `redis`, `postgres`, `sqlite`, and `mail` executors ([#3558](https://github.com/dagucloud/dagu/pull/3558), [#3559](https://github.com/dagucloud/dagu/pull/3559), [#3570](https://github.com/dagucloud/dagu/pull/3570)-[#3574](https://github.com/dagucloud/dagu/pull/3574)), `repeat_policy.on_limit: fail` for exhausted `until` loops ([#3651](https://github.com/dagucloud/dagu/pull/3651)), and inheriting a `foreach` parent's env scope in body steps ([#3657](https://github.com/dagucloud/dagu/pull/3657)).
 
-- **[cybozu-go/moco](https://github.com/cybozu-go/moco/pull/966)** — added `podLabels` and `podAnnotations` to the Helm chart so controller pods can carry custom metadata.
+- 🗄️ **[cybozu-go/moco - #966](https://github.com/cybozu-go/moco/pull/966)**: The Helm chart gave controller pods no way to carry custom metadata. Added support for custom labels and annotations on controller pods.
 
-### Workflow / tooling
+- 📦 **[klauspost/compress - #1303](https://github.com/klauspost/compress/pull/1303)**: Kept `ErrCorrupt` instead of losing the failure when `s2.Skip` rejects an oversized chunk, so a corrupt stream cannot be reported as a clean skip. Its sibling [flate fix - #1304](https://github.com/klauspost/compress/pull/1304) keeps the reader failed after a short write inside `WriteTo`, and [#1316](https://github.com/klauspost/compress/pull/1316) reports short writes when closing the CRC/ISIZE footer.
 
-- **[dagucloud/dagu](https://github.com/dagucloud/dagu/pulls?q=is%3Apr+author%3ACJstate+is%3Amerged)** — a series of fixes across the workflow engine: unknown-key validation for eight executors, `repeat_policy.on_limit: fail` for exhausted `until` loops, inheriting a `foreach` parent's environment in body steps, and step-output references in `working_dir`.
+- ⚡ **[valyala/fasthttp](https://github.com/valyala/fasthttp/pulls?q=is%3Apr+author%3ACJstate+is%3Amerged)**: Five exported `WriteTo` implementations returned the raw result of a single `w.Write`, silently swallowing short writes. They now surface `io.ErrShortWrite` ([#2541](https://github.com/valyala/fasthttp/pull/2541) and follow-ups [#2542](https://github.com/valyala/fasthttp/pull/2542), [#2543](https://github.com/valyala/fasthttp/pull/2543)). Also fixed `Accept-Encoding` parsing that stopped scanning after a `q=0` member ([#2590](https://github.com/valyala/fasthttp/pull/2590)).
 
-- **[Lynpoint/CyberVerse](https://github.com/Lynpoint/CyberVerse/pulls?q=is%3Apr+author%3ACJstate+is%3Amerged)** — RAG fixes: explicit zero-valued config fields no longer fall back to defaults, Milvus delete expressions escape backslashes and quotes, plugin shutdown continues after a startup failure, and YAML `${VAR}` expansion treats env values as data rather than re-parsing them as YAML.
+- 📈 **[prometheus/prometheus - #20352](https://github.com/prometheus/prometheus/pull/20352)**: Gauge histograms lost their metadata type in remote write because the lookup mixed the `dto` enum spelling (`GAUGE_HISTOGRAM`) with the `prompb` map key (`GAUGEHISTOGRAM`). Fixed the mapping so the type survives the conversion.
 
-## Projects
+- 🔧 **[juanfont/headscale - #3650](https://github.com/juanfont/headscale/pull/3650)**: Pre-0.23 databases without a migrations table were migrated blindly and could be corrupted; they are now rejected with a clear error. In [bmf-san/ggc - #542](https://github.com/bmf-san/ggc/pull/542) and [pranshuparmar/witr - #242](https://github.com/pranshuparmar/witr/pull/242), Unix-only process mocks and a tracked symlink made `go build`/`go test` fail on a real Windows checkout while CI stayed green.
 
-### [Veritas-Harness](https://github.com/CJstate/Veritas-Harness)
+- 🧠 **[Lynpoint/CyberVerse](https://github.com/Lynpoint/CyberVerse/pulls?q=is%3Apr+author%3ACJstate+is%3Amerged)**: A run of RAG fixes — explicit zero-valued config fields no longer fall back to defaults, Milvus delete expressions escape backslashes and quotes, plugin shutdown continues after a startup failure, and YAML `${VAR}` expansion treats env values as data rather than re-parsing them as YAML.
 
-An audit-friendly runtime for coding agents. Every tool call, model reply, and MCP request is appended to a hash-chained JSONL log; `veritas replay` verifies the chain, re-runs the tools, and diffs each result by SHA-256. A run is verified, not trusted.
+---
 
-- 141 tests, no runtime dependencies; CI green on Linux / Windows / macOS × Python 3.10–3.13
-- Built for real Windows environments: UTF-8 → GBK → Latin-1 fallback with BOM and CRLF preserved
-- Includes a tamper demo where replay rejects an edited session before any tool runs
+#### 📊 Activity
 
-### [EvalGuard](https://github.com/CJstate/EvalGuard)
+> Every number below is fetched from the GitHub API and regenerated by CI every 6 hours — nothing is typed in by hand.
 
-A CI gate for LLM evaluations. Given `before` and `after` result files, it decides whether a benchmark genuinely regressed using a relative threshold plus a standard-error band — not a red build over a third-decimal wobble.
+<div align="center">
+  <img src="https://raw.githubusercontent.com/CJstate/CJstate/main/docs/stats.svg" alt="Live GitHub metrics: merged PRs, contributions, repos with merged PRs, this month, open PRs, public repos" />
+</div>
 
-- 107 tests, no runtime dependencies; CI green
-- Offline demo where MMLU stays inside the noise band and GSM8K correctly fails the gate
+<div align="center">
+  <a href="https://github.com/CJstate/CJstate/actions/workflows/boards.yml"><img src="https://img.shields.io/github/actions/workflow/status/CJstate/CJstate/boards.yml?branch=main&label=live%20stats%20refresh&style=for-the-badge" alt="Stats refresh workflow" /></a>
+</div>
 
-## Activity
+---
 
-<p align="center">
-  <img src="https://cdn.jsdelivr.net/gh/CJstate/CJstate@main/docs/profile-stats.svg" alt="GitHub stats" />
-</p>
+#### 🐍 Contribution Graph
 
-<p align="center">
-  <img src="https://cdn.jsdelivr.net/gh/CJstate/CJstate@main/docs/profile-streak.svg" alt="Contribution streak" />
-</p>
+<div align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="./docs/snake-dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="./docs/snake-light.svg">
+    <img src="./docs/snake-dark.svg" alt="Contribution snake eating the real contribution graph" width="900">
+  </picture>
+</div>
 
-## Contact
+---
 
-1507965754@qq.com · [github.com/CJstate](https://github.com/CJstate)
+#### 🧪 Projects
+
+- **[Veritas-Harness](https://github.com/CJstate/Veritas-Harness)**: An audit-friendly runtime for coding agents. Every tool call, model reply and MCP request lands in a hash-chained JSONL log; `veritas replay` verifies the chain, re-runs the tools and diffs each result by SHA-256 — a run is verified, not trusted. 141 tests, zero runtime dependencies, CI green on Linux / Windows / macOS × Python 3.10–3.13.
+
+- **[EvalGuard](https://github.com/CJstate/EvalGuard)**: A CI gate for LLM evaluation output. Given `before` / `after` result files, it decides whether a benchmark genuinely regressed using a relative threshold plus a standard-error band, instead of turning the build red over a third-decimal wobble. 107 tests, zero runtime dependencies, offline demo included.
+
+---
+
+<br/>
+
+### 🤝 Connect with me
+
+<div align="center">
+
+Bug reports, reproducible failures, and patches for upstream Go projects are always welcome.
+The fastest way to reach me is email; the profile above stays the source of truth for my work.
+
+</div>
+
+<div align="center">
+  <a href="mailto:1507965754@qq.com">
+    <img src="https://img.shields.io/badge/Email-1507965754%40qq.com-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Email" />
+  </a>
+  <a href="https://github.com/CJstate">
+    <img src="https://img.shields.io/badge/GitHub-CJstate-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub" />
+  </a>
+</div>
+
+<br/>
+
+<div align="center">
+
+*"Reproduce it. Write the failing test. Ship the smallest fix that makes it green."*
+
+</div>
