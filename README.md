@@ -1,11 +1,14 @@
 <div align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=28&pause=1000&color=36BCF7&center=true&vCenter=true&width=600&lines=Backend+Engineer;Cloud+Native+Developer;Data+Infrastructure+Enthusiast;TDD+Advocate" alt="Typing SVG" />
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=28&pause=1000&color=4DD6F5&center=true&vCenter=true&width=600&lines=Backend+Engineer;Cloud+Native+Developer;Data+Infrastructure+Enthusiast;TDD+Advocate" alt="Typing SVG" />
 </div>
 
 <div align="center">
-  <img src="https://komarev.com/ghpvc/?username=CJstate&style=for-the-badge&color=blue" alt="Profile Views" />
-  <img src="https://img.shields.io/github/followers/CJstate?style=for-the-badge&color=blue" alt="Followers" />
+  <img src="https://komarev.com/ghpvc/?username=CJstate&style=for-the-badge&color=4DD6F5" alt="Profile Views" />
+  <img src="https://img.shields.io/github/followers/CJstate?style=for-the-badge&color=4DD6F5" alt="Followers" />
+  <img src="https://img.shields.io/github/following/CJstate?style=for-the-badge&color=4DD6F5" alt="Following" />
 </div>
+
+👇 **Check out my featured contributions in the pinned repositories below.**
 
 ---
 
